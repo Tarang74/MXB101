@@ -1,20 +1,12 @@
-# QUT-Notes-Template - Unit name
+# MXB101 - Probability and Stochastic Modelling 1
 
-## Unit coordinator name
+## Dr Alexander Browning
 
-### Semester #, 20xx
-
----
-
-This repository provides **lecture notes** and **exam notes** for **QUT-Notes-Template - Unit name**.
-
-*The contents of the lecture notes are described below.*
+### Semester 1, 2022
 
 ---
 
-## Contents
-
-1. Section 1
+This repository provides **lecture notes** for **MXB101 - Probability and Stochastic Modelling 1**.
 
 ---
 
