@@ -1,0 +1,33 @@
+name: Gitbook Continuous Integration
+
+on:
+  workflow_run:
+    workflows: ["README Continuous Integration"]
+    types:
+      - completed
+
+jobs:
+  GitBook-CI:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Prepare SUMMARY.md
+        run: echo -e "# Table of contents\\n\\n* [Summary](README.md)"> ./SUMMARY.md
+
+      - name: Install pandoc core
+        uses: docker://pandoc/core:latest
+
+        run: |
+          LN="${{ github.event.repository.name }} Lecture Notes"
+          EN="${{ github.event.repository.name }} Exam Notes"
+          if test -f "./$LN.tex"; then
+            pandoc -s --mathjax "./$LN.tex" -o "./$LN.html"
+            echo "* [Lecture Notes]($LN.html)" >> SUMMARY.md
+          fi
+          if test -f "./$EN.tex"; then
+            pandoc -s --mathjax "./$EN.tex" -o "./$EN.html"
+            echo "* [Exam Notes]($EN.html)" >> SUMMARY.md
+          fi
