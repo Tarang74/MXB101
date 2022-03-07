@@ -32,6 +32,11 @@ jobs:
             echo "* [Exam Notes]($EN.html)" >> SUMMARY.md
           fi
 
+      - name: Install git
+        run: | 
+          apt-get -y update
+          apt-get -y install git
+
       - name: Push files to repository
         run: |
           git config --global user.name "github-actions[bot]"
