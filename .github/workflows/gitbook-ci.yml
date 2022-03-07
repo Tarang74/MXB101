@@ -20,6 +20,7 @@ jobs:
       - name: Install pandoc core
         uses: docker://pandoc/core:latest
 
+      - name: Convert to html
         run: |
           LN="${{ github.event.repository.name }} Lecture Notes"
           EN="${{ github.event.repository.name }} Exam Notes"
