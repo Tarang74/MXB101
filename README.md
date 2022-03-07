@@ -8,6 +8,14 @@
 
 This repository provides **lecture notes** for **MXB101 - Probability and Stochastic Modelling 1**.
 
+*The contents of the lecture notes are described below.*
+
+---
+
+## Contents
+
+1. Events and Probability
+
 ---
 
 ![Copyright](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)
