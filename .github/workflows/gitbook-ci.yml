@@ -37,7 +37,7 @@ jobs:
 
       - if: steps.LN.outputs.files_exists == 'true'
         name: Update SUMMARY
-        run: echo "* [Lecture Notes](${{ github.event.repository.name }} Lecture Notes.html)" >> SUMMARY.md
+        run: echo "* [Lecture Notes](${{ github.event.repository.name }}%20Lecture%20Notes.html)" >> SUMMARY.md
       
       - if: steps.EN.outputs.files_exists == 'true'
         name: Convert Exam Notes to HTML
@@ -47,7 +47,7 @@ jobs:
 
       - if: steps.EN.outputs.files_exists == 'true'
         name: Update SUMMARY
-        run: echo "* [Exam Notes](${{ github.event.repository.name }} Exam Notes.html)" >> SUMMARY.md
+        run: echo "* [Exam Notes](${{ github.event.repository.name }}%20Exam%20Notes.html)" >> SUMMARY.md
 
       - name: Push files to repository
         run: |
