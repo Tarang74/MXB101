@@ -1,4 +1,4 @@
-name: Gitbook Continuous Integration
+name: GitBook Continuous Integration
 
 on:
   workflow_run:
@@ -31,3 +31,12 @@ jobs:
             pandoc --mathjax -s "./$EN.tex" -o "./$EN.html"
             echo "* [Exam Notes]($EN.html)" >> SUMMARY.md
           fi
+
+      - name: Push files to repository
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+          git commit -m "GitBook CI"
+          git push
