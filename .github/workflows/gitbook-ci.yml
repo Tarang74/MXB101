@@ -24,10 +24,10 @@ jobs:
           LN="${{ github.event.repository.name }} Lecture Notes"
           EN="${{ github.event.repository.name }} Exam Notes"
           if test -f "./$LN.tex"; then
-            pandoc -s --mathjax "./$LN.tex" -o "./$LN.html"
+            pandoc --mathjax -s "./$LN.tex" -o "./$LN.html"
             echo "* [Lecture Notes]($LN.html)" >> SUMMARY.md
           fi
           if test -f "./$EN.tex"; then
-            pandoc -s --mathjax "./$EN.tex" -o "./$EN.html"
+            pandoc --mathjax -s "./$EN.tex" -o "./$EN.html"
             echo "* [Exam Notes]($EN.html)" >> SUMMARY.md
           fi
