@@ -9,6 +9,8 @@ on:
 jobs:
   GitBook-CI:
     runs-on: ubuntu-latest
+    container:
+      image: pandoc/core:latest
 
     steps:
       - name: Checkout code
@@ -16,9 +18,6 @@ jobs:
 
       - name: Prepare SUMMARY.md
         run: echo -e "# Table of contents\\n\\n* [Summary](README.md)"> ./SUMMARY.md
-
-      - name: Install pandoc core
-        uses: docker://pandoc/core:latest
 
       - name: Convert to html
         run: |
