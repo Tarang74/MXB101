@@ -10,7 +10,7 @@ jobs:
   GitBook-CI:
     runs-on: ubuntu-latest
     container:
-      image: pandoc/core:latest
+      image: ubuntu:latest
 
     steps:
       - name: Checkout code
@@ -18,6 +18,9 @@ jobs:
 
       - name: Prepare SUMMARY.md
         run: echo -e "# Table of contents\\n\\n* [Summary](README.md)"> ./SUMMARY.md
+
+      - name: Install pandoc
+        run: docker pull pandoc/core
 
       - name: Convert to html
         run: |
@@ -31,11 +34,6 @@ jobs:
             pandoc --mathjax -s "./$EN.tex" -o "./$EN.html"
             echo "* [Exam Notes]($EN.html)" >> SUMMARY.md
           fi
-
-      - name: Install git
-        run: | 
-          docker RUN apt update
-          docker RUN apt install -y git
 
       - name: Push files to repository
         run: |
