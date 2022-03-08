@@ -1,4 +1,5 @@
 # Table of contents
 
 * [Summary](README.md)
-* [Lecture Notes](MXB101_Lecture_Notes.html)
+* [Lecture Notes](lecture-notes.md)
+* [MXB101 Lecture Notes](mxb101-lecture-notes.md)
