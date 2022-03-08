@@ -21,7 +21,8 @@ jobs:
 
       - name: Install pandoc
         run: /usr/bin/docker pull pandoc/core
-
+        working-directory: ./
+        
       - name: Convert to html
         run: |
           LN="${{ github.event.repository.name }} Lecture Notes"
