@@ -34,8 +34,8 @@ jobs:
 
       - name: Install git
         run: | 
-          RUN apt update
-          RUN apt install -y git
+          docker RUN apt update
+          docker RUN apt install -y git
 
       - name: Push files to repository
         run: |
