@@ -20,7 +20,7 @@ jobs:
         run: echo -e "# Table of contents\\n\\n* [Summary](README.md)"> ./SUMMARY.md
 
       - name: Install pandoc
-        run: docker pull pandoc/core
+        run: /usr/bin/docker pull pandoc/core
 
       - name: Convert to html
         run: |
