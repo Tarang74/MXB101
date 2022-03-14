@@ -46,21 +46,170 @@
 \newpage
 %
 \section{Events and Probability}
+\subsection{Events}
 \begin{definition}[Event]
-    An event is a set of outcomes of a random experiment commonly denoted by a capital letter.
-
+    An event is a set of outcomes in a random experiment commonly denoted by a capital letter.
     Events can be simple (a single event) or compound (two or more simple events).
 \end{definition}
-\begin{definition}[Sample Space]
+\begin{definition}[Sample space]
     The set of all possible outcomes of an experiment is known as the sample space
     for that experiment and is denoted \(\Omega\).
-
-    All events \(A\) are subsets of \(\Omega\), \(A \subseteq \Omega\).
 \end{definition}
 \begin{definition}[Intersection]
     An intersection between two events \(A\) and \(B\) describes the set of outcomes that occur in both \(A\) and \(B\).
-
-    An intersection can be represented using the set \ttfamily{AND} operator \(A \cup B\).
+    The intersection can be represented using the set {\ttfamily{AND}} operator (\(\cap\)) --- \(A \cap B\) (or \(AB\)).
 \end{definition}
- 
+\begin{definition}[Disjoint]
+    Disjoint (mutually exclusive) events are two events that cannot occur simultaneously, or have no common outcomes.
+\end{definition}
+\begin{theorem}[Intersection of disjoint events]
+    The intersection of disjoint events results in the null set (\(\varnothing\)).
+\end{theorem}
+\begin{lemma}
+    Disjoint events are \textbf{dependent} events as the occurrence of one means the other cannot occur.
+\end{lemma}
+\begin{definition}[Union]
+    A union of two events \(A\) and \(B\) describes the set of outcomes in either \(A\) or \(B\).
+    The union is represented using the set {\ttfamily{OR}} operator (\(\cup\)) --- \(A \cup B\).
+\end{definition}
+\begin{definition}[Complement]
+    The complement of an event \(E\) is the set of all other outcomes in \(\Omega\).
+    The complement of \(E\) is denoted \(\overline{E}\).
+\end{definition}
+\begin{theorem}[Intersection of complement set]
+    \begin{equation*}
+        A\overline{A} = \varnothing
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[Union of complement set]
+    \begin{equation*}
+        A \cup \overline{A} = \Omega
+    \end{equation*}
+\end{theorem}
+\begin{definition}[Subset]
+    \(A\) is a (non-strict) subset of \(B\) if all elements in \(A\) are also in \(B\).
+    This can be denoted as \(A \subseteq B\).
+\end{definition}
+\begin{theorem}
+    All events \(E\) are subsets of \(\Omega\).
+\end{theorem}
+\begin{theorem}
+    Given \(A \subseteq B\)
+    \begin{equation*}
+        AB = A \quad\quad \text{and} \quad\quad A \cup B = B
+    \end{equation*}
+\end{theorem}
+\begin{corollary}
+    Given \(\varnothing \subseteq E\)
+    \begin{equation*}
+        \varnothing E = \varnothing \quad\quad \text{and} \quad\quad \varnothing \cup E = E
+    \end{equation*}
+\end{corollary}
+\begin{theorem}[Associative Identities]
+    \begin{align*}
+        A \left( BC \right) & = \left( AB \right) C \\
+        A \cup \left( B \cup C \right) & = \left( A \cup B \right) \cup C
+    \end{align*}
+\end{theorem}
+\begin{theorem}[Distributive Identities]
+    \begin{align*}
+        A \left(B \cup C\right) & = AB \cup AC \\
+        A \cup BC & = \left( A \cup B \right) \left( A \cup C \right)
+    \end{align*}
+\end{theorem}
+\subsection{Probability}
+\begin{definition}[Probability]
+    Probability is a measure of the likeliness of an event occurring. The probability of
+    an event \(E\) is denoted \(\Pr{\left( E \right)}\) (sometimes \(\mathrm{P}\left( E \right)\)).
+    \begin{equation*}
+        0 \le \Pr{\left( E \right)} \le 1
+    \end{equation*}
+    where a probability of 0 never happens, and 1 always happens.
+\end{definition}
+\begin{theorem}[Probability of \(\Omega\)]
+    \begin{equation*}
+        \Pr{\left( \Omega \right)} = 1
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[Multiplicative rule]
+    The probability of the intersection between two independent events \(A\) and \(B\) is given by
+    \begin{equation*}
+        \Pr{\left( AB \right)} = \Pr{\left( A \right)} \Pr{\left( B \right)}
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[Probability of disjoint events]
+    The probability of disjoint events \(A\) and \(B\) is given by
+    \begin{align*}
+        \Pr{\left( AB \right)}          & = 0  \\
+        \Pr{\left( \varnothing \right)} & = 0.
+    \end{align*}
+    Disjoint events are dependent events, since the occurrence of one means the other cannot occur.
+\end{theorem}
+\begin{theorem}[Addition rule]
+    The probability of the union between two independent events \(A\) and \(B\) is given by
+    \begin{equation*}
+        \Pr{\left( A \cup B \right)} = \Pr{\left( A \right)} + \Pr{\left( B \right)} - \Pr{\left( AB \right)}.
+    \end{equation*}
+    If \(A\) and \(B\) are disjoint, then \(\Pr{\left( AB \right)} = 0\), so that \(\Pr{\left( A \cup B \right)} = \Pr{\left( A \right)} + \Pr{\left( B \right)}\).
+\end{theorem}
+\begin{corollary}[Addition rule for 3 event]
+    The addition rule for 3 events is as follows
+    \begin{equation*}
+        \Pr{\left( A \cup B \cup C \right)} = \Pr{\left( A \right)} + \Pr{\left( B \right)} + \Pr{\left( B \right)} - \Pr{\left( AB \right)} - \Pr{\left( AC \right)} - \Pr{\left( BC \right)} + \Pr{\left( ABC \right)}.
+    \end{equation*}
+\end{corollary}
+\begin{proof}
+    If we write \(D = A \cup B\) and apply the addition rule twice, we have
+    \begin{align*}
+        \Pr{\left( A \cup B \cup C \right)} & = \Pr{\left( D \cup C \right)} \\
+                                            & = \Pr{\left( D \right)} + \Pr{\left( C \right)} - \Pr{\left( DC \right)} \\
+                                            & = \Pr{\left( A \cup B \right)} + \Pr{\left( C \right)} - \Pr{\left( \left( A \cup B \right)C \right)} \\
+                                            & = \Pr{\left( A \right)} + \Pr{\left( B \right)} - \Pr{\left( AB \right)} + \Pr{\left( C \right)} - \Pr{\left( AC \cup BC \right)} \\
+                                            & = \Pr{\left( A \right)} + \Pr{\left( B \right)} - \Pr{\left( AB \right)} + \Pr{\left( C \right)} - \left( \Pr{\left( AC \right)} + \Pr{\left( BC \right)} - \Pr{\left( ACBC \right)} \right) \\
+                                            & = \Pr{\left( A \right)} + \Pr{\left( B \right)} + \Pr{\left( C \right)} - \Pr{\left( AB \right)} - \Pr{\left( AC \right)} - \Pr{\left( BC \right)} + \Pr{\left( ABC \right)}
+    \end{align*}
+\end{proof}
+\begin{theorem}[Complement rule]
+    The probability of the complement of \(E\) is given by
+    \begin{equation*}
+        \Pr{\left( \overline{E} \right)} = 1 - \Pr{\left( E \right)}
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[Probability of subsets]
+    If \(A \subseteq B\) then \(\Pr{\left( A \right)} \le \Pr{\left( B \right)}\).
+    Also, \(\Pr{\left( AB \right)} = \Pr{\left( A \right)}\) and \(\Pr{\left( A \cup B \right)} = \Pr{\left( B \right)}\).
+\end{theorem}
+\begin{theorem}[Law of total probability]
+    By writing the event \(A\) as \(AB \cup A\overline{B}\), and noting that \(AB\) and \(A\overline{B}\) are disjoint:
+    \begin{equation*}
+        \Pr{\left( A \right)} = \Pr{\left( AB \right)} + \Pr{\left( A\overline{B} \right)}
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[De Morgan's laws]
+    Recall De Morgan's Laws:
+    \begin{align*}
+        \overline{A \cup B} & = \overline{A} \ \overline{B}     \\
+        \overline{AB}       & = \overline{A} \cup \overline{B}.
+    \end{align*}
+    Taking the negation of both sides and applying the complement rule yields
+    \begin{align*}
+        \Pr{\left( A \cup B \right)} & = 1 - \Pr{\left( \overline{A} \ \overline{B} \right)}    \\
+        \Pr{\left( AB \right)}       & = 1 - \Pr{\left( \overline{A} \cup \overline{B} \right)}
+    \end{align*}
+\end{theorem}
+\subsection{Circuits}
+A signal can pass through a circuit if there is a functional path from start to finish.
+
+We can define a circuit where each component \(i\) functions with probability \(p\), 
+and is independent of other components.
+
+Then \(W_i\) to be the event in which the associated component \(i\) functions, we can 
+determine the event \(S\) in which the system functions,
+and probability \(\Pr{\left( S \right)}\) that the system functions.
+
+As the probability that any component functions is \(p\), in other words
+\begin{equation*}
+    \Pr{\left( W_i \right)} = p,
+\end{equation*}
+\(\Pr{\left( S \right)}\) will be a function of \(p\) defined \(f:\left( 0,\; 1 \right) \to \left( 0,\; 1 \right)\).
 \end{document}
