@@ -16,6 +16,7 @@ This repository provides **lecture notes** for **MXB101 - Probability and Stocha
 
 1. Events and Probability
 2. Independence
+3. Total Probability
 
 ---
 
