@@ -88,19 +88,19 @@
 \end{theorem}
 \begin{definition}[Subset]
     \(A\) is a (non-strict) subset of \(B\) if all elements in \(A\) are also in \(B\).
-    This can be denoted as \(A \subseteq B\).
+    This can be denoted as \(A \subset B\).
 \end{definition}
 \begin{theorem}
     All events \(E\) are subsets of \(\Omega\).
 \end{theorem}
 \begin{theorem}
-    Given \(A \subseteq B\)
+    Given \(A \subset B\)
     \begin{equation*}
         AB = A \quad\quad \text{and} \quad\quad A \cup B = B
     \end{equation*}
 \end{theorem}
 \begin{corollary}
-    Given \(\varnothing \subseteq E\)
+    Given \(\varnothing \subset E\)
     \begin{equation*}
         \varnothing E = \varnothing \quad\quad \text{and} \quad\quad \varnothing \cup E = E
     \end{equation*}
@@ -131,19 +131,17 @@
         \Pr{\left( \Omega \right)} = 1
     \end{equation*}
 \end{theorem}
+\begin{theorem}[Complement rule]
+    The probability of the complement of \(E\) is given by
+    \begin{equation*}
+        \Pr{\left( \overline{E} \right)} = 1 - \Pr{\left( E \right)}
+    \end{equation*}
+\end{theorem}
 \begin{theorem}[Multiplication rule for independent events]
     The probability of the intersection between two independent events \(A\) and \(B\) is given by
     \begin{equation*}
         \Pr{\left( AB \right)} = \Pr{\left( A \right)} \Pr{\left( B \right)}
     \end{equation*}
-\end{theorem}
-\begin{theorem}[Probability of disjoint events]
-    The probability of disjoint events \(A\) and \(B\) is given by
-    \begin{align*}
-        \Pr{\left( AB \right)}          & = 0  \\
-        \Pr{\left( \varnothing \right)} & = 0.
-    \end{align*}
-    Disjoint events are dependent events, since the occurrence of one means the other cannot occur.
 \end{theorem}
 \begin{theorem}[Addition rule for independent events]
     The probability of the union between two independent events \(A\) and \(B\) is given by
@@ -169,22 +167,6 @@
                                             & = \Pr{\left( A \right)} + \Pr{\left( B \right)} + \Pr{\left( C \right)} - \Pr{\left( AB \right)} - \Pr{\left( AC \right)} - \Pr{\left( BC \right)} + \Pr{\left( ABC \right)}
     \end{align*}
 \end{proof}
-\begin{theorem}[Complement rule]
-    The probability of the complement of \(E\) is given by
-    \begin{equation*}
-        \Pr{\left( \overline{E} \right)} = 1 - \Pr{\left( E \right)}
-    \end{equation*}
-\end{theorem}
-\begin{theorem}[Probability of subsets]
-    If \(A \subseteq B\) then \(\Pr{\left( A \right)} \le \Pr{\left( B \right)}\).
-    Also, \(\Pr{\left( AB \right)} = \Pr{\left( A \right)}\) and \(\Pr{\left( A \cup B \right)} = \Pr{\left( B \right)}\).
-\end{theorem}
-\begin{theorem}[Law of total probability]
-    By writing the event \(A\) as \(AB \cup A\overline{B}\), and noting that \(AB\) and \(A\overline{B}\) are disjoint:
-    \begin{equation*}
-        \Pr{\left( A \right)} = \Pr{\left( AB \right)} + \Pr{\left( A\overline{B} \right)}
-    \end{equation*}
-\end{theorem}
 \begin{theorem}[De Morgan's laws]
     Recall De Morgan's Laws:
     \begin{align*}
@@ -302,5 +284,33 @@ changing the sample space.
         \Pr{\left( A B C \right)} = \Pr{\left( A \right)} \Pr{\left( B \right)} \Pr{\left( C \right)}.
     \end{equation*}
 \end{theorem}
+In summary, independence should not be assumed unless explicitly stated.
+\subsection{Disjoint Events}
+\begin{theorem}[Probability of disjoint events]
+    The probability of disjoint events \(A\) and \(B\) is given by
+    \begin{align*}
+        \Pr{\left( AB \right)}          & = 0  \\
+        \Pr{\left( \varnothing \right)} & = 0.
+    \end{align*}
+    Disjoint events are highly dependent events, since the occurrence of one means the other cannot occur.
+    This implies
+    \begin{equation*}
+        \Pr{\left( A \;\middle|\; B \right)} = 0
+    \end{equation*}
+\end{theorem}
+\subsection{Subsets}
+\begin{theorem}[Probability of subsets]
+    If \(A \subset B\) then \(\Pr{\left( A \right)} \le \Pr{\left( B \right)}\).
+    We also know that \(\Pr{\left( AB \right)} = \Pr{\left( A \right)}\) and \(\Pr{\left( A \cup B \right)} = \Pr{\left( B \right)}\).
 
+    Here, if \(A\) happens, then \(B\) definitely happens.
+    \begin{equation*}
+        \Pr{\left( B \;\middle|\; A \right)} = 1
+    \end{equation*}
+    Given \(\Pr{\left( AB \right)} = \Pr{\left( A \right)}\)
+    \begin{equation*}
+        \Pr{\left( A \;\middle|\; B \right)} = \frac{\Pr{\left( A \right)}}{\Pr{\left( B \right)}}
+    \end{equation*}
+    These events are also highly dependent.
+\end{theorem}
 \end{document}
