@@ -107,14 +107,14 @@
 \end{corollary}
 \begin{theorem}[Associative Identities]
     \begin{align*}
-        A \left( BC \right) & = \left( AB \right) C \\
+        A \left( BC \right)            & = \left( AB \right) C            \\
         A \cup \left( B \cup C \right) & = \left( A \cup B \right) \cup C
     \end{align*}
 \end{theorem}
 \begin{theorem}[Distributive Identities]
     \begin{align*}
-        A \left(B \cup C\right) & = AB \cup AC \\
-        A \cup BC & = \left( A \cup B \right) \left( A \cup C \right)
+        A \left(B \cup C\right) & = AB \cup AC                                      \\
+        A \cup BC               & = \left( A \cup B \right) \left( A \cup C \right)
     \end{align*}
 \end{theorem}
 \subsection{Probability}
@@ -131,7 +131,7 @@
         \Pr{\left( \Omega \right)} = 1
     \end{equation*}
 \end{theorem}
-\begin{theorem}[Multiplicative rule]
+\begin{theorem}[Multiplication rule for independent events]
     The probability of the intersection between two independent events \(A\) and \(B\) is given by
     \begin{equation*}
         \Pr{\left( AB \right)} = \Pr{\left( A \right)} \Pr{\left( B \right)}
@@ -145,14 +145,14 @@
     \end{align*}
     Disjoint events are dependent events, since the occurrence of one means the other cannot occur.
 \end{theorem}
-\begin{theorem}[Addition rule]
+\begin{theorem}[Addition rule for independent events]
     The probability of the union between two independent events \(A\) and \(B\) is given by
     \begin{equation*}
         \Pr{\left( A \cup B \right)} = \Pr{\left( A \right)} + \Pr{\left( B \right)} - \Pr{\left( AB \right)}.
     \end{equation*}
     If \(A\) and \(B\) are disjoint, then \(\Pr{\left( AB \right)} = 0\), so that \(\Pr{\left( A \cup B \right)} = \Pr{\left( A \right)} + \Pr{\left( B \right)}\).
 \end{theorem}
-\begin{corollary}[Addition rule for 3 event]
+\begin{corollary}[Addition rule for 3 events]
     The addition rule for 3 events is as follows
     \begin{equation*}
         \Pr{\left( A \cup B \cup C \right)} = \Pr{\left( A \right)} + \Pr{\left( B \right)} + \Pr{\left( B \right)} - \Pr{\left( AB \right)} - \Pr{\left( AC \right)} - \Pr{\left( BC \right)} + \Pr{\left( ABC \right)}.
@@ -161,10 +161,10 @@
 \begin{proof}
     If we write \(D = A \cup B\) and apply the addition rule twice, we have
     \begin{align*}
-        \Pr{\left( A \cup B \cup C \right)} & = \Pr{\left( D \cup C \right)} \\
-                                            & = \Pr{\left( D \right)} + \Pr{\left( C \right)} - \Pr{\left( DC \right)} \\
-                                            & = \Pr{\left( A \cup B \right)} + \Pr{\left( C \right)} - \Pr{\left( \left( A \cup B \right)C \right)} \\
-                                            & = \Pr{\left( A \right)} + \Pr{\left( B \right)} - \Pr{\left( AB \right)} + \Pr{\left( C \right)} - \Pr{\left( AC \cup BC \right)} \\
+        \Pr{\left( A \cup B \cup C \right)} & = \Pr{\left( D \cup C \right)}                                                                                                                                                               \\
+                                            & = \Pr{\left( D \right)} + \Pr{\left( C \right)} - \Pr{\left( DC \right)}                                                                                                                     \\
+                                            & = \Pr{\left( A \cup B \right)} + \Pr{\left( C \right)} - \Pr{\left( \left( A \cup B \right)C \right)}                                                                                        \\
+                                            & = \Pr{\left( A \right)} + \Pr{\left( B \right)} - \Pr{\left( AB \right)} + \Pr{\left( C \right)} - \Pr{\left( AC \cup BC \right)}                                                            \\
                                             & = \Pr{\left( A \right)} + \Pr{\left( B \right)} - \Pr{\left( AB \right)} + \Pr{\left( C \right)} - \left( \Pr{\left( AC \right)} + \Pr{\left( BC \right)} - \Pr{\left( ACBC \right)} \right) \\
                                             & = \Pr{\left( A \right)} + \Pr{\left( B \right)} + \Pr{\left( C \right)} - \Pr{\left( AB \right)} - \Pr{\left( AC \right)} - \Pr{\left( BC \right)} + \Pr{\left( ABC \right)}
     \end{align*}
@@ -200,10 +200,10 @@
 \subsection{Circuits}
 A signal can pass through a circuit if there is a functional path from start to finish.
 
-We can define a circuit where each component \(i\) functions with probability \(p\), 
+We can define a circuit where each component \(i\) functions with probability \(p\),
 and is independent of other components.
 
-Then \(W_i\) to be the event in which the associated component \(i\) functions, we can 
+Then \(W_i\) to be the event in which the associated component \(i\) functions, we can
 determine the event \(S\) in which the system functions,
 and probability \(\Pr{\left( S \right)}\) that the system functions.
 
@@ -212,4 +212,95 @@ As the probability that any component functions is \(p\), in other words
     \Pr{\left( W_i \right)} = p,
 \end{equation*}
 \(\Pr{\left( S \right)}\) will be a function of \(p\) defined \(f:\left[ 0,\; 1 \right] \to \left[ 0,\; 1 \right]\).
+\section{Independence}
+\begin{definition}[Conditional probability]
+    When discussing multiple events, it is possible that the occurrence of one event changes
+    the probability that another will occur. This can be denoted using a vertical bar,
+    and is read as ``the probability of event \(A\) given \(B\)'':
+    \begin{equation*}
+        \Pr{\left( A \;\middle|\; B \right)} = \frac{\Pr{\left( A B \right)}}{\Pr{\left( B \right)}}.
+    \end{equation*}
+\end{definition}
+\begin{definition}[Multiplication rule]
+    For events \(A\) and \(B\), the general multiplication rule states that
+    \begin{equation*}
+        \Pr{\left( A B \right)} = \Pr{\left( A \;\middle|\; B \right)} \Pr{\left( B \right)}
+    \end{equation*}
+\end{definition}
+\begin{theorem}[Independent events]
+    If \(A\) and \(B\) are independent events then
+    \begin{align*}
+        \Pr{\left( A \;\middle|\; B \right)} & = \Pr{\left( A \right)} \\
+        \Pr{\left( B \;\middle|\; A \right)} & = \Pr{\left( B \right)}
+    \end{align*}
+\end{theorem}
+\begin{theorem}[Complement of independent events]
+    If \(A\) and \(B\) are independent, all complement pairs are also independent.
+    Given
+    \begin{align*}
+        \Pr{\left( A \;\middle|\; B \right)} & = \Pr{\left( A \right)} \\
+        \Pr{\left( B \;\middle|\; A \right)} & = \Pr{\left( B \right)}
+    \end{align*}
+    the following statements are also true
+    \begin{align*}
+        \Pr{\left( A \;\middle|\; \overline{B} \right)}            & = \Pr{\left( A \right)}            & \Pr{\left( B \;\middle|\; \overline{A} \right)}            & = \Pr{\left( B \right)}            \\
+        \Pr{\left( \overline{A} \;\middle|\; B \right)}            & = \Pr{\left( \overline{A} \right)} & \Pr{\left( \overline{B} \;\middle|\; A \right)}            & = \Pr{\left( \overline{B} \right)} \\
+        \Pr{\left( \overline{A} \;\middle|\; \overline{B} \right)} & = \Pr{\left( \overline{A} \right)} & \Pr{\left( \overline{B} \;\middle|\; \overline{A} \right)} & = \Pr{\left( \overline{B} \right)}
+    \end{align*}
+\end{theorem}
+\subsection{Probability Rules with Conditional}
+ALl probability rules hold when conditioning on some event \(C\).
+\begin{theorem}[Complement rule with condition]
+    \begin{equation*}
+        \Pr{\left( \overline{A} \;\middle|\; C \right)} = 1 - \Pr{\left( A \;\middle|\; C \right)}
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[Addition rule with condition]
+    \begin{equation*}
+        \Pr{\left( A \cup B \;\middle|\; C \right)} = \Pr{\left( A \;\middle|\; C \right)} + \Pr{\left( B \;\middle|\; C \right)} - \Pr{\left( AB \;\middle|\; C \right)}
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[Multiplication rule with condition]
+    \begin{equation*}
+        \Pr{\left( A B \;\middle|\; C \right)} = \Pr{\left( A \;\middle|\; BC \right)} \Pr{\left( B \;\middle|\; C \right)}
+    \end{equation*}
+\end{theorem}
+In the above examples, all probabilities are conditional on the sample space, hence we are effectively
+changing the sample space.
+\subsection{Conditional Independence}
+\begin{definition}[Conditional independence]
+    Suppose events \(A\) and \(B\) are not independent, i.e.,
+    \begin{equation*}
+        \Pr{\left( A \;\middle|\; B \right)} \neq \Pr{\left( A \right)}
+    \end{equation*}
+    but they become independent when conditioned with another event \(C\), i.e.,
+    \begin{equation*}
+        \Pr{\left( A \;\middle|\; BC \right)} = \Pr{\left( A \;\middle|\; C \right)}
+    \end{equation*}
+    Here we say that \(A\) and \(B\) are \textbf{conditionally independent} given \(C\). Furthermore
+    \begin{equation*}
+        \Pr{\left( AB \;\middle|\; C \right)} = \Pr{\left( A \;\middle|\; C \right)} \Pr{\left( B \;\middle|\; C \right)}
+    \end{equation*}
+    Conversely, events \(A\) and \(B\) may be conditionally dependent but unconditionally independent, i.e.,
+    \begin{align*}
+        \Pr{\left( A \;\middle|\; B \right)}  & = \Pr{\left( A \right)}                                                      \\
+        \Pr{\left( A \;\middle|\; BC \right)} & \neq \Pr{\left( A \;\middle|\; C \right)}                                    \\
+        \Pr{\left( AB \;\middle|\; C \right)} & = \Pr{\left( A \;\middle|\; BC \right)} \Pr{\left( B \;\middle|\; C \right)}
+    \end{align*}
+\end{definition}
+\begin{theorem}
+    Given events \(A\), \(B\), and \(C\). Pairwise independence does not imply mutual independence. I.e.,
+    \begin{equation*}
+        \begin{cases}
+            \Pr{\left( A B \right)} = \Pr{\left( A \right)} \Pr{\left( B \right)} \\
+            \Pr{\left( A C \right)} = \Pr{\left( A \right)} \Pr{\left( C \right)} \\
+            \Pr{\left( B C \right)} = \Pr{\left( B \right)} \Pr{\left( C \right)}
+        \end{cases} 
+    \end{equation*}
+    does not imply
+    \begin{equation*}
+        \Pr{\left( A B C \right)} = \Pr{\left( A \right)} \Pr{\left( B \right)} \Pr{\left( C \right)}.
+    \end{equation*}
+\end{theorem}
+
 \end{document}
