@@ -313,4 +313,28 @@ In summary, independence should not be assumed unless explicitly stated.
     \end{equation*}
     These events are also highly dependent.
 \end{theorem}
+\section{Total Probability}
+\begin{definition}[Marginal probability]
+    Marginal probability is the probability of an event irrespective of the outcome of another variable.
+\end{definition}
+\begin{theorem}[Total probability for complements]
+    By writing the event \(A\) as \(AB \cup A\overline{B}\), and noting that \(AB\) and \(A\overline{B}\) are disjoint,
+    the marginal probability of \(A\) is given by
+    \begin{equation*}
+        \Pr{\left( A \right)} = \Pr{\left( AB \right)} + \Pr{\left( A\overline{B} \right)}.
+    \end{equation*}
+    By applying the multiplication rule to each joint probability:
+    \begin{equation*}
+        \Pr{\left( A \right)} = \Pr{\left( A \;\middle|\; B \right)}\Pr{\left( B \right)} + \Pr{\left( A \;\middle|\; \overline{B} \right)}\Pr{\left( \overline{B} \right)}
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[Law of total probability]
+    The previous theorem partitioned \(\Omega\) into disjoint events \(B\) and \(\overline{B}\).
+    
+    By partitioning \(\Omega\) into a collection of disjoint events \(B_1,\; B_2,\; \dots,\; B_n\),
+    such that \(\bigcup_{i=1}^n B_i = \Omega\), we have
+    \begin{equation*}
+        \Pr{\left( A \right)} = \sum_{i = 1}^n \Pr{\left( A \;\middle|\; B_i \right)}\Pr{\left( B_i \right)}
+    \end{equation*}
+\end{theorem}
 \end{document}
