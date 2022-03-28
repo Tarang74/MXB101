@@ -200,51 +200,51 @@ As the probability that any component functions is \(p\), in other words
     the probability that another will occur. This can be denoted using a vertical bar,
     and is read as ``the probability of event \(A\) given \(B\)'':
     \begin{equation*}
-        \Pr{\left( A \;\middle|\; B \right)} = \frac{\Pr{\left( A B \right)}}{\Pr{\left( B \right)}}.
+        \Pr{\left( A \,\vert\, B \right)} = \frac{\Pr{\left( A B \right)}}{\Pr{\left( B \right)}}.
     \end{equation*}
 \end{definition}
 \begin{definition}[Multiplication rule]
     For events \(A\) and \(B\), the general multiplication rule states that
     \begin{equation*}
-        \Pr{\left( A B \right)} = \Pr{\left( A \;\middle|\; B \right)} \Pr{\left( B \right)}
+        \Pr{\left( A B \right)} = \Pr{\left( A \,\vert\, B \right)} \Pr{\left( B \right)}
     \end{equation*}
 \end{definition}
 \begin{theorem}[Independent events]
     If \(A\) and \(B\) are independent events then
     \begin{align*}
-        \Pr{\left( A \;\middle|\; B \right)} & = \Pr{\left( A \right)} \\
-        \Pr{\left( B \;\middle|\; A \right)} & = \Pr{\left( B \right)}
+        \Pr{\left( A \,\vert\, B \right)} & = \Pr{\left( A \right)} \\
+        \Pr{\left( B \,\vert\, A \right)} & = \Pr{\left( B \right)}
     \end{align*}
 \end{theorem}
 \begin{theorem}[Complement of independent events]
     If \(A\) and \(B\) are independent, all complement pairs are also independent.
     Given
     \begin{align*}
-        \Pr{\left( A \;\middle|\; B \right)} & = \Pr{\left( A \right)} \\
-        \Pr{\left( B \;\middle|\; A \right)} & = \Pr{\left( B \right)}
+        \Pr{\left( A \,\vert\, B \right)} & = \Pr{\left( A \right)} \\
+        \Pr{\left( B \,\vert\, A \right)} & = \Pr{\left( B \right)}
     \end{align*}
     the following statements are also true
     \begin{align*}
-        \Pr{\left( A \;\middle|\; \overline{B} \right)}            & = \Pr{\left( A \right)}            & \Pr{\left( B \;\middle|\; \overline{A} \right)}            & = \Pr{\left( B \right)}            \\
-        \Pr{\left( \overline{A} \;\middle|\; B \right)}            & = \Pr{\left( \overline{A} \right)} & \Pr{\left( \overline{B} \;\middle|\; A \right)}            & = \Pr{\left( \overline{B} \right)} \\
-        \Pr{\left( \overline{A} \;\middle|\; \overline{B} \right)} & = \Pr{\left( \overline{A} \right)} & \Pr{\left( \overline{B} \;\middle|\; \overline{A} \right)} & = \Pr{\left( \overline{B} \right)}
+        \Pr{\left( A \,\vert\, \overline{B} \right)}            & = \Pr{\left( A \right)}            & \Pr{\left( B \,\vert\, \overline{A} \right)}            & = \Pr{\left( B \right)}            \\
+        \Pr{\left( \overline{A} \,\vert\, B \right)}            & = \Pr{\left( \overline{A} \right)} & \Pr{\left( \overline{B} \,\vert\, A \right)}            & = \Pr{\left( \overline{B} \right)} \\
+        \Pr{\left( \overline{A} \,\vert\, \overline{B} \right)} & = \Pr{\left( \overline{A} \right)} & \Pr{\left( \overline{B} \,\vert\, \overline{A} \right)} & = \Pr{\left( \overline{B} \right)}
     \end{align*}
 \end{theorem}
 \subsection{Probability Rules with Conditional}
 ALl probability rules hold when conditioning on some event \(C\).
 \begin{theorem}[Complement rule with condition]
     \begin{equation*}
-        \Pr{\left( \overline{A} \;\middle|\; C \right)} = 1 - \Pr{\left( A \;\middle|\; C \right)}
+        \Pr{\left( \overline{A} \,\vert\, C \right)} = 1 - \Pr{\left( A \,\vert\, C \right)}
     \end{equation*}
 \end{theorem}
 \begin{theorem}[Addition rule with condition]
     \begin{equation*}
-        \Pr{\left( A \cup B \;\middle|\; C \right)} = \Pr{\left( A \;\middle|\; C \right)} + \Pr{\left( B \;\middle|\; C \right)} - \Pr{\left( AB \;\middle|\; C \right)}
+        \Pr{\left( A \cup B \,\vert\, C \right)} = \Pr{\left( A \,\vert\, C \right)} + \Pr{\left( B \,\vert\, C \right)} - \Pr{\left( AB \,\vert\, C \right)}
     \end{equation*}
 \end{theorem}
 \begin{theorem}[Multiplication rule with condition]
     \begin{equation*}
-        \Pr{\left( A B \;\middle|\; C \right)} = \Pr{\left( A \;\middle|\; BC \right)} \Pr{\left( B \;\middle|\; C \right)}
+        \Pr{\left( A B \,\vert\, C \right)} = \Pr{\left( A \,\vert\, BC \right)} \Pr{\left( B \,\vert\, C \right)}
     \end{equation*}
 \end{theorem}
 In the above examples, all probabilities are conditional on the sample space, hence we are effectively
@@ -253,21 +253,21 @@ changing the sample space.
 \begin{definition}[Conditional independence]
     Suppose events \(A\) and \(B\) are not independent, i.e.,
     \begin{equation*}
-        \Pr{\left( A \;\middle|\; B \right)} \neq \Pr{\left( A \right)}
+        \Pr{\left( A \,\vert\, B \right)} \neq \Pr{\left( A \right)}
     \end{equation*}
     but they become independent when conditioned with another event \(C\), i.e.,
     \begin{equation*}
-        \Pr{\left( A \;\middle|\; BC \right)} = \Pr{\left( A \;\middle|\; C \right)}
+        \Pr{\left( A \,\vert\, BC \right)} = \Pr{\left( A \,\vert\, C \right)}
     \end{equation*}
     Here we say that \(A\) and \(B\) are \textbf{conditionally independent} given \(C\). Furthermore
     \begin{equation*}
-        \Pr{\left( AB \;\middle|\; C \right)} = \Pr{\left( A \;\middle|\; C \right)} \Pr{\left( B \;\middle|\; C \right)}
+        \Pr{\left( AB \,\vert\, C \right)} = \Pr{\left( A \,\vert\, C \right)} \Pr{\left( B \,\vert\, C \right)}
     \end{equation*}
     Conversely, events \(A\) and \(B\) may be conditionally dependent but unconditionally independent, i.e.,
     \begin{align*}
-        \Pr{\left( A \;\middle|\; B \right)}  & = \Pr{\left( A \right)}                                                      \\
-        \Pr{\left( A \;\middle|\; BC \right)} & \neq \Pr{\left( A \;\middle|\; C \right)}                                    \\
-        \Pr{\left( AB \;\middle|\; C \right)} & = \Pr{\left( A \;\middle|\; BC \right)} \Pr{\left( B \;\middle|\; C \right)}
+        \Pr{\left( A \,\vert\, B \right)}  & = \Pr{\left( A \right)}                                                      \\
+        \Pr{\left( A \,\vert\, BC \right)} & \neq \Pr{\left( A \,\vert\, C \right)}                                    \\
+        \Pr{\left( AB \,\vert\, C \right)} & = \Pr{\left( A \,\vert\, BC \right)} \Pr{\left( B \,\vert\, C \right)}
     \end{align*}
 \end{definition}
 \begin{theorem}
@@ -295,7 +295,7 @@ In summary, independence should not be assumed unless explicitly stated.
     Disjoint events are highly dependent events, since the occurrence of one means the other cannot occur.
     This implies
     \begin{equation*}
-        \Pr{\left( A \;\middle|\; B \right)} = 0
+        \Pr{\left( A \,\vert\, B \right)} = 0
     \end{equation*}
 \end{theorem}
 \subsection{Subsets}
@@ -305,11 +305,11 @@ In summary, independence should not be assumed unless explicitly stated.
 
     Here, if \(A\) happens, then \(B\) definitely happens.
     \begin{equation*}
-        \Pr{\left( B \;\middle|\; A \right)} = 1
+        \Pr{\left( B \,\vert\, A \right)} = 1
     \end{equation*}
     Given \(\Pr{\left( AB \right)} = \Pr{\left( A \right)}\)
     \begin{equation*}
-        \Pr{\left( A \;\middle|\; B \right)} = \frac{\Pr{\left( A \right)}}{\Pr{\left( B \right)}}
+        \Pr{\left( A \,\vert\, B \right)} = \frac{\Pr{\left( A \right)}}{\Pr{\left( B \right)}}
     \end{equation*}
     These events are also highly dependent.
 \end{theorem}
@@ -325,7 +325,7 @@ In summary, independence should not be assumed unless explicitly stated.
     \end{equation*}
     By applying the multiplication rule to each joint probability:
     \begin{equation*}
-        \Pr{\left( A \right)} = \Pr{\left( A \;\middle|\; B \right)}\Pr{\left( B \right)} + \Pr{\left( A \;\middle|\; \overline{B} \right)}\Pr{\left( \overline{B} \right)}
+        \Pr{\left( A \right)} = \Pr{\left( A \,\vert\, B \right)}\Pr{\left( B \right)} + \Pr{\left( A \,\vert\, \overline{B} \right)}\Pr{\left( \overline{B} \right)}
     \end{equation*}
 \end{theorem}
 \begin{theorem}[Law of total probability]
@@ -334,7 +334,13 @@ In summary, independence should not be assumed unless explicitly stated.
     By partitioning \(\Omega\) into a collection of disjoint events \(B_1,\; B_2,\; \dots,\; B_n\),
     such that \(\bigcup_{i=1}^n B_i = \Omega\), we have
     \begin{equation*}
-        \Pr{\left( A \right)} = \sum_{i = 1}^n \Pr{\left( A \;\middle|\; B_i \right)}\Pr{\left( B_i \right)}
+        \Pr{\left( A \right)} = \sum_{i = 1}^n \Pr{\left( A \,\vert\, B_i \right)}\Pr{\left( B_i \right)}
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[Bayes' Theorem]
+    Given the probability for \(A\) given \(B\), the probability of the reverse direction is given by
+    \begin{equation*}
+        \Pr{\left( A \,\vert\, B \right)} = \frac{\Pr{\left( B \,\vert\, A \right)}\Pr{\left( A \right)}}{\Pr{\left( B \right)}}
     \end{equation*}
 \end{theorem}
 \end{document}
