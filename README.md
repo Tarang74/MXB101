@@ -6,6 +6,12 @@
 
 ---
 
+## Downloads
+
+Lecture notes download: [MXB101 Lecture Notes PDF](MXB101%20Lecture%20Notes.pdf)
+
+---
+
 This repository provides **lecture notes** for **MXB101 - Probability and Stochastic Modelling 1**.
 
 *The contents of the lecture notes are described below.*
@@ -17,6 +23,7 @@ This repository provides **lecture notes** for **MXB101 - Probability and Stocha
 1. Events and Probability
 2. Independence
 3. Total Probability
+4. Combinatorics
 
 ---
 
