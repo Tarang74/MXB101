@@ -265,8 +265,8 @@ changing the sample space.
     \end{equation*}
     Conversely, events \(A\) and \(B\) may be conditionally dependent but unconditionally independent, i.e.,
     \begin{align*}
-        \Pr{\left( A \,\vert\, B \right)}  & = \Pr{\left( A \right)}                                                      \\
-        \Pr{\left( A \,\vert\, BC \right)} & \neq \Pr{\left( A \,\vert\, C \right)}                                    \\
+        \Pr{\left( A \,\vert\, B \right)}  & = \Pr{\left( A \right)}                                                \\
+        \Pr{\left( A \,\vert\, BC \right)} & \neq \Pr{\left( A \,\vert\, C \right)}                                 \\
         \Pr{\left( AB \,\vert\, C \right)} & = \Pr{\left( A \,\vert\, BC \right)} \Pr{\left( B \,\vert\, C \right)}
     \end{align*}
 \end{definition}
@@ -277,7 +277,7 @@ changing the sample space.
             \Pr{\left( A B \right)} = \Pr{\left( A \right)} \Pr{\left( B \right)} \\
             \Pr{\left( A C \right)} = \Pr{\left( A \right)} \Pr{\left( C \right)} \\
             \Pr{\left( B C \right)} = \Pr{\left( B \right)} \Pr{\left( C \right)}
-        \end{cases} 
+        \end{cases}
     \end{equation*}
     does not imply
     \begin{equation*}
@@ -330,7 +330,7 @@ In summary, independence should not be assumed unless explicitly stated.
 \end{theorem}
 \begin{theorem}[Law of total probability]
     The previous theorem partitioned \(\Omega\) into disjoint events \(B\) and \(\overline{B}\).
-    
+
     By partitioning \(\Omega\) into a collection of disjoint events \(B_1,\; B_2,\; \dots,\; B_n\),
     such that \(\bigcup_{i=1}^n B_i = \Omega\), we have
     \begin{equation*}
@@ -343,4 +343,70 @@ In summary, independence should not be assumed unless explicitly stated.
         \Pr{\left( A \,\vert\, B \right)} = \frac{\Pr{\left( B \,\vert\, A \right)}\Pr{\left( A \right)}}{\Pr{\left( B \right)}}
     \end{equation*}
 \end{theorem}
+\section{Combinatorics}
+\begin{definition}[Number of outcomes]
+    Let \(\abs{A}\) denote the number of outcomes in an event \(A\).
+\end{definition}
+\begin{theorem}[Addition principle]
+    Given a sample space \(S\) with \(k\) disjoint events \({\left\{ S_1,\:\ldots,\:S_k \right\}}\),
+    where the \(i\)th event has \(n_i\) possible outcomes,
+    the number of possible samples from any event is given by
+    \begin{equation*}
+        \abs{\bigcup_{i = 0}^{k} S_i} = \sum_{i = 1}^k n_i
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[Multiplication principle]
+    Given a sample space \(S\) with \(k\) events \({\left\{ S_1,\:\ldots,\:S_k \right\}}\),
+    where the \(i\)th event has \(n_i\) possible outcomes,
+    the number of possible samples from every event is given by
+    \begin{equation*}
+        \abs{\bigcap_{i=0}^{k} S_i} = \prod_{i = 1}^k n_i
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[Counting probability]
+    Given a sample space \(S\) with equally likely outcomes, the probability
+    of an event \(S_i \subset S\) is given by
+    \begin{equation*}
+        \Pr{\left( S_i \right)} = \frac{\abs{S_i}}{\abs{S}}
+    \end{equation*}
+\end{theorem}
+\subsection{Ordered Sampling with Replacement}
+When ordering is important and repetition is allowed,
+the total number of ways to choose \(k\) objects from a set with \(n\) elements is
+\begin{equation*}
+    n^k
+\end{equation*}
+\subsection{Ordered Sampling without Replacement}
+When ordering is important and repetition is not allowed,
+the total number of ways to arrange \(k\) objects from a set of \(n\) elements is
+known as a \(k\)-permutation of \(n\)-elements denoted \(\prescript{n}{}{P}_k\)
+\begin{align*}
+    \prescript{n}{}{P}_k & = n \times \left( n - 1 \right) \times \cdots \times \left( n - k + 1 \right) \\
+                         & = \frac{n!}{\left( n - k \right)!}
+\end{align*}
+for \(0 \leq k \leq n\).
+\begin{definition}[Permutation of \(n\) elements]
+    An \(n\)-permutation of \(n\) elements is the permutation of those elements.
+    In this case, \(k = n\), so that
+    \begin{align*}
+        \prescript{n}{}{P}_n & = n \times \left( n - 1 \right) \times \cdots \times \left( n - n + 1 \right) \\
+                             & = n!
+    \end{align*}
+\end{definition}
+\subsection{Unordered Sampling without Replacement}
+When ordering is not important and repetition is not allowed,
+the total number of ways to choose \(k\) objects from a set of \(n\) elements is
+known as a \(k\)-combination of \(n\)-elements denoted \(\prescript{n}{}{C}_k\) or \(\binom{n}{k}\)
+\begin{align*}
+    \prescript{n}{}{C}_k & = \frac{\prescript{n}{}{P}_k}{k!}     \\
+                         & = \frac{n!}{k! \left( n - k \right)!}
+\end{align*}
+for \(0 \leq k \leq n\). We divide by \(k!\) because any \(k\)-element subset of \(n\)-elements % chktex 40
+can be ordered in \(k!\) ways. % chktex 40
+\subsection{Unordered Sampling with Replacement}
+When ordering is not important and repetition is allowed,
+the total number of ways to choose \(k\) objects from a set with \(n\) elements is
+\begin{equation*}
+    n^k
+\end{equation*}
 \end{document}
