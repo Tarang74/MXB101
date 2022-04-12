@@ -409,4 +409,119 @@ the total number of ways to choose \(k\) objects from a set with \(n\) elements 
 \begin{equation*}
     \binom{n + k - 1}{k}
 \end{equation*}
+\section{Random Variables and Distributions}
+\begin{definition}[Discrete random variables]
+    A discrete random variable has countably many outcomes.
+\end{definition}
+\begin{definition}[Continuous random variables]
+    A continuous random variable can take an infinite number of individual outcomes.
+    Note that the probability of a continuous random variable being equal to a specific value is always zero.
+\end{definition}
+\subsection{Probability distributions}
+\begin{definition}[Probability mass function]
+    For discrete random variables, the distribution is described with a Probability
+    Mass Function (PMF)
+    \begin{equation*}
+        p(n) = \Pr{\left( N = n \right)}
+    \end{equation*}
+    For this to be a valid PMF,
+    \begin{equation*}
+        \forall n,\; \Pr{\left(N=n\right)} \ge 0
+    \end{equation*}
+    and
+    \begin{equation*}
+        \sum_n \Pr{\left(N=n\right)} = 1
+    \end{equation*}
+\end{definition}
+\begin{definition}[Probability density function]
+    For continuous variables, the distribution is described with a Probability
+    Density Function (PDF) and the associated Cumulative Distribution Function (CDF).
+\end{definition}
+\begin{definition}[Cumulative distribution function]
+    Here, probabilities are represented by areas under the PDF\@:
+    \begin{equation*}
+        \Pr{\left( x_1 \leq X \leq x_2 \right)} = \int_{x_1}^{x_2} f(u) \odif{u}
+    \end{equation*}
+    and the CDF is defined as
+    \begin{equation*}
+        F(x) = \Pr{\left( X \leq x \right)} = \int_{-\infty}^{x} f(u) \odif{u}.
+    \end{equation*}
+    Note that by the fundamental theorem of calculus we can recover the PDF given the CDF by taking the derivative.
+
+    \(f(x)\) is a valid PDF provided
+    \begin{equation*}
+        f(x) \geq 0:\forall x \quad \text{and} \quad \int_{-\infty}^{\infty} f(u) \odif{u} = 1
+    \end{equation*}
+    while \(F(x)\) is a valid CDF if:
+    \begin{enumerate}
+        \item \(F\) is a non-decreasing right continuous function
+        \item \(\lim_{x\to-\infty} F(x) = 0\) and \(\lim_{x\to\infty} F(x) = 1\)
+    \end{enumerate}
+    Note that integrals are replaced with sums for the discrete equivalents.
+\end{definition}
+\subsection{Quantiles}
+\begin{definition}[Median]
+    For a continuous random variable, the median is defined as \(m\) such that
+    \begin{equation*}
+        \int_{-\infty}^m f(x) \odif{x} = \int^{\infty}_m f(x) \odif{x} = 0.5
+    \end{equation*}
+\end{definition}
+\begin{definition}[\(p\)-Quantile]
+    For a continuous random variable, the \(p\)-quantile is defined as \(a\) such that
+    \begin{equation*}
+        \int_{-\infty}^a f(x) \odif{x} = \int^{\infty}_a f(x) \odif{x} = p
+    \end{equation*}
+\end{definition}
+\begin{definition}[Inverse quantile]
+    The inverse quantile or inverse CDF is the inverse function of the CDF
+    and can be used to find the \(a\) that a certain \(p\) provides. I.e.
+    \begin{equation*}
+        a = F^{-1}(p) = Q(p)
+    \end{equation*}
+    Note: there will not necessarily be an analyticial form of this function,
+    regardless of if the CDF has one. 
+\end{definition}
+\subsection{Expected Value and Variance}
+\begin{definition}[Expectation]
+    The expected value \(\E{\left( X \right)}\), sometimes written \(\mathbb{E}\),
+    of a random variable is the average
+    outcome that could be expected from an infinite number of observations of that
+    variable. This is also known as the mean of the variable, denoted \(\mu \).
+    \begin{equation*}
+        \E{\left( X \right)} =
+        \begin{cases}
+            \sum_{\Omega} x \cdot p(x)          & \text{for discrete variables}   \\
+            \int_{\Omega} x \cdot f(x) \odif{x} & \text{for continuous variables}
+        \end{cases}
+    \end{equation*}
+\end{definition}
+Another identity for the expected value is
+\begin{equation*}
+    \E{\left(X\right)} = -\int_{x<0} F(x)\odif{x} + \int_{x>0} \left(1-F(x)\right)\odif{x}
+\end{equation*}
+\begin{definition}[Variance]
+    The variance \(\Var{\left( X \right)}\), of a random variable is a measure of spread
+    of the distribution (defined as the average squared distance of each value from the mean).
+    \(\Var{\left( X \right)}\) is also denoted as \(\sigma^2\).
+    \begin{align*}
+        \Var{\left( X \right)} & =
+        \begin{cases}
+            \sum_{\Omega} \left( x - \mu \right)^2 \cdot p(x)               & \text{for discrete variables}   \\
+            \int_{\Omega} \left( x - \mu \right)^2 \cdot p(x) \cdot f(x) \odif{x} & \text{for continuous variables}
+        \end{cases} \\
+                               & = \E{\left( X^2 \right)} - \E{\left( X \right)}^2
+    \end{align*}
+\end{definition}
+\begin{definition}[Standard deviation]
+    The standard deviation is defined as
+    \begin{equation*}
+        \sigma = \sqrt{\Var{\left( X \right)}}
+    \end{equation*}
+\end{definition}
+\subsubsection{Transformations}
+For a simple linear function of a random variable
+\begin{align*}
+    \E{\left( aX \pm b \right)}   & = a\E{\left( X \right)} \pm b \\
+    \Var{\left( aX \pm b \right)} & = a^2\Var{\left( X \right)}
+\end{align*}
 \end{document}
