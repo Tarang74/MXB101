@@ -60,7 +60,7 @@
     The intersection can be represented using the set {\ttfamily{AND}} operator (\(\cap\)) --- \(A \cap B\) (or \(AB\)).
 \end{definition}
 \begin{definition}[Disjoint]
-    Disjoint (mutually exclusive) events are two events that cannot occur simultaneously, or have no common outcomes.
+    Disjoint (mutually exclusive) events are two events that cannot occur simultaneously or have no common outcomes.
 \end{definition}
 \begin{theorem}[Intersection of disjoint events]
     The intersection of disjoint events results in the null set (\(\varnothing\)).
@@ -122,7 +122,7 @@
     Probability is a measure of the likeliness of an event occurring. The probability of
     an event \(E\) is denoted \(\Pr{\left( E \right)}\) (sometimes \(\mathrm{P}\left( E \right)\)).
     \begin{equation*}
-        0 \le \Pr{\left( E \right)} \le 1
+        0 \leq \Pr{\left( E \right)} \leq 1
     \end{equation*}
     where a probability of 0 never happens, and 1 always happens.
 \end{definition}
@@ -300,7 +300,7 @@ In summary, independence should not be assumed unless explicitly stated.
 \end{theorem}
 \subsection{Subsets}
 \begin{theorem}[Probability of subsets]
-    If \(A \subset B\) then \(\Pr{\left( A \right)} \le \Pr{\left( B \right)}\).
+    If \(A \subset B\) then \(\Pr{\left( A \right)} \leq \Pr{\left( B \right)}\).
     We also know that \(\Pr{\left( AB \right)} = \Pr{\left( A \right)}\) and \(\Pr{\left( A \cup B \right)} = \Pr{\left( B \right)}\).
 
     Here, if \(A\) happens, then \(B\) definitely happens.
@@ -410,104 +410,134 @@ the total number of ways to choose \(k\) objects from a set with \(n\) elements 
     \binom{n + k - 1}{k}
 \end{equation*}
 \section{Random Variables and Distributions}
+\section{Random Variables}
+\begin{definition}[Random variable]
+    A random variable \(X\) is a measurable variable whose value holds some uncertainty.
+\end{definition}
+An event is when a random variable assumes a certain value or range of values.
 \begin{definition}[Discrete random variables]
-    A discrete random variable has countably many outcomes.
+    A discrete random variable takes discrete values.
 \end{definition}
 \begin{definition}[Continuous random variables]
-    A continuous random variable can take an infinite number of individual outcomes.
-    Note that the probability of a continuous random variable being equal to a specific value is always zero.
+    A continuous random variable can take any real value.
 \end{definition}
-\subsection{Probability distributions}
+\subsection{Probability Distributions}
+\begin{definition}[Probability distribution]
+    The probability distribution of a random variable \(X\) is a function that links all outcomes \(x \in \Omega\)
+    to the probability that they will occur \(\Pr{\left( X = x \right)}\).
+\end{definition}
 \begin{definition}[Probability mass function]
-    For discrete random variables, the distribution is described with a Probability
-    Mass Function (PMF)
+    The probability distribution of a discrete random variable \(X\) is described by a Probability
+    Mass Function (PMF) \(p_x\).
     \begin{equation*}
-        p(n) = \Pr{\left( N = n \right)}
+        \Pr{\left( X = x \right)} = p_x
     \end{equation*}
-    For this to be a valid PMF,
+    \(p_x\) is a valid PMF provided,
+    \begin{align*}
+        \forall x \in \Omega : \Pr{\left( X = x \right)} & \geq 0 &  & \text{and} & \sum_\Omega \Pr{\left( X = x \right)} & = 1.
+    \end{align*}
+\end{definition}
+\begin{definition}[Probability density function]
+    The probability distribution of a continuous random variable \(X\) is described by a Probability
+    Density Function (PDF) \(f\left( x \right)\).
+
+    The probability that \(X\) is exactly equal to a
+    specific value is always 0. Therefore we compute probabilities over intervals:
     \begin{equation*}
-        \forall n,\; \Pr{\left(N=n\right)} \ge 0
+        \Pr{\left( x_1 \leq X \leq x_2 \right)} = \int_{x_1}^{x_2} f\left( u \right) \odif{u}
+    \end{equation*}
+    \(f\left( x \right)\) is a valid PDF provided,
+    \begin{align*}
+        \forall x \in \Omega : f\left( x \right) & \geq 0 &  & \text{and} & \int_{\Omega} f(u) \odif{u} & = 1.
+    \end{align*}
+\end{definition}
+\begin{definition}[Cumulative distribution function]
+    The Cumulative Distribution Function (CDF) computes the probability that the random variable is
+    less than or equal to a particular realisation \(x\). For \(U = \left\{ k \in \Omega : k \leq x \right\}\)
+    \begin{equation*}
+        F\left( x \right) = \Pr{\left( X \leq x \right)} = \begin{cases}
+            \displaystyle \sum_{u \in U} p_u                  & \text{for discrete random variables}    \\[0.4cm]
+            \displaystyle \int_{U} f\left( u \right) \odif{u} & \text{for continuous random variables}.
+        \end{cases}
+    \end{equation*}
+    \(F\left( x \right)\) is a valid CDF if:
+    \begin{enumerate}
+        \item \(F\) is monotonically increasing and continuous
+        \item \(\lim_{x \to -\infty} F\left( x \right) = 0\)
+        \item \(\lim_{x \to \infty} F\left( x \right) = 1\)
+    \end{enumerate}
+    We can recover the PDF given the CDF, by using the Fundamental Theorem of Calculus.
+    \begin{equation*}
+        \odv{F\left( x \right)}{x} = \odv{}{x} \int_{-\infty}^x f\left( u \right) \odif{u} = f\left( x \right)
+    \end{equation*}
+\end{definition}
+\begin{definition}[Complementary CDF]
+    For a continuous random variable \(X\) the complement function,
+    \begin{equation*}
+        \Pr{\left( X > x \right)} = 1 - \Pr{\left( X \leq x \right)} = 1 - F\left( x \right)
+    \end{equation*}
+    is called the complementary CDF, or the survival function.
+\end{definition}
+\subsection{Quantiles}
+\begin{definition}[\(p\)-Quantile]
+    For a continuous random variable, the \(p\)-quantile, \(x\), is defined such that
+    \begin{equation*}
+        F\left( x \right) = \int_{-\infty}^x f\left( u \right) \odif{u} = p.
+    \end{equation*}
+\end{definition}
+\begin{definition}[Median]
+    The median, \(m\), is a special \(p\)-quartile defined as the value such that
+    \begin{equation*}
+        \int_{-\infty}^m f\left( u \right) \odif{u} = \int^{\infty}_m f\left( u \right) \odif{u} = \frac{1}{2}.
+    \end{equation*}
+\end{definition}
+\begin{definition}[Lower and upper quartile]
+    Likewise the lower quartile and upper quartiles are two values \(q_1\) and \(q_2\) such that
+    \begin{equation*}
+        \int_{-\infty}^{q_1} f\left( u \right) \odif{u} = \frac{1}{4}
     \end{equation*}
     and
     \begin{equation*}
-        \sum_n \Pr{\left(N=n\right)} = 1
+        \int_{-\infty}^{q_2} f\left( u \right) \odif{u} = \frac{3}{4}.
     \end{equation*}
 \end{definition}
-\begin{definition}[Probability density function]
-    For continuous variables, the distribution is described with a Probability
-    Density Function (PDF) and the associated Cumulative Distribution Function (CDF).
-\end{definition}
-\begin{definition}[Cumulative distribution function]
-    Here, probabilities are represented by areas under the PDF\@:
+\begin{definition}[Quantile function]
+    The quantile function is the inverse of the CDF
+    and can be used to find the \(x\) that a certain \(p\) provides. I.e.,
     \begin{equation*}
-        \Pr{\left( x_1 \leq X \leq x_2 \right)} = \int_{x_1}^{x_2} f(u) \odif{u}
-    \end{equation*}
-    and the CDF is defined as
-    \begin{equation*}
-        F(x) = \Pr{\left( X \leq x \right)} = \int_{-\infty}^{x} f(u) \odif{u}.
-    \end{equation*}
-    Note that by the fundamental theorem of calculus we can recover the PDF given the CDF by taking the derivative.
-
-    \(f(x)\) is a valid PDF provided
-    \begin{equation*}
-        f(x) \geq 0:\forall x \quad \text{and} \quad \int_{-\infty}^{\infty} f(u) \odif{u} = 1
-    \end{equation*}
-    while \(F(x)\) is a valid CDF if:
-    \begin{enumerate}
-        \item \(F\) is a non-decreasing right continuous function
-        \item \(\lim_{x\to-\infty} F(x) = 0\) and \(\lim_{x\to\infty} F(x) = 1\)
-    \end{enumerate}
-    Note that integrals are replaced with sums for the discrete equivalents.
-\end{definition}
-\subsection{Quantiles}
-\begin{definition}[Median]
-    For a continuous random variable, the median is defined as \(m\) such that
-    \begin{equation*}
-        \int_{-\infty}^m f(x) \odif{x} = \int^{\infty}_m f(x) \odif{x} = 0.5
+        x = F^{-1}\left( p \right) = Q\left( p \right)
     \end{equation*}
 \end{definition}
-\begin{definition}[\(p\)-Quantile]
-    For a continuous random variable, the \(p\)-quantile is defined as \(a\) such that
-    \begin{equation*}
-        \int_{-\infty}^a f(x) \odif{x} = \int^{\infty}_a f(x) \odif{x} = p
-    \end{equation*}
-\end{definition}
-\begin{definition}[Inverse quantile]
-    The inverse quantile or inverse CDF is the inverse function of the CDF
-    and can be used to find the \(a\) that a certain \(p\) provides. I.e.
-    \begin{equation*}
-        a = F^{-1}(p) = Q(p)
-    \end{equation*}
-    Note: there will not necessarily be an analyticial form of this function,
-    regardless of if the CDF has one. 
-\end{definition}
-\subsection{Expected Value and Variance}
+\subsection{Summary Statistics}
 \begin{definition}[Expectation]
-    The expected value \(\E{\left( X \right)}\), sometimes written \(\mathbb{E}\),
-    of a random variable is the average
-    outcome that could be expected from an infinite number of observations of that
-    variable. This is also known as the mean of the variable, denoted \(\mu \).
+    The expectation \(\E{\left( X \right)}\), or \(\operatorname{\mathbb{E}}{\left( X \right)}\)
+    of a random variable \(X\) is its expected value given an
+    infinite number of observations.
+
+    The expectation is also known as the mean of the \(X\), denoted \(\mu\).
     \begin{equation*}
         \E{\left( X \right)} =
         \begin{cases}
-            \sum_{\Omega} x \cdot p(x)          & \text{for discrete variables}   \\
-            \int_{\Omega} x \cdot f(x) \odif{x} & \text{for continuous variables}
+            \displaystyle \sum_{x \in \Omega} x p_x                & \text{for discrete variables}   \\[0.4cm]
+            \displaystyle \int_\Omega x f\left( x \right) \odif{x} & \text{for continuous variables}
         \end{cases}
     \end{equation*}
 \end{definition}
-Another identity for the expected value is
-\begin{equation*}
-    \E{\left(X\right)} = -\int_{x<0} F(x)\odif{x} + \int_{x>0} \left(1-F(x)\right)\odif{x}
-\end{equation*}
+\begin{theorem}
+    Using integration by parts, it can be proved that
+    \begin{equation*}
+        \E{\left(X\right)} = -\int_{-\infty}^0 F\left( x \right) \odif{x} + \int_0^\infty \left(1 - F\left( x \right)\right) \odif{x}
+    \end{equation*}
+\end{theorem}
 \begin{definition}[Variance]
-    The variance \(\Var{\left( X \right)}\), of a random variable is a measure of spread
+    The variance \(\Var{\left( X \right)}\), or \(\operatorname{\mathbb{V}}{\left( X \right)}\) of a random variable \(X\) is a measure of spread
     of the distribution (defined as the average squared distance of each value from the mean).
-    \(\Var{\left( X \right)}\) is also denoted as \(\sigma^2\).
+    Variance is also denoted as \(\sigma^2\).
     \begin{align*}
         \Var{\left( X \right)} & =
         \begin{cases}
-            \sum_{\Omega} \left( x - \mu \right)^2 \cdot p(x)               & \text{for discrete variables}   \\
-            \int_{\Omega} \left( x - \mu \right)^2 \cdot p(x) \cdot f(x) \odif{x} & \text{for continuous variables}
+            \displaystyle \sum_{x \in \Omega} \left( x - \mu \right)^2 p_x                  & \text{for discrete variables}   \\[0.4cm]
+            \displaystyle \int_{\Omega} \left( x - \mu \right)^2 f\left( x \right) \odif{x} & \text{for continuous variables}
         \end{cases} \\
                                & = \E{\left( X^2 \right)} - \E{\left( X \right)}^2
     \end{align*}
