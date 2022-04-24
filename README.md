@@ -28,6 +28,7 @@ This repository provides **lecture notes** for **MXB101 - Probability and Stocha
 4. Combinatorics
 5. Random Variables and Distributions
 6. Random Variables
+7. Special Discrete Distributions
 
 ---
 
