@@ -554,4 +554,173 @@ For a simple linear function of a random variable
     \E{\left( aX \pm b \right)}   & = a\E{\left( X \right)} \pm b \\
     \Var{\left( aX \pm b \right)} & = a^2\Var{\left( X \right)}
 \end{align*}
+\section{Special Discrete Distributions}
+\subsection{Discrete Uniform Distribution}
+A discrete uniform distribution describes the probability distribution of a single trial
+in a set of equally likely elements.
+
+A discrete random variable \(X\) with a discrete uniform distribution is denoted
+\begin{equation*}
+    X \sim \operatorname{Uniform}{\left( a,\: b \right)}
+\end{equation*}
+with the PMF\@:
+\begin{equation*}
+    \Pr{\left( X = x \right)} = \frac{1}{b - a + 1}
+\end{equation*}
+for outcomes \(x \in \left\{ a,\: a + 1,\: \dots,\: b - 1,\: b \right\}\).
+We can also summarise the following:
+\begin{align*}
+    \E{\left( X \right)}   & = \frac{a + b}{2}                           \\
+    \Var{\left( X \right)} & = \frac{\left( b - a + 1 \right)^2 - 1}{12}
+\end{align*}
+\subsection{Bernoulli Distribution}
+A Bernoulli (or binary) distribution describes the probability distribution of a Boolean-valued
+outcome, i.e., success (1) or failure (0).
+
+A discrete random variable \(X\) with a Bernoulli distribution is denoted
+\begin{equation*}
+    X \sim \operatorname{Bernoulli}{\left( p \right)}
+\end{equation*}
+with the PMF\@:
+\begin{equation*}
+    \Pr{\left( X = x \right)} = p^x \left( 1 - p \right)^{1 - x}
+\end{equation*}
+for a probability \(p \in \interval{0}{1}\) and outcomes \(x \in \left\{ 0,\: 1 \right\}\).
+We can also summarise the following:
+\begin{align*}
+    \E{\left( X \right)}   & = p                      \\
+    \Var{\left( X \right)} & = p \left( 1 - p \right)
+\end{align*}
+where \(\left( 1 - p \right)\) is sometimes denoted as \(q\).
+\subsection{Binomial Distribution}
+A binomial distribution describes the probability distribution of the number of successes
+for \(n\) independent trials with the same probability of success \(p\).
+
+A discrete random variable \(X\) with a binomial distribution is denoted
+\begin{equation*}
+    X \sim \operatorname{B}{\left( n,\: p \right)}
+\end{equation*}
+with the PMF\@:
+\begin{equation*}
+    \Pr{\left( X = x \right)} = \dbinom{n}{x} p^x \left( 1 - p \right)^{n - x}
+\end{equation*}
+for number of successes \(x \in \left\{ 0,\: 1,\: \dots,\: n \right\}\).
+
+Here each individual trial is a Bernoulli trial, so that \(X\) can be written as the sum of
+\(n\) \textit{independent and identically distributed} (iid) Bernoulli random variables, \(Y_1,\: Y_2,\: \dots,\: Y_n\).
+\begin{align*}
+    X & = Y_1 + Y_2 + \cdots + Y_n, & Y_i & \overset{\mathrm{iid}}{\sim} \operatorname{Bernoulli}{\left( p \right)} : \forall i \in \left\{ 1,\: 2,\: \dots,\: n \right\}.
+\end{align*}
+We can then summarise the following:
+\begin{align*}
+    \E{\left( X \right)}   & = np                      \\
+    \Var{\left( X \right)} & = np \left( 1 - p \right)
+\end{align*}
+where \(\left( 1 - p \right)\) is sometimes denoted as \(q\).
+\begin{proof}
+    Given \(n\) trials, the probability of \(x\) successes will be \(p^x\).
+    Similarly the probability of \(n - x\) failures will be \(\left( 1 - p \right)^{n - x}\).
+
+    We then consider the number of ways to choose \(x\) successes out of \(n\) trials, i.e., \(\dbinom{n}{x}\).
+
+    The intersection of these three events gives the PMF for a binomial distribution.
+\end{proof}
+\subsection{Geometric Distribution}
+A geometric distribution describes the probability distribution of the number of trials up to and including
+the first success, where each trial is independent and has the same probability of success \(p\).
+
+A discrete random variable \(N\) with a geometric distribution is denoted
+\begin{equation*}
+    N \sim \operatorname{Geom}{\left( p \right)}
+\end{equation*}
+with the PMF\@:
+\begin{equation*}
+    \Pr{\left( N = n \right)} = \left( 1 - p \right)^{n - 1} p
+\end{equation*}
+for number of trials \(n \geq 1\).
+
+We can also summarise the following:
+\begin{align*}
+    \E{\left( N \right)}   & = \frac{1}{p}       \\
+    \Var{\left( N \right)} & = \frac{1 - p}{p^2}
+\end{align*}
+\subsubsection{Alternate Geometric Definition}
+We can alternatively consider the number of failures until a success, \(Y\):
+\begin{equation*}
+    Y = N - 1
+\end{equation*}
+The PMF for \(Y\) is:
+\begin{equation*}
+    \Pr{\left( Y = y \right)} = \left( 1 - p \right)^y p
+\end{equation*}
+for number of failures \(y \geq 0\). This gives the following summary statistics using
+transformation rules:
+\begin{align*}
+    \E{\left( Y \right)}   & = \frac{1 - p}{p}   \\
+    \Var{\left( Y \right)} & = \frac{1 - p}{p^2}
+\end{align*}
+\subsection{Negative Binomial Distribution}
+A negative binomial distribution describes the probability distribution of the number of trials until \(k \geq 1\)
+successes, where each trial is independent and has the same probability of success \(p\).
+
+A discrete random variable \(N\) with a negative binomial distribution is denoted
+\begin{equation*}
+    N \sim \operatorname{NB}{\left( k,\: p \right)}
+\end{equation*}
+with the PMF\@:
+\begin{align*}
+    \Pr{\left( N = n \right)} & = \dbinom{n - 1}{k - 1} \left( 1 - p \right)^{n - k} p^k
+\end{align*}
+for number of trials \(n \geq k\).
+Here each individual trial is a Geometric trial, so that \(N\) can be written as the sum of
+\(k\) \textit{independent and identically distributed} (iid) Geometric random variables, \(Y_1,\: Y_2,\: \dots,\: Y_k\).
+\begin{align*}
+    N & = Y_1 + Y_2 + \cdots + Y_k, & Y_i & \overset{\mathrm{iid}}{\sim} \operatorname{Geom}{\left( p \right)} : \forall i \in \left\{ 1,\: 2,\: \dots,\: k \right\}.
+\end{align*}
+We can then summarise the following:
+\begin{align*}
+    \E{\left( N \right)}   & = \frac{k}{p}                        \\
+    \Var{\left( N \right)} & = \frac{k \left( 1 - p \right)}{p^2}
+\end{align*}
+\begin{proof}
+    Given \(n\) trials, the probability of \(k\) successes will be \(p^k\).
+    Similarly the probability of \(n - k\) failures will be \(\left( 1 - p \right)^{n - k}\).
+
+    We then consider the number of ways to arrange \(k - 1\) successes for \(n - 1\) trials,
+    because the last trial must be a success, i.e., \(\dbinom{n - 1}{k - 1}\).
+
+    The intersection of these three events gives the PMF for a negative binomial distribution.
+\end{proof}
+\subsubsection{Alternate Negative Binomial Definition}
+We can alternatively consider the number of failures until \(k\) successes, \(Y\):
+\begin{equation*}
+    Y = N - k
+\end{equation*}
+The PMF for \(Y\) is:
+\begin{equation*}
+    \Pr{\left( Y = y \right)} = \dbinom{y + k - 1}{k - 1} \left( 1 - p \right)^y p^k
+\end{equation*}
+for number of failures \(y \geq 0\). This gives the following summary statistics using
+transformation rules:
+\begin{align*}
+    \E{\left( Y \right)}   & = \frac{k \left( 1 - p \right)}{p}   \\
+    \Var{\left( Y \right)} & = \frac{k \left( 1 - p \right)}{p^2}
+\end{align*}
+\subsection{Poisson Distribution}
+A Poisson distribution describes the probability distribution of the number of events \(N\) which occur over a fixed interval of time \(\lambda\).
+
+A discrete random variable \(N\) with a Poisson distribution is denoted
+\begin{equation*}
+    N \sim \operatorname{Pois}{\left( \lambda \right)}
+\end{equation*}
+with the PMF\@:
+\begin{equation*}
+    \Pr{\left( N = n \right)} = \frac{\lambda^n e^{-\lambda}}{n!}
+\end{equation*}
+for number of events \(n \geq 0\).
+We can also summarise the following:
+\begin{align*}
+    \E{\left( N \right)}   & = \lambda \\
+    \Var{\left( N \right)} & = \lambda
+\end{align*}
 \end{document}
