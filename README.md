@@ -27,6 +27,7 @@ This repository provides **lecture notes** for **MXB101 - Probability and Stocha
 3. Total Probability
 4. Combinatorics
 5. Random Variables and Distributions
+6. Random Variables
 
 ---
 
