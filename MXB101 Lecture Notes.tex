@@ -563,10 +563,11 @@ A discrete random variable \(X\) with a discrete uniform distribution is denoted
 \begin{equation*}
     X \sim \operatorname{Uniform}{\left( a,\: b \right)}
 \end{equation*}
-with the PMF\@:
-\begin{equation*}
-    \Pr{\left( X = x \right)} = \frac{1}{b - a + 1}
-\end{equation*}
+with
+\begin{align*}
+    \Pr{\left( X = x \right)}    & = \frac{1}{b - a + 1}         \\
+    \Pr{\left( X \leq x \right)} & = \frac{x - a + 1}{b - a + 1}
+\end{align*}
 for outcomes \(x \in \left\{ a,\: a + 1,\: \dots,\: b - 1,\: b \right\}\).
 We can also summarise the following:
 \begin{align*}
@@ -581,10 +582,19 @@ A discrete random variable \(X\) with a Bernoulli distribution is denoted
 \begin{equation*}
     X \sim \operatorname{Bernoulli}{\left( p \right)}
 \end{equation*}
-with the PMF\@:
-\begin{equation*}
-    \Pr{\left( X = x \right)} = p^x \left( 1 - p \right)^{1 - x}
-\end{equation*}
+with
+\begin{align*}
+    \Pr{\left( X = x \right)}    & = \begin{cases}
+                                         1 - p & x = 0 \\
+                                         p     & x = 1
+                                     \end{cases}                    \\
+                                 & = p^x \left( 1 - p \right)^{1 - x} \\
+    \Pr{\left( X \leq x \right)} & = \begin{cases}
+                                         0     & x < 0        \\
+                                         1 - p & 0 \leq x < 1 \\
+                                         1     & k \geq 1
+                                     \end{cases}
+\end{align*}
 for a probability \(p \in \interval{0}{1}\) and outcomes \(x \in \left\{ 0,\: 1 \right\}\).
 We can also summarise the following:
 \begin{align*}
@@ -600,10 +610,11 @@ A discrete random variable \(X\) with a binomial distribution is denoted
 \begin{equation*}
     X \sim \operatorname{B}{\left( n,\: p \right)}
 \end{equation*}
-with the PMF\@:
-\begin{equation*}
-    \Pr{\left( X = x \right)} = \dbinom{n}{x} p^x \left( 1 - p \right)^{n - x}
-\end{equation*}
+with
+\begin{align*}
+    \Pr{\left( X = x \right)}    & = \dbinom{n}{x} p^x \left( 1 - p \right)^{n - x}                \\
+    \Pr{\left( X \leq x \right)} & = \sum_{u = 0}^x \dbinom{n}{u} p^u \left( 1 - p \right)^{n - u}
+\end{align*}
 for number of successes \(x \in \left\{ 0,\: 1,\: \dots,\: n \right\}\).
 
 Here each individual trial is a Bernoulli trial, so that \(X\) can be written as the sum of
@@ -616,7 +627,6 @@ We can then summarise the following:
     \E{\left( X \right)}   & = np                      \\
     \Var{\left( X \right)} & = np \left( 1 - p \right)
 \end{align*}
-where \(\left( 1 - p \right)\) is sometimes denoted as \(q\).
 \begin{proof}
     Given \(n\) trials, the probability of \(x\) successes will be \(p^x\).
     Similarly the probability of \(n - x\) failures will be \(\left( 1 - p \right)^{n - x}\).
@@ -633,10 +643,11 @@ A discrete random variable \(N\) with a geometric distribution is denoted
 \begin{equation*}
     N \sim \operatorname{Geom}{\left( p \right)}
 \end{equation*}
-with the PMF\@:
-\begin{equation*}
-    \Pr{\left( N = n \right)} = \left( 1 - p \right)^{n - 1} p
-\end{equation*}
+with
+\begin{align*}
+    \Pr{\left( N = n \right)}    & = \left( 1 - p \right)^{n - 1} p \\
+    \Pr{\left( N \leq n \right)} & = 1 - \left( 1 - p \right)^n
+\end{align*}
 for number of trials \(n \geq 1\).
 
 We can also summarise the following:
@@ -649,10 +660,11 @@ We can alternatively consider the number of failures until a success, \(Y\):
 \begin{equation*}
     Y = N - 1
 \end{equation*}
-The PMF for \(Y\) is:
-\begin{equation*}
-    \Pr{\left( Y = y \right)} = \left( 1 - p \right)^y p
-\end{equation*}
+Therefore the PMF and CDF for \(Y\) are:
+\begin{align*}
+    \Pr{\left( Y = y \right)}    & = \left( 1 - p \right)^y p         \\
+    \Pr{\left( Y \leq y \right)} & = 1 - \left( 1 - p \right)^{y + 1}
+\end{align*}
 for number of failures \(y \geq 0\). This gives the following summary statistics using
 transformation rules:
 \begin{align*}
@@ -667,9 +679,10 @@ A discrete random variable \(N\) with a negative binomial distribution is denote
 \begin{equation*}
     N \sim \operatorname{NB}{\left( k,\: p \right)}
 \end{equation*}
-with the PMF\@:
+with
 \begin{align*}
-    \Pr{\left( N = n \right)} & = \dbinom{n - 1}{k - 1} \left( 1 - p \right)^{n - k} p^k
+    \Pr{\left( N = n \right)}    & = \dbinom{n - 1}{k - 1} \left( 1 - p \right)^{n - k} p^k                \\
+    \Pr{\left( N \leq n \right)} & = \sum_{u = k}^n \dbinom{u - 1}{k - 1} \left( 1 - p \right)^{u - k} p^k
 \end{align*}
 for number of trials \(n \geq k\).
 Here each individual trial is a Geometric trial, so that \(N\) can be written as the sum of
@@ -692,14 +705,15 @@ We can then summarise the following:
     The intersection of these three events gives the PMF for a negative binomial distribution.
 \end{proof}
 \subsubsection{Alternate Negative Binomial Definition}
-We can alternatively consider the number of failures until \(k\) successes, \(Y\):
+We can alternatively consider the number of failures \(Y\) until \(k\) successes:
 \begin{equation*}
     Y = N - k
 \end{equation*}
-The PMF for \(Y\) is:
-\begin{equation*}
-    \Pr{\left( Y = y \right)} = \dbinom{y + k - 1}{k - 1} \left( 1 - p \right)^y p^k
-\end{equation*}
+The PMF and CDF for \(Y\) are given by:
+\begin{align*}
+    \Pr{\left( Y = y \right)}    & = \dbinom{y + k - 1}{k - 1} \left( 1 - p \right)^y p^k                \\
+    \Pr{\left( Y \leq y \right)} & = \sum_{u = 0}^y \dbinom{u + k - 1}{k - 1} \left( 1 - p \right)^u p^k
+\end{align*}
 for number of failures \(y \geq 0\). This gives the following summary statistics using
 transformation rules:
 \begin{align*}
@@ -713,10 +727,11 @@ A discrete random variable \(N\) with a Poisson distribution is denoted
 \begin{equation*}
     N \sim \operatorname{Pois}{\left( \lambda \right)}
 \end{equation*}
-with the PMF\@:
-\begin{equation*}
-    \Pr{\left( N = n \right)} = \frac{\lambda^n e^{-\lambda}}{n!}
-\end{equation*}
+with
+\begin{align*}
+    \Pr{\left( N = n \right)}    & = \frac{\lambda^n e^{-\lambda}}{n!}                \\
+    \Pr{\left( N \leq n \right)} & = e^{-\lambda} \sum_{u = 0}^n \frac{\lambda^u}{u!}
+\end{align*}
 for number of events \(n \geq 0\).
 We can also summarise the following:
 \begin{align*}
@@ -730,4 +745,94 @@ If we want to utilise these distributions to model data, we can use the followin
     \item Binomial (underdispersed, mean > variance)
     \item Geometric/Negative Binomial (overdispersed, mean < variance)
 \end{itemize}
+\section{Special Continuous Distributions}
+\subsection{Continuous Uniform Distribution}
+A continuous uniform distribution describes the probability distribution of an outcome within some
+interval, where the probability of an outcome in one interval is the same as all other intervals of the same length.
+
+A continuous random variable \(X\) with a continuous uniform distribution is denoted
+\begin{equation*}
+    X \sim \operatorname{U}{\left( a,\: b \right)}
+\end{equation*}
+with
+\begin{align*}
+    f\left( x \right) & = \frac{1}{b - a}     \\
+    F\left( x \right) & = \frac{x - a}{b - a}
+\end{align*}
+for outcomes \(a < x < b\).
+We can also summarise the following:
+\begin{align*}
+    \E{\left( X \right)}   & = \frac{a + b}{2}                   \\
+    \Var{\left( X \right)} & = \frac{\left( b - a \right)^2}{12} \\
+    m                      & = \frac{a + b}{2}
+\end{align*}
+\subsection{Exponential Distribution}
+An exponential distribution describes the probability distribution of the time between events with rate \(\eta\).
+
+A continuous random variable \(T\) with an exponential distribution is denoted
+\begin{equation*}
+    T \sim \operatorname{Exp}{\left( \eta \right)}
+\end{equation*}
+with
+\begin{align*}
+    f\left( t \right) & = \eta e^{-\eta t}     \\
+    F\left( t \right) & = 1 - \eta e^{-\eta t}
+\end{align*}
+for time \(t > 0\).
+We can also summarise the following:
+\begin{align*}
+    \E{\left( X \right)}   & = \frac{1}{\eta}                     \\
+    \Var{\left( X \right)} & = \frac{1}{12}                       \\
+    m                      & = \frac{\ln{\left( 2 \right)}}{\eta}
+\end{align*}
+\begin{proof}
+    By considering an event taking longer than \(t\) seconds, we can represent this as nothing happening
+    over the interval \(\interval{0}{t}\). Using \(T \sim \operatorname{Exp}{\left( \eta \right)}\) and
+    \(N \sim \operatorname{Pois}{\left( \eta t \right)}\), we have
+    \begin{equation*}
+        \Pr{\left( T > t \right)} = \Pr{\left( N = 0 \right)} = e^{\eta t}
+    \end{equation*}
+    where \(\lambda = \eta t\). The CDF for the exponential distribution is then
+    \begin{align*}
+        \Pr{\left( T < t \right)} & = 1 - \Pr{\left( T > t \right)} \\
+                                  & = 1 - e^{\eta t}.
+    \end{align*}
+\end{proof}
+\subsection{Memoryless Property}
+In an exponential distribution with \(T \sim \operatorname{Exp}{\left( \eta \right)}\),
+the distribution of the waiting time \(t + s\) until a certain event does not depend on
+how much time \(t\) has already passed.
+\begin{equation*}
+    \Pr{\left( T > s + t \,\vert\, T > t \right)} = \Pr{\left( T > s \right)}.
+\end{equation*}
+The same property also applies in an Geometric distribution with \(N \sim \operatorname{Geom}{\left( p \right)}\).
+\subsection{Normal Distribution}
+The normal distribution is used to represent many random situations, in particular, measurements and their errors.
+This distribution arises in many statistical problems and can be used to approximate other distributions
+under certain conditions.
+
+A continuous random variable \(X\) with a normal distribution is denoted
+\begin{equation*}
+    X \sim \operatorname{N}{\left( \mu,\: \sigma^2 \right)}
+\end{equation*}
+with
+\begin{align*}
+    f\left( t \right) & = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{\left( x - \mu \right)^2}{2 \sigma^2}}    \\
+    F\left( t \right) & = \frac{1}{2} \left( 1 + \erf{\left( \frac{x - \mu}{\sigma \sqrt{2}} \right)} \right)
+\end{align*}
+for \(x \in \R\) where \(\erf{\left( z \right)} = \frac{2}{\sqrt{\pi}} \int_0^z e^{-t^2} \odif{t}\) is the error function.
+We can also summarise the following:
+\begin{align*}
+    \E{\left( X \right)}   & = \mu      \\
+    \Var{\left( X \right)} & = \sigma^2
+\end{align*}
+Given the complexity of the analytic expressions for the PDF and CDF of the normal distribution, we often
+use software to numerically determine probabilities associated with normal distributions.
+\subsection{Standard Normal Distribution}
+Given \(X \sim \operatorname{N}{\left( \mu,\: \sigma^2 \right)}\), consider the transformation
+\begin{equation*}
+    Z = \frac{X - \mu}{\sigma}
+\end{equation*}
+so that \(Z \sim \operatorname{N}{\left( 0,\: 1 \right)}\). This distribution is called the standard normal distribution.
+This allows us to deal with the standard normal distribution regardless of \(\mu\) and \(\sigma\).
 \end{document}
