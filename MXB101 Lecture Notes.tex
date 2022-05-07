@@ -777,7 +777,7 @@ A continuous random variable \(T\) with an exponential distribution is denoted
 with
 \begin{align*}
     f\left( t \right) & = \eta e^{-\eta t}     \\
-    F\left( t \right) & = 1 - \eta e^{-\eta t}
+    F\left( t \right) & = 1 - e^{-\eta t}
 \end{align*}
 for time \(t > 0\).
 We can also summarise the following:
@@ -791,12 +791,12 @@ We can also summarise the following:
     over the interval \(\interval{0}{t}\). Using \(T \sim \operatorname{Exp}{\left( \eta \right)}\) and
     \(N \sim \operatorname{Pois}{\left( \eta t \right)}\), we have
     \begin{equation*}
-        \Pr{\left( T > t \right)} = \Pr{\left( N = 0 \right)} = e^{\eta t}
+        \Pr{\left( T > t \right)} = \Pr{\left( N = 0 \right)} = e^{-\eta t}
     \end{equation*}
     where \(\lambda = \eta t\). The CDF for the exponential distribution is then
     \begin{align*}
         \Pr{\left( T < t \right)} & = 1 - \Pr{\left( T > t \right)} \\
-                                  & = 1 - e^{\eta t}.
+                                  & = 1 - e^{-\eta t}.
     \end{align*}
 \end{proof}
 \subsection{Memoryless Property}
@@ -809,7 +809,7 @@ how much time \(t\) has already passed.
 The same property also applies in an Geometric distribution with \(N \sim \operatorname{Geom}{\left( p \right)}\).
 \subsection{Normal Distribution}
 The normal distribution is used to represent many random situations, in particular, measurements and their errors.
-This distribution arises in many statistical problems and can be used to approximate other distributions
+This distribution arises in many statistical problems and can be used to \linebreak approximate other distributions
 under certain conditions.
 
 A continuous random variable \(X\) with a normal distribution is denoted
