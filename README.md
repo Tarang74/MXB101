@@ -30,6 +30,7 @@ This repository provides **lecture notes** for **MXB101 - Probability and Stocha
 6. Random Variables
 7. Special Discrete Distributions
 8. Special Continuous Distributions
+9. Central Limit Theorem
 
 ---
 
