@@ -835,4 +835,76 @@ Given \(X \sim \operatorname{N}{\left( \mu,\: \sigma^2 \right)}\), consider the 
 \end{equation*}
 so that \(Z \sim \operatorname{N}{\left( 0,\: 1 \right)}\). This distribution is called the standard normal distribution.
 This allows us to deal with the standard normal distribution regardless of \(\mu\) and \(\sigma\).
+\section{Central Limit Theorem}
+The central limit theorem states that the sum of independent and identically distributed random variables, when properly standardised,
+can be approximated by a normal distribution, as the number of elements increases.
+\subsection{Approximating the Average of Random Variables}
+Given a set of independent and identically distributed random variables \(X_1,\: \ldots,\: X_n\) from the distribution \(X\),
+if \(\E{\left( X \right)} = \mu\) and \(\Var{\left( X \right)} = \sigma^2\), then we can define \(\overline{X} = \frac{1}{n} \sum_{i = 1}^n X_i\)
+so that
+\begin{align*}
+    \E{\left( \overline{X} \right)} & = \mu \\
+    \Var{\left( \overline{X} \right)} & = \frac{\sigma^2}{n}
+\end{align*}
+By standardising \(\overline{X}\), we can define
+\begin{equation*}
+    Z = \lim_{n \to \infty} \frac{\overline{X} - \mu}{\sigma / \sqrt{n}}
+\end{equation*}
+so that \(Z \to \operatorname{N}{\left( 0,\: 1 \right)}\) as \(n \to \infty\).
+\subsection{Approximating the Sum of Random Variables}
+Given a set of independent and identically distributed random variables \(X_1,\: \ldots,\: X_n\) from the distribution \(X\),
+if \(\E{\left( X \right)} = \mu\) and \(\Var{\left( X \right)} = \sigma^2\), then we can define \(\overline{Y} = \sum_{i = 1}^n X_i\)
+so that
+\begin{align*}
+    \E{\left( Y \right)} & = n \mu \\
+    \Var{\left( Y \right)} & = n \sigma^2
+\end{align*}
+Then for large \(n\)
+\begin{equation*}
+    Y \sim \operatorname{N}{\left( n \mu,\: n \sigma^2 \right)}
+\end{equation*}
+\subsection{Approximating the Binomial Distribution}
+\subsubsection{Normal Distribution}
+Given a binomial distribution \(X \sim \operatorname{B}{\left( n,\: p \right)}\), we can write \(X\)
+as the sum of \(n\) independent and identically distributed Bernoulli random variables
+\(X_1,\: \ldots,\: X_n\), so that \(X_i \sim \operatorname{Bernoulli}{\left( p \right)}\).
+
+Thus by the central limit theorem, we can use a normal approximation for \(X\), provided that \(n\) is large.
+\begin{equation*}
+    X \approx Y \sim \operatorname{N}{\left( np,\: np\left( 1 - p \right) \right)}
+\end{equation*}
+
+In general, this approximation is sufficient when \(np > 5\) and \(n\left( 1 - p \right) > 5\).
+\subsubsection{Poisson Distribution}
+When \(np < 5\) we can use the Poisson distribution to approximate \(X\) with the mean \(np\):
+\begin{equation*}
+    X \approx Y \sim \operatorname{Pois}{\left( np \right)}.
+\end{equation*}
+When \(n\left( 1 - p \right) < 5\) we can consider the number of failures \(W = n - X\), so that,
+\begin{equation*}
+    W \approx Y \sim \operatorname{Pois}{\left( n\left( 1 - p \right) \right)}.
+\end{equation*}
+\subsubsection{Continuity Correction}
+Given an approximation \(Y\) (either Normal or Poisson) for the binomial distribution \(X \sim \operatorname{B}{\left( n,\: p \right)}\) the equality 
+\begin{equation*}
+    \Pr{\left( X \leq x \right)} = \Pr{\left( X < x + 1 \right)}
+\end{equation*}
+must hold for any \(x\). Therefore by adding \(\frac{1}{2}\) we apply a continuity correction to the approximate probability:
+\begin{equation*}
+    \Pr{\left( Y \leq x + \frac{1}{2} \right)}.
+\end{equation*}
+\subsection{Approximating a Poisson Distribution}
+Given a set of independent Poisson distributions \(X_1,\: \ldots ,\: X_n\) where \(X_i \sim \operatorname{Pois}{\left( \lambda \right)}\)
+so that \(\E{\left( X_i \right)} = \lambda\) and \(\Var{\left( X_i \right)} = \lambda\) for all \(i\).
+
+If we consider \(X = \sum_{i = 1}^n X_i\) then
+\begin{align*}
+    \E{\left( X \right)} & = n \lambda \\
+    \Var{\left( X \right)} & = n \lambda
+\end{align*}
+so that by the central limit theorem, we can use the approximation
+\begin{equation*}
+    X \approx Y \sim \operatorname{N}{\left( n\lambda,\: n\lambda \right)}.
+\end{equation*}
+In general, this approximation is sufficient when \(n \lambda > 10\), and when an accurate approximation is desired, \(n \lambda > 20\).
 \end{document}
