@@ -435,7 +435,7 @@ An event is when a random variable assumes a certain value or range of values.
     \end{equation*}
     \(p_x\) is a valid PMF provided,
     \begin{align*}
-        \forall x \in \Omega : \Pr{\left( X = x \right)} & \geq 0 &  & \text{and} & \sum_\Omega \Pr{\left( X = x \right)} & = 1.
+        \forall x \in \Omega : \Pr{\left( X = x \right)} & \geq 0 &  & \text{and} & \sum_{x \in \Omega} \Pr{\left( X = x \right)} & = 1.
     \end{align*}
 \end{definition}
 \begin{definition}[Probability density function]
@@ -445,11 +445,11 @@ An event is when a random variable assumes a certain value or range of values.
     The probability that \(X\) is exactly equal to a
     specific value is always 0. Therefore we compute probabilities over intervals:
     \begin{equation*}
-        \Pr{\left( x_1 \leq X \leq x_2 \right)} = \int_{x_1}^{x_2} f\left( u \right) \odif{u}
+        \Pr{\left( x_1 \leq X \leq x_2 \right)} = \int_{x_1}^{x_2} f\left( x \right) \odif{x}
     \end{equation*}
     \(f\left( x \right)\) is a valid PDF provided,
     \begin{align*}
-        \forall x \in \Omega : f\left( x \right) & \geq 0 &  & \text{and} & \int_{\Omega} f(u) \odif{u} & = 1.
+        \forall x \in \Omega : f\left( x \right) & \geq 0 &  & \text{and} & \int_{\Omega} f(x) \odif{x} & = 1.
     \end{align*}
 \end{definition}
 \begin{definition}[Cumulative distribution function]
@@ -776,7 +776,7 @@ A continuous random variable \(T\) with an exponential distribution is denoted
 \end{equation*}
 with
 \begin{align*}
-    f\left( t \right) & = \eta e^{-\eta t}     \\
+    f\left( t \right) & = \eta e^{-\eta t} \\
     F\left( t \right) & = 1 - e^{-\eta t}
 \end{align*}
 for time \(t > 0\).
@@ -844,7 +844,7 @@ Given a set of independent and identically distributed random variables \(X_1,\:
 if \(\E{\left( X \right)} = \mu\) and \(\Var{\left( X \right)} = \sigma^2\), then we can define \(\overline{X} = \frac{1}{n} \sum_{i = 1}^n X_i\)
 so that
 \begin{align*}
-    \E{\left( \overline{X} \right)} & = \mu \\
+    \E{\left( \overline{X} \right)}   & = \mu                \\
     \Var{\left( \overline{X} \right)} & = \frac{\sigma^2}{n}
 \end{align*}
 By standardising \(\overline{X}\), we can define
@@ -857,7 +857,7 @@ Given a set of independent and identically distributed random variables \(X_1,\:
 if \(\E{\left( X \right)} = \mu\) and \(\Var{\left( X \right)} = \sigma^2\), then we can define \(\overline{Y} = \sum_{i = 1}^n X_i\)
 so that
 \begin{align*}
-    \E{\left( Y \right)} & = n \mu \\
+    \E{\left( Y \right)}   & = n \mu      \\
     \Var{\left( Y \right)} & = n \sigma^2
 \end{align*}
 Then for large \(n\)
@@ -886,7 +886,7 @@ When \(n\left( 1 - p \right) < 5\) we can consider the number of failures \(W = 
     W \approx Y \sim \operatorname{Pois}{\left( n\left( 1 - p \right) \right)}.
 \end{equation*}
 \subsubsection{Continuity Correction}
-Given an approximation \(Y\) (either Normal or Poisson) for the binomial distribution \(X \sim \operatorname{B}{\left( n,\: p \right)}\) the equality 
+Given an approximation \(Y\) (either Normal or Poisson) for the binomial distribution \(X \sim \operatorname{B}{\left( n,\: p \right)}\) the equality
 \begin{equation*}
     \Pr{\left( X \leq x \right)} = \Pr{\left( X < x + 1 \right)}
 \end{equation*}
@@ -900,7 +900,7 @@ so that \(\E{\left( X_i \right)} = \lambda\) and \(\Var{\left( X_i \right)} = \l
 
 If we consider \(X = \sum_{i = 1}^n X_i\) then
 \begin{align*}
-    \E{\left( X \right)} & = n \lambda \\
+    \E{\left( X \right)}   & = n \lambda \\
     \Var{\left( X \right)} & = n \lambda
 \end{align*}
 so that by the central limit theorem, we can use the approximation
@@ -908,5 +908,217 @@ so that by the central limit theorem, we can use the approximation
     X \approx Y \sim \operatorname{N}{\left( n\lambda,\: n\lambda \right)}.
 \end{equation*}
 In general, this approximation is sufficient when \(n \lambda > 10\), and when an accurate approximation is desired, \(n \lambda > 20\).
-\section{Test}
+\section{Bivariate Distributions}
+\begin{definition}[Bivariate probability mass function]
+    The distribution over the joint space of two discrete random variables \(X\) and \(Y\) is given by a bivariate probability mass function:
+    \begin{equation*}
+        \Pr{\left( X = x,\: Y = y \right)} = p_{x,\: y}
+    \end{equation*}
+    for all pairs of \(x \in \Omega_1\) and \(y \in \Omega_2\). This function must satisfy
+    \begin{align*}
+        \forall x \in \Omega_1 : \forall y \in \Omega_2 : \Pr{\left( X = x,\: Y = y \right)} \geq 0 &  & \text{and} &  &
+        \sum_{y \in \Omega_2} \sum_{x \in \Omega_1} \Pr{\left( X = x,\: Y = y \right)} = 1.
+    \end{align*}
+    The joint probability mass function can be shown using a table:
+    \begin{equation*}
+        \begin{matrix}[c|ccc] % chktex 44
+            X=x \backslash Y=y & y_1                                    & \cdots & y_n                                    \\
+            \hline % chktex 44
+            x_1                & \Pr{\left( X = x_1,\: Y = y_1 \right)} & \cdots & \Pr{\left( X = x_1,\: Y = y_n \right)} \\
+            \vdots             & \vdots                                 & \ddots & \vdots                                 \\
+            x_n                & \Pr{\left( X = x_n,\: Y = y_1 \right)} & \cdots & \Pr{\left( X = x_n,\: Y = y_n \right)}
+        \end{matrix}
+    \end{equation*}
+\end{definition}
+\begin{definition}[Bivariate probability density function]
+    The distribution over the joint space of two continuous random variables \(X\) and \(Y\) is  given by a
+    bivariate probability density function \(f\left( x,\: y \right)\)
+    over the intervals \(x \in \Omega_1\) and \(y \in \Omega_2\).
+    \begin{equation*}
+        \Pr{\left( x_1 \leq X \leq x_2,\: y_1 \leq Y \leq y_2 \right)} = \int_{x_1}^{x_2} \int_{y_1}^{y_2} f\left( x,\: y \right) \odif{y} \odif{x}
+    \end{equation*}
+    This function must satisfy
+    \begin{align*}
+        \forall x \in \Omega_1 : \forall y \in \Omega_2 : f\left( x,\: y \right) \geq 0 &  & \text{and} &  &
+        \int_{x \in \Omega_1} \int_{y \in \Omega_2} f\left( x,\: y \right) \odif{y} \odif{x} = 1.
+    \end{align*}
+    When considering the sum of these two variables, we must consider the appropriate bounds.
+
+    For \(x_1 + y_1 < a < x_2 + y_2\), if:
+    \begin{itemize}
+        \item \(a - y_2 \leq x_1\) and \(a - y_1 \leq x_2\):
+              \begin{equation*}
+                  \Pr{\left( X + Y > a \right)} = \int_{x_1}^{a - y_1} \int_{a - x}^{y_2} f\left( x,\: y \right) \odif{y} \odif{x} + \int_{a - y_1}^{x_2} f\left( x \right) \odif{x}
+              \end{equation*}
+        \item \(a - y_2 \leq x_1\) and \(a - y_1 > x_2\):
+              \begin{equation*}
+                  \Pr{\left( X + Y > a \right)} = \int_{x_1}^{x_2} \int_{a - x}^{y_2} f\left( x,\: y \right) \odif{y} \odif{x}
+              \end{equation*}
+        \item \(a - y_2 > x_1\) and \(a - y_1 \leq x_2\):
+              \begin{equation*}
+                  \Pr{\left( X + Y > a \right)} = \int_{a - y_2}^{a - y_1} \int_{a - x}^{y_2} f\left( x,\: y \right) \odif{y} \odif{x} + \int_{a - y_1}^{x_2} f\left( x \right) \odif{x}
+              \end{equation*}
+        \item \(a - y_2 > x_1\) and \(a - y_1 > x_2\):
+              \begin{equation*}
+                  \Pr{\left( X + Y > a \right)} = \int_{a - y_2}^{x_2} \int_{a - x}^{y_2} f\left( x,\: y \right) \odif{y} \odif{x}
+              \end{equation*}
+    \end{itemize}
+\end{definition}
+\subsection{Marginal Probability}
+The marginal probability function can be obtained by calculating the probability function of each random variable.
+Once the function has been determined, we must specify the range of values that variable can take.
+\begin{definition}[Marginal probability mass function]
+    \begin{align*}
+        \Pr{\left( X = x \right)} & = p_x = \sum_{y \in \Omega_2} \Pr{\left( X = x,\: Y = y \right)} \\
+        \Pr{\left( Y = y \right)} & = p_y = \sum_{x \in \Omega_1} \Pr{\left( X = x,\: Y = y \right)}
+    \end{align*}
+\end{definition}
+\begin{definition}[Marginal probability density function]
+    \begin{align*}
+        \Pr{\left( X = x \right)} & = f\left( x \right) = \int_{y_1}^{y_2} f\left( x,\: y \right) \odif{y} \\
+        \Pr{\left( Y = y \right)} & = f\left( y \right) = \int_{x_1}^{x_2} f\left( x,\: y \right) \odif{x}
+    \end{align*}
+\end{definition}
+\subsection{Conditional Probability}
+Using the joint probability and marginal probability, we can determine the conditional probability function.
+Once the function has been determined, we must specify the range of values that variable can take.
+\begin{definition}[Conditional probability mass function]
+    \begin{equation*}
+        \Pr{\left( X = x \,\vert\, Y = y \right)} = \frac{\Pr{\left( X = x,\: Y = y \right)}}{\Pr{\left( Y = y \right)}}.
+    \end{equation*}
+    It follows that
+    \begin{equation*}
+        \sum_{x \in \Omega_1} \Pr{\left( X = x \,\vert\, Y = y \right)} = 1
+    \end{equation*}
+\end{definition}
+\begin{definition}[Conditional probability density function]
+    \begin{equation*}
+        f\left( x \,\vert\, y \right) = \frac{f\left( x,\: y \right)}{f\left( y \right)}
+    \end{equation*}
+    It follows that
+    \begin{equation*}
+        \int_{x_1}^{x_2} f\left( x \,\vert\, y \right) \odif{x} = 1
+    \end{equation*}
+\end{definition}
+\subsection{Independence}
+Two discrete random variables \(X\) and \(Y\) are independent if
+\begin{equation*}
+    \Pr{\left( X = x \,\vert\, Y = y \right)} = \Pr{\left( X = x \right)}
+\end{equation*}
+for all pairs of \(x\) and \(y\). From this we can show that
+\begin{equation*}
+    \Pr{\left( X = x ,\: Y = y \right)} = \Pr{\left( X = x \right)} \Pr{\left( Y = y \right)}
+\end{equation*}
+for all pairs of \(x\) and \(y\). If these random variables are not independent then,
+\begin{equation*}
+    \Pr{\left( X = x ,\: Y = y \right)} = \Pr{\left( X = x \,\vert\, Y = y \right)} \Pr{\left( Y = y \right)}
+\end{equation*}
+To continuous random variables \(X\) and \(Y\) are independent if we can express \(f\left( x,\: y \right)\) as
+\begin{equation*}
+    f\left( x,\: y \right) \propto g\left( x \right) h\left( y \right)
+\end{equation*}
+and if the joint range of \(X\) and \(Y\) do not depend on each other. This leads to
+\begin{equation*}
+    f\left( x \,\vert\, y \right) = f\left( x \right).
+\end{equation*}
+\subsection{Law of Total Expectation}
+Given the conditional distribution of \(X \,\vert\, Y = y\), we can compute its expectation and variance.
+For discrete random variables, the conditional expectation is
+\begin{equation*}
+    \E{\left( X \,\vert\, Y = y \right)} = \sum_{x\in\Omega_1} x \Pr{\left( X = x \,\vert\, Y = y \right)}
+\end{equation*}
+For continuous random variables, the conditional expectation is
+\begin{equation*}
+    \E{\left( X \,\vert\, Y = y \right)} = \int_{x_1}^{x_2} x f\left( x \,\vert\, y \right) \odif{x}
+\end{equation*}
+The conditional variance is given by
+\begin{equation*}
+    \Var{\left( X \,\vert\, Y = y \right)} = \E{\left( X^2 \,\vert\, Y = y \right)} - \E{\left( X \,\vert\, Y = y \right)}^2
+\end{equation*}
+When \(X\) and \(Y\) are independent,
+\begin{align*}
+    \E{\left( X \,\vert\, Y = y \right)}   & = \E{\left( X \right)}   \\
+    \Var{\left( X \,\vert\, Y = y \right)} & = \Var{\left( X \right)} \\
+\end{align*}
+By treating \(\E{\left( X \,\vert\, Y \right)}\) as a random variable of \(Y\), then
+we can calculate its expected value such that
+\begin{equation*}
+    \E{\left( X \right)} = \E{\left( \E{\left( X \,\vert\, Y \right)} \right)}.
+\end{equation*}
+This is known as the law of total expectation.
+\subsection{Expectation}
+The following property holds for both dependent and independent random variables \(X\) and \(Y\)
+\begin{equation*}
+    \E{\left( X \pm Y \right)} = \E{\left( X \right)} \pm \E{\left( Y \right)}
+\end{equation*}
+If \(X\) and \(Y\) are independent then
+\begin{equation*}
+    \E{\left( XY \right)} = \E{\left( X \right)} \E{\left( Y \right)}
+\end{equation*}
+\subsection{Variance of Independent Random Variables}
+If \(X\) and \(Y\) are independent then
+\begin{align*}
+    \Var{\left( X \pm Y \right)} & = \Var{\left( X \right)} + \Var{\left( Y \right)}                                                                                              \\
+    \Var{\left( XY \right)}    & = \Var{\left( X \right)} \Var{\left( Y \right)} + \E{\left( X \right)}^2 \Var{\left( Y \right)} + \E{\left( Y \right)}^2 \Var{\left( X \right)}
+\end{align*}
+\subsection{Covariance}
+\begin{definition}[Covariance]
+    Covariance is a measure of the dependence between two random variables, it can be determined using
+    \begin{align*}
+        \Cov{\left( X,\: Y \right)} & = \E{\left( \left( X - \E{\left( X \right)} \right) \left( Y - \E{\left( Y \right)} \right) \right)} \\
+                                    & = \E{\left( XY \right)} - \E{\left( X \right)} \E{\left( Y \right)}
+    \end{align*}
+\end{definition}
+The covariance of \(X\) and \(Y\) is:
+\begin{description}
+    \item[Positive] if an increase in one variable is more likely to result in an increase in
+    the other variable.
+    \item[Negative] if an increase in one variable is more likely to result in a decrease in
+    the other variable.
+    \item[Zero] if \(X\) and \(Y\) are independent. Note that the converse is not true.
+\end{description}
+The linear transformation of two random variables have the following covariance
+\begin{equation*}
+    \Cov{\left( aX + b,\: cY + d \right)} = ac \Cov{\left( X,\: Y \right)}
+\end{equation*}
+for constants \(a\), \(b\), \(c\), and \(d\).
+\begin{definition}[Joint expectation]
+    The joint expectation of two discrete random variables is
+    \begin{equation*}
+        \E{\left( XY \right)} = \sum_{x\in\Omega_1} \sum_{y\in\Omega_2} xy \Pr{\left( X = x,\: Y = y \right)}
+    \end{equation*}
+    and for continuous random variables
+    \begin{equation*}
+        \E{\left( XY \right)} = \int_{x_1}^{x_2} \int_{x_1}^{x_2} xy f\left( x,\: y \right) \odif{y} \odif{x}.
+    \end{equation*}
+\end{definition}
+\subsection{Variance of Dependent Random Variables}
+If \(X\) and \(Y\) are dependent then
+\begin{equation*}
+    \Var{\left( X \pm Y \right)} = \Var{\left( X \right)} + \Var{\left( Y \right)} \pm 2\Cov{\left( X,\: Y \right)}
+\end{equation*}
+similarly for the sum of three dependent random variables
+\begin{equation*}
+    \Var{\left( X + Y + Z \right)} = \Var{\left( X \right)} + \Var{\left( Y \right)} + \Var{\left( Z \right)} + 2\Cov{\left( X,\: Y \right)} + 2\Cov{\left( X,\: Z \right)} + 2\Cov{\left( Y,\: Z \right)}
+\end{equation*}
+\subsection{Correlation}
+The covariance of two random variables describes the direction of a relationship, however
+it does not quantify the strength of such a relationship. The correlation explains both 
+the direction and strength of a linear relationship between two random variables.
+
+The correlation of two random variables \(X\) and \(Y\) is denoted \(\rho\left( X,\: Y \right)\)
+\begin{equation*}
+    \rho\left( X,\: Y \right) = \frac{\Cov{\left( X,\: Y \right)}}{\sqrt{\Var{\left( X \right)} \Var{\left( Y \right)}}}
+\end{equation*}
+where \(-1 \leq \rho\left( X,\: Y \right) \leq 1\).
+
+These value can be interpretted as follows:
+\begin{itemize}
+    \item \(\rho\left( X,\: Y \right) > 0\) iff \(X\) and \(Y\) have a positive linear relationship.
+    \item \(\rho\left( X,\: Y \right) < 0\) iff \(X\) and \(Y\) have a negative linear relationship.
+    \item \(\rho\left( X,\: Y \right) = 0\) if \(X\) and \(Y\) are independent. Note that the converse is not true.
+    \item \(\rho\left( X,\: Y \right) = 1\) iff \(X\) and \(Y\) have a perfect linear relationship with positive slope.
+    \item \(\rho\left( X,\: Y \right) = -1\) iff \(X\) and \(Y\) have a perfect linear relationship with negative slope.
+\end{itemize}
+Note that the slope of a perfect linear relationship cannot be obtained from the correlation.
 \end{document}
