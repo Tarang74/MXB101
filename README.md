@@ -9,12 +9,13 @@
 ## Downloads
 
 Lecture notes download: [MXB101 Lecture Notes PDF](MXB101%20Lecture%20Notes.pdf)
+Exam notes download: [MXB101 Exam Notes PDF](MXB101%20Exam%20Notes.pdf)
 
 Thanks to [rjboas](https://github.com/rjboas) for the collaboration.
 
 ---
 
-This repository provides **lecture notes** for **MXB101 - Probability and Stochastic Modelling 1**.
+This repository provides **lecture notes** and **exam notes** for **MXB101 - Probability and Stochastic Modelling 1**.
 
 *The contents of the lecture notes are described below.*
 
