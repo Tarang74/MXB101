@@ -1058,8 +1058,8 @@ If \(X\) and \(Y\) are independent then
 \subsection{Variance of Independent Random Variables}
 If \(X\) and \(Y\) are independent then
 \begin{align*}
-    \Var{\left( X \pm Y \right)} & = \Var{\left( X \right)} + \Var{\left( Y \right)}                                                                                              \\
-    \Var{\left( XY \right)}    & = \Var{\left( X \right)} \Var{\left( Y \right)} + \E{\left( X \right)}^2 \Var{\left( Y \right)} + \E{\left( Y \right)}^2 \Var{\left( X \right)}
+    \Var{\left( X \pm Y \right)} & = \Var{\left( X \right)} + \Var{\left( Y \right)}                                                                                               \\
+    \Var{\left( XY \right)}      & = \Var{\left( X \right)} \Var{\left( Y \right)} + \E{\left( X \right)}^2 \Var{\left( Y \right)} + \E{\left( Y \right)}^2 \Var{\left( X \right)}
 \end{align*}
 \subsection{Covariance}
 \begin{definition}[Covariance]
@@ -1072,9 +1072,9 @@ If \(X\) and \(Y\) are independent then
 The covariance of \(X\) and \(Y\) is:
 \begin{description}
     \item[Positive] if an increase in one variable is more likely to result in an increase in
-    the other variable.
+        the other variable.
     \item[Negative] if an increase in one variable is more likely to result in a decrease in
-    the other variable.
+        the other variable.
     \item[Zero] if \(X\) and \(Y\) are independent. Note that the converse is not true.
 \end{description}
 The linear transformation of two random variables have the following covariance
@@ -1103,7 +1103,7 @@ similarly for the sum of three dependent random variables
 \end{equation*}
 \subsection{Correlation}
 The covariance of two random variables describes the direction of a relationship, however
-it does not quantify the strength of such a relationship. The correlation explains both 
+it does not quantify the strength of such a relationship. The correlation explains both
 the direction and strength of a linear relationship between two random variables.
 
 The correlation of two random variables \(X\) and \(Y\) is denoted \(\rho\left( X,\: Y \right)\)
@@ -1121,4 +1121,66 @@ These value can be interpretted as follows:
     \item \(\rho\left( X,\: Y \right) = -1\) iff \(X\) and \(Y\) have a perfect linear relationship with negative slope.
 \end{itemize}
 Note that the slope of a perfect linear relationship cannot be obtained from the correlation.
+\section{Markov Chains}
+A Markov chain is a discrete time and state stochastic process that describes how a state evolves over time.
+In this process, the set of all states is discrete and disjoint and states change probabilistically so that
+a step may not result in a changed state.
+At each step, the next state depends only on the current state of the random variable.
+
+States are denoted by the random variable \(X_t\) at time step \(t\).
+\begin{definition}[Markov property]
+    The state \(X_t\) is conditionally independent of \(X_{t-2}\), \(X_{t-3}\), \dots, \(X_0\) given \(X_{t-1}\).
+    \begin{equation*}
+        \Pr{\left( X_t = x_t \,\vert\, X_{t-1} = x_{t-1},\: X_{t-2} = x_{t-2},\: \ldots,\: X_{0} = x_{0} \right)} = \Pr{\left( X_t - x_t \,\vert\, X_{t-1} = x_{t-1} \right)}
+    \end{equation*}
+\end{definition}
+\subsection{Homogeneous Markov Chain}
+A Markov chain is homogeneous when
+\begin{equation*}
+    \Pr{\left( X_{t+n} = j \,\vert\, X_t = i \right)} = \Pr{\left( X_n = j \,\vert\, X_0 = i \right)} = p_{ij}^{(n)}
+\end{equation*}
+that is, the \(n\)-step conditional probabilities do not depend on the time step \(t\).
+\subsection{Transition Probability Matrix}
+A homogeneous Markov chain is characterised by the transition probability matrix \(\symbf{P} \in \R^{m \times m}\), where
+\(m\) is the number of states.
+\(\symbf{P}\) must fulfil the following properties:
+\begin{itemize}
+    \item \(p_{i,j} = \Pr{\left( X_t = j \,\vert\, X_{t-1} = i \right)}\)
+    \item \(p_{i,j} \geq 0 : \forall i,\: j\)
+    \item \(\sum_{j=1}^m p_{i,j} = 1 : \forall j\)
+\end{itemize}
+\(\symbf{P}\) has the following form
+\begin{equation*}
+    \symbf{P} = \quad \scriptscriptstyle{X_t} \overset{X_{t+1}}{\begin{bmatrix}
+            \phantom{p} & \phantom{p} \\
+            \phantom{p} & \phantom{p}
+        \end{bmatrix}}
+\end{equation*}
+The \(n\)-step transition probability is given by \(\symbf{P}^n\).
+\subsection{Unconditional State Probabilities}
+The unconditional probability of being in state \(j\) at time \(n\) is given by
+\begin{equation*}
+    \Pr{\left( X_n = j \right)} = p_j^{(n)}
+\end{equation*}
+Given multiple states, let \(\symbfit{s}^{(n)}\) denote the vector of all states \(p_j^{(n)}\) at
+time \(n\). Then
+\begin{align*}
+    {\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(n-1)}}^\top \symbf{P} \quad \quad \text{and} \quad \quad {\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(0)}}^\top \symbf{P}^n
+\end{align*}
+\subsection{Stationary Distribution}
+At steady-state, the probability of being in a particular state does not change from one step to the next.
+This implies
+\begin{equation*}
+    \symbfit{s}^{(n+1)} = \symbfit{s}^{(n)} \implies {\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(n)}}^\top \symbf{P}
+\end{equation*}
+The stationary distribution \(\symbfit{\pi}\) satisfies \(\symbfit{\pi}^\top = \symbfit{\pi}^\top \symbf{P}\).
+To determine \(\symbfit{\pi}\), we must use the equation \(\sum_{i = 1}^m \pi_i = 1\).
+\subsection{Limiting Distribution}
+Under certain conditions, as \(n \to \infty\), each row of \(\symbf{P}^n\) will be equal to \(\symbfit{\pi}^\top\),
+so that each state moves to the next step with the same probability. This is known as the limiting distribution.
+Here \(\symbfit{\pi}\) provides the long run probabilities of being in each state and the process forgets where it starts.
+
+A sufficient condition for the above is if \(\symbf{P}^n\) has positive entries for some finite \(n\).
+
+\textit{Note that a stationary distribution does not imply that a limiting distribution exists}.
 \end{document}
