@@ -609,7 +609,7 @@ for \(n\) independent trials with the same probability of success \(p\).
 
 A discrete random variable \(X\) with a binomial distribution is denoted
 \begin{equation*}
-    X \sim \operatorname{B}{\left( n,\: p \right)}
+    X \sim \operatorname{Binomial}{\left( n,\: p \right)}
 \end{equation*}
 with
 \begin{align*}
@@ -642,7 +642,7 @@ the first success, where each trial is independent and has the same probability 
 
 A discrete random variable \(N\) with a geometric distribution is denoted
 \begin{equation*}
-    N \sim \operatorname{Geom}{\left( p \right)}
+    N \sim \operatorname{Geometric}{\left( p \right)}
 \end{equation*}
 with
 \begin{align*}
@@ -689,7 +689,7 @@ for number of trials \(n \geq k\).
 Here each individual trial is a Geometric trial, so that \(N\) can be written as the sum of
 \(k\) \textit{independent and identically distributed} (iid) Geometric random variables, \(Y_1,\: Y_2,\: \dots,\: Y_k\).
 \begin{align*}
-    N & = Y_1 + Y_2 + \cdots + Y_k, & Y_i & \overset{\mathrm{iid}}{\sim} \operatorname{Geom}{\left( p \right)} : \forall i \in \left\{ 1,\: 2,\: \dots,\: k \right\}.
+    N & = Y_1 + Y_2 + \cdots + Y_k, & Y_i & \overset{\mathrm{iid}}{\sim} \operatorname{Geometric}{\left( p \right)} : \forall i \in \left\{ 1,\: 2,\: \dots,\: k \right\}.
 \end{align*}
 We can then summarise the following:
 \begin{align*}
@@ -726,7 +726,7 @@ A Poisson distribution describes the probability distribution of the number of e
 
 A discrete random variable \(N\) with a Poisson distribution is denoted
 \begin{equation*}
-    N \sim \operatorname{Pois}{\left( \lambda \right)}
+    N \sim \operatorname{Poisson}{\left( \lambda \right)}
 \end{equation*}
 with
 \begin{align*}
@@ -753,7 +753,7 @@ interval, where the probability of an outcome in one interval is the same as all
 
 A continuous random variable \(X\) with a continuous uniform distribution is denoted
 \begin{equation*}
-    X \sim \operatorname{U}{\left( a,\: b \right)}
+    X \sim \operatorname{Uniform}{\left( a,\: b \right)}
 \end{equation*}
 with
 \begin{align*}
@@ -789,7 +789,7 @@ We can also summarise the following:
 \begin{proof}
     By considering an event taking longer than \(t\) seconds, we can represent this as nothing happening
     over the interval \(\interval{0}{t}\). Using \(T \sim \operatorname{Exp}{\left( \eta \right)}\) and
-    \(N \sim \operatorname{Pois}{\left( \eta t \right)}\), we have
+    \(N \sim \operatorname{Poisson}{\left( \eta t \right)}\), we have
     \begin{equation*}
         \Pr{\left( T > t \right)} = \Pr{\left( N = 0 \right)} = e^{-\eta t}
     \end{equation*}
@@ -806,7 +806,7 @@ how much time \(t\) has already passed.
 \begin{equation*}
     \Pr{\left( T > s + t \,\vert\, T > t \right)} = \Pr{\left( T > s \right)}.
 \end{equation*}
-The same property also applies in an Geometric distribution with \(N \sim \operatorname{Geom}{\left( p \right)}\).
+The same property also applies in an Geometric distribution with \(N \sim \operatorname{Geometric}{\left( p \right)}\).
 \subsection{Normal Distribution}
 The normal distribution is used to represent many random situations, in particular, measurements and their errors.
 This distribution arises in many statistical problems and can be used to \linebreak approximate other distributions
@@ -866,7 +866,7 @@ Then for large \(n\)
 \end{equation*}
 \subsection{Approximating the Binomial Distribution}
 \subsubsection{Normal Distribution}
-Given a binomial distribution \(X \sim \operatorname{B}{\left( n,\: p \right)}\), we can write \(X\)
+Given a binomial distribution \(X \sim \operatorname{Binomial}{\left( n,\: p \right)}\), we can write \(X\)
 as the sum of \(n\) independent and identically distributed Bernoulli random variables
 \(X_1,\: \ldots,\: X_n\), so that \(X_i \sim \operatorname{Bernoulli}{\left( p \right)}\).
 
@@ -879,14 +879,14 @@ In general, this approximation is sufficient when \(np > 5\) and \(n\left( 1 - p
 \subsubsection{Poisson Distribution}
 When \(np < 5\) we can use the Poisson distribution to approximate \(X\) with the mean \(np\):
 \begin{equation*}
-    X \approx Y \sim \operatorname{Pois}{\left( np \right)}.
+    X \approx Y \sim \operatorname{Poisson}{\left( np \right)}.
 \end{equation*}
 When \(n\left( 1 - p \right) < 5\) we can consider the number of failures \(W = n - X\), so that,
 \begin{equation*}
-    W \approx Y \sim \operatorname{Pois}{\left( n\left( 1 - p \right) \right)}.
+    W \approx Y \sim \operatorname{Poisson}{\left( n\left( 1 - p \right) \right)}.
 \end{equation*}
 \subsubsection{Continuity Correction}
-Given an approximation \(Y\) (either Normal or Poisson) for the binomial distribution \(X \sim \operatorname{B}{\left( n,\: p \right)}\) the equality
+Given an approximation \(Y\) (either Normal or Poisson) for the binomial distribution \(X \sim \operatorname{Binomial}{\left( n,\: p \right)}\) the equality
 \begin{equation*}
     \Pr{\left( X \leq x \right)} = \Pr{\left( X < x + 1 \right)}
 \end{equation*}
@@ -895,7 +895,7 @@ must hold for any \(x\). Therefore by adding \(\frac{1}{2}\) we apply a continui
     \Pr{\left( Y \leq x + \frac{1}{2} \right)}.
 \end{equation*}
 \subsection{Approximating a Poisson Distribution}
-Given a set of independent Poisson distributions \(X_1,\: \ldots ,\: X_n\) where \(X_i \sim \operatorname{Pois}{\left( \lambda \right)}\)
+Given a set of independent Poisson distributions \(X_1,\: \ldots ,\: X_n\) where \(X_i \sim \operatorname{Poisson}{\left( \lambda \right)}\)
 so that \(\E{\left( X_i \right)} = \lambda\) and \(\Var{\left( X_i \right)} = \lambda\) for all \(i\).
 
 If we consider \(X = \sum_{i = 1}^n X_i\) then
@@ -1183,4 +1183,96 @@ Here \(\symbfit{\pi}\) provides the long run probabilities of being in each stat
 A sufficient condition for the above is if \(\symbf{P}^n\) has positive entries for some finite \(n\).
 
 \textit{Note that a stationary distribution does not imply that a limiting distribution exists}.
+\section{Poisson Process}
+A Poisson process is a continuous time and discrete state stochastic process that counts events
+that occur randomly in time (or space).
+This process only requires the rate parameter \(\eta\) which describes the average rate at which events occur.
+This rate does not depend on how long the process has been run nor how many events have already been
+observed.
+
+The number of events that occur randomly on the interval \(\ointerval{0}{t}\), are denoted by the random variable \(X\left( t \right)\).
+At time \(t = 0\), we assume that no events were observed so that
+\begin{equation*}
+    \Pr{\left( X\left( 0 \right) = 0 \right)} = 1.
+\end{equation*}
+Let \(h\) be a small interval such that at most 1 event can occur during that time, then
+\begin{align*}
+    \Pr{\left( X\left( t + h \right) = n + 1 \,\vert\, X\left( t \right) = n \right)} & \approx \eta h     \\
+    \Pr{\left( X\left( t + h \right) = n \,\vert\, X\left( t \right) = n \right)}     & \approx 1 - \eta h \\
+    \Pr{\left( X\left( t + h \right) > n + 1 \,\vert\, X\left( t \right) = n \right)} & \approx 0
+\end{align*}
+\subsection{Poisson Distribution}
+A Poisson process has a Poisson distribution with rate \(\eta\), so that
+\begin{equation*}
+    X\left( t \right) \sim \operatorname{Poisson}{\left( \eta t \right)}
+\end{equation*}
+therefore the probability density function for the count \(X\left( t \right)\) is given by
+\begin{equation*}
+    \Pr{\left( X\left( t \right) = n \right)} = p_n\left( t \right) = \frac{e^{-\eta t} \left( \eta t \right)^n}{n!}
+\end{equation*}
+for \(n \in \Z_{\geq 0}\), where \(\eta\) is the expected number of events per unit time \(t\).
+
+In general, let \(N\left( t_1,\: t_2 \right)\) be the number of events occurring in the Poisson process between
+times \(t_1\) and \(t_2\), then \(N\left( t_1,\: t_2 \right) \sim \operatorname{Poisson}{\left( \eta \left( t_2 - t_1 \right) \right)}\).
+\begin{equation*}
+    \Pr\left( N\left( t_1,\: t_2 \right) = n \right) = \frac{e^{-\eta \left( t_2 - t_1 \right)} \left( \eta \left( t_2 - t_1 \right) \right)^n}{n!}
+\end{equation*}
+\subsection{Exponential Distribution}
+Let \(T\) be the time between events of a Poisson process so that \(T\) has an exponential distribution
+\begin{equation*}
+    T \sim \operatorname{Exp}{\left( \eta \right)}.
+\end{equation*}
+The probability density function of \(T\) is given by
+\begin{equation*}
+    f\left( t \right) = \eta e^{-\eta t}
+\end{equation*}
+for \(t > 0\).
+\subsection{Properties of Poisson Processes}
+\begin{enumerate}
+    \item As the time between Poisson processes has an exponential distribution, the Poisson process inherits the
+          memoryless property,
+          \begin{equation*}
+              \Pr{\left( T > x + y \,\vert\, T > x \right)} = \Pr{\left( T > y \right)}.
+          \end{equation*}
+    \item Non-overlapping time intervals of a Poisson process are independent. For \(a < b < c\),
+          \begin{equation*}
+              \Pr{\left( N\left( a,\: b \right) = m \,\vert\, N\left( b,\: c \right) = n \right)} = \Pr{\left( N\left( a,\: b \right) = m \right)} \Pr{\left( N\left( b,\: c \right) = n \right)}
+          \end{equation*}
+          \item\label{poisson_property_1_event} If exactly 1 event occurs on the interval \(\ointerval{0}{a}\), then the distribution of when that event occurs is
+          uniform. Let \(X\) be the time \(x < a\) when the first event occurs,
+          \begin{equation*}
+              X \,\vert\, \left( N\left( 0,\: a \right) = 1 \right) \sim \operatorname{Uniform}{\left( 0,\: a \right)}
+          \end{equation*}
+          \item\label{poisson_property_n_events} If exactly \(n\) events occur on the interval \(\ointerval{0}{a}\), then the distribution of the number of events
+          that occur in \(\ointerval{0}{s}\) is binomial, for \(s < t\). Let \(X\) be the number of events that occur in \(\ointerval{0}{s}\) for \(s < t\),
+          \begin{equation*}
+              X \,\vert\, \left( N\left( 0,\: a \right) = n \right) \sim \operatorname{Binomial}{\left( n,\: \frac{s}{t} \right)}
+          \end{equation*}
+\end{enumerate}
+\begin{proof}[Proof for~\ref{poisson_property_1_event}]
+    Consider the CDF of \(X\),
+    \begin{align*}
+        F_X\left( x \right) & = \Pr{\left( X < x \,\vert\, N\left( 0,\: a \right) = 1 \right)}                                                                                       \\
+                            & = \Pr{\left( N\left( 0,\: x \right) = 1 \,\vert\, N\left( 0,\: a \right) = 1 \right)}                                                                  \\
+                            & = \frac{\Pr{\left( N\left( 0,\: x \right) = 1 \cap N\left( 0,\: a \right) = 1 \right)}}{\Pr{\left( N\left( 0,\: a \right) = 1 \right)}}                \\
+                            & = \frac{\Pr{\left( N\left( 0,\: x \right) = 1 \cap N\left( x,\: a \right) = 0 \right)}}{\Pr{\left( N\left( 0,\: a \right) = 1 \right)}}                \\
+                            & = \frac{\Pr{\left( N\left( 0,\: x \right) = 1 \right)} \Pr{\left( N\left( x,\: a \right) = 0 \right)}}{\Pr{\left( N\left( 0,\: a \right) = 1 \right)}} \\
+                            & = \frac{e^{-\eta x} \left( \eta x \right) e^{-\eta \left( a - x \right)}}{e^{-\eta a} \eta a}                                                          \\
+                            & = \frac{x}{a}
+    \end{align*}
+    which is precisely the CDF of a uniform distribution where \(X \sim \operatorname{Uniform}{\left( 0,\: a \right)}\).
+\end{proof}
+\begin{proof}[Proof for~\ref{poisson_property_n_events}]
+    Consider the PMF of \(X\),
+    \begin{align*}
+        p_X\left( x \right) & = \Pr{\left( N\left( 0,\: s \right) = x \,\vert\, N\left( 0,\: t \right) = n \right)}                                                                                                                                 \\
+                            & = \frac{\Pr{\left( N\left( 0,\: s \right) = x \cap N\left( 0,\: t \right) = n \right)}}{\Pr{\left( N\left( 0,\: t \right) = n \right)}}                                                                               \\
+                            & = \frac{\Pr{\left( N\left( 0,\: s \right) = x \cap N\left( s,\: t \right) = n - x \right)}}{\Pr{\left( N\left( 0,\: t \right) = n \right)}}                                                                           \\
+                            & = \frac{\frac{e^{-\eta s} \left( \eta s \right)^x}{x!} \frac{e^{-\eta \left( t - s \right)} \left( \eta \left( t - s \right) \right)^{n - x}}{\left( n - x \right)!}}{\frac{e^{-\eta t} \left( \eta t \right)^n}{n!}} \\
+                            & = \frac{n!}{x!\left( n - x \right)!} \frac{s^x \left( t - s \right)^{n - x}}{t^n} \\
+                            & = \binom{n}{x} \frac{s^x \left( t - s \right)^{n - x}}{t^x t^{n - x}} \\
+                            & = \binom{n}{x} \left( \frac{s}{t} \right)^x \left( 1 - \frac{s}{t} \right)^{n - x} 
+    \end{align*}
+    which is precisely the PMF of a binomial distribution where \(X \sim \operatorname{Binomial}{\left( n,\: \frac{s}{t} \right)}\).
+\end{proof}
 \end{document}
