@@ -34,6 +34,7 @@ This repository provides **lecture notes** and **exam notes** for **MXB101 - Pro
 9. Central Limit Theorem
 10. Bivariate Distributions
 11. Markov Chains
+12. Poisson Process
 
 ---
 
