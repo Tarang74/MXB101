@@ -228,24 +228,24 @@
     \section{Combinatorics}
     \subsection{Number of outcomes}
     Let \(\abs{A}\) denote the number of outcomes in an event \(A\).
-    
+
     For \(k\) disjoint events \({\left\{ S_1,\:\ldots,\:S_k \right\}}\)
     where the \(i\)th event has \(n_i\) possible outcomes,
     \subsection{Addition principle}
-        Number of possible samples from any event
-        \begin{equation*}
-            \abs*{\bigcup_{i = 0}^{k} S_i} = \sum_{i = 1}^k n_i
-        \end{equation*}
+    Number of possible samples from any event
+    \begin{equation*}
+        \abs*{\bigcup_{i = 0}^{k} S_i} = \sum_{i = 1}^k n_i
+    \end{equation*}
     \subsection{Multiplication principle}
-        Number of possible samples from every event
-        \begin{equation*}
-            \abs*{\bigcap_{i=0}^{k} S_i} = \prod_{i = 1}^k n_i
-        \end{equation*}
+    Number of possible samples from every event
+    \begin{equation*}
+        \abs*{\bigcap_{i=0}^{k} S_i} = \prod_{i = 1}^k n_i
+    \end{equation*}
     \subsection{Counting probability}
-        If \(S_i\) has equally likely outcomes
-        \begin{equation*}
-            \Pr{\left( S_i \right)} = \frac{\abs{S_i}}{\abs{S}}
-        \end{equation*}
+    If \(S_i\) has equally likely outcomes
+    \begin{equation*}
+        \Pr{\left( S_i \right)} = \frac{\abs{S_i}}{\abs{S}}
+    \end{equation*}
     \subsection{Ordered Sampling with Replacement}
     Number of ways to choose \(k\) objects from a set with \(n\) elements
     \begin{equation*}
@@ -258,7 +258,7 @@
         \prescript{n}{}{P}_k & = \frac{n!}{\left( n - k \right)!}
     \end{align*}
     for \(0 \leq k \leq n\).
-    
+
     An \(n\)-permutation of \(n\) elements is the permutation of those elements.
     In this case, \(k = n\), so that
     \begin{align*}
@@ -279,75 +279,90 @@
     \section{Random Variables}
     A measurable variable whose value holds some uncertainty.
     An event is when a random variable assumes a certain value or range of values.
-    \subsection{Discrete random variables}
-    A discrete random variable takes discrete values.
-    \subsection{Continuous random variables}
-    A continuous random variable can take any real value.
-    \subsection{Probability Distributions}
     \subsection{Probability distribution}
     The probability distribution of a random variable \(X\) is a function that links all outcomes \(x \in \Omega\)
     to the probability that they will occur \(\Pr{\left( X = x \right)}\).
+\end{multicols}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c c c c c c}
+        \toprule
+        \textbf{Distribution}                                      & \textbf{Restrictions}                                  & \textbf{PMF}                                              & \textbf{CDF}                                                             & \(\E{\left( X \right)}\)            & \(\Var{\left( X \right)}\)                    \\
+        \midrule
+        \(X \sim \operatorname{Uniform}{\left( a,\: b \right)}\)   & \(x \in \left\{ a, \dots, b \right\}\)                 & \(\frac{1}{b - a + 1}\)                                   & \(\frac{x - a + 1}{b - a + 1}\)                                          & \(\frac{a + b}{2}\)                 & \(\frac{\left( b - a + 1 \right)^2 - 1}{12}\) \\
+        \(X \sim \operatorname{Bernoulli}{\left( p \right)}\)      & \(p \in \interval{0}{1}, x \in \left\{ 0, 1 \right\}\) & \(p^x \left( 1 - p \right)^{1 - x}\)                      & \(1 - p\)                                                                & \(p\)                               & \(p \left( 1 - p \right)\)                    \\
+        \(X \sim \operatorname{Binomial}{\left( n,\: p \right)}\)  & \(x \in \left\{ 0, \dots, n \right\}\)                 & \(\binom{n}{x} p^x \left( 1 - p \right)^{n - x}\)         & \(\sum_{u = 0}^x \binom{n}{u} p^u \left( 1 - p \right)^{n - u}\)         & \(np\)                              & \(np\left( 1 - p \right)\)                    \\
+        \(N \sim \operatorname{Geometric}{\left( p \right)}\)      & \(n \geq 1\)                                           & \(\left( 1 - p \right)^{n - 1} p\)                        & \(1 - \left( 1 - p \right)^n\)                                           & \(\frac{1}{p}\)                     & \(\frac{1 - p}{p^2}\)                         \\
+        \( Y \sim \operatorname{Geometric}{\left( p \right)}\)     & \(y \geq 0\)                                           & \(\left( 1 - p \right)^y p\)                              & \(1 - \left( 1 - p \right)^{y + 1}\)                                     & \(\frac{1 - p}{p}\)                 & \(\frac{1 - p}{p^2}\)                         \\
+        \( N \sim \operatorname{NB}{\left( k,\: p \right)}\)       & \(n \geq k\)                                           & \(\binom{n - 1}{k - 1} \left( 1 - p \right)^{n - k} p^k\) & \(\sum_{u = k}^n \binom{u - 1}{k - 1} \left( 1 - p \right)^{u - k} p^k\) & \(\frac{k}{p}\)                     & \(\frac{k\left( 1 - p \right)}{p^2}\)         \\
+        \( Y \sim \operatorname{NB}{\left( k,\: p \right)}\)       & \(y \geq 0\)                                           & \(\binom{y + k - 1}{k - 1} \left( 1 - p \right)^y p^k\)   & \(\sum_{u = 0}^y \binom{u + k - 1}{k - 1} \left( 1 - p \right)^u p^k\)   & \(\frac{k\left( 1 - p \right)}{p}\) & \(\frac{k\left( 1 - p \right)}{p^2}\)         \\
+        \( N \sim \operatorname{Poisson}{\left( \lambda \right)}\) & \(n \geq 0\)                                           & \(\frac{\lambda^n e^{-\lambda}}{n!}\)                     & \(\sum_{u = 0}^n \frac{\lambda^u}{u!}\)                                  & \(\lambda\)                         & \(\lambda\)                                   \\
+        \bottomrule
+    \end{tabular}
+    % \caption{} % \label{}
+\end{table}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c c c c c c}
+        \toprule
+        \textbf{Distribution}                                       & \textbf{Restrictions}                                  & \textbf{PMF}                                      & \textbf{CDF}                                                     & \(\E{\left( X \right)}\) & \(\Var{\left( X \right)}\)            \\
+        \midrule
+        \(X \sim \operatorname{Uniform}{\left( a,\: b \right)}\)    & \(a < x < b\)                                          & \(\frac{1}{b - a}\)                               & \(\frac{x - a}{b - a}\)                                          & \(\frac{a + b}{2}\)      & \(\frac{\left( b - a \right)^2}{12}\) \\
+        \(T \sim \operatorname{Exp}{\left( \eta \right)}\)          & \(t > 0\) & \(\eta e^{-\eta t}\)              & \(1 - e^{-\eta t}\)                                                        & \(\frac{1}{\eta}\)                    & \(p \left( 1 - p \right)\)            \\
+        \(X \sim \operatorname{N}{\left( \mu,\: \sigma^2 \right)}\) & \(x \in \left\{ 0, \dots, n \right\}\)                 & \(\frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{\left( x - \mu \right)^2}{2 \sigma^2}}\) & \(\frac{1}{2} \left( 1 + \erf{\left( \frac{x - \mu}{\sigma \sqrt{2}} \right)} \right)\) & \(\mu\)                  & \(\sigma^2\)                          \\
+        \bottomrule
+    \end{tabular}
+    % \caption{} % \label{}
+\end{table}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c c c }
+        \toprule
+                                   & \textbf{Discrete}                              & \textbf{Continuous}                                    \\
+        \midrule
+        Valid probabilities        & \(0 \leq p_x \leq 1\)                          & \(f(x) \geq 0\)                                        \\
+        Cumulative probability     & \(\sum_{u \leq x} p_u\)                        & \(\int_{-\infty}^{x} f(u) \odif{u}\)                   \\
+        \(\E{\left( X \right)}\)   & \(\sum_{\Omega} xp_x\)                         & \(\int_{\Omega} xf(x)\odif{x}\)                        \\
+        \(\Var{\left( X \right)}\) & \(\sum_{\Omega} \left( x - \mu \right)^2 p_x\) & \(\int_{\Omega} \left( x - \mu \right)^2f(x)\odif{x}\) \\
+        \bottomrule
+    \end{tabular}
+    % \caption{} % \label{}
+\end{table}
+\begin{multicols}{3}
     \subsection{Probability mass function}
-    The probability distribution of a discrete random variable \(X\) is described by a Probability
-    Mass Function (PMF) \(p_x\).
     \begin{equation*}
         \Pr{\left( X = x \right)} = p_x
     \end{equation*}
-    \(p_x\) is a valid PMF provided,
-    \begin{align*}
-        \forall x \in \Omega : \Pr{\left( X = x \right)} & \geq 0 &  & \text{and} & \sum_{x \in \Omega} \Pr{\left( X = x \right)} & = 1.
-    \end{align*}
     \subsection{Probability density function}
-    The probability distribution of a continuous random variable \(X\) is described by a Probability
-    Density Function (PDF) \(f\left( x \right)\).
-
-    The probability that \(X\) is exactly equal to a
-    specific value is always 0. Therefore we compute probabilities over intervals:
     \begin{equation*}
         \Pr{\left( x_1 \leq X \leq x_2 \right)} = \int_{x_1}^{x_2} f\left( x \right) \odif{x}
     \end{equation*}
-    \(f\left( x \right)\) is a valid PDF provided,
-    \begin{align*}
-        \forall x \in \Omega : f\left( x \right) & \geq 0 &  & \text{and} & \int_{\Omega} f(x) \odif{x} & = 1.
-    \end{align*}
     \subsection{Cumulative distribution function}
-    The Cumulative Distribution Function (CDF) computes the probability that the random variable is
-    less than or equal to a particular realisation \(x\). For \(U = \left\{ k \in \Omega : k \leq x \right\}\)
-    \begin{equation*}
-        F\left( x \right) = \Pr{\left( X \leq x \right)} = \begin{cases}
-            \displaystyle \sum_{u \in U} p_u                  & \text{for discrete random variables}    \\[0.4cm]
-            \displaystyle \int_{U} f\left( u \right) \odif{u} & \text{for continuous random variables}.
-        \end{cases}
-    \end{equation*}
+    Computes the probability that the random variable is
+    less than or equal to a particular realisation \(x\).
+
     \(F\left( x \right)\) is a valid CDF if:
     \begin{enumerate}
         \item \(F\) is monotonically increasing and continuous
         \item \(\lim_{x \to -\infty} F\left( x \right) = 0\)
         \item \(\lim_{x \to \infty} F\left( x \right) = 1\)
     \end{enumerate}
-    We can recover the PDF given the CDF, by using the Fundamental Theorem of Calculus.
     \begin{equation*}
         \odv{F\left( x \right)}{x} = \odv{}{x} \int_{-\infty}^x f\left( u \right) \odif{u} = f\left( x \right)
     \end{equation*}
-    \subsection{Complementary CDF}
-    For a continuous random variable \(X\) the complement function,
+    \subsection{Complementary CDF (survival)}
     \begin{equation*}
         \Pr{\left( X > x \right)} = 1 - \Pr{\left( X \leq x \right)} = 1 - F\left( x \right)
     \end{equation*}
-    is called the complementary CDF, or the survival function.
-    \subsection{Quantiles}
     \subsection{\(p\)-Quantile}
-    For a continuous random variable, the \(p\)-quantile, \(x\), is defined such that
     \begin{equation*}
         F\left( x \right) = \int_{-\infty}^x f\left( u \right) \odif{u} = p.
     \end{equation*}
     \subsection{Median}
-    The median, \(m\), is a special \(p\)-quartile defined as the value such that
     \begin{equation*}
         \int_{-\infty}^m f\left( u \right) \odif{u} = \int^{\infty}_m f\left( u \right) \odif{u} = \frac{1}{2}.
     \end{equation*}
     \subsection{Lower and upper quartile}
-    Likewise the lower quartile and upper quartiles are two values \(q_1\) and \(q_2\) such that
     \begin{equation*}
         \int_{-\infty}^{q_1} f\left( u \right) \odif{u} = \frac{1}{4}
     \end{equation*}
@@ -356,306 +371,94 @@
         \int_{-\infty}^{q_2} f\left( u \right) \odif{u} = \frac{3}{4}.
     \end{equation*}
     \subsection{Quantile function}
-    The quantile function is the inverse of the CDF
-    and can be used to find the \(x\) that a certain \(p\) provides. I.e.,
     \begin{equation*}
         x = F^{-1}\left( p \right) = Q\left( p \right)
     \end{equation*}
     \subsection{Summary Statistics}
-    \subsection{Expectation}
-    The expectation \(\E{\left( X \right)}\), or \(\operatorname{\mathbb{E}}{\left( X \right)}\)
-    of a random variable \(X\) is its expected value given an
-    infinite number of observations.
-
-    The expectation is also known as the mean of the \(X\), denoted \(\mu\).
+    \subsection{Expectation (mean)}
+    Expected value given an infinite number of observations. For \(a < c < b\):
     \begin{equation*}
-        \E{\left( X \right)} =
-        \begin{cases}
-            \displaystyle \sum_{x \in \Omega} x p_x                & \text{for discrete variables}   \\[0.4cm]
-            \displaystyle \int_\Omega x f\left( x \right) \odif{x} & \text{for continuous variables}
-        \end{cases}
+        \E{\left(X\right)} = \begin{aligned}[t]
+             & -\int_{a}^c F\left( x \right) \odif{x}                     \\
+             & + \int_c^b \left(1 - F\left( x \right)\right) \odif{x} + c
+        \end{aligned}
     \end{equation*}
-    \begin{theorem}
-        Using integration by parts, it can be proved that
-        \begin{equation*}
-            \E{\left(X\right)} = -\int_{-\infty}^0 F\left( x \right) \odif{x} + \int_0^\infty \left(1 - F\left( x \right)\right) \odif{x}
-        \end{equation*}
-    \end{theorem}
     \subsection{Variance}
-    The variance \(\Var{\left( X \right)}\), or \(\operatorname{\mathbb{V}}{\left( X \right)}\) of a random variable \(X\) is a measure of spread
-    of the distribution (defined as the average squared distance of each value from the mean).
+    Measure of spread of the distribution (average squared distance of each value from the mean).
+    \begin{equation*}
+        \Var{\left( X \right)} = \sigma^2
+    \end{equation*}
     Variance is also denoted as \(\sigma^2\).
-    \begin{align*}
-        \Var{\left( X \right)} & =
-        \begin{cases}
-            \displaystyle \sum_{x \in \Omega} \left( x - \mu \right)^2 p_x                  & \text{for discrete variables}   \\[0.4cm]
-            \displaystyle \int_{\Omega} \left( x - \mu \right)^2 f\left( x \right) \odif{x} & \text{for continuous variables}
-        \end{cases} \\
-                               & = \E{\left( X^2 \right)} - \E{\left( X \right)}^2
-    \end{align*}
+    \begin{equation*}
+        \Var{\left( X \right)} = \E{\left( X^2 \right)} - \E{\left( X \right)}^2
+    \end{equation*}
     \subsection{Standard deviation}
-    The standard deviation is defined as
     \begin{equation*}
         \sigma = \sqrt{\Var{\left( X \right)}}
     \end{equation*}
     \subsubsection{Transformations}
-    For a simple linear function of a random variable
     \begin{align*}
         \E{\left( aX \pm b \right)}   & = a\E{\left( X \right)} \pm b \\
         \Var{\left( aX \pm b \right)} & = a^2\Var{\left( X \right)}
     \end{align*}
     \section{Special Discrete Distributions}
-    \subsection{Discrete Uniform Distribution}
-    A discrete uniform distribution describes the probability distribution of a single trial
-    in a set of equally likely elements.
-
-    A discrete random variable \(X\) with a discrete uniform distribution is denoted
-    \begin{equation*}
-        X \sim \operatorname{Uniform}{\left( a,\: b \right)}
-    \end{equation*}
-    with
-    \begin{align*}
-        \Pr{\left( X = x \right)}    & = \frac{1}{b - a + 1}         \\
-        \Pr{\left( X \leq x \right)} & = \frac{x - a + 1}{b - a + 1}
-    \end{align*}
-    for outcomes \(x \in \left\{ a,\: a + 1,\: \dots,\: b - 1,\: b \right\}\).
-    We can also summarise the following:
-    \begin{align*}
-        \E{\left( X \right)}   & = \frac{a + b}{2}                           \\
-        \Var{\left( X \right)} & = \frac{\left( b - a + 1 \right)^2 - 1}{12}
-    \end{align*}
-    \subsection{Bernoulli Distribution}
-    A Bernoulli (or binary) distribution describes the probability distribution of a Boolean-valued
-    outcome, i.e., success (1) or failure (0).
-
-    A discrete random variable \(X\) with a Bernoulli distribution is denoted
-    \begin{equation*}
-        X \sim \operatorname{Bernoulli}{\left( p \right)}
-    \end{equation*}
-    with
-    \begin{align*}
-        \Pr{\left( X = x \right)}    & = \begin{cases}
-                                             1 - p & x = 0 \\
-                                             p     & x = 1
-                                         \end{cases}                    \\
-                                     & = p^x \left( 1 - p \right)^{1 - x} \\
-        \Pr{\left( X \leq x \right)} & = \begin{cases}
-                                             0     & x < 0        \\
-                                             1 - p & 0 \leq x < 1 \\
-                                             1     & k \geq 1
-                                         \end{cases}
-    \end{align*}
-    for a probability \(p \in \interval{0}{1}\) and outcomes \(x \in \left\{ 0,\: 1 \right\}\).
-    We can also summarise the following:
-    \begin{align*}
-        \E{\left( X \right)}   & = p                      \\
-        \Var{\left( X \right)} & = p \left( 1 - p \right)
-    \end{align*}
-    where \(\left( 1 - p \right)\) is sometimes denoted as \(q\).
+    \subsection{Uniform Distribution}
+    Single trial \(X\) in a set of equally likely elements.
+    \subsection{Bernoulli (binary) Distribution}
+    Boolean-valued outcome \(X\), i.e., success (1) or failure (0).
+    \(\left( 1 - p \right)\) is sometimes denoted as \(q\).
     \subsection{Binomial Distribution}
-    A binomial distribution describes the probability distribution of the number of successes
-    for \(n\) independent trials with the same probability of success \(p\).
-
-    A discrete random variable \(X\) with a binomial distribution is denoted
-    \begin{equation*}
-        X \sim \operatorname{B}{\left( n,\: p \right)}
-    \end{equation*}
-    with
+    Number of successes \(X\) for \(n\) independent trials with the same probability of success \(p\).
     \begin{align*}
-        \Pr{\left( X = x \right)}    & = \dbinom{n}{x} p^x \left( 1 - p \right)^{n - x}                \\
-        \Pr{\left( X \leq x \right)} & = \sum_{u = 0}^x \dbinom{n}{u} p^u \left( 1 - p \right)^{n - u}
-    \end{align*}
-    for number of successes \(x \in \left\{ 0,\: 1,\: \dots,\: n \right\}\).
-
-    Here each individual trial is a Bernoulli trial, so that \(X\) can be written as the sum of
-    \(n\) \textit{independent and identically distributed} (iid) Bernoulli random variables, \(Y_1,\: Y_2,\: \dots,\: Y_n\).
-    \begin{align*}
-        X & = Y_1 + Y_2 + \cdots + Y_n \\
+        X   & = Y_1 + \cdots + Y_n                                                                                                           \\
         Y_i & \overset{\mathrm{iid}}{\sim} \operatorname{Bernoulli}{\left( p \right)} : \forall i \in \left\{ 1,\: 2,\: \dots,\: n \right\}.
     \end{align*}
-    We can then summarise the following:
-    \begin{align*}
-        \E{\left( X \right)}   & = np                      \\
-        \Var{\left( X \right)} & = np \left( 1 - p \right)
-    \end{align*}
     \subsection{Geometric Distribution}
-    A geometric distribution describes the probability distribution of the number of trials up to and including
-    the first success, where each trial is independent and has the same probability of success \(p\).
-
-    A discrete random variable \(N\) with a geometric distribution is denoted
-    \begin{equation*}
-        N \sim \operatorname{Geom}{\left( p \right)}
-    \end{equation*}
-    with
-    \begin{align*}
-        \Pr{\left( N = n \right)}    & = \left( 1 - p \right)^{n - 1} p \\
-        \Pr{\left( N \leq n \right)} & = 1 - \left( 1 - p \right)^n
-    \end{align*}
-    for number of trials \(n \geq 1\).
-
-    We can also summarise the following:
-    \begin{align*}
-        \E{\left( N \right)}   & = \frac{1}{p}       \\
-        \Var{\left( N \right)} & = \frac{1 - p}{p^2}
-    \end{align*}
-    \subsubsection{Alternate Geometric Definition}
-    We can alternatively consider the number of failures until a success, \(Y\):
-    \begin{equation*}
-        Y = N - 1
-    \end{equation*}
-    Therefore the PMF and CDF for \(Y\) are:
-    \begin{align*}
-        \Pr{\left( Y = y \right)}    & = \left( 1 - p \right)^y p         \\
-        \Pr{\left( Y \leq y \right)} & = 1 - \left( 1 - p \right)^{y + 1}
-    \end{align*}
-    for number of failures \(y \geq 0\). This gives the following summary statistics using
-    transformation rules:
-    \begin{align*}
-        \E{\left( Y \right)}   & = \frac{1 - p}{p}   \\
-        \Var{\left( Y \right)} & = \frac{1 - p}{p^2}
-    \end{align*}
+    Number of trials \(N\) up to and including the first success, where each trial is independent and has the same probability of success \(p\).
+    \subsection{Alternate Geometric Definition}
+    Number of failures \(Y = N - 1\) until a success.
     \subsection{Negative Binomial Distribution}
-    A negative binomial distribution describes the probability distribution of the number of trials until \(k \geq 1\)
-    successes, where each trial is independent and has the same probability of success \(p\).
-
-    A discrete random variable \(N\) with a negative binomial distribution is denoted
-    \begin{equation*}
-        N \sim \operatorname{NB}{\left( k,\: p \right)}
-    \end{equation*}
-    with
+    Number of trials until \(k \geq 1\) successes, where each trial is independent and has the same probability of success \(p\).
     \begin{align*}
-        \Pr{\left( N = n \right)}    & = \dbinom{n - 1}{k - 1} \left( 1 - p \right)^{n - k} p^k                \\
-        \Pr{\left( N \leq n \right)} & = \sum_{u = k}^n \dbinom{u - 1}{k - 1} \left( 1 - p \right)^{u - k} p^k
+        N   & = Y_1 + Y_2 + \cdots + Y_k                                                                                                \\
+        Y_i & \overset{\mathrm{iid}}{\sim} \operatorname{Geom}{\left( p \right)} : \forall i \in \left\{ 1,\: 2,\: \dots,\: k \right\}.
     \end{align*}
-    for number of trials \(n \geq k\).
-    Here each individual trial is a Geometric trial, so that \(N\) can be written as the sum of
-    \(k\) \textit{independent and identically distributed} (iid) Geometric random variables, \(Y_1,\: Y_2,\: \dots,\: Y_k\).
-    \begin{align*}
-        N & = Y_1 + Y_2 + \cdots + Y_k, & Y_i & \overset{\mathrm{iid}}{\sim} \operatorname{Geom}{\left( p \right)} : \forall i \in \left\{ 1,\: 2,\: \dots,\: k \right\}.
-    \end{align*}
-    We can then summarise the following:
-    \begin{align*}
-        \E{\left( N \right)}   & = \frac{k}{p}                        \\
-        \Var{\left( N \right)} & = \frac{k \left( 1 - p \right)}{p^2}
-    \end{align*}
-    \subsubsection{Alternate Negative Binomial Definition}
-    We can alternatively consider the number of failures \(Y\) until \(k\) successes:
-    \begin{equation*}
-        Y = N - k
-    \end{equation*}
-    The PMF and CDF for \(Y\) are given by:
-    \begin{align*}
-        \Pr{\left( Y = y \right)}    & = \dbinom{y + k - 1}{k - 1} \left( 1 - p \right)^y p^k                \\
-        \Pr{\left( Y \leq y \right)} & = \sum_{u = 0}^y \dbinom{u + k - 1}{k - 1} \left( 1 - p \right)^u p^k
-    \end{align*}
-    for number of failures \(y \geq 0\). This gives the following summary statistics using
-    transformation rules:
-    \begin{align*}
-        \E{\left( Y \right)}   & = \frac{k \left( 1 - p \right)}{p}   \\
-        \Var{\left( Y \right)} & = \frac{k \left( 1 - p \right)}{p^2}
-    \end{align*}
+    \subsection{Alternate Negative Binomial Definition}
+    Number of failures \(Y = N - k\) until \(k\) successes:
     \subsection{Poisson Distribution}
-    A Poisson distribution describes the probability distribution of the number of events \(N\) which occur over a fixed interval of time \(\lambda\).
-
-    A discrete random variable \(N\) with a Poisson distribution is denoted
-    \begin{equation*}
-        N \sim \operatorname{Pois}{\left( \lambda \right)}
-    \end{equation*}
-    with
-    \begin{align*}
-        \Pr{\left( N = n \right)}    & = \frac{\lambda^n e^{-\lambda}}{n!}                \\
-        \Pr{\left( N \leq n \right)} & = e^{-\lambda} \sum_{u = 0}^n \frac{\lambda^u}{u!}
-    \end{align*}
-    for number of events \(n \geq 0\).
-    We can also summarise the following:
-    \begin{align*}
-        \E{\left( N \right)}   & = \lambda \\
-        \Var{\left( N \right)} & = \lambda
-    \end{align*}
+    Number of events \(N\) which occur over a fixed interval of time \(\lambda\).
     \subsection{Modelling Count Data}
-    If we want to utilise these distributions to model data, we can use the following observations:
     \begin{itemize}
         \item Poisson (mean = variance)
         \item Binomial (underdispersed, mean > variance)
         \item Geometric/Negative Binomial (overdispersed, mean < variance)
     \end{itemize}
     \section{Special Continuous Distributions}
-    \subsection{Continuous Uniform Distribution}
-    A continuous uniform distribution describes the probability distribution of an outcome within some
-    interval, where the probability of an outcome in one interval is the same as all other intervals of the same length.
-
-    A continuous random variable \(X\) with a continuous uniform distribution is denoted
+    \subsection{Uniform Distribution}
+    Outcome \(X\) within some interval, where the probability of an outcome in one interval is the same as all other intervals of the same length.
     \begin{equation*}
-        X \sim \operatorname{U}{\left( a,\: b \right)}
+        m = \frac{a + b}{2}
     \end{equation*}
-    with
-    \begin{align*}
-        f\left( x \right) & = \frac{1}{b - a}     \\
-        F\left( x \right) & = \frac{x - a}{b - a}
-    \end{align*}
-    for outcomes \(a < x < b\).
-    We can also summarise the following:
-    \begin{align*}
-        \E{\left( X \right)}   & = \frac{a + b}{2}                   \\
-        \Var{\left( X \right)} & = \frac{\left( b - a \right)^2}{12} \\
-        m                      & = \frac{a + b}{2}
-    \end{align*}
     \subsection{Exponential Distribution}
-    An exponential distribution describes the probability distribution of the time between events with rate \(\eta\).
-
-    A continuous random variable \(T\) with an exponential distribution is denoted
+    Time \(T\) between events with rate \(\eta\).
     \begin{equation*}
-        T \sim \operatorname{Exp}{\left( \eta \right)}
+        m = \frac{\ln{\left( 2 \right)}}{\eta}
     \end{equation*}
-    with
-    \begin{align*}
-        f\left( t \right) & = \eta e^{-\eta t} \\
-        F\left( t \right) & = 1 - e^{-\eta t}
-    \end{align*}
-    for time \(t > 0\).
-    We can also summarise the following:
-    \begin{align*}
-        \E{\left( X \right)}   & = \frac{1}{\eta}                     \\
-        \Var{\left( X \right)} & = \frac{1}{12}                       \\
-        m                      & = \frac{\ln{\left( 2 \right)}}{\eta}
-    \end{align*}
     \subsection{Memoryless Property}
-    In an exponential distribution with \(T \sim \operatorname{Exp}{\left( \eta \right)}\),
-    the distribution of the waiting time \(t + s\) until a certain event does not depend on
-    how much time \(t\) has already passed.
-    \begin{equation*}
-        \Pr{\left( T > s + t \,\vert\, T > t \right)} = \Pr{\left( T > s \right)}.
-    \end{equation*}
-    The same property also applies in an Geometric distribution with \(N \sim \operatorname{Geom}{\left( p \right)}\).
+    For Exponential and Geometric distributions:
+    \begin{align*}
+        \Pr{\left( T > s + t \,\vert\, T > t \right)} & = \Pr{\left( T > s \right)}  \\
+        \Pr{\left( N > s + n \,\vert\, N > n \right)} & = \Pr{\left( N > s \right)}.
+    \end{align*}
     \subsection{Normal Distribution}
-    The normal distribution is used to represent many random situations, in particular, measurements and their errors.
-    This distribution arises in many statistical problems and can be used to \linebreak approximate other distributions
-    under certain conditions.
-
-    A continuous random variable \(X\) with a normal distribution is denoted
-    \begin{equation*}
-        X \sim \operatorname{N}{\left( \mu,\: \sigma^2 \right)}
-    \end{equation*}
-    with
-    \begin{align*}
-        f\left( t \right) & = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{\left( x - \mu \right)^2}{2 \sigma^2}}    \\
-        F\left( t \right) & = \frac{1}{2} \left( 1 + \erf{\left( \frac{x - \mu}{\sigma \sqrt{2}} \right)} \right)
-    \end{align*}
-    for \(x \in \R\) where \(\erf{\left( z \right)} = \frac{2}{\sqrt{\pi}} \int_0^z e^{-t^2} \odif{t}\) is the error function.
-    We can also summarise the following:
-    \begin{align*}
-        \E{\left( X \right)}   & = \mu      \\
-        \Var{\left( X \right)} & = \sigma^2
-    \end{align*}
-    Given the complexity of the analytic expressions for the PDF and CDF of the normal distribution, we often
-    use software to numerically determine probabilities associated with normal distributions.
+    Used to represent random situations, i.e., measurements and their errors.
+    Also used to approximate other distributions under certain conditions.
     \subsection{Standard Normal Distribution}
     Given \(X \sim \operatorname{N}{\left( \mu,\: \sigma^2 \right)}\), consider the transformation
     \begin{equation*}
         Z = \frac{X - \mu}{\sigma}
     \end{equation*}
-    so that \(Z \sim \operatorname{N}{\left( 0,\: 1 \right)}\). This distribution is called the standard normal distribution.
-    This allows us to deal with the standard normal distribution regardless of \(\mu\) and \(\sigma\).
+    so that \(Z \sim \operatorname{N}{\left( 0,\: 1 \right)}\). 
     \section{Central Limit Theorem}
     The central limit theorem states that the sum of independent and identically distributed random variables, when properly standardised,
     can be approximated by a normal distribution, as the number of elements increases.
@@ -743,11 +546,11 @@
     {\small
     \begin{equation*}
         \begin{matrix}[c|ccc] % chktex 44
-                               & y_1                                    & \cdots & y_n                                    \\
+                   & y_1                                    & \cdots & y_n                                    \\
             \hline % chktex 44
-            x_1                & \Pr{\left( X = x_1,\: Y = y_1 \right)} & \cdots & \Pr{\left( X = x_1,\: Y = y_n \right)} \\
-            \vdots             & \vdots                                 & \ddots & \vdots                                 \\
-            x_n                & \Pr{\left( X = x_n,\: Y = y_1 \right)} & \cdots & \Pr{\left( X = x_n,\: Y = y_n \right)}
+            x_1    & \Pr{\left( X = x_1,\: Y = y_1 \right)} & \cdots & \Pr{\left( X = x_1,\: Y = y_n \right)} \\
+            \vdots & \vdots                                 & \ddots & \vdots                                 \\
+            x_n    & \Pr{\left( X = x_n,\: Y = y_1 \right)} & \cdots & \Pr{\left( X = x_n,\: Y = y_n \right)}
         \end{matrix}
     \end{equation*}
     }
