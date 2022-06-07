@@ -87,7 +87,7 @@
         A \left(B \cup C\right)        & = AB \cup AC                                      \\
         A \cup BC                      & = \left( A \cup B \right) \left( A \cup C \right)
     \end{align*}
-    \section{Probability}
+    \subsection{Probability}
     Measure of the likeliness of an event occurring
     \begin{equation*}
         \Pr{\left( A \right)} \quad\quad \text{or} \quad\quad \mathrm{P}\left( A \right)
@@ -140,7 +140,6 @@
     %     \Pr{\left( W_i \right)} = p,
     % \end{equation*}
     % \(\Pr{\left( S \right)}\) will be a function of \(p\) defined \(f:\left[ 0,\; 1 \right] \to \left[ 0,\; 1 \right]\).
-    \section{Independence}
     \subsection{Conditional probability}
     The probability of event \(A\) given \(B\) has already occurred
     \begin{equation*}
@@ -206,29 +205,22 @@
         \Pr{\left( A \,\vert\, B \right)} & = \frac{\Pr{\left( A \right)}}{\Pr{\left( B \right)}}
     \end{align*}
     These events are also highly dependent.
-    \section{Total Probability}
-    \subsection{Marginal probability}
-    Marginal probability is the probability of an event \linebreak irrespective of the outcome of another variable.
-    \begin{theorem}[Total probability for complements]
-        By writing the event \(A\) as \(AB \cup A\overline{B}\), and noting that \(AB\) and \(A\overline{B}\) are disjoint,
-        the marginal probability of \(A\) is given by
-        \begin{equation*}
-            \Pr{\left( A \right)} = \Pr{\left( AB \right)} + \Pr{\left( A\overline{B} \right)}.
-        \end{equation*}
-        By applying the multiplication rule to each joint probability:
-        \begin{equation*}
-            \Pr{\left( A \right)} = \Pr{\left( A \,\vert\, B \right)}\Pr{\left( B \right)} + \Pr{\left( A \,\vert\, \overline{B} \right)}\Pr{\left( \overline{B} \right)}
-        \end{equation*}
-    \end{theorem}
-    \begin{theorem}[Law of total probability]
-        The previous theorem partitioned \(\Omega\) into disjoint events \(B\) and \(\overline{B}\).
-
-        By partitioning \(\Omega\) into a collection of disjoint events \(B_1,\; B_2,\; \dots,\; B_n\),
-        such that \(\bigcup_{i=1}^n B_i = \Omega\), we have
-        \begin{equation*}
-            \Pr{\left( A \right)} = \sum_{i = 1}^n \Pr{\left( A \,\vert\, B_i \right)}\Pr{\left( B_i \right)}
-        \end{equation*}
-    \end{theorem}
+    \subsection{Marginal Probability}
+    The probability of an event irrespective of the outcome of another variable.
+    \subsection{Total Probability}
+    \(A = AB \cup A\overline{B}\)
+    \begin{align*}
+        \Pr{\left( A \right)} & = \Pr{\left( AB \right)} + \Pr{\left( A\overline{B} \right)} \\
+        \Pr{\left( A \right)} & = \begin{aligned}[t]
+                                      \Pr{\left( A \,\vert\, B \right)}\Pr{\left( B \right)} \\
+                                      + \Pr{\left( A \,\vert\, \overline{B} \right)}\Pr{\left( \overline{B} \right)}
+                                  \end{aligned}
+    \end{align*}
+    In general, partition \(\Omega\) into disjoint events \(B_1,\; B_2,\; \dots,\; B_n\),
+    such that \(\bigcup_{i=1}^n B_i = \Omega\)
+    \begin{equation*}
+        \Pr{\left( A \right)} = \sum_{i = 1}^n \Pr{\left( A \,\vert\, B_i \right)}\Pr{\left( B_i \right)}
+    \end{equation*}
     \subsection{Bayes' Theorem}
     \begin{equation*}
         \Pr{\left( A \,\vert\, B \right)} = \frac{\Pr{\left( B \,\vert\, A \right)}\Pr{\left( A \right)}}{\Pr{\left( B \right)}}
@@ -236,50 +228,41 @@
     \section{Combinatorics}
     \subsection{Number of outcomes}
     Let \(\abs{A}\) denote the number of outcomes in an event \(A\).
-    \begin{theorem}[Addition principle]
-        Given a sample space \(S\) with \(k\) disjoint events \({\left\{ S_1,\:\ldots,\:S_k \right\}}\),
-        where the \(i\)th event has \(n_i\) possible outcomes,
-        the number of possible samples from any event is given by
+    
+    For \(k\) disjoint events \({\left\{ S_1,\:\ldots,\:S_k \right\}}\)
+    where the \(i\)th event has \(n_i\) possible outcomes,
+    \subsection{Addition principle}
+        Number of possible samples from any event
         \begin{equation*}
-            \abs{\bigcup_{i = 0}^{k} S_i} = \sum_{i = 1}^k n_i
+            \abs*{\bigcup_{i = 0}^{k} S_i} = \sum_{i = 1}^k n_i
         \end{equation*}
-    \end{theorem}
-    \begin{theorem}[Multiplication principle]
-        Given a sample space \(S\) with \(k\) events \({\left\{ S_1,\:\ldots,\:S_k \right\}}\),
-        where the \(i\)th event has \(n_i\) possible outcomes,
-        the number of possible samples from every event is given by
+    \subsection{Multiplication principle}
+        Number of possible samples from every event
         \begin{equation*}
-            \abs{\bigcap_{i=0}^{k} S_i} = \prod_{i = 1}^k n_i
+            \abs*{\bigcap_{i=0}^{k} S_i} = \prod_{i = 1}^k n_i
         \end{equation*}
-    \end{theorem}
-    \begin{theorem}[Counting probability]
-        Given a sample space \(S\) with equally likely outcomes, the probability
-        of an event \(S_i \subset S\) is given by
+    \subsection{Counting probability}
+        If \(S_i\) has equally likely outcomes
         \begin{equation*}
             \Pr{\left( S_i \right)} = \frac{\abs{S_i}}{\abs{S}}
         \end{equation*}
-    \end{theorem}
     \subsection{Ordered Sampling with Replacement}
-    When ordering is important and repetition is allowed,
-    the total number of ways to choose \(k\) objects from a set with \(n\) elements is
+    Number of ways to choose \(k\) objects from a set with \(n\) elements
     \begin{equation*}
         n^k
     \end{equation*}
     \subsection{Ordered Sampling without Replacement}
-    When ordering is important and repetition is not allowed,
-    the total number of ways to arrange \(k\) objects from a set of \(n\) elements is
-    known as a \(k\)-permutation of \(n\)-elements denoted \(\prescript{n}{}{P}_k\)
+    Number of ways to arrange \(k\) objects from a set of \(n\) elements,
+    or the \(k\)-permutation of \(n\)-elements
     \begin{align*}
-        \prescript{n}{}{P}_k & = n \times \left( n - 1 \right) \times \cdots \times \left( n - k + 1 \right) \\
-                             & = \frac{n!}{\left( n - k \right)!}
+        \prescript{n}{}{P}_k & = \frac{n!}{\left( n - k \right)!}
     \end{align*}
     for \(0 \leq k \leq n\).
-    \subsection{Permutation of \(n\) elements}
+    
     An \(n\)-permutation of \(n\) elements is the permutation of those elements.
     In this case, \(k = n\), so that
     \begin{align*}
-        \prescript{n}{}{P}_n & = n \times \left( n - 1 \right) \times \cdots \times \left( n - n + 1 \right) \\
-                             & = n!
+        \prescript{n}{}{P}_n & = n!
     \end{align*}
     \subsection{Unordered Sampling without Replacement}
     When ordering is not important and repetition is not allowed,
@@ -297,7 +280,6 @@
     \begin{equation*}
         \binom{n + k - 1}{k}
     \end{equation*}
-    \section{Random Variables and Distributions}
     \section{Random Variables}
     \subsection{Random variable}
     A random variable \(X\) is a measurable variable whose value holds some uncertainty.
