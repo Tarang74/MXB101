@@ -8,8 +8,8 @@
 \usepackage{multicol} % Use multiple columns
 \usepackage[explicit]{titlesec} % Modify section heading styles
 
-\titleformat{\section}{\normalfont\bfseries}{}{0em}{#1}
-\titleformat{\subsection}{\normalfont\small\bfseries}{}{0em}{#1}
+\titleformat{\section}{\raggedright\normalfont\bfseries}{}{0em}{#1}
+\titleformat{\subsection}{\raggedright\normalfont\small\bfseries}{}{0em}{#1}
 
 %% A4 page
 \geometry{
@@ -265,24 +265,19 @@
         \prescript{n}{}{P}_n & = n!
     \end{align*}
     \subsection{Unordered Sampling without Replacement}
-    When ordering is not important and repetition is not allowed,
-    the total number of ways to choose \(k\) objects from a set of \(n\) elements is
-    known as a \(k\)-combination of \(n\)-elements denoted \(\prescript{n}{}{C}_k\) or \(\binom{n}{k}\)
+    Number of ways to choose \(k\) objects from a set of \(n\) elements,
+    or the \(k\)-combination of \(n\)-elements
     \begin{align*}
-        \prescript{n}{}{C}_k & = \frac{\prescript{n}{}{P}_k}{k!}     \\
-                             & = \frac{n!}{k! \left( n - k \right)!}
+        \prescript{n}{}{C}_k = \frac{\prescript{n}{}{P}_k}{k!} = \frac{n!}{k! \left( n - k \right)!}
     \end{align*}
-    for \(0 \leq k \leq n\). We divide by \(k!\) because any \(k\)-element subset of \(n\)-elements % chktex 40
-    can be ordered in \(k!\) ways. % chktex 40
+    for \(0 \leq k \leq n\).
     \subsection{Unordered Sampling with Replacement}
-    When ordering is not important and repetition is allowed,
-    the total number of ways to choose \(k\) objects from a set with \(n\) elements is
+    Number of ways to choose \(k\) objects from a set with \(n\) elements
     \begin{equation*}
         \binom{n + k - 1}{k}
     \end{equation*}
     \section{Random Variables}
-    \subsection{Random variable}
-    A random variable \(X\) is a measurable variable whose value holds some uncertainty.
+    A measurable variable whose value holds some uncertainty.
     An event is when a random variable assumes a certain value or range of values.
     \subsection{Discrete random variables}
     A discrete random variable takes discrete values.
