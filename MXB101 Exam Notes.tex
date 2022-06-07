@@ -493,21 +493,14 @@
     Here each individual trial is a Bernoulli trial, so that \(X\) can be written as the sum of
     \(n\) \textit{independent and identically distributed} (iid) Bernoulli random variables, \(Y_1,\: Y_2,\: \dots,\: Y_n\).
     \begin{align*}
-        X & = Y_1 + Y_2 + \cdots + Y_n, & Y_i & \overset{\mathrm{iid}}{\sim} \operatorname{Bernoulli}{\left( p \right)} : \forall i \in \left\{ 1,\: 2,\: \dots,\: n \right\}.
+        X & = Y_1 + Y_2 + \cdots + Y_n \\
+        Y_i & \overset{\mathrm{iid}}{\sim} \operatorname{Bernoulli}{\left( p \right)} : \forall i \in \left\{ 1,\: 2,\: \dots,\: n \right\}.
     \end{align*}
     We can then summarise the following:
     \begin{align*}
         \E{\left( X \right)}   & = np                      \\
         \Var{\left( X \right)} & = np \left( 1 - p \right)
     \end{align*}
-    \begin{proof}
-        Given \(n\) trials, the probability of \(x\) successes will be \(p^x\).
-        Similarly the probability of \(n - x\) failures will be \(\left( 1 - p \right)^{n - x}\).
-
-        We then consider the number of ways to choose \(x\) successes out of \(n\) trials, i.e., \(\dbinom{n}{x}\).
-
-        The intersection of these three events gives the PMF for a binomial distribution.
-    \end{proof}
     \subsection{Geometric Distribution}
     A geometric distribution describes the probability distribution of the number of trials up to and including
     the first success, where each trial is independent and has the same probability of success \(p\).
@@ -568,15 +561,6 @@
         \E{\left( N \right)}   & = \frac{k}{p}                        \\
         \Var{\left( N \right)} & = \frac{k \left( 1 - p \right)}{p^2}
     \end{align*}
-    \begin{proof}
-        Given \(n\) trials, the probability of \(k\) successes will be \(p^k\).
-        Similarly the probability of \(n - k\) failures will be \(\left( 1 - p \right)^{n - k}\).
-
-        We then consider the number of ways to arrange \(k - 1\) successes for \(n - 1\) trials,
-        because the last trial must be a success, i.e., \(\dbinom{n - 1}{k - 1}\).
-
-        The intersection of these three events gives the PMF for a negative binomial distribution.
-    \end{proof}
     \subsubsection{Alternate Negative Binomial Definition}
     We can alternatively consider the number of failures \(Y\) until \(k\) successes:
     \begin{equation*}
@@ -658,19 +642,6 @@
         \Var{\left( X \right)} & = \frac{1}{12}                       \\
         m                      & = \frac{\ln{\left( 2 \right)}}{\eta}
     \end{align*}
-    \begin{proof}
-        By considering an event taking longer than \(t\) seconds, we can represent this as nothing happening
-        over the interval \(\interval{0}{t}\). Using \(T \sim \operatorname{Exp}{\left( \eta \right)}\) and
-        \(N \sim \operatorname{Pois}{\left( \eta t \right)}\), we have
-        \begin{equation*}
-            \Pr{\left( T > t \right)} = \Pr{\left( N = 0 \right)} = e^{-\eta t}
-        \end{equation*}
-        where \(\lambda = \eta t\). The CDF for the exponential distribution is then
-        \begin{align*}
-            \Pr{\left( T < t \right)} & = 1 - \Pr{\left( T > t \right)} \\
-                                      & = 1 - e^{-\eta t}.
-        \end{align*}
-    \end{proof}
     \subsection{Memoryless Property}
     In an exponential distribution with \(T \sim \operatorname{Exp}{\left( \eta \right)}\),
     the distribution of the waiting time \(t + s\) until a certain event does not depend on
@@ -792,15 +763,17 @@
         \sum_{y \in \Omega_2} \sum_{x \in \Omega_1} \Pr{\left( X = x,\: Y = y \right)} = 1.
     \end{align*}
     The joint probability mass function can be shown using a table:
+    {\small
     \begin{equation*}
         \begin{matrix}[c|ccc] % chktex 44
-            X=x \backslash Y=y & y_1                                    & \cdots & y_n                                    \\
+                               & y_1                                    & \cdots & y_n                                    \\
             \hline % chktex 44
             x_1                & \Pr{\left( X = x_1,\: Y = y_1 \right)} & \cdots & \Pr{\left( X = x_1,\: Y = y_n \right)} \\
             \vdots             & \vdots                                 & \ddots & \vdots                                 \\
             x_n                & \Pr{\left( X = x_n,\: Y = y_1 \right)} & \cdots & \Pr{\left( X = x_n,\: Y = y_n \right)}
         \end{matrix}
     \end{equation*}
+    }
     \subsection{Bivariate probability density function}
     The distribution over the joint space of two continuous random variables \(X\) and \(Y\) is  given by a
     bivariate probability density function \(f\left( x,\: y \right)\)
@@ -813,27 +786,6 @@
         \forall x \in \Omega_1 : \forall y \in \Omega_2 : f\left( x,\: y \right) \geq 0 &  & \text{and} &  &
         \int_{x \in \Omega_1} \int_{y \in \Omega_2} f\left( x,\: y \right) \odif{y} \odif{x} = 1.
     \end{align*}
-    When considering the sum of these two variables, we must consider the appropriate bounds.
-
-    For \(x_1 + y_1 < a < x_2 + y_2\), if:
-    \begin{itemize}
-        \item \(a - y_2 \leq x_1\) and \(a - y_1 \leq x_2\):
-              \begin{equation*}
-                  \Pr{\left( X + Y > a \right)} = \int_{x_1}^{a - y_1} \int_{a - x}^{y_2} f\left( x,\: y \right) \odif{y} \odif{x} + \int_{a - y_1}^{x_2} f\left( x \right) \odif{x}
-              \end{equation*}
-        \item \(a - y_2 \leq x_1\) and \(a - y_1 > x_2\):
-              \begin{equation*}
-                  \Pr{\left( X + Y > a \right)} = \int_{x_1}^{x_2} \int_{a - x}^{y_2} f\left( x,\: y \right) \odif{y} \odif{x}
-              \end{equation*}
-        \item \(a - y_2 > x_1\) and \(a - y_1 \leq x_2\):
-              \begin{equation*}
-                  \Pr{\left( X + Y > a \right)} = \int_{a - y_2}^{a - y_1} \int_{a - x}^{y_2} f\left( x,\: y \right) \odif{y} \odif{x} + \int_{a - y_1}^{x_2} f\left( x \right) \odif{x}
-              \end{equation*}
-        \item \(a - y_2 > x_1\) and \(a - y_1 > x_2\):
-              \begin{equation*}
-                  \Pr{\left( X + Y > a \right)} = \int_{a - y_2}^{x_2} \int_{a - x}^{y_2} f\left( x,\: y \right) \odif{y} \odif{x}
-              \end{equation*}
-    \end{itemize}
     \subsection{Marginal Probability}
     The marginal probability function can be obtained by calculating the probability function of each random variable.
     Once the function has been determined, we must specify the range of values that variable can take.
@@ -960,10 +912,6 @@
     If \(X\) and \(Y\) are dependent then
     \begin{equation*}
         \Var{\left( X \pm Y \right)} = \Var{\left( X \right)} + \Var{\left( Y \right)} \pm 2\Cov{\left( X,\: Y \right)}
-    \end{equation*}
-    similarly for the sum of three dependent random variables
-    \begin{equation*}
-        \Var{\left( X + Y + Z \right)} = \Var{\left( X \right)} + \Var{\left( Y \right)} + \Var{\left( Z \right)} + 2\Cov{\left( X,\: Y \right)} + 2\Cov{\left( X,\: Z \right)} + 2\Cov{\left( Y,\: Z \right)}
     \end{equation*}
     \subsection{Correlation}
     The covariance of two random variables describes the direction of a relationship, however
