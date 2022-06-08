@@ -19,6 +19,7 @@
 
 %% Hide horizontal rule 
 \renewcommand{\headrulewidth}{0pt}
+\fancyhead{}
 
 %% Hide page numbers
 \pagenumbering{gobble}
@@ -47,7 +48,7 @@
 \begin{multicols}{3}
     \section{Events and Probability}
     \subsection{Event}
-    A set of outcomes from a random experiment.
+    Set of outcomes from an experiment.
     \subsection{Sample Space}
     Set of all possible outcomes \(\Omega\).
     \subsection{Intersection}
@@ -56,10 +57,12 @@
         A \cap B \quad\quad \text{or} \quad\quad AB
     \end{equation*}
     \subsection{Disjoint}
-    Two events cannot occur simultaneously or have no common outcomes
-    \begin{equation*}
-        AB = \varnothing
-    \end{equation*}
+    No common outcomes
+    \begin{align*}
+        AB                                & = \varnothing                                    \\
+        \Pr{\left( AB \right)}            & = 0 \implies \Pr{\left( \varnothing \right)} = 0 \\
+        \Pr{\left( A \,\vert\, B \right)} & = 0
+    \end{align*}
     These events are dependent.
     \subsection{Union}
     Set of outcomes in either \(A\) or \(B\)
@@ -67,7 +70,7 @@
         A \cup B
     \end{equation*}
     \subsection{Complement}
-    Set of all outcomes not in \(A\), but in \(\Omega\) --- \(\overline{A} = \Omega \backslash A\).
+    Set of all outcomes not in \(A\), but in \(\Omega \) --- \(\overline{A} = \Omega \backslash A\).
     \begin{align*}
         A\overline{A}       & = \varnothing \\
         A \cup \overline{A} & = \Omega
@@ -80,6 +83,11 @@
     \begin{equation*}
         \forall A:A\subset \Omega \land \varnothing \subset A
     \end{equation*}
+    \begin{align*}
+        \Pr{\left( A \right)}             & \leq \Pr{\left( B \right)}                            \\
+        \Pr{\left( B \,\vert\, A \right)} & = 1                                                   \\
+        \Pr{\left( A \,\vert\, B \right)} & = \frac{\Pr{\left( A \right)}}{\Pr{\left( B \right)}}
+    \end{align*}
     \subsection{Identities}
     \begin{align*}
         A \left( BC \right)            & = \left( AB \right) C                             \\
@@ -107,14 +115,14 @@
     \end{equation*}
     For dependent events \(A\) and \(B\)
     \begin{equation*}
-        \Pr{\left( AB \right)} = \Pr{\left( A \,\vert\, B \right)} \Pr{\left( B \right)}
+        \Pr{\left( AB \right)} = \Pr{\left( A \,\vert \, B \right)} \Pr{\left( B \right)}
     \end{equation*}
     \subsection{Addition Rule}
     For independent \(A\) and \(B\)
     \begin{equation*}
         \Pr{\left( A \cup B \right)} = \Pr{\left( A \right)} + \Pr{\left( B \right)} - \Pr{\left( AB \right)}.
     \end{equation*}
-    If \(AB = \varnothing\), then \(\Pr{\left( AB \right)} = 0\), so that \(\Pr{\left( A \cup B \right)} = \Pr{\left( A \right)} + \Pr{\left( B \right)}\).
+    If \(AB = \varnothing \), then \(\Pr{\left( AB \right)} = 0\), so that \(\Pr{\left( A \cup B \right)} = \Pr{\left( A \right)} + \Pr{\left( B \right)}\).
     \subsection{De Morgan's Laws}
     \begin{align*}
         \overline{A \cup B} & = \overline{A} \ \overline{B}     \\
@@ -192,19 +200,6 @@
         \Pr{\left( A B C \right)} = \Pr{\left( A \right)} \Pr{\left( B \right)} \Pr{\left( C \right)}.
     \end{gather*}
     Independence should not be assumed unless explicitly stated.
-    \subsection{Disjoint Events}
-    Given \(AB = \varnothing\)
-    \begin{align*}
-        \Pr{\left( AB \right)}            & = 0 \implies \Pr{\left( \varnothing \right)} = 0 \\
-        \Pr{\left( A \,\vert\, B \right)} & = 0
-    \end{align*}
-    \subsection{Subsets}
-    If \(A \subset B\) then \(\Pr{\left( A \right)} \leq \Pr{\left( B \right)}\).
-    \begin{align*}
-        \Pr{\left( B \,\vert\, A \right)} & = 1                                                   \\
-        \Pr{\left( A \,\vert\, B \right)} & = \frac{\Pr{\left( A \right)}}{\Pr{\left( B \right)}}
-    \end{align*}
-    These events are also highly dependent.
     \subsection{Marginal Probability}
     The probability of an event irrespective of the outcome of another variable.
     \subsection{Total Probability}
@@ -260,7 +255,6 @@
     for \(0 \leq k \leq n\).
 
     An \(n\)-permutation of \(n\) elements is the permutation of those elements.
-    In this case, \(k = n\), so that
     \begin{align*}
         \prescript{n}{}{P}_n & = n!
     \end{align*}
@@ -276,12 +270,6 @@
     \begin{equation*}
         \binom{n + k - 1}{k}
     \end{equation*}
-    \section{Random Variables}
-    A measurable variable whose value holds some uncertainty.
-    An event is when a random variable assumes a certain value or range of values.
-    \subsection{Probability distribution}
-    The probability distribution of a random variable \(X\) is a function that links all outcomes \(x \in \Omega\)
-    to the probability that they will occur \(\Pr{\left( X = x \right)}\).
 \end{multicols}
 \begin{table}[H]
     \centering
@@ -296,7 +284,7 @@
         \( Y \sim \operatorname{Geometric}{\left( p \right)}\)     & \(y \geq 0\)                                           & \(\left( 1 - p \right)^y p\)                              & \(1 - \left( 1 - p \right)^{y + 1}\)                                     & \(\frac{1 - p}{p}\)                 & \(\frac{1 - p}{p^2}\)                         \\
         \( N \sim \operatorname{NB}{\left( k,\: p \right)}\)       & \(n \geq k\)                                           & \(\binom{n - 1}{k - 1} \left( 1 - p \right)^{n - k} p^k\) & \(\sum_{u = k}^n \binom{u - 1}{k - 1} \left( 1 - p \right)^{u - k} p^k\) & \(\frac{k}{p}\)                     & \(\frac{k\left( 1 - p \right)}{p^2}\)         \\
         \( Y \sim \operatorname{NB}{\left( k,\: p \right)}\)       & \(y \geq 0\)                                           & \(\binom{y + k - 1}{k - 1} \left( 1 - p \right)^y p^k\)   & \(\sum_{u = 0}^y \binom{u + k - 1}{k - 1} \left( 1 - p \right)^u p^k\)   & \(\frac{k\left( 1 - p \right)}{p}\) & \(\frac{k\left( 1 - p \right)}{p^2}\)         \\
-        \( N \sim \operatorname{Poisson}{\left( \lambda \right)}\) & \(n \geq 0\)                                           & \(\frac{\lambda^n e^{-\lambda}}{n!}\)                     & \(\sum_{u = 0}^n \frac{\lambda^u}{u!}\)                                  & \(\lambda\)                         & \(\lambda\)                                   \\
+        \( N \sim \operatorname{Poisson}{\left( \lambda \right)}\) & \(n \geq 0\)                                           & \(\frac{\lambda^n e^{-\lambda}}{n!}\)                     & \(e^{-\lambda} \sum_{u = 0}^n \frac{\lambda^u}{u!}\)                     & \(\lambda\)                         & \(\lambda\)                                   \\
         \bottomrule
     \end{tabular}
     % \caption{} % \label{}
@@ -305,103 +293,111 @@
     \centering
     \begin{tabular}{c c c c c c}
         \toprule
-        \textbf{Distribution}                                       & \textbf{Restrictions}                                  & \textbf{PMF}                                      & \textbf{CDF}                                                     & \(\E{\left( X \right)}\) & \(\Var{\left( X \right)}\)            \\
+        \textbf{Distribution}                                       & \textbf{Restrictions}                  & \textbf{PMF}                                                                         & \textbf{CDF}                                                                            & \(\E{\left( X \right)}\) & \(\Var{\left( X \right)}\)            \\
         \midrule
-        \(X \sim \operatorname{Uniform}{\left( a,\: b \right)}\)    & \(a < x < b\)                                          & \(\frac{1}{b - a}\)                               & \(\frac{x - a}{b - a}\)                                          & \(\frac{a + b}{2}\)      & \(\frac{\left( b - a \right)^2}{12}\) \\
-        \(T \sim \operatorname{Exp}{\left( \eta \right)}\)          & \(t > 0\) & \(\eta e^{-\eta t}\)              & \(1 - e^{-\eta t}\)                                                        & \(\frac{1}{\eta}\)                    & \(p \left( 1 - p \right)\)            \\
-        \(X \sim \operatorname{N}{\left( \mu,\: \sigma^2 \right)}\) & \(x \in \left\{ 0, \dots, n \right\}\)                 & \(\frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{\left( x - \mu \right)^2}{2 \sigma^2}}\) & \(\frac{1}{2} \left( 1 + \erf{\left( \frac{x - \mu}{\sigma \sqrt{2}} \right)} \right)\) & \(\mu\)                  & \(\sigma^2\)                          \\
+        \(X \sim \operatorname{Uniform}{\left( a,\: b \right)}\)    & \(a < x < b\)                          & \(\frac{1}{b - a}\)                                                                  & \(\frac{x - a}{b - a}\)                                                                 & \(\frac{a + b}{2}\)      & \(\frac{\left( b - a \right)^2}{12}\) \\
+        \(T \sim \operatorname{Exp}{\left( \eta \right)}\)          & \(t > 0\)                              & \(\eta e^{-\eta t}\)                                                                 & \(1 - e^{-\eta t}\)                                                                     & \(\frac{1}{\eta}\)       & \(p \left( 1 - p \right)\)            \\
+        \(X \sim \operatorname{N}{\left( \mu,\: \sigma^2 \right)}\) & \(x \in \left\{ 0, \dots, n \right\}\) & \(\frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{\left( x - \mu \right)^2}{2 \sigma^2}}\) & \(\frac{1}{2} \left( 1 + \erf{\left( \frac{x - \mu}{\sigma \sqrt{2}} \right)} \right)\) & \(\mu\)                  & \(\sigma^2\)                          \\
         \bottomrule
     \end{tabular}
     % \caption{} % \label{}
 \end{table}
-\begin{table}[H]
-    \centering
-    \begin{tabular}{c c c }
-        \toprule
-                                   & \textbf{Discrete}                              & \textbf{Continuous}                                    \\
-        \midrule
-        Valid probabilities        & \(0 \leq p_x \leq 1\)                          & \(f(x) \geq 0\)                                        \\
-        Cumulative probability     & \(\sum_{u \leq x} p_u\)                        & \(\int_{-\infty}^{x} f(u) \odif{u}\)                   \\
-        \(\E{\left( X \right)}\)   & \(\sum_{\Omega} xp_x\)                         & \(\int_{\Omega} xf(x)\odif{x}\)                        \\
-        \(\Var{\left( X \right)}\) & \(\sum_{\Omega} \left( x - \mu \right)^2 p_x\) & \(\int_{\Omega} \left( x - \mu \right)^2f(x)\odif{x}\) \\
-        \bottomrule
-    \end{tabular}
-    % \caption{} % \label{}
-\end{table}
-\begin{multicols}{3}
-    \subsection{Probability mass function}
-    \begin{equation*}
-        \Pr{\left( X = x \right)} = p_x
-    \end{equation*}
-    \subsection{Probability density function}
-    \begin{equation*}
-        \Pr{\left( x_1 \leq X \leq x_2 \right)} = \int_{x_1}^{x_2} f\left( x \right) \odif{x}
-    \end{equation*}
-    \subsection{Cumulative distribution function}
-    Computes the probability that the random variable is
-    less than or equal to a particular realisation \(x\).
+\begin{minipage}{126.1962963mm}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{c c c }
+            \toprule
+                                       & \textbf{Discrete}                              & \textbf{Continuous}                                    \\
+            \midrule
+            Valid probabilities        & \(0 \leq p_x \leq 1\)                          & \(f(x) \geq 0\)                                        \\
+            Cumulative probability     & \(\sum_{u \leq x} p_u\)                        & \(\int_{-\infty}^{x} f(u) \odif{u}\)                   \\
+            \(\E{\left( X \right)}\)   & \(\sum_{\Omega} xp_x\)                         & \(\int_{\Omega} xf(x)\odif{x}\)                        \\
+            \(\Var{\left( X \right)}\) & \(\sum_{\Omega} \left( x - \mu \right)^2 p_x\) & \(\int_{\Omega} \left( x - \mu \right)^2f(x)\odif{x}\) \\
+            \bottomrule
+        \end{tabular}
+        % \caption{} % \label{}
+    \end{table}
+    \begin{multicols}{2}
+        \section{Random Variables}
+        Measurable variable whose value holds some uncertainty.
+        An event is when a random variable assumes a certain value or range of values.
+        \subsection{Probability distribution}
+        The probability distribution of a random variable \(X\) is a function that links all outcomes \(x \in \Omega\)
+        to the probability that they will occur \(\Pr{\left( X = x \right)}\).
+        \subsection{Probability mass function}
+        \begin{equation*}
+            \Pr{\left( X = x \right)} = p_x
+        \end{equation*}
+        \subsection{Probability density function}
+        \begin{equation*}
+            \Pr{\left( x_1 \leq X \leq x_2 \right)} = \int_{x_1}^{x_2} f\left( x \right) \odif{x}
+        \end{equation*}
+        \subsection{Cumulative distribution function}
+        Computes the probability that the random variable is
+        less than or equal to a particular realisation \(x\).
 
-    \(F\left( x \right)\) is a valid CDF if:
-    \begin{enumerate}
-        \item \(F\) is monotonically increasing and continuous
-        \item \(\lim_{x \to -\infty} F\left( x \right) = 0\)
-        \item \(\lim_{x \to \infty} F\left( x \right) = 1\)
-    \end{enumerate}
-    \begin{equation*}
-        \odv{F\left( x \right)}{x} = \odv{}{x} \int_{-\infty}^x f\left( u \right) \odif{u} = f\left( x \right)
-    \end{equation*}
-    \subsection{Complementary CDF (survival)}
-    \begin{equation*}
-        \Pr{\left( X > x \right)} = 1 - \Pr{\left( X \leq x \right)} = 1 - F\left( x \right)
-    \end{equation*}
-    \subsection{\(p\)-Quantile}
-    \begin{equation*}
-        F\left( x \right) = \int_{-\infty}^x f\left( u \right) \odif{u} = p.
-    \end{equation*}
-    \subsection{Median}
-    \begin{equation*}
-        \int_{-\infty}^m f\left( u \right) \odif{u} = \int^{\infty}_m f\left( u \right) \odif{u} = \frac{1}{2}.
-    \end{equation*}
-    \subsection{Lower and upper quartile}
-    \begin{equation*}
-        \int_{-\infty}^{q_1} f\left( u \right) \odif{u} = \frac{1}{4}
-    \end{equation*}
-    and
-    \begin{equation*}
-        \int_{-\infty}^{q_2} f\left( u \right) \odif{u} = \frac{3}{4}.
-    \end{equation*}
-    \subsection{Quantile function}
-    \begin{equation*}
-        x = F^{-1}\left( p \right) = Q\left( p \right)
-    \end{equation*}
-    \subsection{Summary Statistics}
-    \subsection{Expectation (mean)}
-    Expected value given an infinite number of observations. For \(a < c < b\):
-    \begin{equation*}
-        \E{\left(X\right)} = \begin{aligned}[t]
-             & -\int_{a}^c F\left( x \right) \odif{x}                     \\
-             & + \int_c^b \left(1 - F\left( x \right)\right) \odif{x} + c
-        \end{aligned}
-    \end{equation*}
-    \subsection{Variance}
-    Measure of spread of the distribution (average squared distance of each value from the mean).
-    \begin{equation*}
-        \Var{\left( X \right)} = \sigma^2
-    \end{equation*}
-    Variance is also denoted as \(\sigma^2\).
-    \begin{equation*}
-        \Var{\left( X \right)} = \E{\left( X^2 \right)} - \E{\left( X \right)}^2
-    \end{equation*}
-    \subsection{Standard deviation}
-    \begin{equation*}
-        \sigma = \sqrt{\Var{\left( X \right)}}
-    \end{equation*}
-    \subsubsection{Transformations}
-    \begin{align*}
-        \E{\left( aX \pm b \right)}   & = a\E{\left( X \right)} \pm b \\
-        \Var{\left( aX \pm b \right)} & = a^2\Var{\left( X \right)}
-    \end{align*}
-    \section{Special Discrete Distributions}
+        \(F\left( x \right)\) is a valid CDF if:
+        \begin{enumerate}
+            \item \(F\) is monotonically increasing and continuous
+            \item \(\lim_{x \to -\infty} F\left( x \right) = 0\)
+            \item \(\lim_{x \to \infty} F\left( x \right) = 1\)
+        \end{enumerate}
+        \begin{equation*}
+            \odv{F\left( x \right)}{x} = \odv{}{x} \int_{-\infty}^x f\left( u \right) \odif{u} = f\left( x \right)
+        \end{equation*}
+        \subsection{Complementary CDF (survival)}
+        \begin{equation*}
+            \Pr{\left( X > x \right)} = 1 - \Pr{\left( X \leq x \right)} = 1 - F\left( x \right)
+        \end{equation*}
+        \subsection{\(p\)-Quantile}
+        \begin{equation*}
+            F\left( x \right) = \int_{-\infty}^x f\left( u \right) \odif{u} = p
+        \end{equation*}
+        \subsection{Median}
+        \begin{equation*}
+            \int_{-\infty}^m f\left( u \right) \odif{u} = \int^{\infty}_m f\left( u \right) \odif{u} = \frac{1}{2}
+        \end{equation*}
+        \subsection{Lower and upper quartile}
+        \begin{equation*}
+            \int_{-\infty}^{q_1} f\left( u \right) \odif{u} = \frac{1}{4}
+        \end{equation*}
+        and
+        \begin{equation*}
+            \int_{-\infty}^{q_2} f\left( u \right) \odif{u} = \frac{3}{4}
+        \end{equation*}
+        \subsection{Quantile function}
+        \begin{equation*}
+            x = F^{-1}\left( p \right) = Q\left( p \right)
+        \end{equation*}
+        \subsection{Expectation (mean)}
+        Expected value given an infinite number of observations. For \(a < c < b\):
+        \begin{equation*}
+            \E{\left(X\right)} = \begin{aligned}[t]
+                 & -\int_{a}^c F\left( x \right) \odif{x}                     \\
+                 & + \int_c^b \left(1 - F\left( x \right)\right) \odif{x} + c
+            \end{aligned}
+        \end{equation*}
+        \subsection{Variance}
+        Measure of spread of the distribution (average squared distance of each value from the mean).
+        \begin{equation*}
+            \Var{\left( X \right)} = \sigma^2
+        \end{equation*}
+        Variance is also denoted as \(\sigma^2\).
+        \begin{equation*}
+            \Var{\left( X \right)} = \E{\left( X^2 \right)} - \E{\left( X \right)}^2
+        \end{equation*}
+        \subsection{Standard deviation}
+        \begin{equation*}
+            \sigma = \sqrt{\Var{\left( X \right)}}
+        \end{equation*}
+    \end{multicols}
+\end{minipage}\hfill%
+\begin{minipage}{62.39259259mm}
+    % !!!
+    % \begin{align*}
+    %     \E{\left( aX \pm b \right)}   & = a\E{\left( X \right)} \pm b \\
+    %     \Var{\left( aX \pm b \right)} & = a^2\Var{\left( X \right)}
+    % \end{align*}
     \subsection{Uniform Distribution}
     Single trial \(X\) in a set of equally likely elements.
     \subsection{Bernoulli (binary) Distribution}
@@ -415,7 +411,7 @@
     \end{align*}
     \subsection{Geometric Distribution}
     Number of trials \(N\) up to and including the first success, where each trial is independent and has the same probability of success \(p\).
-    \subsection{Alternate Geometric Definition}
+    \subsection{Alternate Geometric}
     Number of failures \(Y = N - 1\) until a success.
     \subsection{Negative Binomial Distribution}
     Number of trials until \(k \geq 1\) successes, where each trial is independent and has the same probability of success \(p\).
@@ -423,7 +419,7 @@
         N   & = Y_1 + Y_2 + \cdots + Y_k                                                                                                \\
         Y_i & \overset{\mathrm{iid}}{\sim} \operatorname{Geom}{\left( p \right)} : \forall i \in \left\{ 1,\: 2,\: \dots,\: k \right\}.
     \end{align*}
-    \subsection{Alternate Negative Binomial Definition}
+    \subsection{Alternate Negative Binomial}
     Number of failures \(Y = N - k\) until \(k\) successes:
     \subsection{Poisson Distribution}
     Number of events \(N\) which occur over a fixed interval of time \(\lambda\).
@@ -433,7 +429,8 @@
         \item Binomial (underdispersed, mean > variance)
         \item Geometric/Negative Binomial (overdispersed, mean < variance)
     \end{itemize}
-    \section{Special Continuous Distributions}
+\end{minipage}
+\begin{minipage}{62.39259259mm}
     \subsection{Uniform Distribution}
     Outcome \(X\) within some interval, where the probability of an outcome in one interval is the same as all other intervals of the same length.
     \begin{equation*}
@@ -445,7 +442,7 @@
         m = \frac{\ln{\left( 2 \right)}}{\eta}
     \end{equation*}
     \subsection{Memoryless Property}
-    For Exponential and Geometric distributions:
+    For Exponential and Geometric:
     \begin{align*}
         \Pr{\left( T > s + t \,\vert\, T > t \right)} & = \Pr{\left( T > s \right)}  \\
         \Pr{\left( N > s + n \,\vert\, N > n \right)} & = \Pr{\left( N > s \right)}.
@@ -458,261 +455,407 @@
     \begin{equation*}
         Z = \frac{X - \mu}{\sigma}
     \end{equation*}
-    so that \(Z \sim \operatorname{N}{\left( 0,\: 1 \right)}\). 
-    \section{Central Limit Theorem}
-    The central limit theorem states that the sum of independent and identically distributed random variables, when properly standardised,
-    can be approximated by a normal distribution, as the number of elements increases.
-    \subsection{Approximating the Average of Random Variables}
-    Given a set of independent and identically distributed random variables \(X_1,\: \ldots,\: X_n\) from the distribution \(X\),
-    if \(\E{\left( X \right)} = \mu\) and \(\Var{\left( X \right)} = \sigma^2\), then we can define \(\overline{X} = \frac{1}{n} \sum_{i = 1}^n X_i\)
-    so that
-    \begin{align*}
-        \E{\left( \overline{X} \right)}   & = \mu                \\
-        \Var{\left( \overline{X} \right)} & = \frac{\sigma^2}{n}
-    \end{align*}
-    By standardising \(\overline{X}\), we can define
-    \begin{equation*}
-        Z = \lim_{n \to \infty} \frac{\overline{X} - \mu}{\sigma / \sqrt{n}}
-    \end{equation*}
-    so that \(Z \to \operatorname{N}{\left( 0,\: 1 \right)}\) as \(n \to \infty\).
-    \subsection{Approximating the Sum of Random Variables}
-    Given a set of independent and identically distributed random variables \(X_1,\: \ldots,\: X_n\) from the distribution \(X\),
-    if \(\E{\left( X \right)} = \mu\) and \(\Var{\left( X \right)} = \sigma^2\), then we can define \(\overline{Y} = \sum_{i = 1}^n X_i\)
-    so that
-    \begin{align*}
-        \E{\left( Y \right)}   & = n \mu      \\
-        \Var{\left( Y \right)} & = n \sigma^2
-    \end{align*}
-    Then for large \(n\)
-    \begin{equation*}
-        Y \sim \operatorname{N}{\left( n \mu,\: n \sigma^2 \right)}
-    \end{equation*}
-    \subsection{Approximating the Binomial Distribution}
-    \subsubsection{Normal Distribution}
-    Given a binomial distribution \(X \sim \operatorname{B}{\left( n,\: p \right)}\), we can write \(X\)
-    as the sum of \(n\) independent and identically distributed Bernoulli random variables
-    \(X_1,\: \ldots,\: X_n\), so that \(X_i \sim \operatorname{Bernoulli}{\left( p \right)}\).
+    so that \(Z \sim \operatorname{N}{\left( 0,\: 1 \right)}\).
+\end{minipage}\hfill%
+\begin{minipage}{126.1962963mm}
+    \begin{multicols}{2}
+        \section{Central Limit Theorem}
+        The sum of independent and identically distributed random variables, when properly standardised,
+        can be approximated by a normal distribution, as \(n \to \infty\).
 
-    Thus by the central limit theorem, we can use a normal approximation for \(X\), provided that \(n\) is large.
-    \begin{equation*}
-        X \approx Y \sim \operatorname{N}{\left( np,\: np\left( 1 - p \right) \right)}
-    \end{equation*}
+        Let \(X_1,\: \ldots,\: X_n \overset{iid}{\sim} X\), and
+        \(\E{\left( X \right)} = \mu\) and \(\Var{\left( X \right)} = \sigma^2\)
+        \subsection{Average of Random Variables}
+        If \(\overline{X} = \frac{1}{n} \sum_{i = 1}^n X_i\):
+        \begin{align*}
+            \E{\left( \overline{X} \right)}   & = \mu                \\
+            \Var{\left( \overline{X} \right)} & = \frac{\sigma^2}{n}
+        \end{align*}
+        By standardising \(\overline{X}\), we can define
+        \begin{equation*}
+            Z = \lim_{n \to \infty} \frac{\overline{X} - \mu}{\sigma / \sqrt{n}}
+        \end{equation*}
+        so that \(Z \to \operatorname{N}{\left( 0,\: 1 \right)}\) as \(n \to \infty\).
+        \subsection{Sum of Random Variables}
+        If \(\overline{Y} = \sum_{i = 1}^n X_i\):
+        \begin{align*}
+            \E{\left( Y \right)}   & = n \mu      \\
+            \Var{\left( Y \right)} & = n \sigma^2
+        \end{align*}
+        \begin{equation*}
+            Y \sim \operatorname{N}{\left( n \mu,\: n \sigma^2 \right)}, \quad n \to \infty
+        \end{equation*}
+        \subsection{Binomial Approximations}
+        If \(X \sim \operatorname{Binomial}{\left( n,\: p \right)}\):
+        \begin{equation*}
+            X \approx Y \sim \operatorname{N}{\left( np,\: np\left( 1 - p \right) \right)}
+        \end{equation*}
+        Sufficient for \(np > 5\) and \(n\left( 1 - p \right) > 5\).
 
-    In general, this approximation is sufficient when \(np > 5\) and \(n\left( 1 - p \right) > 5\).
-    \subsubsection{Poisson Distribution}
-    When \(np < 5\) we can use the Poisson distribution to approximate \(X\) with the mean \(np\):
-    \begin{equation*}
-        X \approx Y \sim \operatorname{Pois}{\left( np \right)}.
-    \end{equation*}
-    When \(n\left( 1 - p \right) < 5\) we can consider the number of failures \(W = n - X\), so that,
-    \begin{equation*}
-        W \approx Y \sim \operatorname{Pois}{\left( n\left( 1 - p \right) \right)}.
-    \end{equation*}
-    \subsubsection{Continuity Correction}
-    Given an approximation \(Y\) (either Normal or Poisson) for the binomial distribution \(X \sim \operatorname{B}{\left( n,\: p \right)}\) the equality
-    \begin{equation*}
-        \Pr{\left( X \leq x \right)} = \Pr{\left( X < x + 1 \right)}
-    \end{equation*}
-    must hold for any \(x\). Therefore by adding \(\frac{1}{2}\) we apply a continuity correction to the approximate probability:
-    \begin{equation*}
-        \Pr{\left( Y \leq x + \frac{1}{2} \right)}.
-    \end{equation*}
-    \subsection{Approximating a Poisson Distribution}
-    Given a set of independent Poisson distributions \(X_1,\: \ldots ,\: X_n\) where \(X_i \sim \operatorname{Pois}{\left( \lambda \right)}\)
-    so that \(\E{\left( X_i \right)} = \lambda\) and \(\Var{\left( X_i \right)} = \lambda\) for all \(i\).
+        If \(np < 5\):
+        \begin{equation*}
+            X \approx Y \sim \operatorname{Pois}{\left( np \right)}.
+        \end{equation*}
+        If \(n\left( 1 - p \right) < 5\), consider the number of failures \(W = n - X\):
+        \begin{equation*}
+            W \approx Y \sim \operatorname{Pois}{\left( n\left( 1 - p \right) \right)}.
+        \end{equation*}
+        \subsection{Continuity Correction}
+        \begin{equation*}
+            \Pr{\left( X \leq x \right)} = \Pr{\left( X < x + 1 \right)}
+        \end{equation*}
+        must hold for any \(x\). Therefore
+        \begin{equation*}
+            \Pr{\left( X \leq x \right)} \approx \Pr{\left( Y \leq x + \frac{1}{2} \right)}.
+        \end{equation*}
+        \subsection{Poisson Approximation}
+        If \(X_i \sim \operatorname{Poisson}{\left( \lambda \right)}\):
+        
+        Let \(X = \sum_{i = 1}^n X_i\):
+        \begin{align*}
+            \E{\left( X \right)}   & = n \lambda \\
+            \Var{\left( X \right)} & = n \lambda
+        \end{align*}
+        \begin{equation*}
+            X \approx Y \sim \operatorname{N}{\left( n\lambda,\: n\lambda \right)}.
+        \end{equation*}
+        Sufficient for \(n \lambda > 10\), and for accurate approximations \(n \lambda > 20\).
+    \end{multicols}
+\end{minipage}
+%     \section{Bivariate Distributions}
+%     \subsection{Bivariate probability mass function}
+%     The distribution over the joint space of two discrete random variables \(X\) and \(Y\) is given by a bivariate probability mass function:
+%     \begin{equation*}
+%         \Pr{\left( X = x,\: Y = y \right)} = p_{x,\: y}
+%     \end{equation*}
+%     for all pairs of \(x \in \Omega_1\) and \(y \in \Omega_2\). This function must satisfy
+%     \begin{align*}
+%         \forall x \in \Omega_1 : \forall y \in \Omega_2 : \Pr{\left( X = x,\: Y = y \right)} \geq 0 &  & \text{and} &  &
+%         \sum_{y \in \Omega_2} \sum_{x \in \Omega_1} \Pr{\left( X = x,\: Y = y \right)} = 1.
+%     \end{align*}
+%     The joint probability mass function can be shown using a table:
+%     {\small
+%     \begin{equation*}
+%         \begin{matrix}[c|ccc] % chktex 44
+%                    & y_1                                    & \cdots & y_n                                    \\
+%             \hline % chktex 44
+%             x_1    & \Pr{\left( X = x_1,\: Y = y_1 \right)} & \cdots & \Pr{\left( X = x_1,\: Y = y_n \right)} \\
+%             \vdots & \vdots                                 & \ddots & \vdots                                 \\
+%             x_n    & \Pr{\left( X = x_n,\: Y = y_1 \right)} & \cdots & \Pr{\left( X = x_n,\: Y = y_n \right)}
+%         \end{matrix}
+%     \end{equation*}
+%     }
+%     \subsection{Bivariate probability density function}
+%     The distribution over the joint space of two continuous random variables \(X\) and \(Y\) is  given by a
+%     bivariate probability density function \(f\left( x,\: y \right)\)
+%     over the intervals \(x \in \Omega_1\) and \(y \in \Omega_2\).
+%     \begin{equation*}
+%         \Pr{\left( x_1 \leq X \leq x_2,\: y_1 \leq Y \leq y_2 \right)} = \int_{x_1}^{x_2} \int_{y_1}^{y_2} f\left( x,\: y \right) \odif{y} \odif{x}
+%     \end{equation*}
+%     This function must satisfy
+%     \begin{align*}
+%         \forall x \in \Omega_1 : \forall y \in \Omega_2 : f\left( x,\: y \right) \geq 0 &  & \text{and} &  &
+%         \int_{x \in \Omega_1} \int_{y \in \Omega_2} f\left( x,\: y \right) \odif{y} \odif{x} = 1.
+%     \end{align*}
+%     \subsection{Marginal Probability}
+%     The marginal probability function can be obtained by calculating the probability function of each random variable.
+%     Once the function has been determined, we must specify the range of values that variable can take.
+%     \subsection{Marginal probability mass function}
+%     \begin{align*}
+%         \Pr{\left( X = x \right)} & = p_x = \sum_{y \in \Omega_2} \Pr{\left( X = x,\: Y = y \right)} \\
+%         \Pr{\left( Y = y \right)} & = p_y = \sum_{x \in \Omega_1} \Pr{\left( X = x,\: Y = y \right)}
+%     \end{align*}
+%     \subsection{Marginal probability density function}
+%     \begin{align*}
+%         \Pr{\left( X = x \right)} & = f\left( x \right) = \int_{y_1}^{y_2} f\left( x,\: y \right) \odif{y} \\
+%         \Pr{\left( Y = y \right)} & = f\left( y \right) = \int_{x_1}^{x_2} f\left( x,\: y \right) \odif{x}
+%     \end{align*}
+%     \subsection{Conditional Probability}
+%     Using the joint probability and marginal probability, we can determine the conditional probability function.
+%     Once the function has been determined, we must specify the range of values that variable can take.
+%     \subsection{Conditional probability mass function}
+%     \begin{equation*}
+%         \Pr{\left( X = x \,\vert\, Y = y \right)} = \frac{\Pr{\left( X = x,\: Y = y \right)}}{\Pr{\left( Y = y \right)}}.
+%     \end{equation*}
+%     It follows that
+%     \begin{equation*}
+%         \sum_{x \in \Omega_1} \Pr{\left( X = x \,\vert\, Y = y \right)} = 1
+%     \end{equation*}
+%     \subsection{Conditional probability density function}
+%     \begin{equation*}
+%         f\left( x \,\vert\, y \right) = \frac{f\left( x,\: y \right)}{f\left( y \right)}
+%     \end{equation*}
+%     It follows that
+%     \begin{equation*}
+%         \int_{x_1}^{x_2} f\left( x \,\vert\, y \right) \odif{x} = 1
+%     \end{equation*}
+%     \subsection{Independence}
+%     Two discrete random variables \(X\) and \(Y\) are independent if
+%     \begin{equation*}
+%         \Pr{\left( X = x \,\vert\, Y = y \right)} = \Pr{\left( X = x \right)}
+%     \end{equation*}
+%     for all pairs of \(x\) and \(y\). From this we can show that
+%     \begin{equation*}
+%         \Pr{\left( X = x ,\: Y = y \right)} = \Pr{\left( X = x \right)} \Pr{\left( Y = y \right)}
+%     \end{equation*}
+%     for all pairs of \(x\) and \(y\). If these random variables are not independent then,
+%     \begin{equation*}
+%         \Pr{\left( X = x ,\: Y = y \right)} = \Pr{\left( X = x \,\vert\, Y = y \right)} \Pr{\left( Y = y \right)}
+%     \end{equation*}
+%     To continuous random variables \(X\) and \(Y\) are independent if we can express \(f\left( x,\: y \right)\) as
+%     \begin{equation*}
+%         f\left( x,\: y \right) \propto g\left( x \right) h\left( y \right)
+%     \end{equation*}
+%     and if the joint range of \(X\) and \(Y\) do not depend on each other. This leads to
+%     \begin{equation*}
+%         f\left( x \,\vert\, y \right) = f\left( x \right).
+%     \end{equation*}
+%     \subsection{Law of Total Expectation}
+%     Given the conditional distribution of \(X \,\vert\, Y = y\), we can compute its expectation and variance.
+%     For discrete random variables, the conditional expectation is
+%     \begin{equation*}
+%         \E{\left( X \,\vert\, Y = y \right)} = \sum_{x\in\Omega_1} x \Pr{\left( X = x \,\vert\, Y = y \right)}
+%     \end{equation*}
+%     For continuous random variables, the conditional expectation is
+%     \begin{equation*}
+%         \E{\left( X \,\vert\, Y = y \right)} = \int_{x_1}^{x_2} x f\left( x \,\vert\, y \right) \odif{x}
+%     \end{equation*}
+%     The conditional variance is given by
+%     \begin{equation*}
+%         \Var{\left( X \,\vert\, Y = y \right)} = \E{\left( X^2 \,\vert\, Y = y \right)} - \E{\left( X \,\vert\, Y = y \right)}^2
+%     \end{equation*}
+%     When \(X\) and \(Y\) are independent,
+%     \begin{align*}
+%         \E{\left( X \,\vert\, Y = y \right)}   & = \E{\left( X \right)}   \\
+%         \Var{\left( X \,\vert\, Y = y \right)} & = \Var{\left( X \right)} \\
+%     \end{align*}
+%     By treating \(\E{\left( X \,\vert\, Y \right)}\) as a random variable of \(Y\), then
+%     we can calculate its expected value such that
+%     \begin{equation*}
+%         \E{\left( X \right)} = \E{\left( \E{\left( X \,\vert\, Y \right)} \right)}.
+%     \end{equation*}
+%     This is known as the law of total expectation.
+%     \subsection{Expectation}
+%     The following property holds for both dependent and independent random variables \(X\) and \(Y\)
+%     \begin{equation*}
+%         \E{\left( X \pm Y \right)} = \E{\left( X \right)} \pm \E{\left( Y \right)}
+%     \end{equation*}
+%     If \(X\) and \(Y\) are independent then
+%     \begin{equation*}
+%         \E{\left( XY \right)} = \E{\left( X \right)} \E{\left( Y \right)}
+%     \end{equation*}
+%     \subsection{Variance of Independent Random Variables}
+%     If \(X\) and \(Y\) are independent then
+%     \begin{align*}
+%         \Var{\left( X \pm Y \right)} & = \Var{\left( X \right)} + \Var{\left( Y \right)}                                                                                               \\
+%         \Var{\left( XY \right)}      & = \Var{\left( X \right)} \Var{\left( Y \right)} + \E{\left( X \right)}^2 \Var{\left( Y \right)} + \E{\left( Y \right)}^2 \Var{\left( X \right)}
+%     \end{align*}
+%     \subsection{Covariance}
+%     \subsection{Covariance}
+%     Covariance is a measure of the dependence between two random variables, it can be determined using
+%     \begin{align*}
+%         \Cov{\left( X,\: Y \right)} & = \E{\left( \left( X - \E{\left( X \right)} \right) \left( Y - \E{\left( Y \right)} \right) \right)} \\
+%                                     & = \E{\left( XY \right)} - \E{\left( X \right)} \E{\left( Y \right)}
+%     \end{align*}
+%     The covariance of \(X\) and \(Y\) is:
+%     \begin{description}
+%         \item[Positive] if an increase in one variable is more likely to result in an increase in
+%             the other variable.
+%         \item[Negative] if an increase in one variable is more likely to result in a decrease in
+%             the other variable.
+%         \item[Zero] if \(X\) and \(Y\) are independent. Note that the converse is not true.
+%     \end{description}
+%     The linear transformation of two random variables have the following covariance
+%     \begin{equation*}
+%         \Cov{\left( aX + b,\: cY + d \right)} = ac \Cov{\left( X,\: Y \right)}
+%     \end{equation*}
+%     for constants \(a\), \(b\), \(c\), and \(d\).
+%     \subsection{Joint expectation}
+%     The joint expectation of two discrete random variables is
+%     \begin{equation*}
+%         \E{\left( XY \right)} = \sum_{x\in\Omega_1} \sum_{y\in\Omega_2} xy \Pr{\left( X = x,\: Y = y \right)}
+%     \end{equation*}
+%     and for continuous random variables
+%     \begin{equation*}
+%         \E{\left( XY \right)} = \int_{x_1}^{x_2} \int_{x_1}^{x_2} xy f\left( x,\: y \right) \odif{y} \odif{x}.
+%     \end{equation*}
+%     \subsection{Variance of Dependent Random Variables}
+%     If \(X\) and \(Y\) are dependent then
+%     \begin{equation*}
+%         \Var{\left( X \pm Y \right)} = \Var{\left( X \right)} + \Var{\left( Y \right)} \pm 2\Cov{\left( X,\: Y \right)}
+%     \end{equation*}
+%     \subsection{Correlation}
+%     The covariance of two random variables describes the direction of a relationship, however
+%     it does not quantify the strength of such a relationship. The correlation explains both
+%     the direction and strength of a linear relationship between two random variables.
 
-    If we consider \(X = \sum_{i = 1}^n X_i\) then
-    \begin{align*}
-        \E{\left( X \right)}   & = n \lambda \\
-        \Var{\left( X \right)} & = n \lambda
-    \end{align*}
-    so that by the central limit theorem, we can use the approximation
-    \begin{equation*}
-        X \approx Y \sim \operatorname{N}{\left( n\lambda,\: n\lambda \right)}.
-    \end{equation*}
-    In general, this approximation is sufficient when \(n \lambda > 10\), and when an accurate approximation is desired, \(n \lambda > 20\).
-    \section{Bivariate Distributions}
-    \subsection{Bivariate probability mass function}
-    The distribution over the joint space of two discrete random variables \(X\) and \(Y\) is given by a bivariate probability mass function:
-    \begin{equation*}
-        \Pr{\left( X = x,\: Y = y \right)} = p_{x,\: y}
-    \end{equation*}
-    for all pairs of \(x \in \Omega_1\) and \(y \in \Omega_2\). This function must satisfy
-    \begin{align*}
-        \forall x \in \Omega_1 : \forall y \in \Omega_2 : \Pr{\left( X = x,\: Y = y \right)} \geq 0 &  & \text{and} &  &
-        \sum_{y \in \Omega_2} \sum_{x \in \Omega_1} \Pr{\left( X = x,\: Y = y \right)} = 1.
-    \end{align*}
-    The joint probability mass function can be shown using a table:
-    {\small
-    \begin{equation*}
-        \begin{matrix}[c|ccc] % chktex 44
-                   & y_1                                    & \cdots & y_n                                    \\
-            \hline % chktex 44
-            x_1    & \Pr{\left( X = x_1,\: Y = y_1 \right)} & \cdots & \Pr{\left( X = x_1,\: Y = y_n \right)} \\
-            \vdots & \vdots                                 & \ddots & \vdots                                 \\
-            x_n    & \Pr{\left( X = x_n,\: Y = y_1 \right)} & \cdots & \Pr{\left( X = x_n,\: Y = y_n \right)}
-        \end{matrix}
-    \end{equation*}
-    }
-    \subsection{Bivariate probability density function}
-    The distribution over the joint space of two continuous random variables \(X\) and \(Y\) is  given by a
-    bivariate probability density function \(f\left( x,\: y \right)\)
-    over the intervals \(x \in \Omega_1\) and \(y \in \Omega_2\).
-    \begin{equation*}
-        \Pr{\left( x_1 \leq X \leq x_2,\: y_1 \leq Y \leq y_2 \right)} = \int_{x_1}^{x_2} \int_{y_1}^{y_2} f\left( x,\: y \right) \odif{y} \odif{x}
-    \end{equation*}
-    This function must satisfy
-    \begin{align*}
-        \forall x \in \Omega_1 : \forall y \in \Omega_2 : f\left( x,\: y \right) \geq 0 &  & \text{and} &  &
-        \int_{x \in \Omega_1} \int_{y \in \Omega_2} f\left( x,\: y \right) \odif{y} \odif{x} = 1.
-    \end{align*}
-    \subsection{Marginal Probability}
-    The marginal probability function can be obtained by calculating the probability function of each random variable.
-    Once the function has been determined, we must specify the range of values that variable can take.
-    \subsection{Marginal probability mass function}
-    \begin{align*}
-        \Pr{\left( X = x \right)} & = p_x = \sum_{y \in \Omega_2} \Pr{\left( X = x,\: Y = y \right)} \\
-        \Pr{\left( Y = y \right)} & = p_y = \sum_{x \in \Omega_1} \Pr{\left( X = x,\: Y = y \right)}
-    \end{align*}
-    \subsection{Marginal probability density function}
-    \begin{align*}
-        \Pr{\left( X = x \right)} & = f\left( x \right) = \int_{y_1}^{y_2} f\left( x,\: y \right) \odif{y} \\
-        \Pr{\left( Y = y \right)} & = f\left( y \right) = \int_{x_1}^{x_2} f\left( x,\: y \right) \odif{x}
-    \end{align*}
-    \subsection{Conditional Probability}
-    Using the joint probability and marginal probability, we can determine the conditional probability function.
-    Once the function has been determined, we must specify the range of values that variable can take.
-    \subsection{Conditional probability mass function}
-    \begin{equation*}
-        \Pr{\left( X = x \,\vert\, Y = y \right)} = \frac{\Pr{\left( X = x,\: Y = y \right)}}{\Pr{\left( Y = y \right)}}.
-    \end{equation*}
-    It follows that
-    \begin{equation*}
-        \sum_{x \in \Omega_1} \Pr{\left( X = x \,\vert\, Y = y \right)} = 1
-    \end{equation*}
-    \subsection{Conditional probability density function}
-    \begin{equation*}
-        f\left( x \,\vert\, y \right) = \frac{f\left( x,\: y \right)}{f\left( y \right)}
-    \end{equation*}
-    It follows that
-    \begin{equation*}
-        \int_{x_1}^{x_2} f\left( x \,\vert\, y \right) \odif{x} = 1
-    \end{equation*}
-    \subsection{Independence}
-    Two discrete random variables \(X\) and \(Y\) are independent if
-    \begin{equation*}
-        \Pr{\left( X = x \,\vert\, Y = y \right)} = \Pr{\left( X = x \right)}
-    \end{equation*}
-    for all pairs of \(x\) and \(y\). From this we can show that
-    \begin{equation*}
-        \Pr{\left( X = x ,\: Y = y \right)} = \Pr{\left( X = x \right)} \Pr{\left( Y = y \right)}
-    \end{equation*}
-    for all pairs of \(x\) and \(y\). If these random variables are not independent then,
-    \begin{equation*}
-        \Pr{\left( X = x ,\: Y = y \right)} = \Pr{\left( X = x \,\vert\, Y = y \right)} \Pr{\left( Y = y \right)}
-    \end{equation*}
-    To continuous random variables \(X\) and \(Y\) are independent if we can express \(f\left( x,\: y \right)\) as
-    \begin{equation*}
-        f\left( x,\: y \right) \propto g\left( x \right) h\left( y \right)
-    \end{equation*}
-    and if the joint range of \(X\) and \(Y\) do not depend on each other. This leads to
-    \begin{equation*}
-        f\left( x \,\vert\, y \right) = f\left( x \right).
-    \end{equation*}
-    \subsection{Law of Total Expectation}
-    Given the conditional distribution of \(X \,\vert\, Y = y\), we can compute its expectation and variance.
-    For discrete random variables, the conditional expectation is
-    \begin{equation*}
-        \E{\left( X \,\vert\, Y = y \right)} = \sum_{x\in\Omega_1} x \Pr{\left( X = x \,\vert\, Y = y \right)}
-    \end{equation*}
-    For continuous random variables, the conditional expectation is
-    \begin{equation*}
-        \E{\left( X \,\vert\, Y = y \right)} = \int_{x_1}^{x_2} x f\left( x \,\vert\, y \right) \odif{x}
-    \end{equation*}
-    The conditional variance is given by
-    \begin{equation*}
-        \Var{\left( X \,\vert\, Y = y \right)} = \E{\left( X^2 \,\vert\, Y = y \right)} - \E{\left( X \,\vert\, Y = y \right)}^2
-    \end{equation*}
-    When \(X\) and \(Y\) are independent,
-    \begin{align*}
-        \E{\left( X \,\vert\, Y = y \right)}   & = \E{\left( X \right)}   \\
-        \Var{\left( X \,\vert\, Y = y \right)} & = \Var{\left( X \right)} \\
-    \end{align*}
-    By treating \(\E{\left( X \,\vert\, Y \right)}\) as a random variable of \(Y\), then
-    we can calculate its expected value such that
-    \begin{equation*}
-        \E{\left( X \right)} = \E{\left( \E{\left( X \,\vert\, Y \right)} \right)}.
-    \end{equation*}
-    This is known as the law of total expectation.
-    \subsection{Expectation}
-    The following property holds for both dependent and independent random variables \(X\) and \(Y\)
-    \begin{equation*}
-        \E{\left( X \pm Y \right)} = \E{\left( X \right)} \pm \E{\left( Y \right)}
-    \end{equation*}
-    If \(X\) and \(Y\) are independent then
-    \begin{equation*}
-        \E{\left( XY \right)} = \E{\left( X \right)} \E{\left( Y \right)}
-    \end{equation*}
-    \subsection{Variance of Independent Random Variables}
-    If \(X\) and \(Y\) are independent then
-    \begin{align*}
-        \Var{\left( X \pm Y \right)} & = \Var{\left( X \right)} + \Var{\left( Y \right)}                                                                                               \\
-        \Var{\left( XY \right)}      & = \Var{\left( X \right)} \Var{\left( Y \right)} + \E{\left( X \right)}^2 \Var{\left( Y \right)} + \E{\left( Y \right)}^2 \Var{\left( X \right)}
-    \end{align*}
-    \subsection{Covariance}
-    \subsection{Covariance}
-    Covariance is a measure of the dependence between two random variables, it can be determined using
-    \begin{align*}
-        \Cov{\left( X,\: Y \right)} & = \E{\left( \left( X - \E{\left( X \right)} \right) \left( Y - \E{\left( Y \right)} \right) \right)} \\
-                                    & = \E{\left( XY \right)} - \E{\left( X \right)} \E{\left( Y \right)}
-    \end{align*}
-    The covariance of \(X\) and \(Y\) is:
-    \begin{description}
-        \item[Positive] if an increase in one variable is more likely to result in an increase in
-            the other variable.
-        \item[Negative] if an increase in one variable is more likely to result in a decrease in
-            the other variable.
-        \item[Zero] if \(X\) and \(Y\) are independent. Note that the converse is not true.
-    \end{description}
-    The linear transformation of two random variables have the following covariance
-    \begin{equation*}
-        \Cov{\left( aX + b,\: cY + d \right)} = ac \Cov{\left( X,\: Y \right)}
-    \end{equation*}
-    for constants \(a\), \(b\), \(c\), and \(d\).
-    \subsection{Joint expectation}
-    The joint expectation of two discrete random variables is
-    \begin{equation*}
-        \E{\left( XY \right)} = \sum_{x\in\Omega_1} \sum_{y\in\Omega_2} xy \Pr{\left( X = x,\: Y = y \right)}
-    \end{equation*}
-    and for continuous random variables
-    \begin{equation*}
-        \E{\left( XY \right)} = \int_{x_1}^{x_2} \int_{x_1}^{x_2} xy f\left( x,\: y \right) \odif{y} \odif{x}.
-    \end{equation*}
-    \subsection{Variance of Dependent Random Variables}
-    If \(X\) and \(Y\) are dependent then
-    \begin{equation*}
-        \Var{\left( X \pm Y \right)} = \Var{\left( X \right)} + \Var{\left( Y \right)} \pm 2\Cov{\left( X,\: Y \right)}
-    \end{equation*}
-    \subsection{Correlation}
-    The covariance of two random variables describes the direction of a relationship, however
-    it does not quantify the strength of such a relationship. The correlation explains both
-    the direction and strength of a linear relationship between two random variables.
+%     The correlation of two random variables \(X\) and \(Y\) is denoted \(\rho\left( X,\: Y \right)\)
+%     \begin{equation*}
+%         \rho\left( X,\: Y \right) = \frac{\Cov{\left( X,\: Y \right)}}{\sqrt{\Var{\left( X \right)} \Var{\left( Y \right)}}}
+%     \end{equation*}
+%     where \(-1 \leq \rho\left( X,\: Y \right) \leq 1\).
 
-    The correlation of two random variables \(X\) and \(Y\) is denoted \(\rho\left( X,\: Y \right)\)
-    \begin{equation*}
-        \rho\left( X,\: Y \right) = \frac{\Cov{\left( X,\: Y \right)}}{\sqrt{\Var{\left( X \right)} \Var{\left( Y \right)}}}
-    \end{equation*}
-    where \(-1 \leq \rho\left( X,\: Y \right) \leq 1\).
+%     These value can be interpretted as follows:
+%     \begin{itemize}
+%         \item \(\rho\left( X,\: Y \right) > 0\) iff \(X\) and \(Y\) have a positive linear relationship.
+%         \item \(\rho\left( X,\: Y \right) < 0\) iff \(X\) and \(Y\) have a negative linear relationship.
+%         \item \(\rho\left( X,\: Y \right) = 0\) if \(X\) and \(Y\) are independent. Note that the converse is not true.
+%         \item \(\rho\left( X,\: Y \right) = 1\) iff \(X\) and \(Y\) have a perfect linear relationship with positive slope.
+%         \item \(\rho\left( X,\: Y \right) = -1\) iff \(X\) and \(Y\) have a perfect linear relationship with negative slope.
+%     \end{itemize}
+%     Note that the slope of a perfect linear relationship cannot be obtained from the correlation.
+%     \section{Markov Chains}
+%     A Markov chain is a discrete time and state stochastic process that describes how a state evolves over time.
+%     In this process, the set of all states is discrete and disjoint and states change probabilistically so that
+%     a step may not result in a changed state.
+%     At each step, the next state depends only on the current state of the random variable.
 
-    These value can be interpretted as follows:
-    \begin{itemize}
-        \item \(\rho\left( X,\: Y \right) > 0\) iff \(X\) and \(Y\) have a positive linear relationship.
-        \item \(\rho\left( X,\: Y \right) < 0\) iff \(X\) and \(Y\) have a negative linear relationship.
-        \item \(\rho\left( X,\: Y \right) = 0\) if \(X\) and \(Y\) are independent. Note that the converse is not true.
-        \item \(\rho\left( X,\: Y \right) = 1\) iff \(X\) and \(Y\) have a perfect linear relationship with positive slope.
-        \item \(\rho\left( X,\: Y \right) = -1\) iff \(X\) and \(Y\) have a perfect linear relationship with negative slope.
-    \end{itemize}
-    Note that the slope of a perfect linear relationship cannot be obtained from the correlation.
-\end{multicols}
+%     States are denoted by the random variable \(X_t\) at time step \(t\).
+%     \begin{definition}[Markov property]
+%         The state \(X_t\) is conditionally independent of \(X_{t-2}\), \(X_{t-3}\), \dots, \(X_0\) given \(X_{t-1}\).
+%         \begin{equation*}
+%             \Pr{\left( X_t = x_t \,\vert\, X_{t-1} = x_{t-1},\: X_{t-2} = x_{t-2},\: \ldots,\: X_{0} = x_{0} \right)} = \Pr{\left( X_t - x_t \,\vert\, X_{t-1} = x_{t-1} \right)}
+%         \end{equation*}
+%     \end{definition}
+%     \subsection{Homogeneous Markov Chain}
+%     A Markov chain is homogeneous when
+%     \begin{equation*}
+%         \Pr{\left( X_{t+n} = j \,\vert\, X_t = i \right)} = \Pr{\left( X_n = j \,\vert\, X_0 = i \right)} = p_{ij}^{(n)}
+%     \end{equation*}
+%     that is, the \(n\)-step conditional probabilities do not depend on the time step \(t\).
+%     \subsection{Transition Probability Matrix}
+%     A homogeneous Markov chain is characterised by the transition probability matrix \(\symbf{P} \in \R^{m \times m}\), where
+%     \(m\) is the number of states.
+%     \(\symbf{P}\) must fulfil the following properties:
+%     \begin{itemize}
+%         \item \(p_{i,j} = \Pr{\left( X_t = j \,\vert\, X_{t-1} = i \right)}\)
+%         \item \(p_{i,j} \geq 0 : \forall i,\: j\)
+%         \item \(\sum_{j=1}^m p_{i,j} = 1 : \forall j\)
+%     \end{itemize}
+%     \(\symbf{P}\) has the following form
+%     \begin{equation*}
+%         \symbf{P} = \quad \scriptscriptstyle{X_t} \overset{X_{t+1}}{\begin{bmatrix}
+%                 \phantom{p} & \phantom{p} \\
+%                 \phantom{p} & \phantom{p}
+%             \end{bmatrix}}
+%     \end{equation*}
+%     The \(n\)-step transition probability is given by \(\symbf{P}^n\).
+%     \subsection{Unconditional State Probabilities}
+%     The unconditional probability of being in state \(j\) at time \(n\) is given by
+%     \begin{equation*}
+%         \Pr{\left( X_n = j \right)} = p_j^{(n)}
+%     \end{equation*}
+%     Given multiple states, let \(\symbfit{s}^{(n)}\) denote the vector of all states \(p_j^{(n)}\) at
+%     time \(n\). Then
+%     \begin{align*}
+%         {\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(n-1)}}^\top \symbf{P} \quad \quad \text{and} \quad \quad {\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(0)}}^\top \symbf{P}^n
+%     \end{align*}
+%     \subsection{Stationary Distribution}
+%     At steady-state, the probability of being in a particular state does not change from one step to the next.
+%     This implies
+%     \begin{equation*}
+%         \symbfit{s}^{(n+1)} = \symbfit{s}^{(n)} \implies {\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(n)}}^\top \symbf{P}
+%     \end{equation*}
+%     The stationary distribution \(\symbfit{\pi}\) satisfies \(\symbfit{\pi}^\top = \symbfit{\pi}^\top \symbf{P}\).
+%     To determine \(\symbfit{\pi}\), we must use the equation \(\sum_{i = 1}^m \pi_i = 1\).
+%     \subsection{Limiting Distribution}
+%     Under certain conditions, as \(n \to \infty\), each row of \(\symbf{P}^n\) will be equal to \(\symbfit{\pi}^\top\),
+%     so that each state moves to the next step with the same probability. This is known as the limiting distribution.
+%     Here \(\symbfit{\pi}\) provides the long run probabilities of being in each state and the process forgets where it starts.
 
+%     A sufficient condition for the above is if \(\symbf{P}^n\) has positive entries for some finite \(n\).
+
+%     \textit{Note that a stationary distribution does not imply that a limiting distribution exists}.
+%     \section{Poisson Process}
+%     A Poisson process is a continuous time and discrete state stochastic process that counts events
+%     that occur randomly in time (or space).
+%     This process only requires the rate parameter \(\eta\) which describes the average rate at which events occur.
+%     This rate does not depend on how long the process has been run nor how many events have already been
+%     observed.
+
+%     The number of events that occur randomly on the interval \(\ointerval{0}{t}\), are denoted by the random variable \(X\left( t \right)\).
+%     At time \(t = 0\), we assume that no events were observed so that
+%     \begin{equation*}
+%         \Pr{\left( X\left( 0 \right) = 0 \right)} = 1.
+%     \end{equation*}
+%     Let \(h\) be a small interval such that at most 1 event can occur during that time, then
+%     \begin{align*}
+%         \Pr{\left( X\left( t + h \right) = n + 1 \,\vert\, X\left( t \right) = n \right)} & \approx \eta h     \\
+%         \Pr{\left( X\left( t + h \right) = n \,\vert\, X\left( t \right) = n \right)}     & \approx 1 - \eta h \\
+%         \Pr{\left( X\left( t + h \right) > n + 1 \,\vert\, X\left( t \right) = n \right)} & \approx 0
+%     \end{align*}
+%     \subsection{Poisson Distribution}
+%     A Poisson process has a Poisson distribution with rate \(\eta\), so that
+%     \begin{equation*}
+%         X\left( t \right) \sim \operatorname{Poisson}{\left( \eta t \right)}
+%     \end{equation*}
+%     therefore the probability density function for the count \(X\left( t \right)\) is given by
+%     \begin{equation*}
+%         \Pr{\left( X\left( t \right) = n \right)} = p_n\left( t \right) = \frac{e^{-\eta t} \left( \eta t \right)^n}{n!}
+%     \end{equation*}
+%     for \(n \in \Z_{\geq 0}\), where \(\eta\) is the expected number of events per unit time \(t\).
+
+%     In general, let \(N\left( t_1,\: t_2 \right)\) be the number of events occurring in the Poisson process between
+%     times \(t_1\) and \(t_2\), then \(N\left( t_1,\: t_2 \right) \sim \operatorname{Poisson}{\left( \eta \left( t_2 - t_1 \right) \right)}\).
+%     \begin{equation*}
+%         \Pr\left( N\left( t_1,\: t_2 \right) = n \right) = \frac{e^{-\eta \left( t_2 - t_1 \right)} \left( \eta \left( t_2 - t_1 \right) \right)^n}{n!}
+%     \end{equation*}
+%     \subsection{Exponential Distribution}
+%     Let \(T\) be the time between events of a Poisson process so that \(T\) has an exponential distribution
+%     \begin{equation*}
+%         T \sim \operatorname{Exp}{\left( \eta \right)}.
+%     \end{equation*}
+%     The probability density function of \(T\) is given by
+%     \begin{equation*}
+%         f\left( t \right) = \eta e^{-\eta t}
+%     \end{equation*}
+%     for \(t > 0\).
+%     \subsection{Properties of Poisson Processes}
+%     \begin{enumerate}
+%         \item As the time between Poisson processes has an exponential distribution, the Poisson process inherits the
+%               memoryless property,
+%               \begin{equation*}
+%                   \Pr{\left( T > x + y \,\vert\, T > x \right)} = \Pr{\left( T > y \right)}.
+%               \end{equation*}
+%         \item Non-overlapping time intervals of a Poisson process are independent. For \(a < b\) and \(c < d\) where \(b \leq c\),
+%               \begin{equation*}
+%                   \Pr{\left( N\left( a,\: b \right) = m \,\vert\, N\left( c,\: d \right) = n \right)} = \Pr{\left( N\left( a,\: b \right) = m \right)}
+%               \end{equation*}
+%               \item\label{poisson_property_1_event} If exactly 1 event occurs on the interval \(\ointerval{0}{a}\), then the distribution of when that event occurs is
+%               uniform. Let \(X\) be the time \(x < a\) when the first event occurs,
+%               \begin{equation*}
+%                   X \,\vert\, \left( N\left( 0,\: a \right) = 1 \right) \sim \operatorname{Uniform}{\left( 0,\: a \right)}
+%               \end{equation*}
+%               \item\label{poisson_property_n_events} If exactly \(n\) events occur on the interval \(\ointerval{0}{a}\), then the distribution of the number of events
+%               that occur in \(\ointerval{0}{s}\) is binomial, for \(s < t\). Let \(X\) be the number of events that occur in \(\ointerval{0}{s}\) for \(s < t\),
+%               \begin{equation*}
+%                   X \,\vert\, \left( N\left( 0,\: a \right) = n \right) \sim \operatorname{Binomial}{\left( n,\: \frac{s}{t} \right)}
+%               \end{equation*}
+%     \end{enumerate}
+%     \begin{proof}[Proof for~\ref{poisson_property_1_event}]
+%         Consider the CDF of \(X\),
+%         \begin{align*}
+%             F_X\left( x \right) & = \Pr{\left( X < x \,\vert\, N\left( 0,\: a \right) = 1 \right)}                                                                                       \\
+%                                 & = \Pr{\left( N\left( 0,\: x \right) = 1 \,\vert\, N\left( 0,\: a \right) = 1 \right)}                                                                  \\
+%                                 & = \frac{\Pr{\left( N\left( 0,\: x \right) = 1 \cap N\left( 0,\: a \right) = 1 \right)}}{\Pr{\left( N\left( 0,\: a \right) = 1 \right)}}                \\
+%                                 & = \frac{\Pr{\left( N\left( 0,\: x \right) = 1 \cap N\left( x,\: a \right) = 0 \right)}}{\Pr{\left( N\left( 0,\: a \right) = 1 \right)}}                \\
+%                                 & = \frac{\Pr{\left( N\left( 0,\: x \right) = 1 \right)} \Pr{\left( N\left( x,\: a \right) = 0 \right)}}{\Pr{\left( N\left( 0,\: a \right) = 1 \right)}} \\
+%                                 & = \frac{e^{-\eta x} \left( \eta x \right) e^{-\eta \left( a - x \right)}}{e^{-\eta a} \eta a}                                                          \\
+%                                 & = \frac{x}{a}
+%         \end{align*}
+%         which is precisely the CDF of a uniform distribution where \(X \sim \operatorname{Uniform}{\left( 0,\: a \right)}\).
+%     \end{proof}
+%     \begin{proof}[Proof for~\ref{poisson_property_n_events}]
+%         Consider the PMF of \(X\),
+%         \begin{align*}
+%             p_X\left( x \right) & = \Pr{\left( N\left( 0,\: s \right) = x \,\vert\, N\left( 0,\: t \right) = n \right)}                                                                                                                                 \\
+%                                 & = \frac{\Pr{\left( N\left( 0,\: s \right) = x \cap N\left( 0,\: t \right) = n \right)}}{\Pr{\left( N\left( 0,\: t \right) = n \right)}}                                                                               \\
+%                                 & = \frac{\Pr{\left( N\left( 0,\: s \right) = x \cap N\left( s,\: t \right) = n - x \right)}}{\Pr{\left( N\left( 0,\: t \right) = n \right)}}                                                                           \\
+%                                 & = \frac{\frac{e^{-\eta s} \left( \eta s \right)^x}{x!} \frac{e^{-\eta \left( t - s \right)} \left( \eta \left( t - s \right) \right)^{n - x}}{\left( n - x \right)!}}{\frac{e^{-\eta t} \left( \eta t \right)^n}{n!}} \\
+%                                 & = \frac{n!}{x!\left( n - x \right)!} \frac{s^x \left( t - s \right)^{n - x}}{t^n}                                                                                                                                     \\
+%                                 & = \binom{n}{x} \frac{s^x \left( t - s \right)^{n - x}}{t^x t^{n - x}}                                                                                                                                                 \\
+%                                 & = \binom{n}{x} \left( \frac{s}{t} \right)^x \left( 1 - \frac{s}{t} \right)^{n - x}
+%         \end{align*}
+%         which is precisely the PMF of a binomial distribution where \(X \sim \operatorname{Binomial}{\left( n,\: \frac{s}{t} \right)}\).
+%     \end{proof}
 \end{document}
