@@ -8,8 +8,8 @@
 
 ## Downloads
 
-Lecture notes download: [MXB101 Lecture Notes PDF](MXB101%20Lecture%20Notes.pdf)
-Exam notes download: [MXB101 Exam Notes PDF](MXB101%20Exam%20Notes.pdf)
+Lecture notes download: [MXB101 Lecture Notes PDF](https://www.github.com/Tarang74/MXB101/raw/main/MXB101%20Lecture%20Notes.pdf)
+Exam notes download: [MXB101 Exam Notes PDF](https://www.github.com/Tarang74/MXB101/raw/main/MXB101%20Exam%20Notes.pdf)
 
 Thanks to [rjboas](https://github.com/rjboas) for the collaboration.
 
