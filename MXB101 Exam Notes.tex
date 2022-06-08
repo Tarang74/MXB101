@@ -307,7 +307,7 @@
         \centering
         \begin{tabular}{c c c }
             \toprule
-                                       & \textbf{Discrete}                              & \textbf{Continuous}                                    \\
+            \textbf{Univariate} \(X\)  & \textbf{Discrete}                              & \textbf{Continuous}                                    \\
             \midrule
             Valid probabilities        & \(0 \leq p_x \leq 1\)                          & \(f(x) \geq 0\)                                        \\
             Cumulative probability     & \(\sum_{u \leq x} p_u\)                        & \(\int_{-\infty}^{x} f(u) \odif{u}\)                   \\
@@ -393,11 +393,6 @@
     \end{multicols}
 \end{minipage}\hfill%
 \begin{minipage}{62.39259259mm}
-    % !!!
-    % \begin{align*}
-    %     \E{\left( aX \pm b \right)}   & = a\E{\left( X \right)} \pm b \\
-    %     \Var{\left( aX \pm b \right)} & = a^2\Var{\left( X \right)}
-    % \end{align*}
     \subsection{Uniform Distribution}
     Single trial \(X\) in a set of equally likely elements.
     \subsection{Bernoulli (binary) Distribution}
@@ -414,7 +409,7 @@
     \subsection{Alternate Geometric}
     Number of failures \(Y = N - 1\) until a success.
     \subsection{Negative Binomial Distribution}
-    Number of trials until \(k \geq 1\) successes, where each trial is independent and has the same probability of success \(p\).
+    Number of trials \(N\) until \(k \geq 1\) successes, where each trial is independent and has the same probability of success \(p\).
     \begin{align*}
         N   & = Y_1 + Y_2 + \cdots + Y_k                                                                                                \\
         Y_i & \overset{\mathrm{iid}}{\sim} \operatorname{Geom}{\left( p \right)} : \forall i \in \left\{ 1,\: 2,\: \dots,\: k \right\}.
@@ -442,16 +437,19 @@
         m = \frac{\ln{\left( 2 \right)}}{\eta}
     \end{equation*}
     \subsection{Memoryless Property}
-    For Exponential and Geometric:
-    \begin{align*}
-        \Pr{\left( T > s + t \,\vert\, T > t \right)} & = \Pr{\left( T > s \right)}  \\
-        \Pr{\left( N > s + n \,\vert\, N > n \right)} & = \Pr{\left( N > s \right)}.
-    \end{align*}
+    For \(T \sim \operatorname{Exp}{\left( \lambda \right)}\):
+    \begin{equation*}
+        \Pr{\left( T > s + t \,\vert\, T > t \right)} = \Pr{\left( T > s \right)}
+    \end{equation*}
+    For \(N \sim \operatorname{Geometric}{\left( p \right)}\):
+    \begin{equation*}
+        \Pr{\left( N > s + n \,\vert\, N > n \right)} = \Pr{\left( N > s \right)}
+    \end{equation*}
     \subsection{Normal Distribution}
     Used to represent random situations, i.e., measurements and their errors.
-    Also used to approximate other distributions under certain conditions.
+    Also used to approximate other distributions.
     \subsection{Standard Normal Distribution}
-    Given \(X \sim \operatorname{N}{\left( \mu,\: \sigma^2 \right)}\), consider the transformation
+    Given \(X \sim \operatorname{N}{\left( \mu,\: \sigma^2 \right)}\), consider
     \begin{equation*}
         Z = \frac{X - \mu}{\sigma}
     \end{equation*}
@@ -510,7 +508,7 @@
         \end{equation*}
         \subsection{Poisson Approximation}
         If \(X_i \sim \operatorname{Poisson}{\left( \lambda \right)}\):
-        
+
         Let \(X = \sum_{i = 1}^n X_i\):
         \begin{align*}
             \E{\left( X \right)}   & = n \lambda \\
@@ -519,191 +517,176 @@
         \begin{equation*}
             X \approx Y \sim \operatorname{N}{\left( n\lambda,\: n\lambda \right)}.
         \end{equation*}
-        Sufficient for \(n \lambda > 10\), and for accurate approximations \(n \lambda > 20\).
+        Sufficient for \(n \lambda > 10\), and for accurate approximations, \(n \lambda > 20\).
     \end{multicols}
 \end{minipage}
-%     \section{Bivariate Distributions}
-%     \subsection{Bivariate probability mass function}
-%     The distribution over the joint space of two discrete random variables \(X\) and \(Y\) is given by a bivariate probability mass function:
-%     \begin{equation*}
-%         \Pr{\left( X = x,\: Y = y \right)} = p_{x,\: y}
-%     \end{equation*}
-%     for all pairs of \(x \in \Omega_1\) and \(y \in \Omega_2\). This function must satisfy
-%     \begin{align*}
-%         \forall x \in \Omega_1 : \forall y \in \Omega_2 : \Pr{\left( X = x,\: Y = y \right)} \geq 0 &  & \text{and} &  &
-%         \sum_{y \in \Omega_2} \sum_{x \in \Omega_1} \Pr{\left( X = x,\: Y = y \right)} = 1.
-%     \end{align*}
-%     The joint probability mass function can be shown using a table:
-%     {\small
-%     \begin{equation*}
-%         \begin{matrix}[c|ccc] % chktex 44
-%                    & y_1                                    & \cdots & y_n                                    \\
-%             \hline % chktex 44
-%             x_1    & \Pr{\left( X = x_1,\: Y = y_1 \right)} & \cdots & \Pr{\left( X = x_1,\: Y = y_n \right)} \\
-%             \vdots & \vdots                                 & \ddots & \vdots                                 \\
-%             x_n    & \Pr{\left( X = x_n,\: Y = y_1 \right)} & \cdots & \Pr{\left( X = x_n,\: Y = y_n \right)}
-%         \end{matrix}
-%     \end{equation*}
-%     }
-%     \subsection{Bivariate probability density function}
-%     The distribution over the joint space of two continuous random variables \(X\) and \(Y\) is  given by a
-%     bivariate probability density function \(f\left( x,\: y \right)\)
-%     over the intervals \(x \in \Omega_1\) and \(y \in \Omega_2\).
-%     \begin{equation*}
-%         \Pr{\left( x_1 \leq X \leq x_2,\: y_1 \leq Y \leq y_2 \right)} = \int_{x_1}^{x_2} \int_{y_1}^{y_2} f\left( x,\: y \right) \odif{y} \odif{x}
-%     \end{equation*}
-%     This function must satisfy
-%     \begin{align*}
-%         \forall x \in \Omega_1 : \forall y \in \Omega_2 : f\left( x,\: y \right) \geq 0 &  & \text{and} &  &
-%         \int_{x \in \Omega_1} \int_{y \in \Omega_2} f\left( x,\: y \right) \odif{y} \odif{x} = 1.
-%     \end{align*}
-%     \subsection{Marginal Probability}
-%     The marginal probability function can be obtained by calculating the probability function of each random variable.
-%     Once the function has been determined, we must specify the range of values that variable can take.
-%     \subsection{Marginal probability mass function}
-%     \begin{align*}
-%         \Pr{\left( X = x \right)} & = p_x = \sum_{y \in \Omega_2} \Pr{\left( X = x,\: Y = y \right)} \\
-%         \Pr{\left( Y = y \right)} & = p_y = \sum_{x \in \Omega_1} \Pr{\left( X = x,\: Y = y \right)}
-%     \end{align*}
-%     \subsection{Marginal probability density function}
-%     \begin{align*}
-%         \Pr{\left( X = x \right)} & = f\left( x \right) = \int_{y_1}^{y_2} f\left( x,\: y \right) \odif{y} \\
-%         \Pr{\left( Y = y \right)} & = f\left( y \right) = \int_{x_1}^{x_2} f\left( x,\: y \right) \odif{x}
-%     \end{align*}
-%     \subsection{Conditional Probability}
-%     Using the joint probability and marginal probability, we can determine the conditional probability function.
-%     Once the function has been determined, we must specify the range of values that variable can take.
-%     \subsection{Conditional probability mass function}
-%     \begin{equation*}
-%         \Pr{\left( X = x \,\vert\, Y = y \right)} = \frac{\Pr{\left( X = x,\: Y = y \right)}}{\Pr{\left( Y = y \right)}}.
-%     \end{equation*}
-%     It follows that
-%     \begin{equation*}
-%         \sum_{x \in \Omega_1} \Pr{\left( X = x \,\vert\, Y = y \right)} = 1
-%     \end{equation*}
-%     \subsection{Conditional probability density function}
-%     \begin{equation*}
-%         f\left( x \,\vert\, y \right) = \frac{f\left( x,\: y \right)}{f\left( y \right)}
-%     \end{equation*}
-%     It follows that
-%     \begin{equation*}
-%         \int_{x_1}^{x_2} f\left( x \,\vert\, y \right) \odif{x} = 1
-%     \end{equation*}
-%     \subsection{Independence}
-%     Two discrete random variables \(X\) and \(Y\) are independent if
-%     \begin{equation*}
-%         \Pr{\left( X = x \,\vert\, Y = y \right)} = \Pr{\left( X = x \right)}
-%     \end{equation*}
-%     for all pairs of \(x\) and \(y\). From this we can show that
-%     \begin{equation*}
-%         \Pr{\left( X = x ,\: Y = y \right)} = \Pr{\left( X = x \right)} \Pr{\left( Y = y \right)}
-%     \end{equation*}
-%     for all pairs of \(x\) and \(y\). If these random variables are not independent then,
-%     \begin{equation*}
-%         \Pr{\left( X = x ,\: Y = y \right)} = \Pr{\left( X = x \,\vert\, Y = y \right)} \Pr{\left( Y = y \right)}
-%     \end{equation*}
-%     To continuous random variables \(X\) and \(Y\) are independent if we can express \(f\left( x,\: y \right)\) as
-%     \begin{equation*}
-%         f\left( x,\: y \right) \propto g\left( x \right) h\left( y \right)
-%     \end{equation*}
-%     and if the joint range of \(X\) and \(Y\) do not depend on each other. This leads to
-%     \begin{equation*}
-%         f\left( x \,\vert\, y \right) = f\left( x \right).
-%     \end{equation*}
-%     \subsection{Law of Total Expectation}
-%     Given the conditional distribution of \(X \,\vert\, Y = y\), we can compute its expectation and variance.
-%     For discrete random variables, the conditional expectation is
-%     \begin{equation*}
-%         \E{\left( X \,\vert\, Y = y \right)} = \sum_{x\in\Omega_1} x \Pr{\left( X = x \,\vert\, Y = y \right)}
-%     \end{equation*}
-%     For continuous random variables, the conditional expectation is
-%     \begin{equation*}
-%         \E{\left( X \,\vert\, Y = y \right)} = \int_{x_1}^{x_2} x f\left( x \,\vert\, y \right) \odif{x}
-%     \end{equation*}
-%     The conditional variance is given by
-%     \begin{equation*}
-%         \Var{\left( X \,\vert\, Y = y \right)} = \E{\left( X^2 \,\vert\, Y = y \right)} - \E{\left( X \,\vert\, Y = y \right)}^2
-%     \end{equation*}
-%     When \(X\) and \(Y\) are independent,
-%     \begin{align*}
-%         \E{\left( X \,\vert\, Y = y \right)}   & = \E{\left( X \right)}   \\
-%         \Var{\left( X \,\vert\, Y = y \right)} & = \Var{\left( X \right)} \\
-%     \end{align*}
-%     By treating \(\E{\left( X \,\vert\, Y \right)}\) as a random variable of \(Y\), then
-%     we can calculate its expected value such that
-%     \begin{equation*}
-%         \E{\left( X \right)} = \E{\left( \E{\left( X \,\vert\, Y \right)} \right)}.
-%     \end{equation*}
-%     This is known as the law of total expectation.
-%     \subsection{Expectation}
-%     The following property holds for both dependent and independent random variables \(X\) and \(Y\)
-%     \begin{equation*}
-%         \E{\left( X \pm Y \right)} = \E{\left( X \right)} \pm \E{\left( Y \right)}
-%     \end{equation*}
-%     If \(X\) and \(Y\) are independent then
-%     \begin{equation*}
-%         \E{\left( XY \right)} = \E{\left( X \right)} \E{\left( Y \right)}
-%     \end{equation*}
-%     \subsection{Variance of Independent Random Variables}
-%     If \(X\) and \(Y\) are independent then
-%     \begin{align*}
-%         \Var{\left( X \pm Y \right)} & = \Var{\left( X \right)} + \Var{\left( Y \right)}                                                                                               \\
-%         \Var{\left( XY \right)}      & = \Var{\left( X \right)} \Var{\left( Y \right)} + \E{\left( X \right)}^2 \Var{\left( Y \right)} + \E{\left( Y \right)}^2 \Var{\left( X \right)}
-%     \end{align*}
-%     \subsection{Covariance}
-%     \subsection{Covariance}
-%     Covariance is a measure of the dependence between two random variables, it can be determined using
-%     \begin{align*}
-%         \Cov{\left( X,\: Y \right)} & = \E{\left( \left( X - \E{\left( X \right)} \right) \left( Y - \E{\left( Y \right)} \right) \right)} \\
-%                                     & = \E{\left( XY \right)} - \E{\left( X \right)} \E{\left( Y \right)}
-%     \end{align*}
-%     The covariance of \(X\) and \(Y\) is:
-%     \begin{description}
-%         \item[Positive] if an increase in one variable is more likely to result in an increase in
-%             the other variable.
-%         \item[Negative] if an increase in one variable is more likely to result in a decrease in
-%             the other variable.
-%         \item[Zero] if \(X\) and \(Y\) are independent. Note that the converse is not true.
-%     \end{description}
-%     The linear transformation of two random variables have the following covariance
-%     \begin{equation*}
-%         \Cov{\left( aX + b,\: cY + d \right)} = ac \Cov{\left( X,\: Y \right)}
-%     \end{equation*}
-%     for constants \(a\), \(b\), \(c\), and \(d\).
-%     \subsection{Joint expectation}
-%     The joint expectation of two discrete random variables is
-%     \begin{equation*}
-%         \E{\left( XY \right)} = \sum_{x\in\Omega_1} \sum_{y\in\Omega_2} xy \Pr{\left( X = x,\: Y = y \right)}
-%     \end{equation*}
-%     and for continuous random variables
-%     \begin{equation*}
-%         \E{\left( XY \right)} = \int_{x_1}^{x_2} \int_{x_1}^{x_2} xy f\left( x,\: y \right) \odif{y} \odif{x}.
-%     \end{equation*}
-%     \subsection{Variance of Dependent Random Variables}
-%     If \(X\) and \(Y\) are dependent then
-%     \begin{equation*}
-%         \Var{\left( X \pm Y \right)} = \Var{\left( X \right)} + \Var{\left( Y \right)} \pm 2\Cov{\left( X,\: Y \right)}
-%     \end{equation*}
-%     \subsection{Correlation}
-%     The covariance of two random variables describes the direction of a relationship, however
-%     it does not quantify the strength of such a relationship. The correlation explains both
-%     the direction and strength of a linear relationship between two random variables.
+\hrule
+\begin{multicols}{3}
+    \section{Bivariate Distributions}
+    \subsection{Bivariate probability mass function}
+    Distribution over the joint space of two discrete random variables \(X\) and \(Y\):
+    \begin{align*}
+        \Pr{\left( X = x,\: Y = y \right)}                                             & = p_{x,\: y} \geq 0 \\
+        \sum_{y \in \Omega_2} \sum_{x \in \Omega_1} \Pr{\left( X = x,\: Y = y \right)} & = 1
+    \end{align*}
+    for all pairs of \(x \in \Omega_1\) and \(y \in \Omega_2\).
+    The joint probability mass function can be shown using a table:
+    {\small
+    \begin{equation*}
+        \begin{matrix}[c|ccc] % chktex 44
+                   & y_1        & \cdots & y_n        \\
+            \hline % chktex 44
+            x_1    & p_{1,\: 1} & \cdots & p_{1,\: n} \\
+            \vdots & \vdots     & \ddots & \vdots     \\
+            x_n    & p_{n,\: 1} & \cdots & p_{n,\: n}
+        \end{matrix}
+    \end{equation*}
+    }
+    \subsection{Bivariate probability density function}
+    Distribution over the joint space of two continuous random variables \(X\) and \(Y\):
+    \begin{align*}
+        \Pr{\left( x_1 \leq X \leq x_2,\: y_1 \leq Y \leq y_2 \right)} \\
+        = \int_{x_1}^{x_2} \int_{y_1}^{y_2} f\left( x,\: y \right) \odif{y} \odif{x}
+    \end{align*}
+    This function must satisfy
+    \begin{align*}
+        f\left( x,\: y \right)                                                               & \geq 0 \\
+        \int_{x \in \Omega_1} \int_{y \in \Omega_2} f\left( x,\: y \right) \odif{y} \odif{x} & = 1.
+    \end{align*}
+    for all pairs of \(x \in \Omega_1\) and \(y \in \Omega_2\).
+    \subsection{Joint Probability}
+    \begin{multline*}
+        \Pr{\left( X = x ,\: Y = y \right)} =                               \\
+        \Pr{\left( X = x \,\vert\, Y = y \right)} \Pr{\left( Y = y \right)}
+    \end{multline*}
+    \subsection{Marginal Probability}
+    Probability function of each random variable.
+    Must specify the range of values that variable can take.
+    \subsection{Marginal probability mass function}
+    \begin{align*}
+        p_x & = \sum_{y \in \Omega_2} \Pr{\left( X = x,\: Y = y \right)} \\
+        p_y & = \sum_{x \in \Omega_1} \Pr{\left( X = x,\: Y = y \right)}
+    \end{align*}
+    \subsection{Marginal probability density function}
+    \begin{align*}
+        f\left( x \right) & = \int_{y_1}^{y_2} f\left( x,\: y \right) \odif{y} \\
+        f\left( y \right) & = \int_{x_1}^{x_2} f\left( x,\: y \right) \odif{x}
+    \end{align*}
+    \subsection{Conditional probability mass function}
+    \begin{gather*}
+        \Pr{\left( X = x \,\vert\, Y = y \right)} = \frac{\Pr{\left( X = x,\: Y = y \right)}}{\Pr{\left( Y = y \right)}} \\
+        \sum_{x \in \Omega_1} \Pr{\left( X = x \,\vert\, Y = y \right)} = 1
+    \end{gather*}
+    \subsection{Conditional probability density function}
+    \begin{gather*}
+        f\left( x \,\vert\, y \right) = \frac{f\left( x,\: y \right)}{f\left( y \right)} \\
+        \int_{x_1}^{x_2} f\left( x \,\vert\, y \right) \odif{x} = 1
+    \end{gather*}
+    \subsection{Independence}
+    Two discrete random variables \(X\) and \(Y\) are independent if
+    \begin{equation*}
+        \Pr{\left( X = x \,\vert\, Y = y \right)} = \Pr{\left( X = x \right)}
+    \end{equation*}
+    for all pairs of \(x\) and \(y\).
 
-%     The correlation of two random variables \(X\) and \(Y\) is denoted \(\rho\left( X,\: Y \right)\)
-%     \begin{equation*}
-%         \rho\left( X,\: Y \right) = \frac{\Cov{\left( X,\: Y \right)}}{\sqrt{\Var{\left( X \right)} \Var{\left( Y \right)}}}
-%     \end{equation*}
-%     where \(-1 \leq \rho\left( X,\: Y \right) \leq 1\).
+    Two continuous random variables \(X\) and \(Y\) are independent if
+    \begin{equation*}
+        f\left( x,\: y \right) \propto g\left( x \right) h\left( y \right)
+    \end{equation*}
+    so that
+    \begin{equation*}
+        f\left( x \,\vert\, y \right) = f\left( x \right).
+    \end{equation*}
+    \subsection{Conditional Expectation}
+    Given the conditional distribution \(X \,\vert\, Y = y\) for discrete random variables:
+    \begin{equation*}
+        \E{\left( X \,\vert\, Y = y \right)} = \sum_{x\in\Omega_1} x p_{x\,\vert\,y}
+    \end{equation*}
+    For continuous random variables:
+    \begin{equation*}
+        \E{\left( X \,\vert\, Y = y \right)} = \int_{x_1}^{x_2} x f\left( x \,\vert\, y \right) \odif{x}
+    \end{equation*}
+    \subsection{Conditional Variance}
+    \begin{multline*}
+        \Var{\left( X \,\vert\, Y = y \right)} \\
+        = \E{\left( X^2 \,\vert\, Y = y \right)} - \E{\left( X \,\vert\, Y = y \right)}^2
+    \end{multline*}
+    \subsection{Law of Total Expectation}
+    By treating \(\E{\left( X \,\vert\, Y \right)}\) as a random variable of \(Y\):
+    \begin{equation*}
+        \E{\left( X \right)} = \E{\left( \E{\left( X \,\vert\, Y \right)} \right)}
+    \end{equation*}
+    \subsection{Joint expectation}
+    \begin{align*}
+        \E{\left( XY \right)} & = \sum_{x\in\Omega_1} \sum_{y\in\Omega_2} xy p_{x,\: y}                          \\
+        \E{\left( XY \right)} & = \int_{x_1}^{x_2} \int_{x_1}^{x_2} xy f\left( x,\: y \right) \odif{y} \odif{x}.
+    \end{align*}
+    \subsection{Transformation rules}
+    \begin{align*}
+        \E{\left( aX \pm b \right)}   & = a\E{\left( X \right)} \pm b                        \\
+        \E{\left( X \pm Y \right)}    & = \E{\left( X \right)} \pm \E{\left( Y \right)}      \\
+        \Var{\left( aX \pm b \right)} & = a^2\Var{\left( X \right)}                          \\
+        \Var{\left( X \pm Y \right)}  & = \begin{aligned}[t]
+                                               & \Var{\left( X \right)} + \Var{\left( Y \right)} \\
+                                               & \pm 2\Cov{\left( X,\: Y \right)}
+                                          \end{aligned}
+    \end{align*}
+    \begin{equation*}
+        \Cov{\left( aX + b,\: cY + d \right)} = ac \Cov{\left( X,\: Y \right)}
+    \end{equation*}
+    If \(X\) and \(Y\) are independent:
+    \begingroup
+    \allowdisplaybreaks
+    \begin{align*}
+        \E{\left( X \,\vert\, Y = y \right)}   & = \E{\left( X \right)}                            \\
+        \Var{\left( X \,\vert\, Y = y \right)} & = \Var{\left( X \right)}                          \\
+        \Var{\left( X \pm Y \right)}           & = \Var{\left( X \right)} + \Var{\left( Y \right)} \\
+        \E{\left( XY \right)}                  & = \E{\left( X \right)} \E{\left( Y \right)}
+    \end{align*}
+    \endgroup
+    \begin{align*}
+        \Var{\left( XY \right)}      = \Var{\left( X \right)} \Var{\left( Y \right)} \\
+        + \E{\left( X \right)}^2 \Var{\left( Y \right)} + \E{\left( Y \right)}^2 \Var{\left( X \right)}
+    \end{align*}
+    for constants \(a\), \(b\), \(c\), and \(d\).
+    \subsection{Covariance}
+    Measure of the dependence between two random variables
+    \begin{align*}
+        \Cov{\left( X,\: Y \right)} & = \begin{aligned}[t]
+                                            \E\left( \left( X - \E{\left( X \right)} \right) \right. & \\
+                                            \left. \left( Y - \E{\left( Y \right)} \right) \right)   &
+                                        \end{aligned}                        \\
+                                    & = \E{\left( XY \right)} - \E{\left( X \right)} \E{\left( Y \right)}
+    \end{align*}
+    Describes the direction of a relationship, but does not quantify the strength of such a relationship.
+    \columnbreak
+    
+    The covariance of \(X\) and \(Y\) is:
+    \begin{description}
+        \item[Positive] if an increase in one variable is more likely to result in an increase in
+            the other variable.
+        \item[Negative] if an increase in one variable is more likely to result in a decrease in
+            the other variable.
+        \item[Zero] if \(X\) and \(Y\) are independent. Note that the converse is not true.
+    \end{description}
+    \subsection{Correlation}
+    Explains both the direction and strength of a linear relationship between two random variables.
+    \begin{equation*}
+        \rho\left( X,\: Y \right) = \frac{\Cov{\left( X,\: Y \right)}}{\sqrt{\Var{\left( X \right)} \Var{\left( Y \right)}}}
+    \end{equation*}
+    where \(-1 \leq \rho\left( X,\: Y \right) \leq 1\).
+    \columnbreak
 
-%     These value can be interpretted as follows:
-%     \begin{itemize}
-%         \item \(\rho\left( X,\: Y \right) > 0\) iff \(X\) and \(Y\) have a positive linear relationship.
-%         \item \(\rho\left( X,\: Y \right) < 0\) iff \(X\) and \(Y\) have a negative linear relationship.
-%         \item \(\rho\left( X,\: Y \right) = 0\) if \(X\) and \(Y\) are independent. Note that the converse is not true.
-%         \item \(\rho\left( X,\: Y \right) = 1\) iff \(X\) and \(Y\) have a perfect linear relationship with positive slope.
-%         \item \(\rho\left( X,\: Y \right) = -1\) iff \(X\) and \(Y\) have a perfect linear relationship with negative slope.
-%     \end{itemize}
-%     Note that the slope of a perfect linear relationship cannot be obtained from the correlation.
+    These value can be interpretted as follows:
+    \begin{itemize}
+        \item \(\rho\left( X,\: Y \right) > 0\) iff \(X\) and \(Y\) have a positive linear relationship.
+        \item \(\rho\left( X,\: Y \right) < 0\) iff \(X\) and \(Y\) have a negative linear relationship.
+        \item \(\rho\left( X,\: Y \right) = 0\) if \(X\) and \(Y\) are independent. Note that the converse is not true.
+        \item \(\rho\left( X,\: Y \right) = 1\) iff \(X\) and \(Y\) have a perfect linear relationship with positive slope.
+        \item \(\rho\left( X,\: Y \right) = -1\) iff \(X\) and \(Y\) have a perfect linear relationship with negative slope.
+    \end{itemize}
+    The slope of a perfect linear relationship cannot be obtained from the correlation.
+\end{multicols}
 %     \section{Markov Chains}
 %     A Markov chain is a discrete time and state stochastic process that describes how a state evolves over time.
 %     In this process, the set of all states is discrete and disjoint and states change probabilistically so that
