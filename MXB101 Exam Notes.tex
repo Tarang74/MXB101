@@ -687,60 +687,60 @@
     \end{itemize}
     The slope of a perfect linear relationship cannot be obtained from the correlation.
 \end{multicols}
-%     \section{Markov Chains}
+\section{Markov Chains}
 %     A Markov chain is a discrete time and state stochastic process that describes how a state evolves over time.
 %     In this process, the set of all states is discrete and disjoint and states change probabilistically so that
 %     a step may not result in a changed state.
 %     At each step, the next state depends only on the current state of the random variable.
 
 %     States are denoted by the random variable \(X_t\) at time step \(t\).
-%     \begin{definition}[Markov property]
+    \begin{definition}[Markov property]
 %         The state \(X_t\) is conditionally independent of \(X_{t-2}\), \(X_{t-3}\), \dots, \(X_0\) given \(X_{t-1}\).
-%         \begin{equation*}
-%             \Pr{\left( X_t = x_t \,\vert\, X_{t-1} = x_{t-1},\: X_{t-2} = x_{t-2},\: \ldots,\: X_{0} = x_{0} \right)} = \Pr{\left( X_t - x_t \,\vert\, X_{t-1} = x_{t-1} \right)}
-%         \end{equation*}
-%     \end{definition}
-%     \subsection{Homogeneous Markov Chain}
-%     A Markov chain is homogeneous when
-%     \begin{equation*}
-%         \Pr{\left( X_{t+n} = j \,\vert\, X_t = i \right)} = \Pr{\left( X_n = j \,\vert\, X_0 = i \right)} = p_{ij}^{(n)}
-%     \end{equation*}
+        \begin{equation*}
+            \Pr{\left( X_t = x_t \,\vert\, X_{t-1} = x_{t-1},\: X_{t-2} = x_{t-2},\: \ldots,\: X_{0} = x_{0} \right)} = \Pr{\left( X_t - x_t \,\vert\, X_{t-1} = x_{t-1} \right)}
+        \end{equation*}
+    \end{definition}
+    \subsection{Homogeneous Markov Chain}
+    A Markov chain is homogeneous when
+    \begin{equation*}
+        \Pr{\left( X_{t+n} = j \,\vert\, X_t = i \right)} = \Pr{\left( X_n = j \,\vert\, X_0 = i \right)} = p_{ij}^{(n)}
+    \end{equation*}
 %     that is, the \(n\)-step conditional probabilities do not depend on the time step \(t\).
-%     \subsection{Transition Probability Matrix}
-%     A homogeneous Markov chain is characterised by the transition probability matrix \(\symbf{P} \in \R^{m \times m}\), where
-%     \(m\) is the number of states.
-%     \(\symbf{P}\) must fulfil the following properties:
-%     \begin{itemize}
-%         \item \(p_{i,j} = \Pr{\left( X_t = j \,\vert\, X_{t-1} = i \right)}\)
-%         \item \(p_{i,j} \geq 0 : \forall i,\: j\)
-%         \item \(\sum_{j=1}^m p_{i,j} = 1 : \forall j\)
-%     \end{itemize}
-%     \(\symbf{P}\) has the following form
-%     \begin{equation*}
-%         \symbf{P} = \quad \scriptscriptstyle{X_t} \overset{X_{t+1}}{\begin{bmatrix}
-%                 \phantom{p} & \phantom{p} \\
-%                 \phantom{p} & \phantom{p}
-%             \end{bmatrix}}
-%     \end{equation*}
-%     The \(n\)-step transition probability is given by \(\symbf{P}^n\).
-%     \subsection{Unconditional State Probabilities}
-%     The unconditional probability of being in state \(j\) at time \(n\) is given by
-%     \begin{equation*}
-%         \Pr{\left( X_n = j \right)} = p_j^{(n)}
-%     \end{equation*}
-%     Given multiple states, let \(\symbfit{s}^{(n)}\) denote the vector of all states \(p_j^{(n)}\) at
-%     time \(n\). Then
-%     \begin{align*}
-%         {\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(n-1)}}^\top \symbf{P} \quad \quad \text{and} \quad \quad {\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(0)}}^\top \symbf{P}^n
-%     \end{align*}
-%     \subsection{Stationary Distribution}
-%     At steady-state, the probability of being in a particular state does not change from one step to the next.
-%     This implies
-%     \begin{equation*}
-%         \symbfit{s}^{(n+1)} = \symbfit{s}^{(n)} \implies {\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(n)}}^\top \symbf{P}
-%     \end{equation*}
-%     The stationary distribution \(\symbfit{\pi}\) satisfies \(\symbfit{\pi}^\top = \symbfit{\pi}^\top \symbf{P}\).
-%     To determine \(\symbfit{\pi}\), we must use the equation \(\sum_{i = 1}^m \pi_i = 1\).
+    \subsection{Transition Probability Matrix}
+    A homogeneous Markov chain is characterised by the transition probability matrix \(\symbf{P} \in \R^{m \times m}\), where
+    \(m\) is the number of states.
+    \(\symbf{P}\) must fulfil the following properties:
+    \begin{itemize}
+        \item \(p_{i,j} = \Pr{\left( X_t = j \,\vert\, X_{t-1} = i \right)}\)
+        \item \(p_{i,j} \geq 0 : \forall i,\: j\)
+        \item \(\sum_{j=1}^m p_{i,j} = 1 : \forall j\)
+    \end{itemize}
+    \(\symbf{P}\) has the following form
+    \begin{equation*}
+        \symbf{P} = \quad \scriptscriptstyle{X_t} \overset{X_{t+1}}{\begin{bmatrix}
+                \phantom{p} & \phantom{p} \\
+                \phantom{p} & \phantom{p}
+            \end{bmatrix}}
+    \end{equation*}
+    The \(n\)-step transition probability is given by \(\symbf{P}^n\).
+    \subsection{Unconditional State Probabilities}
+    The unconditional probability of being in state \(j\) at time \(n\) is given by
+    \begin{equation*}
+        \Pr{\left( X_n = j \right)} = p_j^{(n)}
+    \end{equation*}
+    Given multiple states, let \(\symbfit{s}^{(n)}\) denote the vector of all states \(p_j^{(n)}\) at
+    time \(n\). Then
+    \begin{align*}
+        {\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(n-1)}}^\top \symbf{P} \quad \quad \text{and} \quad \quad {\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(0)}}^\top \symbf{P}^n
+    \end{align*}
+    \subsection{Stationary Distribution}
+    At steady-state, the probability of being in a particular state does not change from one step to the next.
+    This implies
+    \begin{equation*}
+        \symbfit{s}^{(n+1)} = \symbfit{s}^{(n)} \implies {\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(n)}}^\top \symbf{P}
+    \end{equation*}
+    The stationary distribution \(\symbfit{\pi}\) satisfies \(\symbfit{\pi}^\top = \symbfit{\pi}^\top \symbf{P}\).
+    To determine \(\symbfit{\pi}\), we must use the equation \(\sum_{i = 1}^m \pi_i = 1\).
 %     \subsection{Limiting Distribution}
 %     Under certain conditions, as \(n \to \infty\), each row of \(\symbf{P}^n\) will be equal to \(\symbfit{\pi}^\top\),
 %     so that each state moves to the next step with the same probability. This is known as the limiting distribution.
@@ -749,18 +749,18 @@
 %     A sufficient condition for the above is if \(\symbf{P}^n\) has positive entries for some finite \(n\).
 
 %     \textit{Note that a stationary distribution does not imply that a limiting distribution exists}.
-%     \section{Poisson Process}
+    \section{Poisson Process}
 %     A Poisson process is a continuous time and discrete state stochastic process that counts events
 %     that occur randomly in time (or space).
-%     This process only requires the rate parameter \(\eta\) which describes the average rate at which events occur.
+    This process only requires the rate parameter \(\eta\) which describes the average rate at which events occur.
 %     This rate does not depend on how long the process has been run nor how many events have already been
 %     observed.
 
-%     The number of events that occur randomly on the interval \(\ointerval{0}{t}\), are denoted by the random variable \(X\left( t \right)\).
-%     At time \(t = 0\), we assume that no events were observed so that
-%     \begin{equation*}
-%         \Pr{\left( X\left( 0 \right) = 0 \right)} = 1.
-%     \end{equation*}
+    The number of events that occur randomly on the interval \(\ointerval{0}{t}\), are denoted by the random variable \(X\left( t \right)\).
+    At time \(t = 0\), we assume that no events were observed so that
+    \begin{equation*}
+        \Pr{\left( X\left( 0 \right) = 0 \right)} = 1.
+    \end{equation*}
 %     Let \(h\) be a small interval such that at most 1 event can occur during that time, then
 %     \begin{align*}
 %         \Pr{\left( X\left( t + h \right) = n + 1 \,\vert\, X\left( t \right) = n \right)} & \approx \eta h     \\
@@ -769,14 +769,14 @@
 %     \end{align*}
 %     \subsection{Poisson Distribution}
 %     A Poisson process has a Poisson distribution with rate \(\eta\), so that
-%     \begin{equation*}
-%         X\left( t \right) \sim \operatorname{Poisson}{\left( \eta t \right)}
-%     \end{equation*}
+    \begin{equation*}
+        X\left( t \right) \sim \operatorname{Poisson}{\left( \eta t \right)}
+    \end{equation*}
 %     therefore the probability density function for the count \(X\left( t \right)\) is given by
-%     \begin{equation*}
-%         \Pr{\left( X\left( t \right) = n \right)} = p_n\left( t \right) = \frac{e^{-\eta t} \left( \eta t \right)^n}{n!}
-%     \end{equation*}
-%     for \(n \in \Z_{\geq 0}\), where \(\eta\) is the expected number of events per unit time \(t\).
+    \begin{equation*}
+        \Pr{\left( X\left( t \right) = n \right)} = p_n\left( t \right) = \frac{e^{-\eta t} \left( \eta t \right)^n}{n!}
+    \end{equation*}
+    for \(n \in \Z_{\geq 0}\), where \(\eta\) is the expected number of events per unit time \(t\).
 
 %     In general, let \(N\left( t_1,\: t_2 \right)\) be the number of events occurring in the Poisson process between
 %     times \(t_1\) and \(t_2\), then \(N\left( t_1,\: t_2 \right) \sim \operatorname{Poisson}{\left( \eta \left( t_2 - t_1 \right) \right)}\).
@@ -784,37 +784,37 @@
 %         \Pr\left( N\left( t_1,\: t_2 \right) = n \right) = \frac{e^{-\eta \left( t_2 - t_1 \right)} \left( \eta \left( t_2 - t_1 \right) \right)^n}{n!}
 %     \end{equation*}
 %     \subsection{Exponential Distribution}
-%     Let \(T\) be the time between events of a Poisson process so that \(T\) has an exponential distribution
-%     \begin{equation*}
-%         T \sim \operatorname{Exp}{\left( \eta \right)}.
-%     \end{equation*}
-%     The probability density function of \(T\) is given by
-%     \begin{equation*}
-%         f\left( t \right) = \eta e^{-\eta t}
-%     \end{equation*}
-%     for \(t > 0\).
-%     \subsection{Properties of Poisson Processes}
-%     \begin{enumerate}
-%         \item As the time between Poisson processes has an exponential distribution, the Poisson process inherits the
-%               memoryless property,
-%               \begin{equation*}
-%                   \Pr{\left( T > x + y \,\vert\, T > x \right)} = \Pr{\left( T > y \right)}.
-%               \end{equation*}
-%         \item Non-overlapping time intervals of a Poisson process are independent. For \(a < b\) and \(c < d\) where \(b \leq c\),
-%               \begin{equation*}
-%                   \Pr{\left( N\left( a,\: b \right) = m \,\vert\, N\left( c,\: d \right) = n \right)} = \Pr{\left( N\left( a,\: b \right) = m \right)}
-%               \end{equation*}
-%               \item\label{poisson_property_1_event} If exactly 1 event occurs on the interval \(\ointerval{0}{a}\), then the distribution of when that event occurs is
-%               uniform. Let \(X\) be the time \(x < a\) when the first event occurs,
-%               \begin{equation*}
-%                   X \,\vert\, \left( N\left( 0,\: a \right) = 1 \right) \sim \operatorname{Uniform}{\left( 0,\: a \right)}
-%               \end{equation*}
-%               \item\label{poisson_property_n_events} If exactly \(n\) events occur on the interval \(\ointerval{0}{a}\), then the distribution of the number of events
-%               that occur in \(\ointerval{0}{s}\) is binomial, for \(s < t\). Let \(X\) be the number of events that occur in \(\ointerval{0}{s}\) for \(s < t\),
-%               \begin{equation*}
-%                   X \,\vert\, \left( N\left( 0,\: a \right) = n \right) \sim \operatorname{Binomial}{\left( n,\: \frac{s}{t} \right)}
-%               \end{equation*}
-%     \end{enumerate}
+    Let \(T\) be the time between events of a Poisson process so that \(T\) has an exponential distribution
+    \begin{equation*}
+        T \sim \operatorname{Exp}{\left( \eta \right)}.
+    \end{equation*}
+    The probability density function of \(T\) is given by
+    \begin{equation*}
+        f\left( t \right) = \eta e^{-\eta t}
+    \end{equation*}
+    for \(t > 0\).
+    \subsection{Properties of Poisson Processes}
+    \begin{enumerate}
+        \item As the time between Poisson processes has an exponential distribution, the Poisson process inherits the
+              memoryless property,
+              \begin{equation*}
+                  \Pr{\left( T > x + y \,\vert\, T > x \right)} = \Pr{\left( T > y \right)}.
+              \end{equation*}
+        \item Non-overlapping time intervals of a Poisson process are independent. For \(a < b\) and \(c < d\) where \(b \leq c\),
+              \begin{equation*}
+                  \Pr{\left( N\left( a,\: b \right) = m \,\vert\, N\left( c,\: d \right) = n \right)} = \Pr{\left( N\left( a,\: b \right) = m \right)}
+              \end{equation*}
+              \item\label{poisson_property_1_event} If exactly 1 event occurs on the interval \(\ointerval{0}{a}\), then the distribution of when that event occurs is
+              uniform. Let \(X\) be the time \(x < a\) when the first event occurs,
+              \begin{equation*}
+                  X \,\vert\, \left( N\left( 0,\: a \right) = 1 \right) \sim \operatorname{Uniform}{\left( 0,\: a \right)}
+              \end{equation*}
+              \item\label{poisson_property_n_events} If exactly \(n\) events occur on the interval \(\ointerval{0}{a}\), then the distribution of the number of events
+              that occur in \(\ointerval{0}{s}\) is binomial, for \(s < t\). Let \(X\) be the number of events that occur in \(\ointerval{0}{s}\) for \(s < t\),
+              \begin{equation*}
+                  X \,\vert\, \left( N\left( 0,\: a \right) = n \right) \sim \operatorname{Binomial}{\left( n,\: \frac{s}{t} \right)}
+              \end{equation*}
+    \end{enumerate}
 %     \begin{proof}[Proof for~\ref{poisson_property_1_event}]
 %         Consider the CDF of \(X\),
 %         \begin{align*}
