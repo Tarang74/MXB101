@@ -136,7 +136,7 @@
     A signal can pass through a circuit if there is a functional path from start to finish where
     each component functions independently.
 
-    Let \(W_i\) be the event where component \(i\) functions 
+    Let \(W_i\) be the event where component \(i\) functions
     and \(S\) be the event where the system functions, then
     \begin{equation*}
         \Pr{\left( W_i \right)} = p
@@ -198,10 +198,10 @@
     \subsection{Total Probability}
     \(A = AB \cup A\overline{B}\)
     \begin{align*}
-        \Pr{\left( A \right)} & = \Pr{\left( AB \right)} + \Pr{\left( A\overline{B} \right)} \\
+        \Pr{\left( A \right)} & = \Pr{\left( AB \right)} + \Pr{\left( A\overline{B} \right)}                        \\
         \Pr{\left( A \right)} & = \begin{aligned}[t]
-                                      &\Pr{\left( A \,\vert\, B \right)}\Pr{\left( B \right)} \\
-                                      &+ \Pr{\left( A \,\vert\, \overline{B} \right)}\Pr{\left( \overline{B} \right)}
+                                       & \Pr{\left( A \,\vert\, B \right)}\Pr{\left( B \right)}                         \\
+                                       & + \Pr{\left( A \,\vert\, \overline{B} \right)}\Pr{\left( \overline{B} \right)}
                                   \end{aligned}
     \end{align*}
     In general, partition \(\Omega\) into disjoint events \(B_1,\; B_2,\; \dots,\; B_n\),
@@ -314,18 +314,18 @@
         \section{Random Variables}
         Measurable variable whose value holds some uncertainty.
         An event is when a random variable assumes a certain value or range of values.
-        \subsection{Probability distribution}
+        \subsection{Probability Distribution}
         The probability distribution of a random variable \(X\) is a function that links all outcomes \(x \in \Omega\)
         to the probability that they will occur \(\Pr{\left( X = x \right)}\).
-        \subsection{Probability mass function}
+        \subsection{Probability Mass Function}
         \begin{equation*}
             \Pr{\left( X = x \right)} = p_x
         \end{equation*}
-        \subsection{Probability density function}
+        \subsection{Probability Density Function}
         \begin{equation*}
             \Pr{\left( x_1 \leq X \leq x_2 \right)} = \int_{x_1}^{x_2} f\left( x \right) \odif{x}
         \end{equation*}
-        \subsection{Cumulative distribution function}
+        \subsection{Cumulative Distribution Function}
         Probability that a random variable is
         less than or equal to a particular realisation \(x\).
 
@@ -338,7 +338,7 @@
         \begin{equation*}
             \odv{F\left( x \right)}{x} = \odv{}{x} \int_{-\infty}^x f\left( u \right) \odif{u} = f\left( x \right)
         \end{equation*}
-        \subsection{Complementary CDF (survival)}
+        \subsection{Complementary CDF (Survival Function)}
         \begin{equation*}
             \Pr{\left( X > x \right)} = 1 - \Pr{\left( X \leq x \right)} = 1 - F\left( x \right)
         \end{equation*}
@@ -350,19 +350,20 @@
         \begin{equation*}
             \int_{-\infty}^m f\left( u \right) \odif{u} = \int^{\infty}_m f\left( u \right) \odif{u} = \frac{1}{2}
         \end{equation*}
-        \subsection{Lower and upper quartile}
+        \subsection{Lower and Upper Quartiles}
+        \begin{align*}
+            \int_{-\infty}^{q_1} f\left( u \right) \odif{u} & = \frac{1}{4} \\
+            \int_{-\infty}^{q_2} f\left( u \right) \odif{u} & = \frac{3}{4}
+        \end{align*}
+        Interquartile range:
         \begin{equation*}
-            \int_{-\infty}^{q_1} f\left( u \right) \odif{u} = \frac{1}{4}
+            \mathrm{IQR} = q_2 - q_1
         \end{equation*}
-        and
-        \begin{equation*}
-            \int_{-\infty}^{q_2} f\left( u \right) \odif{u} = \frac{3}{4}
-        \end{equation*}
-        \subsection{Quantile function}
+        \subsection{Quantile Function}
         \begin{equation*}
             x = F^{-1}\left( p \right) = Q\left( p \right)
         \end{equation*}
-        \subsection{Expectation (mean)}
+        \subsection{Expectation (Mean)}
         Expected value given an infinite number of observations. For \(a < c < b\):
         \begin{equation*}
             \E{\left(X\right)} = \begin{aligned}[t]
@@ -375,7 +376,7 @@
         \begin{equation*}
             \Var{\left( X \right)} = \sigma^2 = \E{\left( X^2 \right)} - \E{\left( X \right)}^2
         \end{equation*}
-        \subsection{Standard deviation}
+        \subsection{Standard Deviation}
         \begin{equation*}
             \sigma = \sqrt{\Var{\left( X \right)}}
         \end{equation*}
@@ -384,7 +385,7 @@
 \begin{minipage}{62.39259259mm}
     \subsection{Uniform Distribution}
     Single trial \(X\) in a set of equally likely elements.
-    \subsection{Bernoulli (binary) Distribution}
+    \subsection{Bernoulli (Binary) Distribution}
     Boolean-valued outcome \(X\), i.e., success (1) or failure (0).
     \(\left( 1 - p \right)\) is sometimes denoted as \(q\).
     \subsection{Binomial Distribution}
@@ -395,7 +396,7 @@
     \end{align*}
     \subsection{Geometric Distribution}
     Number of trials \(N\) up to and including the first success where each trial is independent and has the same probability of success \(p\).
-    \subsection{Alternate Geometric}
+    \subsection{Alternate Geometric Distribution}
     Number of failures \(Y = N - 1\) until a success.
     \subsection{Negative Binomial Distribution}
     Number of trials \(N\) until \(k \geq 1\) successes, where each trial is independent and has the same probability of success \(p\).
@@ -403,7 +404,7 @@
         N   & = Y_1 + Y_2 + \cdots + Y_k                                                                                                \\
         Y_i & \overset{\mathrm{iid}}{\sim} \operatorname{Geom}{\left( p \right)} : \forall i \in \left\{ 1,\: 2,\: \dots,\: k \right\}.
     \end{align*}
-    \subsection{Alternate Negative Binomial}
+    \subsection{Alternate Negative Binomial Distribution}
     Number of failures \(Y = N - k\) until \(k\) successes:
     \subsection{Poisson Distribution}
     Number of events \(N\) which occur over a fixed interval of time \(\lambda\).
@@ -514,7 +515,7 @@
 \hrule
 \begin{multicols}{3}
     \section{Bivariate Distributions}
-    \subsection{Bivariate probability mass function}
+    \subsection{Bivariate Probability Mass Function}
     Distribution over the joint space of two discrete random variables \(X\) and \(Y\):
     \begin{align*}
         \Pr{\left( X = x,\: Y = y \right)}                                             & = p_{x,\: y} \geq 0 \\
@@ -533,7 +534,7 @@
         \end{matrix}
     \end{equation*}
     }
-    \subsection{Bivariate probability density function}
+    \subsection{Bivariate Probability Density Function}
     Distribution over the joint space of two continuous random variables \(X\) and \(Y\):
     \begin{align*}
         \Pr{\left( x_1 \leq X \leq x_2,\: y_1 \leq Y \leq y_2 \right)} \\
@@ -552,22 +553,22 @@
     \subsection{Marginal Probability}
     Probability function of each random variable.
     Must specify the range of values that variable can take.
-    \subsection{Marginal probability mass function}
+    \subsection{Marginal Probability Mass Function}
     \begin{align*}
         p_x & = \sum_{y \in \Omega_2} \Pr{\left( X = x,\: Y = y \right)} \\
         p_y & = \sum_{x \in \Omega_1} \Pr{\left( X = x,\: Y = y \right)}
     \end{align*}
-    \subsection{Marginal probability density function}
+    \subsection{Marginal Probability Density Function}
     \begin{align*}
         f\left( x \right) & = \int_{y_1}^{y_2} f\left( x,\: y \right) \odif{y} \\
         f\left( y \right) & = \int_{x_1}^{x_2} f\left( x,\: y \right) \odif{x}
     \end{align*}
-    \subsection{Conditional probability mass function}
+    \subsection{Conditional Probability Mass Function}
     \begin{gather*}
         \Pr{\left( X = x \,\vert\, Y = y \right)} = \frac{\Pr{\left( X = x,\: Y = y \right)}}{\Pr{\left( Y = y \right)}} \\
         \sum_{x \in \Omega_1} \Pr{\left( X = x \,\vert\, Y = y \right)} = 1
     \end{gather*}
-    \subsection{Conditional probability density function}
+    \subsection{Conditional Probability Density Function}
     \begin{gather*}
         f\left( x \,\vert\, y \right) = \frac{f\left( x,\: y \right)}{f\left( y \right)} \\
         \int_{x_1}^{x_2} f\left( x \,\vert\, y \right) \odif{x} = 1
@@ -602,12 +603,12 @@
     \begin{equation*}
         \E{\left( X \right)} = \E{\left( \E{\left( X \,\vert\, Y \right)} \right)}
     \end{equation*}
-    \subsection{Joint expectation}
+    \subsection{Joint Expectation}
     \begin{align*}
         \E{\left( XY \right)} & = \sum_{x\in\Omega_1} \sum_{y\in\Omega_2} xy p_{x,\: y}                          \\
         \E{\left( XY \right)} & = \int_{x_1}^{x_2} \int_{x_1}^{x_2} xy f\left( x,\: y \right) \odif{y} \odif{x}.
     \end{align*}
-    \subsection{Transformation rules}
+    \subsection{Transformation Rules}
     \begin{align*}
         \E{\left( aX \pm b \right)}   & = a\E{\left( X \right)} \pm b                        \\
         \E{\left( X \pm Y \right)}    & = \E{\left( X \right)} \pm \E{\left( Y \right)}      \\
@@ -725,14 +726,13 @@
     \end{equation*}
     The stationary distribution \(\symbfit{\pi}\) satisfies \(\symbfit{\pi}^\top = \symbfit{\pi}^\top \symbf{P}\).
     To determine \(\symbfit{\pi}\), we must use the equation \(\sum_{i = 1}^m \pi_i = 1\).
-    %     \subsection{Limiting Distribution}
-    %     Under certain conditions, as \(n \to \infty\), each row of \(\symbf{P}^n\) will be equal to \(\symbfit{\pi}^\top\),
-    %     so that each state moves to the next step with the same probability. This is known as the limiting distribution.
-    %     Here \(\symbfit{\pi}\) provides the long run probabilities of being in each state and the process forgets where it starts.
+    \subsection{Limiting Distribution}
+    Under certain conditions, each row of \(\symbf{P}^n\) will be equal to \(\symbfit{\pi}^\top\) so that each state moves to the next step with the same probability.
+    \(\symbfit{\pi}\) provides the long run probabilities of being in each state and the process forgets where it starts.
+    
+    A sufficient condition for the above is if \(\symbf{P}^n\) has positive entries for some finite \(n\).
 
-    %     A sufficient condition for the above is if \(\symbf{P}^n\) has positive entries for some finite \(n\).
-
-    %     \textit{Note that a stationary distribution does not imply that a limiting distribution exists}.
+    \textit{Note that a stationary distribution does not imply that a limiting distribution exists}.
     \section{Poisson Processes}
     A Poisson process is a continuous time and discrete state stochastic process that counts events
     that occur randomly in time (or space).
@@ -755,27 +755,15 @@
     \subsection{Poisson Distribution}
     A Poisson process has a Poisson distribution with rate \(\eta\), so that
     \(X\left( t \right) \sim \operatorname{Poisson}{\left( \eta t \right)}\).
-    \begin{equation*}
-        \Pr{\left( X\left( t \right) = n \right)} = p_n\left( t \right) = \frac{e^{-\eta t} \left( \eta t \right)^n}{n!}
-    \end{equation*}
-    for \(n \geq 0\), where \(\eta t\) is the expected number of events.
-    
+    Here \(\eta t\) is the expected number of events.
+
     The number of events occurring between
     \(t_1\) and \(t_2\) is given by \(N\left( t_1,\: t_2 \right) \sim \operatorname{Poisson}{\left( \eta \left( t_2 - t_1 \right) \right)}\).
-    \begin{flalign*}
-        \Pr\left( N\left( t_1,\: t_2 \right) = n \right) = \\
-        \frac{e^{-\eta \left( t_2 - t_1 \right)} \left( \eta \left( t_2 - t_1 \right) \right)^n}{n!}
-    \end{flalign*}
     \subsection{Exponential Distribution}
     Let \(T\) be the time between events of a Poisson process so that \(T\) has an exponential distribution
     \begin{equation*}
         T \sim \operatorname{Exp}{\left( \eta \right)}.
     \end{equation*}
-    The probability density function of \(T\) is given by
-    \begin{equation*}
-        f\left( t \right) = \eta e^{-\eta t}
-    \end{equation*}
-    for \(t > 0\).
     \subsection{Properties of Poisson Processes}
     \begin{enumerate}
         \setlength\itemsep{-0.2em}
