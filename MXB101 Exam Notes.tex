@@ -39,7 +39,8 @@
 \titlespacing*\section{0pt}{1ex}{1ex}
 \titlespacing*\subsection{0pt}{1ex}{1ex}
 %
-\setlength\abovecaptionskip{-5pt}
+% \setlength\abovecaptionskip{0pt}
+\setlength\belowcaptionskip{-15pt}
 \setlength\textfloatsep{0pt}
 %
 \setlength\abovedisplayskip{1pt}
@@ -63,14 +64,13 @@
         \Pr{\left( AB \right)}            & = 0 \implies \Pr{\left( \varnothing \right)} = 0 \\
         \Pr{\left( A \,\vert\, B \right)} & = 0
     \end{align*}
-    These events are dependent.
     \subsection{Union}
     Set of outcomes in either \(A\) or \(B\)
     \begin{equation*}
         A \cup B
     \end{equation*}
     \subsection{Complement}
-    Set of all outcomes not in \(A\), but in \(\Omega \) --- \(\overline{A} = \Omega \backslash A\).
+    Set of all outcomes not in \(A\), but in \(\Omega \)
     \begin{align*}
         A\overline{A}       & = \varnothing \\
         A \cup \overline{A} & = \Omega
@@ -132,23 +132,17 @@
         \Pr{\left( A \cup B \right)} & = 1 - \Pr{\left( \overline{A} \ \overline{B} \right)}    \\
         \Pr{\left( AB \right)}       & = 1 - \Pr{\left( \overline{A} \cup \overline{B} \right)}
     \end{align*}
-    % ! Shorten this section about circuits
-    % \subsection{Circuits}
-    % A signal can pass through a circuit if there is a functional path from start to finish.
+    \subsection{Circuits}
+    A signal can pass through a circuit if there is a functional path from start to finish where
+    each component functions independently.
 
-    % We can define a circuit where each component \(i\) functions with probability \(p\),
-    % and is independent of other components.
-
-    % Then \(W_i\) to be the event in which the associated component \(i\) functions, we can
-    % determine the event \(S\) in which the system functions,
-    % and probability \(\Pr{\left( S \right)}\) that the system functions.
-
-    % As the probability that any component functions is \(p\), in other words
-    % \begin{equation*}
-    %     \Pr{\left( W_i \right)} = p,
-    % \end{equation*}
-    % \(\Pr{\left( S \right)}\) will be a function of \(p\) defined \(f:\left[ 0,\; 1 \right] \to \left[ 0,\; 1 \right]\).
-    \subsection{Conditional probability}
+    Let \(W_i\) be the event where component \(i\) functions 
+    and \(S\) be the event where the system functions, then
+    \begin{equation*}
+        \Pr{\left( W_i \right)} = p
+    \end{equation*}
+    and \(\Pr{\left( S \right)}\) will be a function of \(p\) defined \(f:\left[ 0,\; 1 \right] \to \left[ 0,\; 1 \right]\).
+    \subsection{Conditional Probability}
     The probability of event \(A\) given \(B\) has already occurred
     \begin{equation*}
         \Pr{\left( A \,\vert\, B \right)} = \frac{\Pr{\left( A B \right)}}{\Pr{\left( B \right)}}.
@@ -165,7 +159,6 @@
         \Pr{\left( \overline{A} \,\vert\, \overline{B} \right)} & = \Pr{\left( \overline{A} \right)}
     \end{align*}
     \subsection{Probability Rules with Conditional}
-    All probability rules hold when conditioning on another event \(C\).
     \begin{align*}
         \Pr{\left( \overline{A} \,\vert\, C \right)} & = 1 - \Pr{\left( A \,\vert\, C \right)}                                 \\
         \Pr{\left( A \cup B \,\vert\, C \right)}     & = \begin{aligned}[t]
@@ -190,15 +183,15 @@
         \Pr{\left( A \,\vert\, BC \right)} & \neq \Pr{\left( A \,\vert\, C \right)}                                 \\
         \Pr{\left( AB \,\vert\, C \right)} & = \Pr{\left( A \,\vert\, BC \right)} \Pr{\left( B \,\vert\, C \right)}
     \end{align*}
-    Pairwise independence does not imply mutual independence
-    \begin{gather*}
-        \begin{cases}
-            \Pr{\left( A B \right)} = \Pr{\left( A \right)} \Pr{\left( B \right)} \\
-            \Pr{\left( A C \right)} = \Pr{\left( A \right)} \Pr{\left( C \right)} \\
-            \Pr{\left( B C \right)} = \Pr{\left( B \right)} \Pr{\left( C \right)}
-        \end{cases} \not\Rightarrow                                                                          \\
-        \Pr{\left( A B C \right)} = \Pr{\left( A \right)} \Pr{\left( B \right)} \Pr{\left( C \right)}.
-    \end{gather*}
+    Pairwise independence does not imply mutual independence for three events.
+    % \begin{gather*}
+    %     \begin{cases}
+    %         \Pr{\left( A B \right)} = \Pr{\left( A \right)} \Pr{\left( B \right)} \\
+    %         \Pr{\left( A C \right)} = \Pr{\left( A \right)} \Pr{\left( C \right)} \\
+    %         \Pr{\left( B C \right)} = \Pr{\left( B \right)} \Pr{\left( C \right)}
+    %     \end{cases} \not\Rightarrow                                                                          \\
+    %     \Pr{\left( A B C \right)} = \Pr{\left( A \right)} \Pr{\left( B \right)} \Pr{\left( C \right)}.
+    % \end{gather*}
     Independence should not be assumed unless explicitly stated.
     \subsection{Marginal Probability}
     The probability of an event irrespective of the outcome of another variable.
@@ -207,8 +200,8 @@
     \begin{align*}
         \Pr{\left( A \right)} & = \Pr{\left( AB \right)} + \Pr{\left( A\overline{B} \right)} \\
         \Pr{\left( A \right)} & = \begin{aligned}[t]
-                                      \Pr{\left( A \,\vert\, B \right)}\Pr{\left( B \right)} \\
-                                      + \Pr{\left( A \,\vert\, \overline{B} \right)}\Pr{\left( \overline{B} \right)}
+                                      &\Pr{\left( A \,\vert\, B \right)}\Pr{\left( B \right)} \\
+                                      &+ \Pr{\left( A \,\vert\, \overline{B} \right)}\Pr{\left( \overline{B} \right)}
                                   \end{aligned}
     \end{align*}
     In general, partition \(\Omega\) into disjoint events \(B_1,\; B_2,\; \dots,\; B_n\),
@@ -221,22 +214,22 @@
         \Pr{\left( A \,\vert\, B \right)} = \frac{\Pr{\left( B \,\vert\, A \right)}\Pr{\left( A \right)}}{\Pr{\left( B \right)}}
     \end{equation*}
     \section{Combinatorics}
-    \subsection{Number of outcomes}
+    \subsection{Number of Outcomes}
     Let \(\abs{A}\) denote the number of outcomes in an event \(A\).
 
     For \(k\) disjoint events \({\left\{ S_1,\:\ldots,\:S_k \right\}}\)
     where the \(i\)th event has \(n_i\) possible outcomes,
-    \subsection{Addition principle}
+    \subsection{Addition Principle}
     Number of possible samples from any event
     \begin{equation*}
         \abs*{\bigcup_{i = 0}^{k} S_i} = \sum_{i = 1}^k n_i
     \end{equation*}
-    \subsection{Multiplication principle}
+    \subsection{Multiplication Principle}
     Number of possible samples from every event
     \begin{equation*}
         \abs*{\bigcap_{i=0}^{k} S_i} = \prod_{i = 1}^k n_i
     \end{equation*}
-    \subsection{Counting probability}
+    \subsection{Counting Probability}
     If \(S_i\) has equally likely outcomes
     \begin{equation*}
         \Pr{\left( S_i \right)} = \frac{\abs{S_i}}{\abs{S}}
@@ -287,7 +280,7 @@
         \( N \sim \operatorname{Poisson}{\left( \lambda \right)}\) & \(n \geq 0\)                                           & \(\frac{\lambda^n e^{-\lambda}}{n!}\)                     & \(e^{-\lambda} \sum_{u = 0}^n \frac{\lambda^u}{u!}\)                     & \(\lambda\)                         & \(\lambda\)                                   \\
         \bottomrule
     \end{tabular}
-    % \caption{} % \label{}
+    \caption{Discrete probability distributions.} % \label{}
 \end{table}
 \begin{table}[H]
     \centering
@@ -300,14 +293,14 @@
         \(X \sim \operatorname{N}{\left( \mu,\: \sigma^2 \right)}\) & \(x \in \left\{ 0, \dots, n \right\}\) & \(\frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{\left( x - \mu \right)^2}{2 \sigma^2}}\) & \(\frac{1}{2} \left( 1 + \erf{\left( \frac{x - \mu}{\sigma \sqrt{2}} \right)} \right)\) & \(\mu\)                  & \(\sigma^2\)                          \\
         \bottomrule
     \end{tabular}
-    % \caption{} % \label{}
+    \caption{Continuous probability distributions.} % \label{}
 \end{table}
 \begin{minipage}{126.1962963mm}
     \begin{table}[H]
         \centering
         \begin{tabular}{c c c }
             \toprule
-            \textbf{Univariate} \(X\)  & \textbf{Discrete}                              & \textbf{Continuous}                                    \\
+                                       & \textbf{Discrete}                              & \textbf{Continuous}                                    \\
             \midrule
             Valid probabilities        & \(0 \leq p_x \leq 1\)                          & \(f(x) \geq 0\)                                        \\
             Cumulative probability     & \(\sum_{u \leq x} p_u\)                        & \(\int_{-\infty}^{x} f(u) \odif{u}\)                   \\
@@ -315,7 +308,7 @@
             \(\Var{\left( X \right)}\) & \(\sum_{\Omega} \left( x - \mu \right)^2 p_x\) & \(\int_{\Omega} \left( x - \mu \right)^2f(x)\odif{x}\) \\
             \bottomrule
         \end{tabular}
-        % \caption{} % \label{}
+        \caption{Probability rules for univariate \(X\).} % \label{}
     \end{table}
     \begin{multicols}{2}
         \section{Random Variables}
@@ -333,7 +326,7 @@
             \Pr{\left( x_1 \leq X \leq x_2 \right)} = \int_{x_1}^{x_2} f\left( x \right) \odif{x}
         \end{equation*}
         \subsection{Cumulative distribution function}
-        Computes the probability that the random variable is
+        Probability that a random variable is
         less than or equal to a particular realisation \(x\).
 
         \(F\left( x \right)\) is a valid CDF if:
@@ -349,7 +342,7 @@
         \begin{equation*}
             \Pr{\left( X > x \right)} = 1 - \Pr{\left( X \leq x \right)} = 1 - F\left( x \right)
         \end{equation*}
-        \subsection{\(p\)-Quantile}
+        \subsection{\texorpdfstring{\(p\)}{p}-Quantile}
         \begin{equation*}
             F\left( x \right) = \int_{-\infty}^x f\left( u \right) \odif{u} = p
         \end{equation*}
@@ -380,11 +373,7 @@
         \subsection{Variance}
         Measure of spread of the distribution (average squared distance of each value from the mean).
         \begin{equation*}
-            \Var{\left( X \right)} = \sigma^2
-        \end{equation*}
-        Variance is also denoted as \(\sigma^2\).
-        \begin{equation*}
-            \Var{\left( X \right)} = \E{\left( X^2 \right)} - \E{\left( X \right)}^2
+            \Var{\left( X \right)} = \sigma^2 = \E{\left( X^2 \right)} - \E{\left( X \right)}^2
         \end{equation*}
         \subsection{Standard deviation}
         \begin{equation*}
@@ -405,7 +394,7 @@
         Y_i & \overset{\mathrm{iid}}{\sim} \operatorname{Bernoulli}{\left( p \right)} : \forall i \in \left\{ 1,\: 2,\: \dots,\: n \right\}.
     \end{align*}
     \subsection{Geometric Distribution}
-    Number of trials \(N\) up to and including the first success, where each trial is independent and has the same probability of success \(p\).
+    Number of trials \(N\) up to and including the first success where each trial is independent and has the same probability of success \(p\).
     \subsection{Alternate Geometric}
     Number of failures \(Y = N - 1\) until a success.
     \subsection{Negative Binomial Distribution}
@@ -420,9 +409,10 @@
     Number of events \(N\) which occur over a fixed interval of time \(\lambda\).
     \subsection{Modelling Count Data}
     \begin{itemize}
+        \setlength\itemsep{-0.2em}
         \item Poisson (mean = variance)
         \item Binomial (underdispersed, mean > variance)
-        \item Geometric/Negative Binomial (overdispersed, mean < variance)
+        \item Geometric/Negative Binomial \newline (overdispersed, mean < variance)
     \end{itemize}
 \end{minipage}
 \begin{minipage}{62.39259259mm}
@@ -461,8 +451,8 @@
         The sum of independent and identically distributed random variables, when properly standardised,
         can be approximated by a normal distribution, as \(n \to \infty\).
 
-        Let \(X_1,\: \ldots,\: X_n \overset{iid}{\sim} X\), and
-        \(\E{\left( X \right)} = \mu\) and \(\Var{\left( X \right)} = \sigma^2\)
+        Let \(X_1,\: \ldots,\: X_n \overset{\mathrm{iid}}{\sim} X\) with
+        \(\E{\left( X \right)} = \mu\) and \(\Var{\left( X \right)} = \sigma^2\):
         \subsection{Average of Random Variables}
         If \(\overline{X} = \frac{1}{n} \sum_{i = 1}^n X_i\):
         \begin{align*}
@@ -481,8 +471,9 @@
             \Var{\left( Y \right)} & = n \sigma^2
         \end{align*}
         \begin{equation*}
-            Y \sim \operatorname{N}{\left( n \mu,\: n \sigma^2 \right)}, \quad n \to \infty
+            Y \sim \operatorname{N}{\left( n \mu,\: n \sigma^2 \right)}
         \end{equation*}
+        as \(n \to \infty\).
         \subsection{Binomial Approximations}
         If \(X \sim \operatorname{Binomial}{\left( n,\: p \right)}\):
         \begin{equation*}
@@ -554,11 +545,10 @@
         \int_{x \in \Omega_1} \int_{y \in \Omega_2} f\left( x,\: y \right) \odif{y} \odif{x} & = 1.
     \end{align*}
     for all pairs of \(x \in \Omega_1\) and \(y \in \Omega_2\).
-    \subsection{Joint Probability}
-    \begin{multline*}
-        \Pr{\left( X = x ,\: Y = y \right)} =                               \\
+    \begin{flalign*}
+        \Pr{\left( X = x ,\: Y = y \right)} = \\
         \Pr{\left( X = x \,\vert\, Y = y \right)} \Pr{\left( Y = y \right)}
-    \end{multline*}
+    \end{flalign*}
     \subsection{Marginal Probability}
     Probability function of each random variable.
     Must specify the range of values that variable can take.
@@ -598,19 +588,15 @@
         f\left( x \,\vert\, y \right) = f\left( x \right).
     \end{equation*}
     \subsection{Conditional Expectation}
-    Given the conditional distribution \(X \,\vert\, Y = y\) for discrete random variables:
-    \begin{equation*}
-        \E{\left( X \,\vert\, Y = y \right)} = \sum_{x\in\Omega_1} x p_{x\,\vert\,y}
-    \end{equation*}
-    For continuous random variables:
-    \begin{equation*}
-        \E{\left( X \,\vert\, Y = y \right)} = \int_{x_1}^{x_2} x f\left( x \,\vert\, y \right) \odif{x}
-    \end{equation*}
+    \begin{align*}
+        \E{\left( X \,\vert\, Y = y \right)} & = \sum_{x\in\Omega_1} x p_{x\,\vert\,y}                     \\
+        \E{\left( X \,\vert\, Y = y \right)} & = \int_{x_1}^{x_2} x f\left( x \,\vert\, y \right) \odif{x}
+    \end{align*}
     \subsection{Conditional Variance}
-    \begin{multline*}
+    \begin{flalign*}
         \Var{\left( X \,\vert\, Y = y \right)} \\
         = \E{\left( X^2 \,\vert\, Y = y \right)} - \E{\left( X \,\vert\, Y = y \right)}^2
-    \end{multline*}
+    \end{flalign*}
     \subsection{Law of Total Expectation}
     By treating \(\E{\left( X \,\vert\, Y \right)}\) as a random variable of \(Y\):
     \begin{equation*}
@@ -658,9 +644,6 @@
                                         \end{aligned}                        \\
                                     & = \E{\left( XY \right)} - \E{\left( X \right)} \E{\left( Y \right)}
     \end{align*}
-    Describes the direction of a relationship, but does not quantify the strength of such a relationship.
-    \columnbreak
-    
     The covariance of \(X\) and \(Y\) is:
     \begin{description}
         \item[Positive] if an increase in one variable is more likely to result in an increase in
@@ -669,15 +652,15 @@
             the other variable.
         \item[Zero] if \(X\) and \(Y\) are independent. Note that the converse is not true.
     \end{description}
+    Describes the direction of a relationship, but does not quantify the strength of such a relationship.
     \subsection{Correlation}
     Explains both the direction and strength of a linear relationship between two random variables.
     \begin{equation*}
         \rho\left( X,\: Y \right) = \frac{\Cov{\left( X,\: Y \right)}}{\sqrt{\Var{\left( X \right)} \Var{\left( Y \right)}}}
     \end{equation*}
     where \(-1 \leq \rho\left( X,\: Y \right) \leq 1\).
-    \columnbreak
 
-    These value can be interpretted as follows:
+    The correlation is interpretted as follows:
     \begin{itemize}
         \item \(\rho\left( X,\: Y \right) > 0\) iff \(X\) and \(Y\) have a positive linear relationship.
         \item \(\rho\left( X,\: Y \right) < 0\) iff \(X\) and \(Y\) have a negative linear relationship.
@@ -687,33 +670,34 @@
     \end{itemize}
     The slope of a perfect linear relationship cannot be obtained from the correlation.
 \end{multicols}
-\section{Markov Chains}
-%     A Markov chain is a discrete time and state stochastic process that describes how a state evolves over time.
-%     In this process, the set of all states is discrete and disjoint and states change probabilistically so that
-%     a step may not result in a changed state.
-%     At each step, the next state depends only on the current state of the random variable.
-
-%     States are denoted by the random variable \(X_t\) at time step \(t\).
-    \begin{definition}[Markov property]
-%         The state \(X_t\) is conditionally independent of \(X_{t-2}\), \(X_{t-3}\), \dots, \(X_0\) given \(X_{t-1}\).
-        \begin{equation*}
-            \Pr{\left( X_t = x_t \,\vert\, X_{t-1} = x_{t-1},\: X_{t-2} = x_{t-2},\: \ldots,\: X_{0} = x_{0} \right)} = \Pr{\left( X_t - x_t \,\vert\, X_{t-1} = x_{t-1} \right)}
-        \end{equation*}
-    \end{definition}
-    \subsection{Homogeneous Markov Chain}
+\hrule
+\begin{multicols}{3}
+    \section{Markov Chains}
+    A Markov chain is a discrete time and state stochastic process that describes how a state evolves over time.
+    %     In this process, the set of all states is discrete and disjoint and states change probabilistically so that
+    %     a step may not result in a changed state.
+    %     At each step, the next state depends only on the current state of the random variable.
+    States are denoted by the random variable \(X_t\) at time step \(t\).
+    \subsection{Markov Property}
+    \begin{flalign*}
+        \Pr{\left( X_t = x_t \,\vert\, X_{t-1} = x_{t-1},\: \ldots,\: X_{0} = x_{0} \right)} \\
+        = \Pr{\left( X_t = x_t \,\vert\, X_{t-1} = x_{t-1} \right)}
+    \end{flalign*}
+    \subsection{Homogeneous Markov Chains}
     A Markov chain is homogeneous when
-    \begin{equation*}
-        \Pr{\left( X_{t+n} = j \,\vert\, X_t = i \right)} = \Pr{\left( X_n = j \,\vert\, X_0 = i \right)} = p_{ij}^{(n)}
-    \end{equation*}
-%     that is, the \(n\)-step conditional probabilities do not depend on the time step \(t\).
+    \begin{flalign*}
+        \Pr{\left( X_{t+n} = j \,\vert\, X_t = i \right)} = \\
+        \Pr{\left( X_n = j \,\vert\, X_0 = i \right)} = p_{ij}^{(n)}
+    \end{flalign*}
+    %     that is, the \(n\)-step conditional probabilities do not depend on the time step \(t\).
     \subsection{Transition Probability Matrix}
     A homogeneous Markov chain is characterised by the transition probability matrix \(\symbf{P} \in \R^{m \times m}\), where
     \(m\) is the number of states.
     \(\symbf{P}\) must fulfil the following properties:
     \begin{itemize}
-        \item \(p_{i,j} = \Pr{\left( X_t = j \,\vert\, X_{t-1} = i \right)}\)
-        \item \(p_{i,j} \geq 0 : \forall i,\: j\)
-        \item \(\sum_{j=1}^m p_{i,j} = 1 : \forall j\)
+        \item \(p_{i,\:j} = \Pr{\left( X_t = j \,\vert\, X_{t-1} = i \right)}\)
+        \item \(p_{i,\:j} \geq 0 : \forall i,\: j\)
+        \item \(\sum_{j = 1}^m p_{i,\:j} = 1 : \forall j\)
     \end{itemize}
     \(\symbf{P}\) has the following form
     \begin{equation*}
@@ -731,59 +715,58 @@
     Given multiple states, let \(\symbfit{s}^{(n)}\) denote the vector of all states \(p_j^{(n)}\) at
     time \(n\). Then
     \begin{align*}
-        {\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(n-1)}}^\top \symbf{P} \quad \quad \text{and} \quad \quad {\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(0)}}^\top \symbf{P}^n
+        {\symbfit{s}^{(n)}}^\top & = {\symbfit{s}^{(n-1)}}^\top \symbf{P} \\
+        {\symbfit{s}^{(n)}}^\top & = {\symbfit{s}^{(0)}}^\top \symbf{P}^n
     \end{align*}
     \subsection{Stationary Distribution}
     At steady-state, the probability of being in a particular state does not change from one step to the next.
-    This implies
     \begin{equation*}
         \symbfit{s}^{(n+1)} = \symbfit{s}^{(n)} \implies {\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(n)}}^\top \symbf{P}
     \end{equation*}
     The stationary distribution \(\symbfit{\pi}\) satisfies \(\symbfit{\pi}^\top = \symbfit{\pi}^\top \symbf{P}\).
     To determine \(\symbfit{\pi}\), we must use the equation \(\sum_{i = 1}^m \pi_i = 1\).
-%     \subsection{Limiting Distribution}
-%     Under certain conditions, as \(n \to \infty\), each row of \(\symbf{P}^n\) will be equal to \(\symbfit{\pi}^\top\),
-%     so that each state moves to the next step with the same probability. This is known as the limiting distribution.
-%     Here \(\symbfit{\pi}\) provides the long run probabilities of being in each state and the process forgets where it starts.
+    %     \subsection{Limiting Distribution}
+    %     Under certain conditions, as \(n \to \infty\), each row of \(\symbf{P}^n\) will be equal to \(\symbfit{\pi}^\top\),
+    %     so that each state moves to the next step with the same probability. This is known as the limiting distribution.
+    %     Here \(\symbfit{\pi}\) provides the long run probabilities of being in each state and the process forgets where it starts.
 
-%     A sufficient condition for the above is if \(\symbf{P}^n\) has positive entries for some finite \(n\).
+    %     A sufficient condition for the above is if \(\symbf{P}^n\) has positive entries for some finite \(n\).
 
-%     \textit{Note that a stationary distribution does not imply that a limiting distribution exists}.
-    \section{Poisson Process}
-%     A Poisson process is a continuous time and discrete state stochastic process that counts events
-%     that occur randomly in time (or space).
-    This process only requires the rate parameter \(\eta\) which describes the average rate at which events occur.
-%     This rate does not depend on how long the process has been run nor how many events have already been
-%     observed.
+    %     \textit{Note that a stationary distribution does not imply that a limiting distribution exists}.
+    \section{Poisson Processes}
+    A Poisson process is a continuous time and discrete state stochastic process that counts events
+    that occur randomly in time (or space).
+
+    The rate parameter \(\eta\) is the average rate at which events occur.
+    The rate does not depend on how long the process has been run nor how many events have already been
+    observed.
 
     The number of events that occur randomly on the interval \(\ointerval{0}{t}\), are denoted by the random variable \(X\left( t \right)\).
-    At time \(t = 0\), we assume that no events were observed so that
     \begin{equation*}
         \Pr{\left( X\left( 0 \right) = 0 \right)} = 1.
     \end{equation*}
-%     Let \(h\) be a small interval such that at most 1 event can occur during that time, then
-%     \begin{align*}
-%         \Pr{\left( X\left( t + h \right) = n + 1 \,\vert\, X\left( t \right) = n \right)} & \approx \eta h     \\
-%         \Pr{\left( X\left( t + h \right) = n \,\vert\, X\left( t \right) = n \right)}     & \approx 1 - \eta h \\
-%         \Pr{\left( X\left( t + h \right) > n + 1 \,\vert\, X\left( t \right) = n \right)} & \approx 0
-%     \end{align*}
-%     \subsection{Poisson Distribution}
-%     A Poisson process has a Poisson distribution with rate \(\eta\), so that
-    \begin{equation*}
-        X\left( t \right) \sim \operatorname{Poisson}{\left( \eta t \right)}
-    \end{equation*}
-%     therefore the probability density function for the count \(X\left( t \right)\) is given by
+    Let \(h\) be a small interval such that at most 1 event can occur during that time, then
+
+    \begin{gather*}
+        \Pr{\left( X\left( t + h \right) = n + 1 \,\vert\, X\left( t \right) = n \right)} \approx \eta h     \\
+        \Pr{\left( X\left( t + h \right) = n \,\vert\, X\left( t \right) = n \right)}     \approx 1 - \eta h \\
+        \Pr{\left( X\left( t + h \right) > n + 1 \,\vert\, X\left( t \right) = n \right)} \approx 0
+    \end{gather*}
+    \subsection{Poisson Distribution}
+    A Poisson process has a Poisson distribution with rate \(\eta\), so that
+    \(X\left( t \right) \sim \operatorname{Poisson}{\left( \eta t \right)}\).
     \begin{equation*}
         \Pr{\left( X\left( t \right) = n \right)} = p_n\left( t \right) = \frac{e^{-\eta t} \left( \eta t \right)^n}{n!}
     \end{equation*}
-    for \(n \in \Z_{\geq 0}\), where \(\eta\) is the expected number of events per unit time \(t\).
-
-%     In general, let \(N\left( t_1,\: t_2 \right)\) be the number of events occurring in the Poisson process between
-%     times \(t_1\) and \(t_2\), then \(N\left( t_1,\: t_2 \right) \sim \operatorname{Poisson}{\left( \eta \left( t_2 - t_1 \right) \right)}\).
-%     \begin{equation*}
-%         \Pr\left( N\left( t_1,\: t_2 \right) = n \right) = \frac{e^{-\eta \left( t_2 - t_1 \right)} \left( \eta \left( t_2 - t_1 \right) \right)^n}{n!}
-%     \end{equation*}
-%     \subsection{Exponential Distribution}
+    for \(n \geq 0\), where \(\eta t\) is the expected number of events.
+    
+    The number of events occurring between
+    \(t_1\) and \(t_2\) is given by \(N\left( t_1,\: t_2 \right) \sim \operatorname{Poisson}{\left( \eta \left( t_2 - t_1 \right) \right)}\).
+    \begin{flalign*}
+        \Pr\left( N\left( t_1,\: t_2 \right) = n \right) = \\
+        \frac{e^{-\eta \left( t_2 - t_1 \right)} \left( \eta \left( t_2 - t_1 \right) \right)^n}{n!}
+    \end{flalign*}
+    \subsection{Exponential Distribution}
     Let \(T\) be the time between events of a Poisson process so that \(T\) has an exponential distribution
     \begin{equation*}
         T \sim \operatorname{Exp}{\left( \eta \right)}.
@@ -795,50 +778,30 @@
     for \(t > 0\).
     \subsection{Properties of Poisson Processes}
     \begin{enumerate}
+        \setlength\itemsep{-0.2em}
         \item As the time between Poisson processes has an exponential distribution, the Poisson process inherits the
               memoryless property,
-              \begin{equation*}
-                  \Pr{\left( T > x + y \,\vert\, T > x \right)} = \Pr{\left( T > y \right)}.
-              \end{equation*}
+              \begin{flalign*}
+                  \Pr{\left( T > x + y \,\vert\, T > x \right)} = \\
+                  \Pr{\left( T > y \right)}.
+              \end{flalign*}
         \item Non-overlapping time intervals of a Poisson process are independent. For \(a < b\) and \(c < d\) where \(b \leq c\),
-              \begin{equation*}
-                  \Pr{\left( N\left( a,\: b \right) = m \,\vert\, N\left( c,\: d \right) = n \right)} = \Pr{\left( N\left( a,\: b \right) = m \right)}
-              \end{equation*}
-              \item\label{poisson_property_1_event} If exactly 1 event occurs on the interval \(\ointerval{0}{a}\), then the distribution of when that event occurs is
+              \begin{flalign*}
+                  \Pr{\left( N\left( a,\: b \right) = m \,\vert\, N\left( c,\: d \right) = n \right)} = \\
+                  \Pr{\left( N\left( a,\: b \right) = m \right)}
+              \end{flalign*}
+              \item\label{poisson_property_1_event} If exactly 1 event occurs on the interval \(\ointerval{0}{a}\), the distribution of when that event occurs is
               uniform. Let \(X\) be the time \(x < a\) when the first event occurs,
-              \begin{equation*}
-                  X \,\vert\, \left( N\left( 0,\: a \right) = 1 \right) \sim \operatorname{Uniform}{\left( 0,\: a \right)}
-              \end{equation*}
+              \begin{flalign*}
+                  X \,\vert\, \left( N\left( 0,\: a \right) = 1 \right) \sim \\
+                  \operatorname{Uniform}{\left( 0,\: a \right)}
+              \end{flalign*}
               \item\label{poisson_property_n_events} If exactly \(n\) events occur on the interval \(\ointerval{0}{a}\), then the distribution of the number of events
               that occur in \(\ointerval{0}{s}\) is binomial, for \(s < t\). Let \(X\) be the number of events that occur in \(\ointerval{0}{s}\) for \(s < t\),
-              \begin{equation*}
-                  X \,\vert\, \left( N\left( 0,\: a \right) = n \right) \sim \operatorname{Binomial}{\left( n,\: \frac{s}{t} \right)}
-              \end{equation*}
+              \begin{flalign*}
+                  X \,\vert\, \left( N\left( 0,\: a \right) = n \right) \sim \\
+                  \operatorname{Binomial}{\left( n,\: \frac{s}{t} \right)}
+              \end{flalign*}
     \end{enumerate}
-%     \begin{proof}[Proof for~\ref{poisson_property_1_event}]
-%         Consider the CDF of \(X\),
-%         \begin{align*}
-%             F_X\left( x \right) & = \Pr{\left( X < x \,\vert\, N\left( 0,\: a \right) = 1 \right)}                                                                                       \\
-%                                 & = \Pr{\left( N\left( 0,\: x \right) = 1 \,\vert\, N\left( 0,\: a \right) = 1 \right)}                                                                  \\
-%                                 & = \frac{\Pr{\left( N\left( 0,\: x \right) = 1 \cap N\left( 0,\: a \right) = 1 \right)}}{\Pr{\left( N\left( 0,\: a \right) = 1 \right)}}                \\
-%                                 & = \frac{\Pr{\left( N\left( 0,\: x \right) = 1 \cap N\left( x,\: a \right) = 0 \right)}}{\Pr{\left( N\left( 0,\: a \right) = 1 \right)}}                \\
-%                                 & = \frac{\Pr{\left( N\left( 0,\: x \right) = 1 \right)} \Pr{\left( N\left( x,\: a \right) = 0 \right)}}{\Pr{\left( N\left( 0,\: a \right) = 1 \right)}} \\
-%                                 & = \frac{e^{-\eta x} \left( \eta x \right) e^{-\eta \left( a - x \right)}}{e^{-\eta a} \eta a}                                                          \\
-%                                 & = \frac{x}{a}
-%         \end{align*}
-%         which is precisely the CDF of a uniform distribution where \(X \sim \operatorname{Uniform}{\left( 0,\: a \right)}\).
-%     \end{proof}
-%     \begin{proof}[Proof for~\ref{poisson_property_n_events}]
-%         Consider the PMF of \(X\),
-%         \begin{align*}
-%             p_X\left( x \right) & = \Pr{\left( N\left( 0,\: s \right) = x \,\vert\, N\left( 0,\: t \right) = n \right)}                                                                                                                                 \\
-%                                 & = \frac{\Pr{\left( N\left( 0,\: s \right) = x \cap N\left( 0,\: t \right) = n \right)}}{\Pr{\left( N\left( 0,\: t \right) = n \right)}}                                                                               \\
-%                                 & = \frac{\Pr{\left( N\left( 0,\: s \right) = x \cap N\left( s,\: t \right) = n - x \right)}}{\Pr{\left( N\left( 0,\: t \right) = n \right)}}                                                                           \\
-%                                 & = \frac{\frac{e^{-\eta s} \left( \eta s \right)^x}{x!} \frac{e^{-\eta \left( t - s \right)} \left( \eta \left( t - s \right) \right)^{n - x}}{\left( n - x \right)!}}{\frac{e^{-\eta t} \left( \eta t \right)^n}{n!}} \\
-%                                 & = \frac{n!}{x!\left( n - x \right)!} \frac{s^x \left( t - s \right)^{n - x}}{t^n}                                                                                                                                     \\
-%                                 & = \binom{n}{x} \frac{s^x \left( t - s \right)^{n - x}}{t^x t^{n - x}}                                                                                                                                                 \\
-%                                 & = \binom{n}{x} \left( \frac{s}{t} \right)^x \left( 1 - \frac{s}{t} \right)^{n - x}
-%         \end{align*}
-%         which is precisely the PMF of a binomial distribution where \(X \sim \operatorname{Binomial}{\left( n,\: \frac{s}{t} \right)}\).
-%     \end{proof}
+\end{multicols}
 \end{document}
