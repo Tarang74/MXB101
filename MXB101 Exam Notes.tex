@@ -39,7 +39,7 @@
 \titlespacing*\section{0pt}{1ex}{1ex}
 \titlespacing*\subsection{0pt}{1ex}{1ex}
 %
-% \setlength\abovecaptionskip{0pt}
+\setlength\abovecaptionskip{8pt}
 \setlength\belowcaptionskip{-15pt}
 \setlength\textfloatsep{0pt}
 %
@@ -101,12 +101,12 @@
         \Pr{\left( A \right)} \quad\quad \text{or} \quad\quad \mathrm{P}\left( A \right)
     \end{equation*}
     \begin{equation*}
-        0 \leq \Pr{\left( E \right)} \leq 1
+        0 \leq \Pr{\left( A \right)} \leq 1
     \end{equation*}
     where a probability of 0 never happens, and 1 always happens.
     \begin{align*}
         \Pr{\left( \Omega \right)}       & = 1                         \\
-        \Pr{\left( \overline{E} \right)} & = 1 - \Pr{\left( E \right)}
+        \Pr{\left( \overline{A} \right)} & = 1 - \Pr{\left( A \right)}
     \end{align*}
     \subsection{Multiplication Rule}
     For independent events \(A\) and \(B\)
@@ -168,7 +168,7 @@
         \Pr{\left( A B \,\vert\, C \right)}          & = \Pr{\left( A \,\vert\, BC \right)} \Pr{\left( B \,\vert\, C \right)}
     \end{align*}
     \subsection{Conditional Independence}
-    Given \(\Pr{\left( A \,\vert\, B \right)} \neq \Pr{\left( A \right)}\)
+    Given \(\Pr{\left( A \,\vert\, B \right)} \neq \Pr{\left( A \right)}\),
     \(A\) and \(B\) are conditionally dependent given \(C\) if
     \begin{equation*}
         \Pr{\left( A \,\vert\, BC \right)} = \Pr{\left( A \,\vert\, C \right)}.
@@ -196,7 +196,7 @@
     \subsection{Marginal Probability}
     The probability of an event irrespective of the outcome of another variable.
     \subsection{Total Probability}
-    \(A = AB \cup A\overline{B}\)
+    Given \(A = AB \cup A\overline{B}\)
     \begin{align*}
         \Pr{\left( A \right)} & = \Pr{\left( AB \right)} + \Pr{\left( A\overline{B} \right)}                        \\
         \Pr{\left( A \right)} & = \begin{aligned}[t]
@@ -466,7 +466,7 @@
         \end{equation*}
         so that \(Z \to \operatorname{N}{\left( 0,\: 1 \right)}\) as \(n \to \infty\).
         \subsection{Sum of Random Variables}
-        If \(\overline{Y} = \sum_{i = 1}^n X_i\):
+        If \(Y = \sum_{i = 1}^n X_i\):
         \begin{align*}
             \E{\left( Y \right)}   & = n \mu      \\
             \Var{\left( Y \right)} & = n \sigma^2
@@ -491,13 +491,15 @@
             W \approx Y \sim \operatorname{Pois}{\left( n\left( 1 - p \right) \right)}.
         \end{equation*}
         \subsection{Continuity Correction}
-        \begin{equation*}
-            \Pr{\left( X \leq x \right)} = \Pr{\left( X < x + 1 \right)}
-        \end{equation*}
-        must hold for any \(x\). Therefore
-        \begin{equation*}
-            \Pr{\left( X \leq x \right)} \approx \Pr{\left( Y \leq x + \frac{1}{2} \right)}.
-        \end{equation*}
+        \begin{multline*}
+            \Pr{\left( a \leq X \leq b \right)} = \\
+            \Pr{\left( a - 1 < X < b + 1 \right)}
+        \end{multline*}
+        must hold for all \(a\) and \(b\). Therefore
+        \begin{multline*}
+            \Pr{\left( a \leq X \leq b \right)} \approx \\
+            \Pr{\left( a - \frac{1}{2} \leq Y \leq b + \frac{1}{2} \right)}.
+        \end{multline*}
         \subsection{Poisson Approximation}
         If \(X_i \sim \operatorname{Poisson}{\left( \lambda \right)}\):
 
@@ -512,7 +514,10 @@
         Sufficient for \(n \lambda > 10\), and for accurate approximations, \(n \lambda > 20\).
     \end{multicols}
 \end{minipage}
+
+\vspace{2mm}
 \hrule
+\vspace{-2mm}
 \begin{multicols}{3}
     \section{Bivariate Distributions}
     \subsection{Bivariate Probability Mass Function}
@@ -729,7 +734,7 @@
     \subsection{Limiting Distribution}
     Under certain conditions, each row of \(\symbf{P}^n\) will be equal to \(\symbfit{\pi}^\top\) so that each state moves to the next step with the same probability.
     \(\symbfit{\pi}\) provides the long run probabilities of being in each state and the process forgets where it starts.
-    
+
     A sufficient condition for the above is if \(\symbf{P}^n\) has positive entries for some finite \(n\).
 
     \textit{Note that a stationary distribution does not imply that a limiting distribution exists}.
