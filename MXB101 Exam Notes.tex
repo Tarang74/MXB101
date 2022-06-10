@@ -58,12 +58,10 @@
         A \cap B \quad\quad \text{or} \quad\quad AB
     \end{equation*}
     \subsection{Disjoint}
-    No common outcomes
-    \begin{align*}
-        AB                                & = \varnothing                                    \\
-        \Pr{\left( AB \right)}            & = 0 \implies \Pr{\left( \varnothing \right)} = 0 \\
-        \Pr{\left( A \,\vert\, B \right)} & = 0
-    \end{align*}
+    No common outcomes, \(AB = \varnothing\)
+    \begin{equation*}
+        \Pr{\left( AB \right)} = \Pr{\left( A \,\vert\, B \right)} = 0
+    \end{equation*}
     \subsection{Union}
     Set of outcomes in either \(A\) or \(B\)
     \begin{equation*}
@@ -246,11 +244,6 @@
         \prescript{n}{}{P}_k & = \frac{n!}{\left( n - k \right)!}
     \end{align*}
     for \(0 \leq k \leq n\).
-
-    An \(n\)-permutation of \(n\) elements is the permutation of those elements.
-    \begin{align*}
-        \prescript{n}{}{P}_n & = n!
-    \end{align*}
     \subsection{Unordered Sampling without Replacement}
     Number of ways to choose \(k\) objects from a set of \(n\) elements,
     or the \(k\)-combination of \(n\)-elements
@@ -262,6 +255,10 @@
     Number of ways to choose \(k\) objects from a set with \(n\) elements
     \begin{equation*}
         \binom{n + k - 1}{k}
+    \end{equation*}
+    \subsection{Binomial Coefficient Recurrence Relation}
+    \begin{equation*}
+        \binom{n}{k} = \binom{n - 1}{k - 1} + \binom{n - 1}{k}
     \end{equation*}
 \end{multicols}
 \begin{table}[H]
@@ -599,10 +596,10 @@
         \E{\left( X \,\vert\, Y = y \right)} & = \int_{x_1}^{x_2} x f\left( x \,\vert\, y \right) \odif{x}
     \end{align*}
     \subsection{Conditional Variance}
-    \begin{flalign*}
+    \begin{multline*}
         \Var{\left( X \,\vert\, Y = y \right)} \\
         = \E{\left( X^2 \,\vert\, Y = y \right)} - \E{\left( X \,\vert\, Y = y \right)}^2
-    \end{flalign*}
+    \end{multline*}
     \subsection{Law of Total Expectation}
     By treating \(\E{\left( X \,\vert\, Y \right)}\) as a random variable of \(Y\):
     \begin{equation*}
@@ -611,7 +608,7 @@
     \subsection{Joint Expectation}
     \begin{align*}
         \E{\left( XY \right)} & = \sum_{x\in\Omega_1} \sum_{y\in\Omega_2} xy p_{x,\: y}                          \\
-        \E{\left( XY \right)} & = \int_{x_1}^{x_2} \int_{x_1}^{x_2} xy f\left( x,\: y \right) \odif{y} \odif{x}.
+        \E{\left( XY \right)} & = \int_{x_1}^{x_2} \int_{y_1}^{y_2} xy f\left( x,\: y \right) \odif{y} \odif{x}.
     \end{align*}
     \subsection{Transformation Rules}
     \begin{align*}
@@ -623,9 +620,13 @@
                                                & \pm 2\Cov{\left( X,\: Y \right)}
                                           \end{aligned}
     \end{align*}
-    \begin{equation*}
-        \Cov{\left( aX + b,\: cY + d \right)} = ac \Cov{\left( X,\: Y \right)}
-    \end{equation*}
+    \begin{align*}
+        \Cov{\left( aX + b,\: cY + d \right)} & = ac \Cov{\left( X,\: Y \right)}   \\
+        \Cov{\left( X + Y,\: Z \right)}       & = \begin{aligned}[t]
+                                                       & \Cov{\left( X,\: Z \right)}   \\
+                                                       & + \Cov{\left( Y,\: Z \right)}
+                                                  \end{aligned}
+    \end{align*}
     If \(X\) and \(Y\) are independent:
     \begingroup
     \allowdisplaybreaks
