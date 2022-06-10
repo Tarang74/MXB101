@@ -297,12 +297,13 @@
         \centering
         \begin{tabular}{c c c }
             \toprule
-                                       & \textbf{Discrete}                              & \textbf{Continuous}                                    \\
+                                                     & \textbf{Discrete}                              & \textbf{Continuous}                                    \\
             \midrule
-            Valid probabilities        & \(0 \leq p_x \leq 1\)                          & \(f(x) \geq 0\)                                        \\
-            Cumulative probability     & \(\sum_{u \leq x} p_u\)                        & \(\int_{-\infty}^{x} f(u) \odif{u}\)                   \\
-            \(\E{\left( X \right)}\)   & \(\sum_{\Omega} xp_x\)                         & \(\int_{\Omega} xf(x)\odif{x}\)                        \\
-            \(\Var{\left( X \right)}\) & \(\sum_{\Omega} \left( x - \mu \right)^2 p_x\) & \(\int_{\Omega} \left( x - \mu \right)^2f(x)\odif{x}\) \\
+            Valid probabilities                      & \(0 \leq p_x \leq 1\)                          & \(f(x) \geq 0\)                                        \\
+            Cumulative probability                   & \(\sum_{u \leq x} p_u\)                        & \(\int_{-\infty}^{x} f(u) \odif{u}\)                   \\
+            \(\E{\left( X \right)}\)                 & \(\sum_{\Omega} xp_x\)                         & \(\int_{\Omega} xf(x)\odif{x}\)                        \\
+            \(\E{\left( g\left( X \right) \right)}\) & \(\sum_{\Omega} g\left( x \right)p_x\)         & \(\int_{\Omega} g\left( x \right)f(x)\odif{x}\)        \\
+            \(\Var{\left( X \right)}\)               & \(\sum_{\Omega} \left( x - \mu \right)^2 p_x\) & \(\int_{\Omega} \left( x - \mu \right)^2f(x)\odif{x}\) \\
             \bottomrule
         \end{tabular}
         \caption{Probability rules for univariate \(X\).} % \label{}
@@ -339,23 +340,17 @@
         \begin{equation*}
             \Pr{\left( X > x \right)} = 1 - \Pr{\left( X \leq x \right)} = 1 - F\left( x \right)
         \end{equation*}
-        \subsection{\texorpdfstring{\(p\)}{p}-Quantile}
+        \subsection{\texorpdfstring{\(p\)}{p}-Quantiles}
         \begin{equation*}
             F\left( x \right) = \int_{-\infty}^x f\left( u \right) \odif{u} = p
         \end{equation*}
-        \subsection{Median}
-        \begin{equation*}
-            \int_{-\infty}^m f\left( u \right) \odif{u} = \int^{\infty}_m f\left( u \right) \odif{u} = \frac{1}{2}
-        \end{equation*}
-        \subsection{Lower and Upper Quartiles}
+        \subsection{Special Quantiles}
         \begin{align*}
-            \int_{-\infty}^{q_1} f\left( u \right) \odif{u} & = \frac{1}{4} \\
-            \int_{-\infty}^{q_2} f\left( u \right) \odif{u} & = \frac{3}{4}
+            \text{Lower quartile \(q_1\):}  &  &  & p = \frac{1}{4} \\
+            \text{Median \(m\):}            &  &  & p = \frac{1}{2} \\
+            \text{Upper quartile \(q_2\):}  &  &  & p = \frac{3}{4} \\
+            \text{Interquartile range IQR:} &  &  & q_2 - q_1
         \end{align*}
-        Interquartile range:
-        \begin{equation*}
-            \mathrm{IQR} = q_2 - q_1
-        \end{equation*}
         \subsection{Quantile Function}
         \begin{equation*}
             x = F^{-1}\left( p \right) = Q\left( p \right)
@@ -653,11 +648,11 @@
     \end{align*}
     The covariance of \(X\) and \(Y\) is:
     \begin{description}
-        \item[Positive] if an increase in one variable is more likely to result in an increase in
+        \item[Positive.] if an increase in one variable is more likely to result in an increase in
             the other variable.
-        \item[Negative] if an increase in one variable is more likely to result in a decrease in
+        \item[Negative.] if an increase in one variable is more likely to result in a decrease in
             the other variable.
-        \item[Zero] if \(X\) and \(Y\) are independent. Note that the converse is not true.
+        \item[Zero.] if \(X\) and \(Y\) are independent. Note that the converse is not true.
     \end{description}
     Describes the direction of a relationship, but does not quantify the strength of such a relationship.
     \subsection{Correlation}
