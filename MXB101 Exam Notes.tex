@@ -538,20 +538,20 @@
     }
     \subsection{Bivariate Probability Density Function}
     Distribution over the joint space of two continuous random variables \(X\) and \(Y\):
-    \begin{align*}
-        \Pr{\left( x_1 \leq X \leq x_2,\: y_1 \leq Y \leq y_2 \right)} \\
-        = \int_{x_1}^{x_2} \int_{y_1}^{y_2} f\left( x,\: y \right) \odif{y} \odif{x}
-    \end{align*}
+    \begin{multline*}
+        \Pr{\left( x_1 \leq X \leq x_2,\: y_1 \leq Y \leq y_2 \right)} = \\
+        \int_{x_1}^{x_2} \int_{y_1}^{y_2} f\left( x,\: y \right) \odif{y} \odif{x}
+    \end{multline*}
     This function must satisfy
     \begin{align*}
         f\left( x,\: y \right)                                                               & \geq 0 \\
         \int_{x \in \Omega_1} \int_{y \in \Omega_2} f\left( x,\: y \right) \odif{y} \odif{x} & = 1.
     \end{align*}
     for all pairs of \(x \in \Omega_1\) and \(y \in \Omega_2\).
-    \begin{flalign*}
+    \begin{multline*}
         \Pr{\left( X = x ,\: Y = y \right)} = \\
         \Pr{\left( X = x \,\vert\, Y = y \right)} \Pr{\left( Y = y \right)}
-    \end{flalign*}
+    \end{multline*}
     \subsection{Marginal Probability}
     Probability function of each random variable.
     Must specify the range of values that variable can take.
