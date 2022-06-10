@@ -854,7 +854,7 @@ By standardising \(\overline{X}\), we can define
 so that \(Z \to \operatorname{N}{\left( 0,\: 1 \right)}\) as \(n \to \infty\).
 \subsection{Approximating the Sum of Random Variables}
 Given a set of independent and identically distributed random variables \(X_1,\: \ldots,\: X_n\) from the distribution \(X\),
-if \(\E{\left( X \right)} = \mu\) and \(\Var{\left( X \right)} = \sigma^2\), then we can define \(\overline{Y} = \sum_{i = 1}^n X_i\)
+if \(\E{\left( X \right)} = \mu\) and \(\Var{\left( X \right)} = \sigma^2\), then we can define \(Y = \sum_{i = 1}^n X_i\)
 so that
 \begin{align*}
     \E{\left( Y \right)}   & = n \mu      \\
@@ -1243,10 +1243,10 @@ for \(t > 0\).
           \begin{equation*}
               X \,\vert\, \left( N\left( 0,\: a \right) = 1 \right) \sim \operatorname{Uniform}{\left( 0,\: a \right)}
           \end{equation*}
-          \item\label{poisson_property_n_events} If exactly \(n\) events occur on the interval \(\ointerval{0}{a}\), then the distribution of the number of events
+          \item\label{poisson_property_n_events} If exactly \(n\) events occur on the interval \(\ointerval{0}{t}\), then the distribution of the number of events
           that occur in \(\ointerval{0}{s}\) is binomial, for \(s < t\). Let \(X\) be the number of events that occur in \(\ointerval{0}{s}\) for \(s < t\),
           \begin{equation*}
-              X \,\vert\, \left( N\left( 0,\: a \right) = n \right) \sim \operatorname{Binomial}{\left( n,\: \frac{s}{t} \right)}
+              X \,\vert\, \left( N\left( 0,\: t \right) = n \right) \sim \operatorname{Binomial}{\left( n,\: \frac{s}{t} \right)}
           \end{equation*}
 \end{enumerate}
 \begin{proof}[Proof for~\ref{poisson_property_1_event}]
