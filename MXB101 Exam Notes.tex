@@ -692,10 +692,10 @@
     \end{flalign*}
     \subsection{Homogeneous Markov Chains}
     A Markov chain is homogeneous when
-    \begin{flalign*}
+    \begin{multline*}
         \Pr{\left( X_{t+n} = j \,\vert\, X_t = i \right)} = \\
         \Pr{\left( X_n = j \,\vert\, X_0 = i \right)} = p_{ij}^{(n)}
-    \end{flalign*}
+    \end{multline*}
     %     that is, the \(n\)-step conditional probabilities do not depend on the time step \(t\).
     \subsection{Transition Probability Matrix}
     A homogeneous Markov chain is characterised by the transition probability matrix \(\symbf{P} \in \R^{m \times m}\), where
@@ -704,7 +704,7 @@
     \begin{itemize}
         \item \(p_{i,\:j} = \Pr{\left( X_t = j \,\vert\, X_{t-1} = i \right)}\)
         \item \(p_{i,\:j} \geq 0 : \forall i,\: j\)
-        \item \(\sum_{j = 1}^m p_{i,\:j} = 1 : \forall j\)
+        \item \(\sum_{j = 1}^m p_{i,\:j} = 1 : \forall i\)
     \end{itemize}
     \(\symbf{P}\) has the following form
     \begin{equation*}
