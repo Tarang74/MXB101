@@ -523,6 +523,14 @@ An event is when a random variable assumes a certain value or range of values.
             \displaystyle \int_\Omega x f\left( x \right) \odif{x} & \text{for continuous variables}
         \end{cases}
     \end{equation*}
+    The expectation of a function \(g\left( X \right)\) of a random variable \(X\) is given by
+    \begin{equation*}
+        \E{\left( f\left( X \right) \right)} =
+        \begin{cases}
+            \displaystyle \sum_{x \in \Omega} g\left( x \right) p_x                & \text{for discrete variables}   \\[0.4cm]
+            \displaystyle \int_\Omega g\left( x \right) f\left( x \right) \odif{x} & \text{for continuous variables}
+        \end{cases}
+    \end{equation*}
 \end{definition}
 \begin{theorem}
     Using integration by parts, it can be proved that
