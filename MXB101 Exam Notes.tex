@@ -340,6 +340,16 @@
         \begin{equation*}
             \Pr{\left( X > x \right)} = 1 - \Pr{\left( X \leq x \right)} = 1 - F\left( x \right)
         \end{equation*}
+	\subsection{Normal Distribution Cumulative Distribution}
+	The cumulative distribution function for the normal distribution is as follows
+	\begin{equation*}
+	\(\frac{1}{2} \left( 1 + \erf{\left( \frac{x - \mu}{\sigma \sqrt{2}} \right)} \right)\)
+	\end{equation*}
+	erf is the error function which is defined as follows
+	\begin{equation*}
+	\erf(z) =\frac{2}{\sqrt{\pi}}\int_0^z e^{-t^2}dt
+	\end{equation*}
+	
         \subsection{\texorpdfstring{\(p\)}{p}-Quantiles}
         \begin{equation*}
             F\left( x \right) = \int_{-\infty}^x f\left( u \right) \odif{u} = p
