@@ -167,19 +167,18 @@
     \end{align*}
     \subsection{Conditional Independence}
     Given \(\Pr{\left( A \,\vert\, B \right)} \neq \Pr{\left( A \right)}\),
-    \(A\) and \(B\) are conditionally dependent given \(C\) if
+    \(A\) and \(B\) are conditionally independent given \(C\) if
     \begin{equation*}
-        \Pr{\left( A \,\vert\, BC \right)} = \Pr{\left( A \,\vert\, C \right)}.
+        \Pr{\left( A \,\vert\, BC \right)} = \Pr{\left( A \,\vert\, C \right)}
     \end{equation*}
-    Futhermore
+    so that
     \begin{equation*}
         \Pr{\left( AB \,\vert\, C \right)} = \Pr{\left( A \,\vert\, C \right)} \Pr{\left( B \,\vert\, C \right)}.
     \end{equation*}
-    Conversely
+    Conversely if \(\Pr{\left( A \,\vert\, B \right)} = \Pr{\left( A \right)}\), \(A\) and \(B\) are conditionally dependent given \(C\) if
     \begin{align*}
-        \Pr{\left( A \,\vert\, B \right)}  & = \Pr{\left( A \right)}                                                \\
         \Pr{\left( A \,\vert\, BC \right)} & \neq \Pr{\left( A \,\vert\, C \right)}                                 \\
-        \Pr{\left( AB \,\vert\, C \right)} & = \Pr{\left( A \,\vert\, BC \right)} \Pr{\left( B \,\vert\, C \right)}
+        \Pr{\left( AB \,\vert\, C \right)} & = \Pr{\left( A \,\vert\, BC \right)} \Pr{\left( B \,\vert\, C \right)}.
     \end{align*}
     Pairwise independence does not imply mutual independence for three events.
     % \begin{gather*}
