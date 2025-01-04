@@ -447,7 +447,7 @@ An event is when a random variable assumes a certain value or range of values.
     \end{equation*}
     \(f\left( x \right)\) is a valid PDF provided,
     \begin{align*}
-        \forall x \in \Omega : f\left( x \right) & \geq 0 &  & \text{and} & \int_{\Omega} f(x) \odif{x} & = 1.
+        \forall x \in \Omega : f\left( x \right) & \geq 0 &  & \text{and} & \int_{\Omega} f\left( x \right) \odif{x} & = 1.
     \end{align*}
 \end{definition}
 \begin{definition}[Cumulative distribution function]
@@ -1086,20 +1086,20 @@ variables \(X\) and \(Y\)
 \end{equation*}
 If \(X\) and \(Y\) are independent then
 \begin{equation*}
-    \E{\left( XY \right)} = \E{\left( X \right)} \E{\left( Y \right)}
+    \E{\left( X Y \right)} = \E{\left( X \right)} \E{\left( Y \right)}
 \end{equation*}
 \subsection{Variance of Independent Random Variables}
 If \(X\) and \(Y\) are independent then
 \begin{align*}
     \Var{\left( X \pm Y \right)} & = \Var{\left( X \right)} + \Var{\left( Y \right)}                                                                                               \\
-    \Var{\left( XY \right)}      & = \Var{\left( X \right)} \Var{\left( Y \right)} + \E{\left( X \right)}^2 \Var{\left( Y \right)} + \E{\left( Y \right)}^2 \Var{\left( X \right)}
+    \Var{\left( X Y \right)}     & = \Var{\left( X \right)} \Var{\left( Y \right)} + \E{\left( X \right)}^2 \Var{\left( Y \right)} + \E{\left( Y \right)}^2 \Var{\left( X \right)}
 \end{align*}
 \subsection{Covariance}
 \begin{definition}[Covariance]
     Covariance is a measure of the dependence between two random variables, it can be determined using
     \begin{align*}
         \Cov{\left( X,\: Y \right)} & = \E{\left( \left( X - \E{\left( X \right)} \right) \left( Y - \E{\left( Y \right)} \right) \right)} \\
-                                    & = \E{\left( XY \right)} - \E{\left( X \right)} \E{\left( Y \right)}
+                                    & = \E{\left( X Y \right)} - \E{\left( X \right)} \E{\left( Y \right)}
     \end{align*}
 \end{definition}
 The covariance of \(X\) and \(Y\) is:
@@ -1119,11 +1119,11 @@ for constants \(a\), \(b\), \(c\), and \(d\).
 \begin{definition}[Joint expectation]
     The joint expectation of two discrete random variables is
     \begin{equation*}
-        \E{\left( XY \right)} = \sum_{x\in\Omega_1} \sum_{y\in\Omega_2} xy \Pr{\left( X = x,\: Y = y \right)}
+        \E{\left( X Y \right)} = \sum_{x\in\Omega_1} \sum_{y\in\Omega_2} x y \Pr{\left( X = x,\: Y = y \right)}
     \end{equation*}
     and for continuous random variables
     \begin{equation*}
-        \E{\left( XY \right)} = \int_{x_1}^{x_2} \int_{y_1}^{y_2} xy f\left( x,\: y \right) \odif{y} \odif{x}.
+        \E{\left( X Y \right)} = \int_{x_1}^{x_2} \int_{y_1}^{y_2} x y f\left( x,\: y \right) \odif{y} \odif{x}.
     \end{equation*}
 \end{definition}
 \subsection{Variance of Dependent Random Variables}
@@ -1171,7 +1171,7 @@ States are denoted by the random variable \(X_t\) at time step \(t\).
 \subsection{Homogeneous Markov Chain}
 A Markov chain is homogeneous when
 \begin{equation*}
-    \Pr{\left( X_{t+n} = j \,\vert\, X_t = i \right)} = \Pr{\left( X_n = j \,\vert\, X_0 = i \right)} = p_{ij}^{(n)}
+    \Pr{\left( X_{t+n} = j \,\vert\, X_t = i \right)} = \Pr{\left( X_n = j \,\vert\, X_0 = i \right)} = p_{i j}^{\left( n \right)}
 \end{equation*}
 that is, the \(n\)-step conditional probabilities do not depend on the time step \(t\).
 \subsection{Transition Probability Matrix}
@@ -1198,25 +1198,25 @@ The \(n\)-step transition probability is given by \(\symbf{P}^n\).
 The unconditional probability of being in state \(j\) at time \(n\) is
 given by
 \begin{equation*}
-    \Pr{\left( X_n = j \right)} = p_j^{(n)}
+    \Pr{\left( X_n = j \right)} = p_j^{\left( n \right)}
 \end{equation*}
-Given multiple states, let \(\symbfit{s}^{(n)}\) denote the vector of all states \(p_j^{(n)}\) at
+Given multiple states, let \(\symbf{s}^{\left( n \right)}\) denote the vector of all states \(p_j^{\left( n \right)}\) at
 time \(n\). Then
-\begin{align*}{\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(n-1)}}^\top \symbf{P} \quad \quad \text{and} \quad \quad {\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(0)}}^\top \symbf{P}^n
+\begin{align*}{\symbf{s}^{\left( n \right)}}^\top = {\symbf{s}^{\left( n-1 \right)}}^\top \symbf{P} \quad \quad \text{and} \quad \quad {\symbf{s}^{\left( n \right)}}^\top = {\symbf{s}^{\left( 0 \right)}}^\top \symbf{P}^n
 \end{align*}
 \subsection{Stationary Distribution}
 At steady-state, the probability of being in a particular state does
 not change from one step to the next. This implies
 \begin{equation*}
-    \symbfit{s}^{(n+1)} = \symbfit{s}^{(n)} \implies {\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(n)}}^\top \symbf{P}
+    \symbf{s}^{\left( n+1 \right)} = \symbf{s}^{\left( n \right)} \implies {\symbf{s}^{\left( n \right)}}^\top = {\symbf{s}^{\left( n \right)}}^\top \symbf{P}
 \end{equation*}
-The stationary distribution \(\symbfit{\pi}\) satisfies \(\symbfit{\pi}^\top = \symbfit{\pi}^\top \symbf{P}\).
-To determine \(\symbfit{\pi}\), we must use the equation \(\sum_{i = 1}^m \pi_i = 1\).
+The stationary distribution \(\symbf{\pi}\) satisfies \(\symbf{\pi}^\top = \symbf{\pi}^\top \symbf{P}\).
+To determine \(\symbf{\pi}\), we must use the equation \(\sum_{i = 1}^m \pi_i = 1\).
 \subsection{Limiting Distribution}
 Under certain conditions, as \(n \to \infty\), each row of
-\(\symbf{P}^n\) will be equal to \(\symbfit{\pi}^\top\), so that each
+\(\symbf{P}^n\) will be equal to \(\symbf{\pi}^\top\), so that each
 state moves to the next step with the same probability. This is known
-as the limiting distribution. Here \(\symbfit{\pi}\) provides the long
+as the limiting distribution. Here \(\symbf{\pi}\) provides the long
 run probabilities of being in each state and the process forgets where
 it starts. A sufficient condition for the above is if \(\symbf{P}^n\)
 has positive entries for some finite \(n\). \textit{Note that a

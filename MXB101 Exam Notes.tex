@@ -158,12 +158,12 @@
     \end{align*}
     \subsection{Probability Rule with Conditional}
     \begin{align*}
-        \Pr{\left( \overline{A} \,\vert\, C \right)} & = 1 - \Pr{\left( A \,\vert\, C \right)}                                                 \\
+        \Pr{\left( \overline{A} \,\vert\, C \right)} & = 1 - \Pr{\left( A \,\vert\, C \right)}                                \\
         \Pr{\left( A \cup B \,\vert\, C \right)}     & =
-                                                         \begin{aligned}[t]
-                                                             \Pr{\left( A \,\vert\, C \right)} + \Pr{\left( B \,\vert\, C \right)} \\
-                                                             - \Pr{\left( AB \,\vert\, C \right)}
-                                                         \end{aligned}
+        \begin{aligned}[t]
+            \Pr{\left( A \,\vert\, C \right)} + \Pr{\left( B \,\vert\, C \right)} \\
+            - \Pr{\left( AB \,\vert\, C \right)}
+        \end{aligned}
         \\
         \Pr{\left( A B \,\vert\, C \right)}          & = \Pr{\left( A \,\vert\, BC \right)} \Pr{\left( B \,\vert\, C \right)}
     \end{align*}
@@ -199,12 +199,12 @@
     \subsection{Total Probability}
     Given \(A = AB \cup A\overline{B}\)
     \begin{align*}
-        \Pr{\left( A \right)} & = \Pr{\left( AB \right)} + \Pr{\left( A\overline{B} \right)}                                \\
+        \Pr{\left( A \right)} & = \Pr{\left( AB \right)} + \Pr{\left( A\overline{B} \right)} \\
         \Pr{\left( A \right)} & =
-                                  \begin{aligned}[t]
-                                       & \Pr{\left( A \,\vert\, B \right)}\Pr{\left( B \right)}                         \\
-                                       & + \Pr{\left( A \,\vert\, \overline{B} \right)}\Pr{\left( \overline{B} \right)}
-                                  \end{aligned}
+        \begin{aligned}[t]
+             & \Pr{\left( A \,\vert\, B \right)}\Pr{\left( B \right)}                         \\
+             & + \Pr{\left( A \,\vert\, \overline{B} \right)}\Pr{\left( \overline{B} \right)}
+        \end{aligned}
     \end{align*}
     In general, partition \(\Omega\) into disjoint events \(B_1,\; B_2,\; \dots,\; B_n\),
     such that \(\bigcup_{i=1}^n B_i = \Omega\)
@@ -303,13 +303,13 @@
         \centering
         \begin{tabular}{c c c }
             \toprule
-                                                     & \textbf{Discrete}                              & \textbf{Continuous}                                    \\
+                                                     & \textbf{Discrete}                              & \textbf{Continuous}                                                 \\
             \midrule
-            Valid probabilities                      & \(0 \leq p_x \leq 1\)                          & \(f(x) \geq 0\)                                        \\
-            Cumulative probability                   & \(\sum_{u \leq x} p_u\)                        & \(\int_{-\infty}^{x} f(u) \odif{u}\)                   \\
-            \(\E{\left( X \right)}\)                 & \(\sum_{\Omega} xp_x\)                         & \(\int_{\Omega} xf(x)\odif{x}\)                        \\
-            \(\E{\left( g\left( X \right) \right)}\) & \(\sum_{\Omega} g\left( x \right)p_x\)         & \(\int_{\Omega} g\left( x \right)f(x)\odif{x}\)        \\
-            \(\Var{\left( X \right)}\)               & \(\sum_{\Omega} \left( x - \mu \right)^2 p_x\) & \(\int_{\Omega} \left( x - \mu \right)^2f(x)\odif{x}\) \\
+            Valid probabilities                      & \(0 \leq p_x \leq 1\)                          & \(f\left( x \right) \geq 0\)                                        \\
+            Cumulative probability                   & \(\sum_{u \leq x} p_u\)                        & \(\int_{-\infty}^{x} f\left( u \right) \odif{u}\)                   \\
+            \(\E{\left( X \right)}\)                 & \(\sum_{\Omega} xp_x\)                         & \(\int_{\Omega} xf\left( x \right)\odif{x}\)                        \\
+            \(\E{\left( g\left( X \right) \right)}\) & \(\sum_{\Omega} g\left( x \right)p_x\)         & \(\int_{\Omega} g\left( x \right)f\left( x \right)\odif{x}\)        \\
+            \(\Var{\left( X \right)}\)               & \(\sum_{\Omega} \left( x - \mu \right)^2 p_x\) & \(\int_{\Omega} \left( x - \mu \right)^2f\left( x \right)\odif{x}\) \\
             \bottomrule
         \end{tabular}
         \caption{Probability rules for univariate \(X\).} % \label{}
@@ -630,22 +630,22 @@
     \end{align*}
     \subsection{Transformation Rules}
     \begin{align*}
-        \E{\left( aX \pm b \right)}   & = a\E{\left( X \right)} \pm b                        \\
-        \E{\left( X \pm Y \right)}    & = \E{\left( X \right)} \pm \E{\left( Y \right)}      \\
-        \Var{\left( aX \pm b \right)} & = a^2\Var{\left( X \right)}                          \\
+        \E{\left( aX \pm b \right)}   & = a\E{\left( X \right)} \pm b                   \\
+        \E{\left( X \pm Y \right)}    & = \E{\left( X \right)} \pm \E{\left( Y \right)} \\
+        \Var{\left( aX \pm b \right)} & = a^2\Var{\left( X \right)}                     \\
         \Var{\left( X \pm Y \right)}  & =
-                                          \begin{aligned}[t]
-                                               & \Var{\left( X \right)} + \Var{\left( Y \right)} \\
-                                               & \pm 2\Cov{\left( X,\: Y \right)}
-                                          \end{aligned}
+        \begin{aligned}[t]
+             & \Var{\left( X \right)} + \Var{\left( Y \right)} \\
+             & \pm 2\Cov{\left( X,\: Y \right)}
+        \end{aligned}
     \end{align*}
     \begin{align*}
-        \Cov{\left( aX + b,\: cY + d \right)} & = ac \Cov{\left( X,\: Y \right)}   \\
+        \Cov{\left( aX + b,\: cY + d \right)} & = ac \Cov{\left( X,\: Y \right)} \\
         \Cov{\left( X + Y,\: Z \right)}       & =
-                                                  \begin{aligned}[t]
-                                                       & \Cov{\left( X,\: Z \right)}   \\
-                                                       & + \Cov{\left( Y,\: Z \right)}
-                                                  \end{aligned}
+        \begin{aligned}[t]
+             & \Cov{\left( X,\: Z \right)}   \\
+             & + \Cov{\left( Y,\: Z \right)}
+        \end{aligned}
     \end{align*}
     If \(X\) and \(Y\) are independent:
     \begingroup
@@ -666,10 +666,10 @@
     Measure of the dependence between two random variables
     \begin{align*}
         \Cov{\left( X,\: Y \right)} & =
-                                        \begin{aligned}[t]
-                                            \E\left( \left( X - \E{\left( X \right)} \right) \right. & \\
-                                            \left. \left( Y - \E{\left( Y \right)} \right) \right)   &
-                                        \end{aligned}
+        \begin{aligned}[t]
+            \E\left( \left( X - \E{\left( X \right)} \right) \right. & \\
+            \left. \left( Y - \E{\left( Y \right)} \right) \right)   &
+        \end{aligned}
         \\
                                     & = \E{\left( XY \right)} - \E{\left( X \right)} \E{\left( Y \right)}
     \end{align*}
@@ -720,7 +720,7 @@
     A Markov chain is homogeneous when
     \begin{multline*}
         \Pr{\left( X_{t+n} = j \,\vert\, X_t = i \right)} = \\
-        \Pr{\left( X_n = j \,\vert\, X_0 = i \right)} = p_{ij}^{(n)}
+        \Pr{\left( X_n = j \,\vert\, X_0 = i \right)} = p_{ij}^{\left( n \right)}
     \end{multline*}
     %     that is, the \(n\)-step conditional probabilities do not depend on the time step \(t\).
     \subsection{Transition Probability Matrix}
@@ -747,18 +747,18 @@
     The unconditional probability of being in state \(j\) at time \(n\)
     is given by
     \begin{equation*}
-        \Pr{\left( X_n = j \right)} = p_j^{(n)}
+        \Pr{\left( X_n = j \right)} = p_j^{\left( n \right)}
     \end{equation*}
-    Given multiple states, let \(\symbfit{s}^{(n)}\) denote the vector of all states \(p_j^{(n)}\) at
+    Given multiple states, let \(\symbfit{s}^{\left( n \right)}\) denote the vector of all states \(p_j^{\left( n \right)}\) at
     time \(n\). Then
-    \begin{align*}{\symbfit{s}^{(n)}}^\top & = {\symbfit{s}^{(n-1)}}^\top \symbf{P} \\
-              {\symbfit{s}^{(n)}}^\top & = {\symbfit{s}^{(0)}}^\top \symbf{P}^n
+    \begin{align*}{\symbfit{s}^{\left( n \right)}}^\top & = {\symbfit{s}^{\left( n-1 \right)}}^\top \symbf{P} \\
+              {\symbfit{s}^{\left( n \right)}}^\top & = {\symbfit{s}^{\left( 0 \right)}}^\top \symbf{P}^n
     \end{align*}
     \subsection{Stationary Distribution}
     At steady-state, the probability of being in a particular state
     does not change from one step to the next.
     \begin{equation*}
-        \symbfit{s}^{(n+1)} = \symbfit{s}^{(n)} \implies {\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(n)}}^\top \symbf{P}
+        \symbfit{s}^{\left( n+1 \right)} = \symbfit{s}^{\left( n \right)} \implies {\symbfit{s}^{\left( n \right)}}^\top = {\symbfit{s}^{\left( n \right)}}^\top \symbf{P}
     \end{equation*}
     The stationary distribution \(\symbfit{\pi}\) satisfies \(\symbfit{\pi}^\top = \symbfit{\pi}^\top \symbf{P}\).
     To determine \(\symbfit{\pi}\), we must use the equation \(\sum_{i = 1}^m \pi_i = 1\).
