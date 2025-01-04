@@ -46,7 +46,7 @@
 \tableofcontents
 \newpage
 %
-\section{Events and Probability}
+\section{Introduction}
 \subsection{Events}
 \begin{definition}[Event]
     An event is a set of outcomes in a random experiment commonly denoted by a capital letter.
@@ -181,21 +181,18 @@
     \end{align*}
 \end{theorem}
 \subsection{Circuits}
-A signal can pass through a circuit if there is a functional path from start to finish.
-
-We can define a circuit where each component \(i\) functions with probability \(p\),
-and is independent of other components.
-
-If \(W_i\) is the event in which the associated component \(i\) functions, we can
-determine the event \(S\) in which the system functions with the probability
-\(\Pr{\left( S \right)}\).
-
-As the probability that any component functions is \(p\)
+A signal can pass through a circuit if there is a functional path from
+start to finish. We can define a circuit where each component \(i\)
+functions with probability \(p\), and is independent of other
+components. If \(W_i\) is the event in which the associated component
+\(i\) functions, we can determine the event \(S\) in which the system
+functions with the probability \(\Pr{\left( S \right)}\). As the
+probability that any component functions is \(p\)
 \begin{equation*}
     \Pr{\left( W_i \right)} = p,
 \end{equation*}
 \(\Pr{\left( S \right)}\) will be a function of \(p\) defined \(f:\left[ 0,\; 1 \right] \to \left[ 0,\; 1 \right]\).
-\section{Independence}
+\subsection{Independence}
 \begin{definition}[Conditional probability]
     When discussing multiple events, it is possible that the occurrence of one event changes
     the probability that another will occur. This can be denoted using a vertical bar,
@@ -231,7 +228,7 @@ As the probability that any component functions is \(p\)
         \Pr{\left( \overline{A} \,\vert\, \overline{B} \right)} & = \Pr{\left( \overline{A} \right)} & \Pr{\left( \overline{B} \,\vert\, \overline{A} \right)} & = \Pr{\left( \overline{B} \right)}
     \end{align*}
 \end{theorem}
-\subsection{Probability Rules with Conditional}
+\subsubsection{Probability Rules with Conditionals}
 All probability rules hold when conditioning on some event \(C\).
 \begin{theorem}[Complement rule with condition]
     \begin{equation*}
@@ -250,7 +247,7 @@ All probability rules hold when conditioning on some event \(C\).
 \end{theorem}
 In the above examples, all probabilities are conditional on the sample space, hence we are effectively
 changing the sample space.
-\subsection{Conditional Independence}
+\subsubsection{Conditional Independence}
 \begin{definition}[Conditional independence]
     Suppose events \(A\) and \(B\) are not independent, i.e.,
     \begin{equation*}
@@ -286,7 +283,7 @@ changing the sample space.
     \end{equation*}
 \end{theorem}
 In summary, independence should not be assumed unless explicitly stated.
-\subsection{Disjoint Events}
+\subsubsection{Disjoint Events}
 \begin{theorem}[Probability of disjoint events]
     The probability of disjoint events \(A\) and \(B\) is given by
     \begin{align*}
@@ -299,11 +296,10 @@ In summary, independence should not be assumed unless explicitly stated.
         \Pr{\left( A \,\vert\, B \right)} = 0
     \end{equation*}
 \end{theorem}
-\subsection{Subsets}
+\subsubsection{Subsets}
 \begin{theorem}[Probability of subsets]
     If \(A \subset B\) then \(\Pr{\left( A \right)} \leq \Pr{\left( B \right)}\).
     We also know that \(\Pr{\left( AB \right)} = \Pr{\left( A \right)}\) and \(\Pr{\left( A \cup B \right)} = \Pr{\left( B \right)}\).
-
     Here, if \(A\) happens, then \(B\) definitely happens.
     \begin{equation*}
         \Pr{\left( B \,\vert\, A \right)} = 1
@@ -314,7 +310,7 @@ In summary, independence should not be assumed unless explicitly stated.
     \end{equation*}
     These events are also highly dependent.
 \end{theorem}
-\section{Total Probability}
+\subsection{Total Probability}
 \begin{definition}[Marginal probability]
     Marginal probability is the probability of an event \linebreak irrespective of the outcome of another variable.
 \end{definition}
@@ -331,9 +327,9 @@ In summary, independence should not be assumed unless explicitly stated.
 \end{theorem}
 \begin{theorem}[Law of total probability]
     The previous theorem partitioned \(\Omega\) into disjoint events \(B\) and \(\overline{B}\).
-
-    By partitioning \(\Omega\) into a collection of disjoint events \(B_1,\; B_2,\; \dots,\; B_n\),
-    such that \(\bigcup_{i=1}^n B_i = \Omega\), we have
+    By partitioning \(\Omega\) into a collection of disjoint events
+    \(B_1,\; B_2,\; \dots,\; B_n\), such that \(\bigcup_{i=1}^n B_i =
+    \Omega\), we have
     \begin{equation*}
         \Pr{\left( A \right)} = \sum_{i = 1}^n \Pr{\left( A \,\vert\, B_i \right)}\Pr{\left( B_i \right)}
     \end{equation*}
@@ -372,15 +368,16 @@ In summary, independence should not be assumed unless explicitly stated.
     \end{equation*}
 \end{theorem}
 \subsection{Ordered Sampling with Replacement}
-When ordering is important and repetition is allowed,
-the total number of ways to choose \(k\) objects from a set with \(n\) elements is
+When ordering is important and repetition is allowed, the total number
+of ways to choose \(k\) objects from a set with \(n\) elements is
 \begin{equation*}
     n^k
 \end{equation*}
 \subsection{Ordered Sampling without Replacement}
-When ordering is important and repetition is not allowed,
-the total number of ways to arrange \(k\) objects from a set of \(n\) elements is
-known as a \(k\)-permutation of \(n\)-elements denoted \(\prescript{n}{}{P}_k\)
+When ordering is important and repetition is not allowed, the total
+number of ways to arrange \(k\) objects from a set of \(n\) elements is
+known as a \(k\)-permutation of \(n\)-elements denoted
+\(\prescript{n}{}{P}_k\)
 \begin{align*}
     \prescript{n}{}{P}_k & = n \times \left( n - 1 \right) \times \cdots \times \left( n - k + 1 \right) \\
                          & = \frac{n!}{\left( n - k \right)!}
@@ -395,9 +392,10 @@ for \(0 \leq k \leq n\).
     \end{align*}
 \end{definition}
 \subsection{Unordered Sampling without Replacement}
-When ordering is not important and repetition is not allowed,
-the total number of ways to choose \(k\) objects from a set of \(n\) elements is
-known as a \(k\)-combination of \(n\)-elements denoted \(\prescript{n}{}{C}_k\) or \(\binom{n}{k}\)
+When ordering is not important and repetition is not allowed, the total
+number of ways to choose \(k\) objects from a set of \(n\) elements is
+known as a \(k\)-combination of \(n\)-elements denoted
+\(\prescript{n}{}{C}_k\) or \(\binom{n}{k}\)
 \begin{align*}
     \prescript{n}{}{C}_k & = \frac{\prescript{n}{}{P}_k}{k!}     \\
                          & = \frac{n!}{k! \left( n - k \right)!}
@@ -405,13 +403,14 @@ known as a \(k\)-combination of \(n\)-elements denoted \(\prescript{n}{}{C}_k\) 
 for \(0 \leq k \leq n\). We divide by \(k!\) because any \(k\)-element subset of \(n\)-elements % chktex 40
 can be ordered in \(k!\) ways. % chktex 40
 \subsection{Unordered Sampling with Replacement}
-When ordering is not important and repetition is allowed,
-the total number of ways to choose \(k\) objects from a set with \(n\) elements is
+When ordering is not important and repetition is allowed, the total
+number of ways to choose \(k\) objects from a set with \(n\) elements
+is
 \begin{equation*}
     \binom{n + k - 1}{k}
 \end{equation*}
-\section{Random Variables and Distributions}
-\section{Random Variables}
+\section{Stochastic Models}
+\subsection{Random Variables}
 \begin{definition}[Random variable]
     A random variable \(X\) is a measurable variable whose value holds some uncertainty.
 \end{definition}
@@ -441,9 +440,8 @@ An event is when a random variable assumes a certain value or range of values.
 \begin{definition}[Probability density function]
     The probability distribution of a continuous random variable \(X\) is described by a Probability
     Density Function (PDF) \(f\left( x \right)\).
-
-    The probability that \(X\) is exactly equal to a
-    specific value is always 0. Therefore we compute probabilities over intervals:
+    The probability that \(X\) is exactly equal to a specific value is
+    always 0. Therefore we compute probabilities over intervals:
     \begin{equation*}
         \Pr{\left( x_1 \leq X \leq x_2 \right)} = \int_{x_1}^{x_2} f\left( x \right) \odif{x}
     \end{equation*}
@@ -456,7 +454,8 @@ An event is when a random variable assumes a certain value or range of values.
     The Cumulative Distribution Function (CDF) computes the probability that the random variable is
     less than or equal to a particular realisation \(x\). For \(U = \left\{ k \in \Omega : k \leq x \right\}\)
     \begin{equation*}
-        F\left( x \right) = \Pr{\left( X \leq x \right)} = \begin{cases}
+        F\left( x \right) = \Pr{\left( X \leq x \right)} =
+        \begin{cases}
             \displaystyle \sum_{u \in U} p_u                  & \text{for discrete random variables}    \\[0.4cm]
             \displaystyle \int_{U} f\left( u \right) \odif{u} & \text{for continuous random variables}.
         \end{cases}
@@ -514,8 +513,8 @@ An event is when a random variable assumes a certain value or range of values.
     The expectation \(\E{\left( X \right)}\), or \(\operatorname{\mathbb{E}}{\left( X \right)}\)
     of a random variable \(X\) is its expected value given an
     infinite number of observations.
-
-    The expectation is also known as the mean of the \(X\), denoted \(\mu\).
+    The expectation is also known as the mean of the \(X\), denoted
+    \(\mu\).
     \begin{equation*}
         \E{\left( X \right)} =
         \begin{cases}
@@ -547,7 +546,8 @@ An event is when a random variable assumes a certain value or range of values.
         \begin{cases}
             \displaystyle \sum_{x \in \Omega} \left( x - \mu \right)^2 p_x                  & \text{for discrete variables}   \\[0.4cm]
             \displaystyle \int_{\Omega} \left( x - \mu \right)^2 f\left( x \right) \odif{x} & \text{for continuous variables}
-        \end{cases} \\
+        \end{cases}
+        \\
                                & = \E{\left( X^2 \right)} - \E{\left( X \right)}^2
     \end{align*}
 \end{definition}
@@ -563,12 +563,11 @@ For a simple linear function of a random variable
     \E{\left( aX \pm b \right)}   & = a\E{\left( X \right)} \pm b \\
     \Var{\left( aX \pm b \right)} & = a^2\Var{\left( X \right)}
 \end{align*}
-\section{Special Discrete Distributions}
-\subsection{Discrete Uniform Distribution}
-A discrete uniform distribution describes the probability distribution of a single trial
-in a set of equally likely elements.
-
-A discrete random variable \(X\) with a discrete uniform distribution is denoted
+\subsection{Discrete Distributions}
+\subsubsection{Discrete Uniform Distribution}
+A discrete uniform distribution describes the probability distribution
+of a single trial in a set of equally likely elements. A discrete
+random variable \(X\) with a discrete uniform distribution is denoted
 \begin{equation*}
     X \sim \operatorname{Uniform}{\left( a,\: b \right)}
 \end{equation*}
@@ -583,26 +582,29 @@ We can also summarise the following:
     \E{\left( X \right)}   & = \frac{a + b}{2}                           \\
     \Var{\left( X \right)} & = \frac{\left( b - a + 1 \right)^2 - 1}{12}
 \end{align*}
-\subsection{Bernoulli Distribution}
-A Bernoulli (or binary) distribution describes the probability distribution of a Boolean-valued
-outcome, i.e., success (1) or failure (0).
-
-A discrete random variable \(X\) with a Bernoulli distribution is denoted
+\subsubsection{Bernoulli Distribution}
+A Bernoulli (or binary) distribution describes the probability
+distribution of a Boolean-valued outcome, i.e., success (1) or failure
+(0). A discrete random variable \(X\) with a Bernoulli distribution is
+denoted
 \begin{equation*}
     X \sim \operatorname{Bernoulli}{\left( p \right)}
 \end{equation*}
 with
 \begin{align*}
-    \Pr{\left( X = x \right)}    & = \begin{cases}
-                                         1 - p & x = 0 \\
-                                         p     & x = 1
-                                     \end{cases}                    \\
+    \Pr{\left( X = x \right)}    & =
+    \begin{cases}
+        1 - p & x = 0 \\
+        p     & x = 1
+    \end{cases}
+    \\
                                  & = p^x \left( 1 - p \right)^{1 - x} \\
-    \Pr{\left( X \leq x \right)} & = \begin{cases}
-                                         0     & x < 0        \\
-                                         1 - p & 0 \leq x < 1 \\
-                                         1     & k \geq 1
-                                     \end{cases}
+    \Pr{\left( X \leq x \right)} & =
+    \begin{cases}
+        0     & x < 0        \\
+        1 - p & 0 \leq x < 1 \\
+        1     & k \geq 1
+    \end{cases}
 \end{align*}
 for a probability \(p \in \interval{0}{1}\) and outcomes \(x \in \left\{ 0,\: 1 \right\}\).
 We can also summarise the following:
@@ -611,11 +613,11 @@ We can also summarise the following:
     \Var{\left( X \right)} & = p \left( 1 - p \right)
 \end{align*}
 where \(\left( 1 - p \right)\) is sometimes denoted as \(q\).
-\subsection{Binomial Distribution}
-A binomial distribution describes the probability distribution of the number of successes
-for \(n\) independent trials with the same probability of success \(p\).
-
-A discrete random variable \(X\) with a binomial distribution is denoted
+\subsubsection{Binomial Distribution}
+A binomial distribution describes the probability distribution of the
+number of successes for \(n\) independent trials with the same
+probability of success \(p\). A discrete random variable \(X\) with a
+binomial distribution is denoted
 \begin{equation*}
     X \sim \operatorname{Binomial}{\left( n,\: p \right)}
 \end{equation*}
@@ -625,9 +627,10 @@ with
     \Pr{\left( X \leq x \right)} & = \sum_{u = 0}^x \dbinom{n}{u} p^u \left( 1 - p \right)^{n - u}
 \end{align*}
 for number of successes \(x \in \left\{ 0,\: 1,\: \dots,\: n \right\}\).
-
-Here each individual trial is a Bernoulli trial, so that \(X\) can be written as the sum of
-\(n\) \textit{independent and identically distributed} (iid) Bernoulli random variables, \(Y_1,\: Y_2,\: \dots,\: Y_n\).
+Here each individual trial is a Bernoulli trial, so that \(X\) can be
+written as the sum of \(n\) \textit{independent and identically
+    distributed} (iid) Bernoulli random variables, \(Y_1,\: Y_2,\: \dots,\:
+Y_n\).
 \begin{align*}
     X & = Y_1 + Y_2 + \cdots + Y_n, & Y_i & \overset{\mathrm{iid}}{\sim} \operatorname{Bernoulli}{\left( p \right)} : \forall i \in \left\{ 1,\: 2,\: \dots,\: n \right\}.
 \end{align*}
@@ -639,16 +642,15 @@ We can then summarise the following:
 \begin{proof}
     Given \(n\) trials, the probability of \(x\) successes will be \(p^x\).
     Similarly the probability of \(n - x\) failures will be \(\left( 1 - p \right)^{n - x}\).
-
-    We then consider the number of ways to choose \(x\) successes out of \(n\) trials, i.e., \(\dbinom{n}{x}\).
-
-    The intersection of these three events gives the PMF for a binomial distribution.
+    We then consider the number of ways to choose \(x\) successes out
+    of \(n\) trials, i.e., \(\dbinom{n}{x}\). The intersection of these
+    three events gives the PMF for a binomial distribution.
 \end{proof}
-\subsection{Geometric Distribution}
-A geometric distribution describes the probability distribution of the number of trials up to and including
-the first success, where each trial is independent and has the same probability of success \(p\).
-
-A discrete random variable \(N\) with a geometric distribution is denoted
+\subsubsection{Geometric Distribution}
+A geometric distribution describes the probability distribution of the
+number of trials up to and including the first success, where each
+trial is independent and has the same probability of success \(p\). A
+discrete random variable \(N\) with a geometric distribution is denoted
 \begin{equation*}
     N \sim \operatorname{Geometric}{\left( p \right)}
 \end{equation*}
@@ -658,14 +660,14 @@ with
     \Pr{\left( N \leq n \right)} & = 1 - \left( 1 - p \right)^n
 \end{align*}
 for number of trials \(n \geq 1\).
-
 We can also summarise the following:
 \begin{align*}
     \E{\left( N \right)}   & = \frac{1}{p}       \\
     \Var{\left( N \right)} & = \frac{1 - p}{p^2}
 \end{align*}
 \subsubsection{Alternate Geometric Definition}
-We can alternatively consider the number of failures until a success, \(Y\):
+We can alternatively consider the number of failures until a success,
+\(Y\):
 \begin{equation*}
     Y = N - 1
 \end{equation*}
@@ -674,17 +676,18 @@ Therefore the PMF and CDF for \(Y\) are:
     \Pr{\left( Y = y \right)}    & = \left( 1 - p \right)^y p         \\
     \Pr{\left( Y \leq y \right)} & = 1 - \left( 1 - p \right)^{y + 1}
 \end{align*}
-for number of failures \(y \geq 0\). This gives the following summary statistics using
-transformation rules:
+for number of failures \(y \geq 0\). This gives the following summary
+statistics using transformation rules:
 \begin{align*}
     \E{\left( Y \right)}   & = \frac{1 - p}{p}   \\
     \Var{\left( Y \right)} & = \frac{1 - p}{p^2}
 \end{align*}
-\subsection{Negative Binomial Distribution}
-A negative binomial distribution describes the probability distribution of the number of trials until \(k \geq 1\)
-successes, where each trial is independent and has the same probability of success \(p\).
-
-A discrete random variable \(N\) with a negative binomial distribution is denoted
+\subsubsection{Negative Binomial Distribution}
+A negative binomial distribution describes the probability distribution
+of the number of trials until \(k \geq 1\) successes, where each trial
+is independent and has the same probability of success \(p\). A
+discrete random variable \(N\) with a negative binomial distribution is
+denoted
 \begin{equation*}
     N \sim \operatorname{NB}{\left( k,\: p \right)}
 \end{equation*}
@@ -693,9 +696,10 @@ with
     \Pr{\left( N = n \right)}    & = \dbinom{n - 1}{k - 1} \left( 1 - p \right)^{n - k} p^k                \\
     \Pr{\left( N \leq n \right)} & = \sum_{u = k}^n \dbinom{u - 1}{k - 1} \left( 1 - p \right)^{u - k} p^k
 \end{align*}
-for number of trials \(n \geq k\).
-Here each individual trial is a Geometric trial, so that \(N\) can be written as the sum of
-\(k\) \textit{independent and identically distributed} (iid) Geometric random variables, \(Y_1,\: Y_2,\: \dots,\: Y_k\).
+for number of trials \(n \geq k\). Here each individual trial is a
+Geometric trial, so that \(N\) can be written as the sum of \(k\)
+\textit{independent and identically distributed} (iid) Geometric random
+variables, \(Y_1,\: Y_2,\: \dots,\: Y_k\).
 \begin{align*}
     N & = Y_1 + Y_2 + \cdots + Y_k, & Y_i & \overset{\mathrm{iid}}{\sim} \operatorname{Geometric}{\left( p \right)} : \forall i \in \left\{ 1,\: 2,\: \dots,\: k \right\}.
 \end{align*}
@@ -705,16 +709,17 @@ We can then summarise the following:
     \Var{\left( N \right)} & = \frac{k \left( 1 - p \right)}{p^2}
 \end{align*}
 \begin{proof}
-    Given \(n\) trials, the probability of \(k\) successes will be \(p^k\).
-    Similarly the probability of \(n - k\) failures will be \(\left( 1 - p \right)^{n - k}\).
-
-    We then consider the number of ways to arrange \(k - 1\) successes for \(n - 1\) trials,
-    because the last trial must be a success, i.e., \(\dbinom{n - 1}{k - 1}\).
-
-    The intersection of these three events gives the PMF for a negative binomial distribution.
+    Given \(n\) trials, the probability of \(k\) successes will be
+    \(p^k\). Similarly the probability of \(n - k\) failures will be
+    \(\left( 1 - p \right)^{n - k}\). We then consider the number of
+    ways to arrange \(k - 1\) successes for \(n - 1\) trials, because
+    the last trial must be a success, i.e., \(\dbinom{n - 1}{k - 1}\).
+    The intersection of these three events gives the PMF for a negative
+    binomial distribution.
 \end{proof}
 \subsubsection{Alternate Negative Binomial Definition}
-We can alternatively consider the number of failures \(Y\) until \(k\) successes:
+We can alternatively consider the number of failures \(Y\) until \(k\)
+successes:
 \begin{equation*}
     Y = N - k
 \end{equation*}
@@ -723,16 +728,17 @@ The PMF and CDF for \(Y\) are given by:
     \Pr{\left( Y = y \right)}    & = \dbinom{y + k - 1}{k - 1} \left( 1 - p \right)^y p^k                \\
     \Pr{\left( Y \leq y \right)} & = \sum_{u = 0}^y \dbinom{u + k - 1}{k - 1} \left( 1 - p \right)^u p^k
 \end{align*}
-for number of failures \(y \geq 0\). This gives the following summary statistics using
-transformation rules:
+for number of failures \(y \geq 0\). This gives the following summary
+statistics using transformation rules:
 \begin{align*}
     \E{\left( Y \right)}   & = \frac{k \left( 1 - p \right)}{p}   \\
     \Var{\left( Y \right)} & = \frac{k \left( 1 - p \right)}{p^2}
 \end{align*}
-\subsection{Poisson Distribution}
-A Poisson distribution describes the probability distribution of the number of events \(N\) which occur over a fixed interval of time \(\lambda\).
-
-A discrete random variable \(N\) with a Poisson distribution is denoted
+\subsubsection{Poisson Distribution}
+A Poisson distribution describes the probability distribution of the
+number of events \(N\) which occur over a fixed interval of time
+\(\lambda\). A discrete random variable \(N\) with a Poisson
+distribution is denoted
 \begin{equation*}
     N \sim \operatorname{Poisson}{\left( \lambda \right)}
 \end{equation*}
@@ -741,25 +747,26 @@ with
     \Pr{\left( N = n \right)}    & = \frac{\lambda^n e^{-\lambda}}{n!}                \\
     \Pr{\left( N \leq n \right)} & = e^{-\lambda} \sum_{u = 0}^n \frac{\lambda^u}{u!}
 \end{align*}
-for number of events \(n \geq 0\).
-We can also summarise the following:
+for number of events \(n \geq 0\). We can also summarise the following:
 \begin{align*}
     \E{\left( N \right)}   & = \lambda \\
     \Var{\left( N \right)} & = \lambda
 \end{align*}
-\subsection{Modelling Count Data}
-If we want to utilise these distributions to model data, we can use the following observations:
+\subsubsection{Modelling Count Data}
+If we want to utilise these distributions to model data, we can use the
+following observations:
 \begin{itemize}
     \item Poisson (mean = variance)
     \item Binomial (underdispersed, mean > variance)
     \item Geometric/Negative Binomial (overdispersed, mean < variance)
 \end{itemize}
-\section{Special Continuous Distributions}
-\subsection{Continuous Uniform Distribution}
-A continuous uniform distribution describes the probability distribution of an outcome within some
-interval, where the probability of an outcome in one interval is the same as all other intervals of the same length.
-
-A continuous random variable \(X\) with a continuous uniform distribution is denoted
+\subsection{Continuous Distributions}
+\subsubsection{Continuous Uniform Distribution}
+A continuous uniform distribution describes the probability
+distribution of an outcome within some interval, where the probability
+of an outcome in one interval is the same as all other intervals of the
+same length. A continuous random variable \(X\) with a continuous
+uniform distribution is denoted
 \begin{equation*}
     X \sim \operatorname{Uniform}{\left( a,\: b \right)}
 \end{equation*}
@@ -775,10 +782,10 @@ We can also summarise the following:
     \Var{\left( X \right)} & = \frac{\left( b - a \right)^2}{12} \\
     m                      & = \frac{a + b}{2}
 \end{align*}
-\subsection{Exponential Distribution}
-An exponential distribution describes the probability distribution of the time between events with rate \(\eta\).
-
-A continuous random variable \(T\) with an exponential distribution is denoted
+\subsubsection{Exponential Distribution}
+An exponential distribution describes the probability distribution of
+the time between events with rate \(\eta\). A continuous random
+variable \(T\) with an exponential distribution is denoted
 \begin{equation*}
     T \sim \operatorname{Exp}{\left( \eta \right)}
 \end{equation*}
@@ -791,36 +798,40 @@ for time \(t > 0\).
 We can also summarise the following:
 \begin{align*}
     \E{\left( T \right)}   & = \frac{1}{\eta}                     \\
-    \Var{\left( T \right)} & = \frac{1}{\eta^2}                       \\
+    \Var{\left( T \right)} & = \frac{1}{\eta^2}                   \\
     m                      & = \frac{\ln{\left( 2 \right)}}{\eta}
 \end{align*}
 \begin{proof}
-    By considering an event taking longer than \(t\) seconds, we can represent this as nothing happening
-    over the interval \(\interval{0}{t}\). Using \(T \sim \operatorname{Exp}{\left( \eta \right)}\) and
+    By considering an event taking longer than \(t\) seconds, we can
+    represent this as nothing happening over the interval
+    \(\interval{0}{t}\). Using
+    \(T \sim \operatorname{Exp}{\left( \eta \right)}\) and
     \(N \sim \operatorname{Poisson}{\left( \eta t \right)}\), we have
     \begin{equation*}
         \Pr{\left( T > t \right)} = \Pr{\left( N = 0 \right)} = e^{-\eta t}
     \end{equation*}
-    where \(\lambda = \eta t\). The CDF for the exponential distribution is then
+    where \(\lambda = \eta t\). The CDF for the exponential distribution
+    is then
     \begin{align*}
         \Pr{\left( T < t \right)} & = 1 - \Pr{\left( T > t \right)} \\
                                   & = 1 - e^{-\eta t}.
     \end{align*}
 \end{proof}
-\subsection{Memoryless Property}
-In an exponential distribution with \(T \sim \operatorname{Exp}{\left( \eta \right)}\),
-the distribution of the waiting time \(t + s\) until a certain event does not depend on
-how much time \(t\) has already passed.
+\subsubsection{Memoryless Property}
+In an exponential distribution with \(T \sim \operatorname{Exp}{\left(
+\eta \right)}\), the distribution of the waiting time \(t + s\) until a
+certain event does not depend on how much time \(t\) has already
+passed.
 \begin{equation*}
     \Pr{\left( T > s + t \,\vert\, T > t \right)} = \Pr{\left( T > s \right)}.
 \end{equation*}
 The same property also applies in an Geometric distribution with \(N \sim \operatorname{Geometric}{\left( p \right)}\).
-\subsection{Normal Distribution}
-The normal distribution is used to represent many random situations, in particular, measurements and their errors.
-This distribution arises in many statistical problems and can be used to \linebreak approximate other distributions
-under certain conditions.
-
-A continuous random variable \(X\) with a normal distribution is denoted
+\subsubsection{Normal Distribution}
+The normal distribution is used to represent many random situations, in
+particular, measurements and their errors. This distribution arises in
+many statistical problems and can be used to approximate other
+distributions under certain conditions. A continuous random variable
+\(X\) with a normal distribution is denoted
 \begin{equation*}
     X \sim \operatorname{N}{\left( \mu,\: \sigma^2 \right)}
 \end{equation*}
@@ -837,20 +848,24 @@ We can also summarise the following:
 \end{align*}
 Given the complexity of the analytic expressions for the PDF and CDF of the normal distribution, we often
 use software to numerically determine probabilities associated with normal distributions.
-\subsection{Standard Normal Distribution}
-Given \(X \sim \operatorname{N}{\left( \mu,\: \sigma^2 \right)}\), consider the transformation
+\subsubsection{Standard Normal Distribution}
+Given \(X \sim \operatorname{N}{\left( \mu,\: \sigma^2 \right)}\),
+consider the transformation
 \begin{equation*}
     Z = \frac{X - \mu}{\sigma}
 \end{equation*}
 so that \(Z \sim \operatorname{N}{\left( 0,\: 1 \right)}\). This distribution is called the standard normal distribution.
 This allows us to deal with the standard normal distribution regardless of \(\mu\) and \(\sigma\).
 \section{Central Limit Theorem}
-The central limit theorem states that the sum of independent and identically distributed random variables, when properly standardised,
-can be approximated by a normal distribution, as the number of elements increases.
+The central limit theorem states that the sum of independent and
+identically distributed random variables, when properly standardised,
+can be approximated by a normal distribution, as the number of elements
+increases.
 \subsection{Approximating the Average of Random Variables}
-Given a set of independent and identically distributed random variables \(X_1,\: \ldots,\: X_n\) from the distribution \(X\),
-if \(\E{\left( X \right)} = \mu\) and \(\Var{\left( X \right)} = \sigma^2\), then we can define \(\overline{X} = \frac{1}{n} \sum_{i = 1}^n X_i\)
-so that
+Given a set of independent and identically distributed random variables
+\(X_1,\: \ldots,\: X_n\) from the distribution \(X\), if \(\E{\left( X
+\right)} = \mu\) and \(\Var{\left( X \right)} = \sigma^2\), then we can
+define \(\overline{X} = \frac{1}{n} \sum_{i = 1}^n X_i\) so that
 \begin{align*}
     \E{\left( \overline{X} \right)}   & = \mu                \\
     \Var{\left( \overline{X} \right)} & = \frac{\sigma^2}{n}
@@ -861,9 +876,10 @@ By standardising \(\overline{X}\), we can define
 \end{equation*}
 so that \(Z \to \operatorname{N}{\left( 0,\: 1 \right)}\) as \(n \to \infty\).
 \subsection{Approximating the Sum of Random Variables}
-Given a set of independent and identically distributed random variables \(X_1,\: \ldots,\: X_n\) from the distribution \(X\),
-if \(\E{\left( X \right)} = \mu\) and \(\Var{\left( X \right)} = \sigma^2\), then we can define \(Y = \sum_{i = 1}^n X_i\)
-so that
+Given a set of independent and identically distributed random variables
+\(X_1,\: \ldots,\: X_n\) from the distribution \(X\), if \(\E{\left( X
+\right)} = \mu\) and \(\Var{\left( X \right)} = \sigma^2\), then we can
+define \(Y = \sum_{i = 1}^n X_i\) so that
 \begin{align*}
     \E{\left( Y \right)}   & = n \mu      \\
     \Var{\left( Y \right)} & = n \sigma^2
@@ -874,18 +890,20 @@ Then for large \(n\)
 \end{equation*}
 \subsection{Approximating the Binomial Distribution}
 \subsubsection{Normal Distribution}
-Given a binomial distribution \(X \sim \operatorname{Binomial}{\left( n,\: p \right)}\), we can write \(X\)
-as the sum of \(n\) independent and identically distributed Bernoulli random variables
-\(X_1,\: \ldots,\: X_n\), so that \(X_i \sim \operatorname{Bernoulli}{\left( p \right)}\).
-
-Thus by the central limit theorem, we can use a normal approximation for \(X\), provided that \(n\) is large.
+Given a binomial distribution \(X \sim \operatorname{Binomial}{\left(
+n,\: p \right)}\), we can write \(X\) as the sum of \(n\) independent
+and identically distributed Bernoulli random variables \(X_1,\:
+\ldots,\: X_n\), so that \(X_i \sim \operatorname{Bernoulli}{\left( p
+\right)}\). Thus by the central limit theorem, we can use a normal
+approximation for \(X\), provided that \(n\) is large.
 \begin{equation*}
     X \approx Y \sim \operatorname{N}{\left( np,\: np\left( 1 - p \right) \right)}
 \end{equation*}
-
-In general, this approximation is sufficient when \(np > 5\) and \(n\left( 1 - p \right) > 5\).
+In general, this approximation is sufficient when \(np > 5\) and
+\(n\left( 1 - p \right) > 5\).
 \subsubsection{Poisson Distribution}
-When \(np < 5\) we can use the Poisson distribution to approximate \(X\) with the mean \(np\):
+When \(np < 5\) we can use the Poisson distribution to approximate
+\(X\) with the mean \(np\):
 \begin{equation*}
     X \approx Y \sim \operatorname{Poisson}{\left( np \right)}.
 \end{equation*}
@@ -894,7 +912,9 @@ When \(n\left( 1 - p \right) < 5\) we can consider the number of failures \(W = 
     W \approx Y \sim \operatorname{Poisson}{\left( n\left( 1 - p \right) \right)}.
 \end{equation*}
 \subsubsection{Continuity Correction}
-Given an approximation \(Y\) (either Normal or Poisson) for the binomial distribution \(X \sim \operatorname{Binomial}{\left( n,\: p \right)}\) the equality
+Given an approximation \(Y\) (either Normal or Poisson) for the
+binomial distribution \(X \sim \operatorname{Binomial}{\left( n,\: p
+\right)}\) the equality
 \begin{equation*}
     \Pr{\left( X \leq x \right)} = \Pr{\left( X < x + 1 \right)}
 \end{equation*}
@@ -903,10 +923,11 @@ must hold for any \(x\). Therefore by adding \(\frac{1}{2}\) we apply a continui
     \Pr{\left( Y \leq x + \frac{1}{2} \right)}.
 \end{equation*}
 \subsection{Approximating a Poisson Distribution}
-Given a set of independent Poisson distributions \(X_1,\: \ldots ,\: X_n\) where \(X_i \sim \operatorname{Poisson}{\left( \lambda \right)}\)
-so that \(\E{\left( X_i \right)} = \lambda\) and \(\Var{\left( X_i \right)} = \lambda\) for all \(i\).
-
-If we consider \(X = \sum_{i = 1}^n X_i\) then
+Given a set of independent Poisson distributions \(X_1,\: \ldots ,\:
+X_n\) where \(X_i \sim \operatorname{Poisson}{\left( \lambda \right)}\)
+so that \(\E{\left( X_i \right)} = \lambda\) and \(\Var{\left( X_i
+\right)} = \lambda\) for all \(i\). If we consider \(X = \sum_{i = 1}^n
+X_i\) then
 \begin{align*}
     \E{\left( X \right)}   & = n \lambda \\
     \Var{\left( X \right)} & = n \lambda
@@ -951,7 +972,6 @@ In general, this approximation is sufficient when \(n \lambda > 10\), and when a
         \int_{x \in \Omega_1} \int_{y \in \Omega_2} f\left( x,\: y \right) \odif{y} \odif{x} = 1.
     \end{align*}
     When considering the sum of these two variables, we must consider the appropriate bounds.
-
     For \(x_1 + y_1 < a < x_2 + y_2\), if:
     \begin{itemize}
         \item \(a - y_2 \leq x_1\) and \(a - y_1 \leq x_2\):
@@ -973,8 +993,10 @@ In general, this approximation is sufficient when \(n \lambda > 10\), and when a
     \end{itemize}
 \end{definition}
 \subsection{Marginal Probability}
-The marginal probability function can be obtained by calculating the probability function of each random variable.
-Once the function has been determined, we must specify the range of values that variable can take.
+The marginal probability function can be obtained by calculating the
+probability function of each random variable. Once the function has
+been determined, we must specify the range of values that variable can
+take.
 \begin{definition}[Marginal probability mass function]
     \begin{align*}
         \Pr{\left( X = x \right)} & = p_x = \sum_{y \in \Omega_2} \Pr{\left( X = x,\: Y = y \right)} \\
@@ -988,8 +1010,9 @@ Once the function has been determined, we must specify the range of values that 
     \end{align*}
 \end{definition}
 \subsection{Conditional Probability}
-Using the joint probability and marginal probability, we can determine the conditional probability function.
-Once the function has been determined, we must specify the range of values that variable can take.
+Using the joint probability and marginal probability, we can determine
+the conditional probability function. Once the function has been
+determined, we must specify the range of values that variable can take.
 \begin{definition}[Conditional probability mass function]
     \begin{equation*}
         \Pr{\left( X = x \,\vert\, Y = y \right)} = \frac{\Pr{\left( X = x,\: Y = y \right)}}{\Pr{\left( Y = y \right)}}.
@@ -1030,8 +1053,9 @@ and if the joint range of \(X\) and \(Y\) do not depend on each other. This lead
     f\left( x \,\vert\, y \right) = f\left( x \right).
 \end{equation*}
 \subsection{Law of Total Expectation}
-Given the conditional distribution of \(X \,\vert\, Y = y\), we can compute its expectation and variance.
-For discrete random variables, the conditional expectation is
+Given the conditional distribution of \(X \,\vert\, Y = y\), we can
+compute its expectation and variance. For discrete random variables,
+the conditional expectation is
 \begin{equation*}
     \E{\left( X \,\vert\, Y = y \right)} = \sum_{x\in\Omega_1} x \Pr{\left( X = x \,\vert\, Y = y \right)}
 \end{equation*}
@@ -1055,7 +1079,8 @@ we can calculate its expected value such that
 \end{equation*}
 This is known as the law of total expectation.
 \subsection{Expectation}
-The following property holds for both dependent and independent random variables \(X\) and \(Y\)
+The following property holds for both dependent and independent random
+variables \(X\) and \(Y\)
 \begin{equation*}
     \E{\left( X \pm Y \right)} = \E{\left( X \right)} \pm \E{\left( Y \right)}
 \end{equation*}
@@ -1079,11 +1104,12 @@ If \(X\) and \(Y\) are independent then
 \end{definition}
 The covariance of \(X\) and \(Y\) is:
 \begin{description}
-    \item[Positive] if an increase in one variable is more likely to result in an increase in
-        the other variable.
-    \item[Negative] if an increase in one variable is more likely to result in a decrease in
-        the other variable.
-    \item[Zero] if \(X\) and \(Y\) are independent. Note that the converse is not true.
+    \item[Positive] if an increase in one variable is more likely to
+          result in an increase in the other variable.
+    \item[Negative] if an increase in one variable is more likely to
+          result in a decrease in the other variable.
+    \item[Zero] if \(X\) and \(Y\) are independent. Note that the
+          converse is not true.
 \end{description}
 The linear transformation of two random variables have the following covariance
 \begin{equation*}
@@ -1110,17 +1136,17 @@ similarly for the sum of three dependent random variables
     \Var{\left( X + Y + Z \right)} = \Var{\left( X \right)} + \Var{\left( Y \right)} + \Var{\left( Z \right)} + 2\Cov{\left( X,\: Y \right)} + 2\Cov{\left( X,\: Z \right)} + 2\Cov{\left( Y,\: Z \right)}
 \end{equation*}
 \subsection{Correlation}
-The covariance of two random variables describes the direction of a relationship, however
-it does not quantify the strength of such a relationship. The correlation explains both
-the direction and strength of a linear relationship between two random variables.
-
-The correlation of two random variables \(X\) and \(Y\) is denoted \(\rho\left( X,\: Y \right)\)
+The covariance of two random variables describes the direction of a
+relationship, however it does not quantify the strength of such a
+relationship. The correlation explains both the direction and strength
+of a linear relationship between two random variables. The correlation
+of two random variables \(X\) and \(Y\) is denoted \(\rho\left( X,\: Y
+\right)\)
 \begin{equation*}
     \rho\left( X,\: Y \right) = \frac{\Cov{\left( X,\: Y \right)}}{\sqrt{\Var{\left( X \right)} \Var{\left( Y \right)}}}
 \end{equation*}
 where \(-1 \leq \rho\left( X,\: Y \right) \leq 1\).
-
-These value can be interpretted as follows:
+These value can be interpreted as follows:
 \begin{itemize}
     \item \(\rho\left( X,\: Y \right) > 0\) iff \(X\) and \(Y\) have a positive linear relationship.
     \item \(\rho\left( X,\: Y \right) < 0\) iff \(X\) and \(Y\) have a negative linear relationship.
@@ -1130,11 +1156,11 @@ These value can be interpretted as follows:
 \end{itemize}
 Note that the slope of a perfect linear relationship cannot be obtained from the correlation.
 \section{Markov Chains}
-A Markov chain is a discrete time and state stochastic process that describes how a state evolves over time.
-In this process, the set of all states is discrete and disjoint and states change probabilistically so that
-a step may not result in a changed state.
-At each step, the next state depends only on the current state of the random variable.
-
+A Markov chain is a discrete time and state stochastic process that
+describes how a state evolves over time. In this process, the set of
+all states is discrete and disjoint and states change probabilistically
+so that a step may not result in a changed state. At each step, the
+next state depends only on the current state of the random variable.
 States are denoted by the random variable \(X_t\) at time step \(t\).
 \begin{definition}[Markov property]
     The state \(X_t\) is conditionally independent of \(X_{t-2}\), \(X_{t-3}\), \dots, \(X_0\) given \(X_{t-1}\).
@@ -1149,9 +1175,10 @@ A Markov chain is homogeneous when
 \end{equation*}
 that is, the \(n\)-step conditional probabilities do not depend on the time step \(t\).
 \subsection{Transition Probability Matrix}
-A homogeneous Markov chain is characterised by the transition probability matrix \(\symbf{P} \in \R^{m \times m}\), where
-\(m\) is the number of states.
-\(\symbf{P}\) must fulfil the following properties:
+A homogeneous Markov chain is characterised by the transition
+probability matrix \(\symbf{P} \in \R^{m \times m}\), where \(m\) is
+the number of states. \(\symbf{P}\) must fulfil the following
+properties:
 \begin{itemize}
     \item \(p_{i,j} = \Pr{\left( X_t = j \,\vert\, X_{t-1} = i \right)}\)
     \item \(p_{i,j} \geq 0 : \forall i,\: j\)
@@ -1159,47 +1186,52 @@ A homogeneous Markov chain is characterised by the transition probability matrix
 \end{itemize}
 \(\symbf{P}\) has the following form
 \begin{equation*}
-    \symbf{P} = \quad \scriptscriptstyle{X_t} \overset{X_{t+1}}{\begin{bmatrix}
+    \symbf{P} = \quad \scriptscriptstyle{X_t} \overset{X_{t+1}}{
+        \begin{bmatrix}
             \phantom{p} & \phantom{p} \\
             \phantom{p} & \phantom{p}
-        \end{bmatrix}}
+        \end{bmatrix}
+    }
 \end{equation*}
 The \(n\)-step transition probability is given by \(\symbf{P}^n\).
 \subsection{Unconditional State Probabilities}
-The unconditional probability of being in state \(j\) at time \(n\) is given by
+The unconditional probability of being in state \(j\) at time \(n\) is
+given by
 \begin{equation*}
     \Pr{\left( X_n = j \right)} = p_j^{(n)}
 \end{equation*}
 Given multiple states, let \(\symbfit{s}^{(n)}\) denote the vector of all states \(p_j^{(n)}\) at
 time \(n\). Then
-\begin{align*}
-    {\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(n-1)}}^\top \symbf{P} \quad \quad \text{and} \quad \quad {\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(0)}}^\top \symbf{P}^n
+\begin{align*}{\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(n-1)}}^\top \symbf{P} \quad \quad \text{and} \quad \quad {\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(0)}}^\top \symbf{P}^n
 \end{align*}
 \subsection{Stationary Distribution}
-At steady-state, the probability of being in a particular state does not change from one step to the next.
-This implies
+At steady-state, the probability of being in a particular state does
+not change from one step to the next. This implies
 \begin{equation*}
     \symbfit{s}^{(n+1)} = \symbfit{s}^{(n)} \implies {\symbfit{s}^{(n)}}^\top = {\symbfit{s}^{(n)}}^\top \symbf{P}
 \end{equation*}
 The stationary distribution \(\symbfit{\pi}\) satisfies \(\symbfit{\pi}^\top = \symbfit{\pi}^\top \symbf{P}\).
 To determine \(\symbfit{\pi}\), we must use the equation \(\sum_{i = 1}^m \pi_i = 1\).
 \subsection{Limiting Distribution}
-Under certain conditions, as \(n \to \infty\), each row of \(\symbf{P}^n\) will be equal to \(\symbfit{\pi}^\top\),
-so that each state moves to the next step with the same probability. This is known as the limiting distribution.
-Here \(\symbfit{\pi}\) provides the long run probabilities of being in each state and the process forgets where it starts.
-
-A sufficient condition for the above is if \(\symbf{P}^n\) has positive entries for some finite \(n\).
-
-\textit{Note that a stationary distribution does not imply that a limiting distribution exists}.
+Under certain conditions, as \(n \to \infty\), each row of
+\(\symbf{P}^n\) will be equal to \(\symbfit{\pi}^\top\), so that each
+state moves to the next step with the same probability. This is known
+as the limiting distribution. Here \(\symbfit{\pi}\) provides the long
+run probabilities of being in each state and the process forgets where
+it starts. A sufficient condition for the above is if \(\symbf{P}^n\)
+has positive entries for some finite \(n\). \textit{Note that a
+stationary distribution does not imply that a limiting distribution
+exists}.
 \section{Poisson Processes}
-A Poisson process is a continuous time and discrete state stochastic process that counts events
-that occur randomly in time (or space).
-This process only requires the rate parameter \(\eta\) which describes the average rate at which events occur.
-This rate does not depend on how long the process has been run nor how many events have already been
-observed.
-
-The number of events that occur randomly on the interval \(\ointerval{0}{t}\), are denoted by the random variable \(X\left( t \right)\).
-At time \(t = 0\), we assume that no events were observed so that
+A Poisson process is a continuous time and discrete state stochastic
+process that counts events that occur randomly in time (or space). This
+process only requires the rate parameter \(\eta\) which describes the
+average rate at which events occur. This rate does not depend on how
+long the process has been run nor how many events have already been
+observed. The number of events that occur randomly on the interval
+\(\ointerval{0}{t}\), are denoted by the random variable \(X\left( t
+\right)\). At time \(t = 0\), we assume that no events were observed so
+that
 \begin{equation*}
     \Pr{\left( X\left( 0 \right) = 0 \right)} = 1.
 \end{equation*}
@@ -1210,7 +1242,8 @@ Let \(h\) be a small interval such that at most 1 event can occur during that ti
     \Pr{\left( X\left( t + h \right) > n + 1 \,\vert\, X\left( t \right) = n \right)} & \approx 0
 \end{align*}
 \subsection{Poisson Distribution}
-A Poisson process has a Poisson distribution with rate \(\eta\), so that
+A Poisson process has a Poisson distribution with rate \(\eta\), so
+that
 \begin{equation*}
     X\left( t \right) \sim \operatorname{Poisson}{\left( \eta t \right)}
 \end{equation*}
@@ -1219,14 +1252,16 @@ therefore the probability density function for the count \(X\left( t \right)\) i
     \Pr{\left( X\left( t \right) = n \right)} = p_n\left( t \right) = \frac{e^{-\eta t} \left( \eta t \right)^n}{n!}
 \end{equation*}
 for \(n \in \Z_{\geq 0}\), where \(\eta\) is the expected number of events per unit time \(t\).
-
-In general, let \(N\left( t_1,\: t_2 \right)\) be the number of events occurring in the Poisson process between
-times \(t_1\) and \(t_2\), then \(N\left( t_1,\: t_2 \right) \sim \operatorname{Poisson}{\left( \eta \left( t_2 - t_1 \right) \right)}\).
+In general, let \(N\left( t_1,\: t_2 \right)\) be the number of events
+occurring in the Poisson process between times \(t_1\) and \(t_2\),
+then \(N\left( t_1,\: t_2 \right) \sim \operatorname{Poisson}{\left(
+    \eta \left( t_2 - t_1 \right) \right)}\).
 \begin{equation*}
     \Pr\left( N\left( t_1,\: t_2 \right) = n \right) = \frac{e^{-\eta \left( t_2 - t_1 \right)} \left( \eta \left( t_2 - t_1 \right) \right)^n}{n!}
 \end{equation*}
 \subsection{Exponential Distribution}
-Let \(T\) be the time between events of a Poisson process so that \(T\) has an exponential distribution
+Let \(T\) be the time between events of a Poisson process so that \(T\)
+has an exponential distribution
 \begin{equation*}
     T \sim \operatorname{Exp}{\left( \eta \right)}.
 \end{equation*}
@@ -1237,21 +1272,23 @@ The probability density function of \(T\) is given by
 for \(t > 0\).
 \subsection{Properties of Poisson Processes}
 \begin{enumerate}
-    \item As the time between Poisson processes has an exponential distribution, the Poisson process inherits the
-          memoryless property,
+    \item As the time between Poisson processes has an exponential
+          distribution, the Poisson process inherits the memoryless
+          property,
           \begin{equation*}
               \Pr{\left( T > x + y \,\vert\, T > x \right)} = \Pr{\left( T > y \right)}.
           \end{equation*}
-    \item Non-overlapping time intervals of a Poisson process are independent. For \(a < b\) and \(c < d\) where \(b \leq c\),
+    \item Non-overlapping time intervals of a Poisson process are
+          independent. For \(a < b\) and \(c < d\) where \(b \leq c\),
           \begin{equation*}
               \Pr{\left( N\left( c,\: d \right) = m \,\vert\, N\left( a,\: b \right) = n \right)} = \Pr{\left( N\left( c,\: d \right) = m \right)}
           \end{equation*}
-          \item\label{poisson_property_1_event} If exactly 1 event occurs on the interval \(\ointerval{0}{a}\), then the distribution of when that event occurs is
+    \item\label{poisson_property_1_event} If exactly 1 event occurs on the interval \(\ointerval{0}{a}\), then the distribution of when that event occurs is
           uniform. Let \(X\) be the time \(x < a\) when the first event occurs,
           \begin{equation*}
               X \,\vert\, \left( N\left( 0,\: a \right) = 1 \right) \sim \operatorname{Uniform}{\left( 0,\: a \right)}
           \end{equation*}
-          \item\label{poisson_property_n_events} If exactly \(n\) events occur on the interval \(\ointerval{0}{t}\), then the distribution of the number of events
+    \item\label{poisson_property_n_events} If exactly \(n\) events occur on the interval \(\ointerval{0}{t}\), then the distribution of the number of events
           that occur in \(\ointerval{0}{s}\) is binomial, for \(s < t\). Let \(X\) be the number of events that occur in \(\ointerval{0}{s}\) for \(s < t\),
           \begin{equation*}
               X \,\vert\, \left( N\left( 0,\: t \right) = n \right) \sim \operatorname{Binomial}{\left( n,\: \frac{s}{t} \right)}
@@ -1277,9 +1314,9 @@ for \(t > 0\).
                             & = \frac{\Pr{\left( N\left( 0,\: s \right) = x \cap N\left( 0,\: t \right) = n \right)}}{\Pr{\left( N\left( 0,\: t \right) = n \right)}}                                                                               \\
                             & = \frac{\Pr{\left( N\left( 0,\: s \right) = x \cap N\left( s,\: t \right) = n - x \right)}}{\Pr{\left( N\left( 0,\: t \right) = n \right)}}                                                                           \\
                             & = \frac{\frac{e^{-\eta s} \left( \eta s \right)^x}{x!} \frac{e^{-\eta \left( t - s \right)} \left( \eta \left( t - s \right) \right)^{n - x}}{\left( n - x \right)!}}{\frac{e^{-\eta t} \left( \eta t \right)^n}{n!}} \\
-                            & = \frac{n!}{x!\left( n - x \right)!} \frac{s^x \left( t - s \right)^{n - x}}{t^n} \\
-                            & = \binom{n}{x} \frac{s^x \left( t - s \right)^{n - x}}{t^x t^{n - x}} \\
-                            & = \binom{n}{x} \left( \frac{s}{t} \right)^x \left( 1 - \frac{s}{t} \right)^{n - x} 
+                            & = \frac{n!}{x!\left( n - x \right)!} \frac{s^x \left( t - s \right)^{n - x}}{t^n}                                                                                                                                     \\
+                            & = \binom{n}{x} \frac{s^x \left( t - s \right)^{n - x}}{t^x t^{n - x}}                                                                                                                                                 \\
+                            & = \binom{n}{x} \left( \frac{s}{t} \right)^x \left( 1 - \frac{s}{t} \right)^{n - x}
     \end{align*}
     which is precisely the PMF of a binomial distribution where \(X \sim \operatorname{Binomial}{\left( n,\: \frac{s}{t} \right)}\).
 \end{proof}
