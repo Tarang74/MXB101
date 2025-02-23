@@ -253,11 +253,11 @@ changing the sample space.
     \begin{equation*}
         \Pr{\left( A \,\vert\, B \right)} \neq \Pr{\left( A \right)}
     \end{equation*}
-    but they become independent when conditioned with another event \(C\), i.e.,
+    but, they become independent when conditioned with another event \(C\), i.e.,
     \begin{equation*}
         \Pr{\left( A \,\vert\, BC \right)} = \Pr{\left( A \,\vert\, C \right)}
     \end{equation*}
-    Here we say that \(A\) and \(B\) are \textbf{conditionally independent} given \(C\). Furthermore
+    Here we say that \(A\) and \(B\) are \textbf{conditionally independent} given \(C\). Furthermore,
     \begin{equation*}
         \Pr{\left( AB \,\vert\, C \right)} = \Pr{\left( A \,\vert\, C \right)} \Pr{\left( B \,\vert\, C \right)}
     \end{equation*}
@@ -400,7 +400,7 @@ known as a \(k\)-combination of \(n\)-elements denoted
     \prescript{n}{}{C}_k & = \frac{\prescript{n}{}{P}_k}{k!}     \\
                          & = \frac{n!}{k! \left( n - k \right)!}
 \end{align*}
-for \(0 \leq k \leq n\). We divide by \(k!\) because any \(k\)-element subset of \(n\)-elements 
+for \(0 \leq k \leq n\). We divide by \(k!\) because any \(k\)-element subset of \(n\)-elements
 can be ordered in \(k!\) ways.
 \subsection{Unordered Sampling with Replacement}
 When ordering is not important and repetition is allowed, the total
@@ -441,7 +441,7 @@ An event is when a random variable assumes a certain value or range of values.
     The probability distribution of a continuous random variable \(X\) is described by a Probability
     Density Function (PDF) \(f\left( x \right)\).
     The probability that \(X\) is exactly equal to a specific value is
-    always 0. Therefore we compute probabilities over intervals:
+    always 0. Therefore, we compute probabilities over intervals:
     \begin{equation*}
         \Pr{\left( x_1 \leq X \leq x_2 \right)} = \int_{x_1}^{x_2} f\left( x \right) \odif{x}
     \end{equation*}
@@ -492,7 +492,7 @@ An event is when a random variable assumes a certain value or range of values.
     \end{equation*}
 \end{definition}
 \begin{definition}[Lower and upper quartile]
-    Likewise the lower quartile and upper quartiles are two values \(q_1\) and \(q_2\) such that
+    Likewise, the lower quartile and upper quartiles are two values \(q_1\) and \(q_2\) such that
     \begin{equation*}
         \int_{-\infty}^{q_1} f\left( u \right) \odif{u} = \frac{1}{4}
     \end{equation*}
@@ -641,7 +641,7 @@ We can then summarise the following:
 \end{align*}
 \begin{proof}
     Given \(n\) trials, the probability of \(x\) successes will be \(p^x\).
-    Similarly the probability of \(n - x\) failures will be \(\left( 1 - p \right)^{n - x}\).
+    Similarly, the probability of \(n - x\) failures will be \(\left( 1 - p \right)^{n - x}\).
     We then consider the number of ways to choose \(x\) successes out
     of \(n\) trials, i.e., \(\dbinom{n}{x}\). The intersection of these
     three events gives the PMF for a binomial distribution.
@@ -710,7 +710,7 @@ We can then summarise the following:
 \end{align*}
 \begin{proof}
     Given \(n\) trials, the probability of \(k\) successes will be
-    \(p^k\). Similarly the probability of \(n - k\) failures will be
+    \(p^k\). Similarly, the probability of \(n - k\) failures will be
     \(\left( 1 - p \right)^{n - k}\). We then consider the number of
     ways to arrange \(k - 1\) successes for \(n - 1\) trials, because
     the last trial must be a success, i.e., \(\dbinom{n - 1}{k - 1}\).
@@ -757,8 +757,8 @@ If we want to utilise these distributions to model data, we can use the
 following observations:
 \begin{itemize}
     \item Poisson (mean = variance)
-    \item Binomial (underdispersed, mean > variance)
-    \item Geometric/Negative Binomial (overdispersed, mean < variance)
+    \item Binomial (under-dispersed, mean > variance)
+    \item Geometric/Negative Binomial (over-dispersed, mean < variance)
 \end{itemize}
 \subsection{Continuous Distributions}
 \subsubsection{Continuous Uniform Distribution}
@@ -825,7 +825,7 @@ passed.
 \begin{equation*}
     \Pr{\left( T > s + t \,\vert\, T > t \right)} = \Pr{\left( T > s \right)}.
 \end{equation*}
-The same property also applies in an Geometric distribution with \(N \sim \operatorname{Geometric}{\left( p \right)}\).
+The same property also applies in a Geometric distribution with \(N \sim \operatorname{Geometric}{\left( p \right)}\).
 \subsubsection{Normal Distribution}
 The normal distribution is used to represent many random situations, in
 particular, measurements and their errors. This distribution arises in
@@ -894,7 +894,7 @@ Given a binomial distribution \(X \sim \operatorname{Binomial}{\left(
 n,\: p \right)}\), we can write \(X\) as the sum of \(n\) independent
 and identically distributed Bernoulli random variables \(X_1,\:
 \ldots,\: X_n\), so that \(X_i \sim \operatorname{Bernoulli}{\left( p
-\right)}\). Thus by the central limit theorem, we can use a normal
+\right)}\). Thus, by the central limit theorem, we can use a normal
 approximation for \(X\), provided that \(n\) is large.
 \begin{equation*}
     X \approx Y \sim \operatorname{N}{\left( np,\: np\left( 1 - p \right) \right)}
@@ -918,7 +918,7 @@ binomial distribution \(X \sim \operatorname{Binomial}{\left( n,\: p
 \begin{equation*}
     \Pr{\left( X \leq x \right)} = \Pr{\left( X < x + 1 \right)}
 \end{equation*}
-must hold for any \(x\). Therefore by adding \(\frac{1}{2}\) we apply a continuity correction to the approximate probability:
+must hold for any \(x\). Therefore, by adding \(\frac{1}{2}\) we apply a continuity correction to the approximate probability:
 \begin{equation*}
     \Pr{\left( Y \leq x + \frac{1}{2} \right)}.
 \end{equation*}
